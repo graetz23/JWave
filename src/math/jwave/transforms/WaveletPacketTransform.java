@@ -67,6 +67,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    *          how many steps the algorithm should perform
    * @throws JWaveException 
    */
+  @Deprecated
   public WaveletPacketTransform( Wavelet wavelet, int steps ) {
     
     super( wavelet, steps );

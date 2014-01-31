@@ -54,7 +54,7 @@ public class FastWaveletTransform extends WaveletTransform {
       e.printStackTrace( );
     }
     
-  } // FastBasicTransform
+  } // FastWaveletTransform
   
   /**
    * Constructor receiving a Wavelet object.
@@ -67,6 +67,7 @@ public class FastWaveletTransform extends WaveletTransform {
    *          how many steps the algorithm should perform
    * @throws JWaveException 
    */
+  @Deprecated
   public FastWaveletTransform( Wavelet wavelet, int steps ) {
     
     super( wavelet, steps );
@@ -77,7 +78,20 @@ public class FastWaveletTransform extends WaveletTransform {
       e.printStackTrace( );
     }
     
-  } // FastBasicTransform
+  } // FastWaveletTransform
+  
+  
+  public FastWaveletTransform( Wavelet wavelet, int levelOfSpace, int steps ) {
+	    
+	    super( wavelet, levelOfSpace, steps );
+	    
+	    try {
+	      checkConfig( );
+	    } catch( JWaveException e ) {
+	      e.printStackTrace( );
+	    }
+	    
+	  } // FastWaveletTransform
   
   /**
    * Performs the 1-D forward transform for arrays of dim N from time domain to

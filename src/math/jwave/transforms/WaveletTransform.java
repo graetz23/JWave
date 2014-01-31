@@ -55,6 +55,17 @@ public abstract class WaveletTransform extends BasicTransform {
    */
   protected TransformMode _transformMode;
   
+  
+  
+  /**
+   * Set the initial level of the Hilbert space. 
+   *
+   * @author Christian Scheiblich
+   * 31.01.2014 21:07:55
+   */
+  protected int _levelOfSpace;
+
+
   /**
    * The steps the Wavelet transform should do. If it is set to -1,
    * the transform algorithms perform the maximum number of steps.
@@ -90,12 +101,34 @@ public abstract class WaveletTransform extends BasicTransform {
    * @param steps
    * @throws JWaveException
    */
+  @Deprecated
   protected WaveletTransform( Wavelet wavelet, int steps ) {
     
     _wavelet = wavelet;
     
     _steps = steps;
     
+  }
+  
+  /**
+   * A wavelet transform that starts at a certain level of space and steps
+   * forward or reverse.
+   *
+   * @author Christian Scheiblich
+   * 31.01.2014 21:15:03
+   *
+   * @param wavelet
+   * @param levelOfSpace
+   * @param steps
+   */
+  protected WaveletTransform( Wavelet wavelet, int levelOfSpace, int steps ) { 
+	  
+    _wavelet = wavelet;
+	    
+	_levelOfSpace = levelOfSpace;
+	    
+	_steps = steps;
+	    
   }
   
   /**
