@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2010-2014 Christian Scheiblich
+ * Copyright 2009-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,9 @@ public class Transform {
    * @param transform Transform object
    */
   public Transform( BasicTransform transform ) {
+	  
     _transform = transform;
+    
   } // Transform
   
   /**
@@ -59,6 +61,7 @@ public class Transform {
    * @date 19.05.2009 09:50:24
    * @author Christian Scheiblich
    */
+  @Deprecated
   public Transform( BasicTransform transform, int iteration ) {
     if( transform instanceof BasicTransform ) {
       _transform = transform;
