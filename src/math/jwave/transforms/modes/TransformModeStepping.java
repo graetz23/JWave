@@ -47,7 +47,7 @@ public class TransformModeStepping extends TransformMode {
    * date Feb 7, 2013 1:53:17 PM
    *
    * @param steps a positive number telling how many levels the transform should do
-   * @throws JWaveException throws a failure if steps ist smaller than one
+   * @throws JWaveException throws a failure if steps is smaller than one
    */
   public TransformModeStepping( int steps ) throws JWaveException {
     

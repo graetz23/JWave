@@ -33,6 +33,12 @@ import math.jwave.transforms.wavelets.Wavelet;
  * @date 10.02.2010 08:10:42
  * @author Christian Scheiblich
  */
+/**
+ *
+ * @author tucker
+ * 05.02.2014 22:12:45
+ *
+ */
 public class FastWaveletTransform extends WaveletTransform {
   
   /**
@@ -81,9 +87,19 @@ public class FastWaveletTransform extends WaveletTransform {
   } // FastWaveletTransform
   
   
-  public FastWaveletTransform( Wavelet wavelet, int levelOfSpace, int steps ) {
+ /**
+  * Constructor taking the current level of space and the steps to go into account
+  *
+  * @author Christian Scheiblich
+  * 05.02.2014 22:13:04
+  *
+  * @param wavelet
+  * @param levelOfSpace
+  * @param steps2go
+  */
+public FastWaveletTransform( Wavelet wavelet, int levelOfSpace, int steps2go ) {
 	    
-	    super( wavelet, levelOfSpace, steps );
+	    super( wavelet, levelOfSpace, steps2go );
 	    
 	    try {
 	      checkConfig( );
