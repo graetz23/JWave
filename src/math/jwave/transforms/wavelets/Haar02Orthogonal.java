@@ -103,7 +103,6 @@ public class Haar02Orthogonal extends Wavelet {
    * 
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
-   * @see math.jwave.transforms.wavelets.Wavelet#forward(double[])
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
@@ -142,7 +141,6 @@ public class Haar02Orthogonal extends Wavelet {
    * 
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
-   * @see math.jwave.transforms.wavelets.Wavelet#reverse(double[])
    */
   @Override
   public double[ ] reverse( double[ ] arrHilb ) {

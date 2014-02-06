@@ -84,7 +84,8 @@ public abstract class Wavelet implements WaveletInterface {
       for( int j = 0; j < _waveLength; j++ ) {
         
         k = ( i << 1 ) + j;
-        while( k >= arrTime.length )
+        
+        while( k >= arrTime.length ) // circulate over too long arrays
           k -= arrTime.length;
         
         arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy (approximation)
@@ -120,7 +121,8 @@ public abstract class Wavelet implements WaveletInterface {
       for( int j = 0; j < _waveLength; j++ ) {
         
         k = ( i << 1 ) + j;
-        while( k >= arrHilb.length )
+        
+        while( k >= arrHilb.length ) // circulate over too long arrays
           k -= arrHilb.length;
         
         arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ] * _coeffs[ j ] ); // adding up details times energy (approximation)
