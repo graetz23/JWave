@@ -6,6 +6,7 @@ package math.jwave;
 import static org.junit.Assert.*;
 import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveException;
+import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.wavelets.Coiflet06;
 import math.jwave.transforms.wavelets.Daubechie02;
@@ -28,6 +29,525 @@ public class TransformTest {
    * Test method for {@link math.jwave.Transform#forward(double[])}.
    */
   @Test public void testForwardDoubleArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "forward 1-D method " + "using Haar01 Wavelet" );
+
+    try {
+
+      double delta = 1.e-12;
+
+      double[ ] arrTime = { 1., 1., 1., 1. };
+
+      showTime( arrTime );
+
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      double[ ] arrHilb = t.forward( arrTime );
+
+      showHilb( arrHilb );
+
+      double[ ] expected = { 2., 0., 0., 0. }; // orthonormal Hilbert space
+      assertArray( expected, arrHilb, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "forward 1-D method " + "using Haar01 Wavelet " + "and a long array" );
+
+    try {
+
+      double delta = 1.e-12;
+
+      double[ ] arrTime = { // array of length 64
+          1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
+
+      showTime( arrTime );
+
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      double[ ] arrHilb = t.forward( arrTime );
+
+      showHilb( arrHilb );
+
+      double[ ] expected = { // array of length 64
+          8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. }; // orthonormal Hilbert space
+      assertArray( expected, arrHilb, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "forward 1-D method " + "using Haar01 Wavelet "
+        + "and a random array" );
+
+    try {
+
+      double delta = 1.e-12;
+
+      double[ ] arrTime = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
+
+      showTime( arrTime );
+
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      double[ ] arrHilb = t.forward( arrTime );
+
+      showHilb( arrHilb );
+
+      double[ ] expected =
+          { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2,
+              -0.7778174593052021, -0.7778174593052025, 0.7778174593052025,
+              0.7778174593052023 }; // orthonormal Hilbert space
+      assertArray( expected, arrHilb, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+  } // testForwardDoubleArray
+
+  /**
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
+   */
+  @Test public void testReverseDoubleArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "reverse 1-D method " + "using Haar01 Wavelet" );
+
+    try {
+
+      double delta = 1e-12;
+
+      double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal Hilbert space
+
+      showHilb( arrHilb );
+
+      Transform t;
+      t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      double[ ] arrTime = t.reverse( arrHilb );
+
+      showTime( arrTime );
+
+      double[ ] expected = { 1., 1., 1., 1. };
+      assertArray( expected, arrTime, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "reverse 1-D method " + "using Haar01 Wavelet" );
+
+    try {
+
+      double delta = 1e-12;
+
+      double[ ] arrHilb = {  // array of length 64
+          8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. }; // orthonormal Hilbert space
+
+      showHilb( arrHilb );
+
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      double[ ] arrTime = t.reverse( arrHilb );
+
+      showTime( arrTime );
+
+      double[ ] expected = {  // array of length 64
+          1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.
+
+          };
+      assertArray( expected, arrTime, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "reverse 1-D method " + "using Haar01 Wavelet "
+        + "and a random array" );
+
+    try {
+
+      double delta = 1e-12;
+
+      double[ ] arrHilb =
+          { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2,
+              -0.7778174593052021, -0.7778174593052025, 0.7778174593052025,
+              0.7778174593052023 }; // orthonormal Hilbert space
+
+      showHilb( arrHilb );
+
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      double[ ] arrTime = t.reverse( arrHilb );
+
+      showTime( arrTime );
+
+      double[ ] expected = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
+      assertArray( expected, arrTime, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+  } // testReverseDoubleArray
+
+  /**
+   * Test method for {@link math.jwave.Transform#forward(double[][])}.
+   */
+  @Test public void testForwardDoubleArrayArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "forward 2-D method " + "using Haar01 Wavelet" );
+
+    try {
+
+      double delta = 1.e-12;
+
+      double[ ][ ] matrixTime =
+          { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+              { 1., 1., 1., 1. } };
+
+      showTime( matrixTime );
+
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      double[ ][ ] matrixHilb = t.forward( matrixTime );
+
+      showHilb( matrixHilb );
+
+      double[ ][ ] expected =
+          { { 4., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+              { 0., 0., 0., 0. } };
+      assertMatrix( expected, matrixHilb, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+  } // testForwardDoubleArrayArray
+
+  /**
+   * Test method for {@link math.jwave.Transform#reverse(double[][])}.
+   */
+  @Test public void testReverseDoubleArrayArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "reverse 2-D method " + "using Haar01 Wavelet" );
+
+    try {
+
+      double delta = 1.e-12;
+
+      double[ ][ ] matrixHilb =
+          { { 4., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+              { 0., 0., 0., 0. } };
+
+      showHilb( matrixHilb );
+
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      double[ ][ ] matrixTime = t.reverse( matrixHilb );
+
+      showTime( matrixTime );
+
+      double[ ][ ] expected =
+          { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+              { 1., 1., 1., 1. } };
+      assertMatrix( expected, matrixTime, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+  }
+
+  /**
+   * Test method for {@link math.jwave.Transform#forward(double[][][])}.
+   */
+  @Test public void testForwardDoubleArrayArrayArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "forward 3-D method " + "using Haar01 Wavelet" );
+
+    try {
+    
+  double delta = 1.e-12;
+    
+    double[ ][ ][ ] spaceTime = {
+    {
+    {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }
+    }, {
+    {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }
+    }, {
+    {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }
+    }, {
+    {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }
+    }
+    };
+    
+    showTime( spaceTime );
+    
+    Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+    double[ ][ ][ ] spaceHilb = t.forward( spaceTime );
+    
+    showHilb( spaceHilb );
+    
+    double[ ][ ][ ] expected = {
+    {
+    {
+    8., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }
+    }, {
+    {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }
+    }, {
+    {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }
+    }, {
+    {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }
+    }
+    };
+    assertSpace( expected, spaceHilb, delta );
+
+  } catch( JWaveFailure e ) {
+
+    e.showMessage( );
+    e.printStackTrace( );
+
+  } // try
+  
+  } // testForwardDoubleArrayArrayArray
+
+  /**
+   * Test method for {@link math.jwave.Transform#reverse(double[][][])}.
+   */
+  @Test public void testReverseDoubleArrayArrayArray( ) {
+
+    
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "reverse 3-D method " + "using Haar01 Wavelet" );
+    
+    try {
+    
+    double delta = 1.e-12;
+    
+    double[ ][ ][ ] spaceHilb = {
+    {
+    {
+    8., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }
+    }, {
+    {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }
+    }, {
+    {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }
+    }, {
+    {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }, {
+    0., 0., 0., 0.
+    }
+    }
+    };
+    
+    showHilb( spaceHilb );
+    
+    Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+    double[ ][ ][ ] spaceTime = t.reverse( spaceHilb );
+    
+    showTime( spaceTime );
+    
+    double[ ][ ][ ] expected = {
+    {
+    {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }
+    }, {
+    {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }
+    }, {
+    {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }
+    }, {
+    {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }, {
+    1., 1., 1., 1.
+    }
+    }
+    };
+    
+    assertSpace( expected, spaceTime, delta );
+
+  } catch( JWaveFailure e ) {
+
+    e.showMessage( );
+    e.printStackTrace( );
+
+  } // try
+    
+  } // testReverseDoubleArrayArrayArray
+
+  /**
+   * Test method for {@link math.jwave.Transform#forward(double[])} and
+   * {@link math.jwave.Transform#reverse(double[])}..
+   */
+  @Test public void testRoundingDoubleArray( ) {
 
     System.out.println( "" );
     System.out.println( "testRoundingHaar02FWT" );
@@ -54,41 +574,6 @@ public class TransformTest {
 
     } // try
 
-  } // testForwardDoubleArray
-
-  /**
-   * Test method for {@link math.jwave.Transform#reverse(double[])}.
-   */
-  @Test public void testReverseDoubleArray( ) {
-    fail( "Not yet implemented" );
-  }
-
-  /**
-   * Test method for {@link math.jwave.Transform#forward(double[][])}.
-   */
-  @Test public void testForwardDoubleArrayArray( ) {
-    fail( "Not yet implemented" );
-  }
-
-  /**
-   * Test method for {@link math.jwave.Transform#reverse(double[][])}.
-   */
-  @Test public void testReverseDoubleArrayArray( ) {
-    fail( "Not yet implemented" );
-  }
-
-  /**
-   * Test method for {@link math.jwave.Transform#forward(double[][][])}.
-   */
-  @Test public void testForwardDoubleArrayArrayArray( ) {
-    fail( "Not yet implemented" );
-  }
-
-  /**
-   * Test method for {@link math.jwave.Transform#reverse(double[][][])}.
-   */
-  @Test public void testReverseDoubleArrayArrayArray( ) {
-    fail( "Not yet implemented" );
   }
 
   /**
