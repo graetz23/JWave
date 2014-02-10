@@ -24,6 +24,7 @@
 package math.jwave.transforms;
 
 import math.jwave.exc.JWaveException;
+import math.jwave.exc.JWaveFailure;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -48,66 +49,15 @@ public class FastWaveletTransform extends WaveletTransform {
    * @author Christian Scheiblich
    * @param wavelet
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
+   * @throws JWaveFailure if object is null or not of type wavelet
    * @throws JWaveException 
    */
-  public FastWaveletTransform( Wavelet wavelet ) {
+  public FastWaveletTransform( Wavelet wavelet ) throws JWaveFailure {
     
     super( wavelet );
     
-    try {
-      checkConfig( );
-    } catch( JWaveException e ) {
-      e.printStackTrace( );
-    }
-    
   } // FastWaveletTransform
-  
-  /**
-   * Constructor receiving a Wavelet object.
-   * 
-   * @date 10.02.2010 08:10:42
-   * @author Christian Scheiblich
-   * @param wavelet
-   *          object of type Wavelet; Haar02, Daub02, Coif06, ...
-   * @param steps
-   *          how many steps the algorithm should perform
-   * @throws JWaveException 
-   */
-  @Deprecated
-  public FastWaveletTransform( Wavelet wavelet, int steps ) {
-    
-    super( wavelet, steps );
-    
-    try {
-      checkConfig( );
-    } catch( JWaveException e ) {
-      e.printStackTrace( );
-    }
-    
-  } // FastWaveletTransform
-  
-  
- /**
-  * Constructor taking the current level of space and the steps to go into account
-  *
-  * @author Christian Scheiblich
-  * 05.02.2014 22:13:04
-  *
-  * @param wavelet
-  * @param levelOfSpace
-  * @param steps2go
-  */
-public FastWaveletTransform( Wavelet wavelet, int levelOfSpace, int steps2go ) {
-	    
-	    super( wavelet, levelOfSpace, steps2go );
-	    
-	    try {
-	      checkConfig( );
-	    } catch( JWaveException e ) {
-	      e.printStackTrace( );
-	    }
-	    
-	  } // FastWaveletTransform
+
   
   /**
    * Performs the 1-D forward transform for arrays of dim N from time domain to
@@ -130,7 +80,8 @@ public FastWaveletTransform( Wavelet wavelet, int levelOfSpace, int steps2go ) {
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
       
-      while( h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
+      while( h >= minWaveLength ) {
+      // while( h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
         
         double[ ] iBuf = new double[ h ];
         
@@ -176,9 +127,8 @@ public FastWaveletTransform( Wavelet wavelet, int levelOfSpace, int steps2go ) {
     //  int h = (int)( arrHilb.length / ( Math.pow( 2, _steps - 1 ) ) ); // added by Pol
     if( arrHilb.length >= minWaveLength ) {
       
-      // while( h <= arrTime.length && h >= minWaveLength ) {
-      
-      while( h <= arrTime.length && h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
+      while( h <= arrTime.length && h >= minWaveLength ) {
+      // while( h <= arrTime.length && h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
         
         double[ ] iBuf = new double[ h ];
         

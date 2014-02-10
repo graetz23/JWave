@@ -14,11 +14,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License. 
- *
- * This file Wavelet.java is part of JWave.
- *
- * @author Christian Scheiblich
- * date 23.02.2010 05:42:23
+ * 
+ * @author Christian Scheiblich 
+ * date 23.02.2010 05:42:23 
  * contact cscheiblich@gmail.com
  */
 package math.jwave.transforms.wavelets;
@@ -32,22 +30,23 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich
  */
 public abstract class Wavelet implements WaveletInterface {
-  
+
   /**
-   * minimal wavelength of the used wavelet and scaling coefficients
+   * The wavelength of the base or so called mother wavelet and its matching
+   * scaling function.
    */
   protected int _waveLength;
-  
+
   /**
-   * coefficients of the wavelet; wavelet function
+   * The coefficients of the base wavelet; wavelet function.
    */
   protected double[ ] _coeffs;
-  
+
   /**
-   * coefficients of the scales; scaling function
+   * The coefficients of the base scales; scaling function.
    */
   protected double[ ] _scales;
-  
+
   /**
    * Constructor; predefine members to init values
    * 
@@ -55,11 +54,15 @@ public abstract class Wavelet implements WaveletInterface {
    * @author Christian Scheiblich
    */
   public Wavelet( ) {
+
     _waveLength = 0;
+
     _coeffs = null;
+
     _scales = null;
+
   } // Wavelet
-  
+
   /**
    * Performs the forward transform for the given array from time domain to
    * Hilbert domain and returns a new array of the same size keeping
@@ -73,31 +76,33 @@ public abstract class Wavelet implements WaveletInterface {
    * @return coefficients represented by frequency domain
    */
   public double[ ] forward( double[ ] arrTime ) {
-    
+
     double[ ] arrHilb = new double[ arrTime.length ];
-    
-    int k = 0;
-    int h = arrTime.length >> 1;
-    
+
+    int h = arrTime.length >> 1; // .. -> 64 -> 32 -> 16 -> 8 -> 4 -> 2 -> 1
+
     for( int i = 0; i < h; i++ ) {
-      
+
       for( int j = 0; j < _waveLength; j++ ) {
-        
-        k = ( i << 1 ) + j;
-        
-        while( k >= arrTime.length ) // circulate over too long arrays
-          k -= arrTime.length;
-        
-        arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy (approximation)
-        arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter - details 
-        
+
+        int k = ( i << 1 ) + j;
+
+        while( k >= arrTime.length )
+          // TODO: USELESS DUE TO INPUT
+          k -= arrTime.length; // circulate over too long arrays
+
+        arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy
+                                                     // (approximation)
+        arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter -
+                                                         // details
+
       } // wavelet
-      
+
     } // h
-    
+
     return arrHilb;
   } // forward
-  
+
   /**
    * Performs the reverse transform for the given array from Hilbert domain to
    * time domain and returns a new array of the same size keeping coefficients
@@ -111,40 +116,44 @@ public abstract class Wavelet implements WaveletInterface {
    * @return coefficients represented by time domain
    */
   public double[ ] reverse( double[ ] arrHilb ) {
-    
+
     double[ ] arrTime = new double[ arrHilb.length ];
-    
-    int k = 0;
-    int h = arrHilb.length >> 1;
+
+    int h = arrHilb.length >> 1; // .. -> 64 -> 32 -> 16 -> 8 -> 4 -> 2 -> 1
     for( int i = 0; i < h; i++ ) {
-      
+
       for( int j = 0; j < _waveLength; j++ ) {
-        
-        k = ( i << 1 ) + j;
-        
-        while( k >= arrHilb.length ) // circulate over too long arrays
-          k -= arrHilb.length;
-        
-        arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ] * _coeffs[ j ] ); // adding up details times energy (approximation)
-        
+
+        int k = ( i << 1 ) + j; // ..
+
+        while( k >= arrHilb.length )
+          // TODO: USELESS DUE TO INPUT
+          k -= arrHilb.length; // circulate over too long arrays
+
+        // adding up details times energy (approximation)
+        arrTime[ k ] +=
+            arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ] * _coeffs[ j ];
+
       } // wavelet
-      
-    } //  h
-    
+
+    } // h
+
     return arrTime;
   } // reverse
-  
+
   /**
-   * Returns the minimal wavelength for the used wavelet.
+   * Returns the wavelength of the base or so called mother wavelet.
    * 
    * @date 10.02.2010 08:13:59
    * @author Christian Scheiblich
    * @return the minimal wavelength for this basic wave
    */
   public int getWaveLength( ) {
+
     return _waveLength;
+
   } // getWaveLength
-  
+
   /**
    * Returns the number of coeffs (and scales).
    * 
@@ -153,35 +162,45 @@ public abstract class Wavelet implements WaveletInterface {
    * @return integer representing the number of coeffs.
    */
   public int getLength( ) {
+
     return _coeffs.length;
+
   } // getLength
-  
+
   /**
-   * Returns a double array with the coeffs.
+   * Returns a double array with the coefficients of the wavelet function.
    * 
    * @date 08.02.2010 13:14:54
    * @author Christian Scheiblich
    * @return double array keeping the coeffs.
    */
   public double[ ] getCoeffs( ) {
+
     double[ ] coeffs = new double[ _coeffs.length ];
+
     for( int c = 0; c < _coeffs.length; c++ )
       coeffs[ c ] = _coeffs[ c ];
+
     return coeffs;
+
   } // getCoeffs
-  
+
   /**
-   * Returns a double array with the scales (of a wavelet).
+   * Returns a double array with the coefficients of the scaling function.
    * 
    * @date 08.02.2010 13:15:25
    * @author Christian Scheiblich
    * @return double array keeping the scales.
    */
   public double[ ] getScales( ) {
+
     double[ ] scales = new double[ _scales.length ];
+
     for( int s = 0; s < _scales.length; s++ )
       scales[ s ] = _scales[ s ];
+
     return scales;
+
   } // getScales
-  
+
 } // class

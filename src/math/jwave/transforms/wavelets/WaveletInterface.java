@@ -14,9 +14,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License. 
- *
- * This file Wavelet.java is part of JWave.
- *
+ * 
  * @author Christian Scheiblich
  * date 23.02.2010 05:42:23
  * contact cscheiblich@gmail.com
@@ -24,25 +22,54 @@
 package math.jwave.transforms.wavelets;
 
 /**
+ * Interface for the Wavelet class
  * 
- * Interface for the base class of an wavelet.
- *
- * @date 30 juin 2011 10:31:38
- * @author Pol Kennel
- * @date 22.01.2012 18:20:33
- * @author Christian Scheiblich
- * 
+ * @author Christian Scheiblich 10.02.2014 21:01:32
  */
 public interface WaveletInterface {
-  
-  public double[ ] forward( double[ ] values );
-  
-  public double[ ] reverse( double[ ] values );
-  
+
+  /**
+   * Shifts the wavelet over the signal
+   * 
+   * @author Christian Scheiblich 10.02.2014 21:01:56
+   * @param values
+   * @return
+   */
+  public double[ ] forward( double[ ] arrTime );
+
+  /**
+   * Shifts the wavelet over the signal
+   * 
+   * @author Christian Scheiblich 10.02.2014 21:02:23
+   * @param values
+   * @return
+   */
+  public double[ ] reverse( double[ ] arrHilb );
+
+  /**
+   * Returns the wavelength of the base or so called mother wavelet; the minimal
+   * length for input signals. If the wavelength is 6 as for the Daubechie
+   * Wavelet the minimal length is the next binary of length 8.
+   * 
+   * @author Christian Scheiblich 10.02.2014 21:03:13
+   * @return
+   */
   public int getWaveLength( );
-  
+
+  /**
+   * Returns a copy of the wavelet coefficients.
+   * 
+   * @author Christian Scheiblich 10.02.2014 21:03:52
+   * @return
+   */
   public double[ ] getCoeffs( );
-  
+
+  /**
+   * Returns a copy of the scaling coefficients.
+   * 
+   * @author Christian Scheiblich 10.02.2014 21:04:17
+   * @return
+   */
   public double[ ] getScales( );
-  
-}
+
+} // WaveletInterface

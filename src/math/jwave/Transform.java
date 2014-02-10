@@ -61,7 +61,7 @@ public class Transform {
       _transform = transform;
 
       // TODO realize the level transform in GOOD Software Engineering
-      // style
+      // style - after restructuring the code
 
       // ( (WaveletTransform)_transform ).set_iteration( iteration );
 
