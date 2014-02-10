@@ -24,7 +24,7 @@
  */
 package math.jwave.tools;
 
-import math.jwave.exc.*;
+import math.jwave.exceptions.*;
 
 /**
  * @author Christian Scheiblich

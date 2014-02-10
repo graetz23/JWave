@@ -23,7 +23,7 @@
  */
 package math.jwave.transforms;
 
-import math.jwave.exc.JWaveException;
+import math.jwave.exceptions.JWaveException;
 import math.jwave.tools.AncientEgyptianMultiplication;
 
 /**

@@ -14,9 +14,9 @@
  */
 package math.jwave.transforms;
 
-import math.jwave.exc.JWaveError;
-import math.jwave.exc.JWaveException;
-import math.jwave.exc.JWaveFailure;
+import math.jwave.exceptions.JWaveError;
+import math.jwave.exceptions.JWaveException;
+import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**

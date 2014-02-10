@@ -15,7 +15,7 @@
  */
 package math.jwave;
 
-import math.jwave.exc.JWaveFailure;
+import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;

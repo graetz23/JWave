@@ -16,7 +16,7 @@
 package math.jwave;
 
 import math.jwave.datatypes.Complex;
-import math.jwave.exc.JWaveFailure;
+import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.BasicTransform;
 
 /**

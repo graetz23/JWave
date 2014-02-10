@@ -5,7 +5,7 @@ package math.jwave;
 
 import static org.junit.Assert.*;
 import math.jwave.datatypes.Complex;
-import math.jwave.exc.JWaveException;
+import math.jwave.exceptions.JWaveException;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.wavelets.Coiflet06;
 import math.jwave.transforms.wavelets.Daubechie02;
@@ -121,11 +121,10 @@ public class TransformTest {
     System.out.println( "" );
     System.out.print( "Performing: " + noOfSteps
         + " forward and reverse transforms ..." );
-    // Bar bar = new Bar( new BarHandlerOs( noOfSteps ) );
-    for( long s = 0; s < noOfSteps; s++ ) {
+
+    for( long s = 0; s < noOfSteps; s++ )
       arrTimeRound = t.reverse( t.forward( arrTimeRound ) );
-      // bar.trigger( );
-    } // s
+
     System.out.println( "" );
     System.out.println( "" );
 

@@ -21,7 +21,7 @@
  * date 23.02.2010 05:42:23
  * contact cscheiblich@gmail.com
  */
-package math.jwave.exc;
+package math.jwave.exceptions;
 
 /**
  * Marking errors for this package; failures that are not recoverable
