@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Haar02Orthogonal.java is part of JWave.
+ * This file Haar01Orthogonal.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 03.06.2010 09:47:24
@@ -29,7 +29,7 @@ package math.jwave.transforms.wavelets;
  * @date 03.06.2010 09:47:24
  * @author Christian Scheiblich
  */
-public class Haar02Orthogonal extends Wavelet {
+public class Haar01Orthogonal extends Wavelet {
   
   /**
    * Constructor setting up the orthogonal Haar wavelet coeffs and the scales;
@@ -37,7 +37,7 @@ public class Haar02Orthogonal extends Wavelet {
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
    */
-  public Haar02Orthogonal( ) {
+  public Haar01Orthogonal( ) {
     
     _waveLength = 2;
     
@@ -94,7 +94,7 @@ public class Haar02Orthogonal extends Wavelet {
     // _scales[ 1 ] = _coeffs[ 0 ]; // w0
     // The ||.||_2 norm will shrink compared to the input signal's norm.
     
-  } // Haar02
+  } // Haar01
   
   /**
    * The forward wavelet transform using the Alfred Haar's wavelet. The arrTime

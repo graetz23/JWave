@@ -31,7 +31,7 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich
  */
 @Deprecated
-public class Lege04 extends Wavelet {
+public class Legendre02 extends Wavelet {
   
   /**
    * Constructor setting up the orthonormal Legendre4 wavelet coeffs and the
@@ -40,7 +40,7 @@ public class Lege04 extends Wavelet {
    * @date 03.06.2010 21:19:04
    * @author Christian Scheiblich
    */
-  public Lege04( ) {
+  public Legendre02( ) {
     
     _waveLength = 4;
     
@@ -58,6 +58,6 @@ public class Lege04 extends Wavelet {
     _coeffs[ 2 ] = _scales[ 1 ]; //    h1
     _coeffs[ 3 ] = -_scales[ 0 ]; //  -h0
     
-  } // Lege04
+  } // Legendre02
   
 } // class

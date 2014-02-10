@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Daub04.java is part of JWave.
+ * This file Daubechie04.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 26.03.2010 07:35:31
@@ -30,7 +30,8 @@ package math.jwave.transforms.wavelets;
  * @date 26.03.2010 07:35:31
  * @author Christian Scheiblich
  */
-public class Daub04 extends Wavelet {
+@Deprecated
+public class Daubechie04 extends Wavelet {
   
   /**
    * Constructor setting up the orthonormal Daubechie6 wavelet coeffs and the
@@ -39,7 +40,7 @@ public class Daub04 extends Wavelet {
    * @date 26.03.2010 07:35:31
    * @author Christian Scheiblich
    */
-  public Daub04( ) {
+  public Daubechie04( ) {
     
     _waveLength = 8;
     
@@ -73,6 +74,6 @@ public class Daub04 extends Wavelet {
     _coeffs[ 6 ] = _scales[ 1 ]; //  h1
     _coeffs[ 7 ] = -_scales[ 0 ]; // -h0
     
-  } // Daub04
+  } // Daubechie04
   
 } // class

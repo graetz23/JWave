@@ -328,4 +328,28 @@ public abstract class BasicTransform {
     
   } // reverse
   
+
+  /**
+   * Checks if given number is of type 2^p = 1, 2, 4, 8, 18, 32, 64, .., 1024, ..
+   * 
+   * @author Christian Scheiblich 10.02.2014 20:18:26
+   * @param number
+   *          any positive integer
+   * @return true if is 2^p else false
+   */
+  protected boolean isBinary( int number ) {
+
+    boolean isBinary = false;
+
+    int power = (int)( Math.log( number ) / Math.log( 2. ) );
+
+    double result = 1. * Math.pow( 2., power );
+
+    if( result == number ) isBinary = true;
+
+    return isBinary;
+
+  } // isBinary
+
+  
 } // class

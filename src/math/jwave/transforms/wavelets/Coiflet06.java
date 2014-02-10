@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Coif06.java is part of JWave.
+ * This file Coiflet06.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 23.02.2010 05:42:23
@@ -31,7 +31,7 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich
  */
 @Deprecated
-public class Coif06 extends Wavelet {
+public class Coiflet06 extends Wavelet {
   
   /**
    * Constructor setting up the orthonormal Coiflet6 wavelet coeffs and the
@@ -40,7 +40,7 @@ public class Coif06 extends Wavelet {
    * @date 10.02.2010 16:32:38
    * @author Christian Scheiblich
    */
-  public Coif06( ) {
+  public Coiflet06( ) {
     
     _waveLength = 6; // minimal array size for transform
     
@@ -64,6 +64,6 @@ public class Coif06 extends Wavelet {
     _coeffs[ 4 ] = _scales[ 1 ]; //    h1
     _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
     
-  } // Coif06
+  } // Coiflet06
   
 } // class

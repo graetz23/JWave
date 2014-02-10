@@ -38,7 +38,7 @@ public abstract class WaveletTransform extends BasicTransform {
    */
   protected WaveletTransform( Wavelet wavelet ) throws JWaveFailure {
     
-    if( _wavelet == null )
+    if( wavelet == null )
       throw new JWaveFailure( "given object is null!" );
     
     if( !( wavelet instanceof Wavelet ) )

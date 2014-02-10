@@ -35,7 +35,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
    * @param wavelet
-   *          object of type Wavelet; Haar02, Daub02, Coif06, ...
+   *          object of type Wavelet; Haar01, Daubechie02, Coiflet06, ...
    * @throws JWaveFailure
    *           if object is null or not of type wavelet
    * @throws JWaveException
@@ -65,11 +65,10 @@ public class WaveletPacketTransform extends WaveletTransform {
     int level = 0;
     int k = arrTime.length;
     int h = arrTime.length;
-    int minWaveLength = _wavelet.getWaveLength( );
+    int minWaveLength = _wavelet.getWaveLength( ); // 2, 4, 6, 8, 10, 12, ...
     if( h >= minWaveLength ) {
 
       while( h >= minWaveLength ) {
-        // while( h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
 
         int g = k / h; // 1 -> 2 -> 4 -> 8 -> ...
 
@@ -116,13 +115,12 @@ public class WaveletPacketTransform extends WaveletTransform {
       arrTime[ i ] = arrHilb[ i ];
 
     int level = 0;
-    int minWaveLength = _wavelet.getWaveLength( );
+    int minWaveLength = _wavelet.getWaveLength( ); // 2, 4, 6, 8, 10, 12, ...
     int k = arrTime.length;
     int h = minWaveLength;
     if( arrHilb.length >= minWaveLength ) {
 
       while( h <= arrTime.length && h >= minWaveLength ) {
-      // while( h <= arrTime.length && h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
 
         int g = k / h; // ... -> 8 -> 4 -> 2 -> 1
 
@@ -149,6 +147,7 @@ public class WaveletPacketTransform extends WaveletTransform {
     } // if
 
     return arrTime;
+    
   } // reverse
 
 } // class

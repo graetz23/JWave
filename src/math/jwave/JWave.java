@@ -20,14 +20,14 @@ import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.WaveletPacketTransform;
-import math.jwave.transforms.wavelets.Coif06;
-import math.jwave.transforms.wavelets.Daub02;
-import math.jwave.transforms.wavelets.Daub03;
-import math.jwave.transforms.wavelets.Daub04;
-import math.jwave.transforms.wavelets.Haar02;
-import math.jwave.transforms.wavelets.Lege02;
-import math.jwave.transforms.wavelets.Lege04;
-import math.jwave.transforms.wavelets.Lege06;
+import math.jwave.transforms.wavelets.Coiflet06;
+import math.jwave.transforms.wavelets.Daubechie02;
+import math.jwave.transforms.wavelets.Daubechie03;
+import math.jwave.transforms.wavelets.Daubechie04;
+import math.jwave.transforms.wavelets.Haar01;
+import math.jwave.transforms.wavelets.Legendre01;
+import math.jwave.transforms.wavelets.Legendre02;
+import math.jwave.transforms.wavelets.Legendre03;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -66,8 +66,8 @@ public class JWave {
     try { // try everything ~8>
       
       // String waveletTypeList =
-      // "Haar02, Daub02, Daub03, Daub04, Lege02, Lege04, Lege06, Coif06";
-      String waveletTypeList = "Haar02, Daub02, Daub04, Lege02";
+      // "Haar01, Daubechie02, Daubechie03, Daubechie04, Legendre01, Legendre02, Legendre03, Coiflet06";
+      String waveletTypeList = "Haar01, Daubechie02, Daubechie04, Legendre01";
 
       if( args.length < 2 || args.length > 3 ) {
         System.err
@@ -83,21 +83,21 @@ public class JWave {
       String wType = args[ 1 ];
       Wavelet wavelet = null;
       if( wType.equalsIgnoreCase( "haar02" ) )
-        wavelet = new Haar02( );
+        wavelet = new Haar01( );
       else if( wType.equalsIgnoreCase( "lege02" ) )
-        wavelet = new Lege02( );
+        wavelet = new Legendre01( );
       else if( wType.equalsIgnoreCase( "daub02" ) )
-        wavelet = new Daub02( );
+        wavelet = new Daubechie02( );
       else if( wType.equalsIgnoreCase( "daub03" ) )
-        wavelet = new Daub03( );
+        wavelet = new Daubechie03( );
       else if( wType.equalsIgnoreCase( "daub04" ) )
-        wavelet = new Daub04( );
+        wavelet = new Daubechie04( );
       else if( wType.equalsIgnoreCase( "lege04" ) )
-        wavelet = new Lege04( );
+        wavelet = new Legendre02( );
       else if( wType.equalsIgnoreCase( "lege06" ) )
-        wavelet = new Lege06( );
+        wavelet = new Legendre03( );
       else if( wType.equalsIgnoreCase( "coif06" ) )
-        wavelet = new Coif06( );
+        wavelet = new Coiflet06( );
       else {
         System.err.println( "usage: JWave [transformType] {waveletType}" );
         System.err.println( "" );

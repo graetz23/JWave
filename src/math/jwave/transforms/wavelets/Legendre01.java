@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Lege02.java is part of JWave.
+ * This file Legendre01.java is part of JWave.
  *
  * @author itechsch
  * date 08.06.2010 09:32:08
@@ -31,18 +31,18 @@ package math.jwave.transforms.wavelets;
  * @date 08.06.2010 09:32:08
  * @author Christian Scheiblich
  */
-public class Lege02 extends Wavelet {
+public class Legendre01 extends Wavelet {
   
   /**
    * Constructor setting up the orthonormal Legendre 2 wavelet coeffs and the
    * scales; normed, due to ||*||_2 -- euclidean norm. Actually these
    * coefficients are the mirrored ones of Alfred Haar's wavelet -- see class
-   * Haar02 and Haar02Orthogonal.
+   * Haar01 and Haar01Orthogonal.
    * 
    * @date 08.06.2010 09:32:08
    * @author Christian Scheiblich
    */
-  public Lege02( ) {
+  public Legendre01( ) {
     
     _waveLength = 2;
     
@@ -56,6 +56,6 @@ public class Lege02 extends Wavelet {
     _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 -> -1. / sqrt(2.)
     _scales[ 1 ] = _coeffs[ 0 ]; // w0   -> -1. / sqrt(2.)
     
-  } // Lege02
+  } // Legendre01
   
 } // class
