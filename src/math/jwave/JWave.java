@@ -23,6 +23,7 @@
  */
 package math.jwave;
 
+import math.jwave.exc.JWaveFailure;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
@@ -152,7 +153,13 @@ public class JWave {
       System.out.printf( "%9.6f", arrTime[ p ] );
     System.out.println( "" );
     
-    double[ ] arrFreqOrHilb = t.forward( arrTime ); // 1-D forward transform
+    double[ ] arrFreqOrHilb = null;
+    try {
+      arrFreqOrHilb = t.forward( arrTime );
+    } catch( JWaveFailure e ) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } // 1-D forward transform
     
     if( bWave instanceof DiscreteFourierTransform )
       System.out.println( "frequency domain:" );
@@ -162,7 +169,13 @@ public class JWave {
       System.out.printf( "%9.6f", arrFreqOrHilb[ p ] );
     System.out.println( "" );
     
-    double[ ] arrReco = t.reverse( arrFreqOrHilb ); // 1-D reverse transform
+    double[ ] arrReco = null;
+    try {
+      arrReco = t.reverse( arrFreqOrHilb );
+    } catch( JWaveFailure e ) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } // 1-D reverse transform
     
     System.out.println( "reconstruction:" );
     for( int p = 0; p < arrTime.length; p++ )

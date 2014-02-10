@@ -53,10 +53,12 @@ public class JWaveException extends Throwable {
    *          this message should tell exactly what went wrong
    */
   public JWaveException( String message ) {
-    _message = "JWave"; // empty
-    _message += ":"; // separator
-    _message += message; // add message
-    _message += "\n"; // break line
+	_message = "JWave"; // overwrite
+	_message += ": "; // separator
+	_message += "Exception"; // Exception type
+	_message += ": "; // separator
+	_message += message; // add message
+	_message += "\n"; // break line
   } // TransformException
   
   /**

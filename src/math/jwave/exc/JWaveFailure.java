@@ -49,6 +49,12 @@ public class JWaveFailure extends JWaveException {
    */
   public JWaveFailure( String message ) {
     super( message );
+	_message = "JWave"; // overwrite
+	_message += ": "; // separator
+	_message += "Failure"; // Exception type
+	_message += ": "; // separator
+	_message += message; // add message
+	_message += "\n"; // break line
   } // TransformFailure
   
 } // class

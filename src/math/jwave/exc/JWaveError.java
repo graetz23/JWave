@@ -48,7 +48,13 @@ public class JWaveError extends JWaveException {
    *          stored message for this error
    */
   public JWaveError( String message ) {
-    super( message );
+	super( message );
+	_message = "JWave"; // overwrite
+	_message += ": "; // separator
+	_message += "Error"; // Exception type
+	_message += ": "; // separator
+	_message += message; // add message
+	_message += "\n"; // break line
   } // TransformError
   
 } // class

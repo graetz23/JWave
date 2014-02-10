@@ -41,7 +41,7 @@ public class AncientEgyptianMultiplication {
    *
    */
   public AncientEgyptianMultiplication( ) {
-  }
+  } // AncientEgyptianMultiplication
   
   /**
    * The method converts a positive integer to the ancient Egyptian multipliers
@@ -83,7 +83,7 @@ public class AncientEgyptianMultiplication {
     
     return ancientEgyptianMultipliers;
     
-  }
+  } // decompose
   
   /**
   * The method converts a list of ancient Egyptian multipliers to the
@@ -114,7 +114,7 @@ public class AncientEgyptianMultiplication {
       
       number += (int)scalb( 1., ancientEgyptianMultiplier ); // 1. * 2^p
       
-    } // m
+    } // compose
     
     return number;
     
@@ -135,11 +135,11 @@ public class AncientEgyptianMultiplication {
    */
   public int getExponent( double f ) {
     
-    int exp = (int)( Math.log( f ) / Math.log( 2 ) );
+    int exp = (int)( Math.log( f ) / Math.log( 2. ) );
     
     return exp;
     
-  }
+  } // exp
   
   /**
    * Replaced Math.scalb due to google's Android OS is not supporting
@@ -154,10 +154,10 @@ public class AncientEgyptianMultiplication {
    */
   public double scalb( double f, int scaleFactor ) {
     
-    double res = f * Math.pow( 2, scaleFactor );
+    double res = f * Math.pow( 2., scaleFactor );
     
     return res;
     
-  }
+  } // scalb
   
 }
