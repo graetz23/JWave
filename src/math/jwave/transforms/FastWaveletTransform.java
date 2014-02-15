@@ -78,12 +78,11 @@ public class FastWaveletTransform extends WaveletTransform {
 
       while( h >= transformWavelength ) {
 
-        double[ ] iBuf = new double[ h ]; // new array, due to length
+        // double[ ] iBuf = new double[ h ]; // new array, due to length
+        // for( int i = 0; i < h; i++ )
+        //   iBuf[ i ] = arrHilb[ i ];
 
-        for( int i = 0; i < h; i++ )
-          iBuf[ i ] = arrHilb[ i ];
-
-        double[ ] oBuf = _wavelet.forward( iBuf, h );
+        double[ ] oBuf = _wavelet.forward( arrHilb, h );
 
         for( int i = 0; i < h; i++ )
           arrHilb[ i ] = oBuf[ i ];
@@ -121,17 +120,15 @@ public class FastWaveletTransform extends WaveletTransform {
 
     int h = transformWavelength;
 
-    if( !isBinary( h ) ) 
-      h = h << 1; // 6 -> 8, 10 -> 16
+    if( !isBinary( h ) ) h = h << 1; // 6 -> 8, 10 -> 16
 
     while( h <= arrTime.length && h >= transformWavelength ) {
 
-      double[ ] iBuf = new double[ h ];
+      // double[ ] iBuf = new double[ h ];
+      // for( int i = 0; i < h; i++ )
+      //   iBuf[ i ] = arrTime[ i ];
 
-      for( int i = 0; i < h; i++ )
-        iBuf[ i ] = arrTime[ i ];
-
-      double[ ] oBuf = _wavelet.reverse( iBuf, h );
+      double[ ] oBuf = _wavelet.reverse( arrTime, h );
 
       for( int i = 0; i < h; i++ )
         arrTime[ i ] = oBuf[ i ];
