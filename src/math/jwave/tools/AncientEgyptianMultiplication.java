@@ -1,7 +1,7 @@
 /**
- * JWave
+ * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2009-2013 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file AncientEgyptianMultiplication.java is part of JWave.
+ * This file is part of JWave.
  *
  * @author Christian Scheiblich
+ * date 23.02.2008 17:42:23
  * contact cscheiblich@gmail.com
- * date Feb 11, 2013 1:42:37 PM
- *
  */
 package math.jwave.tools;
 

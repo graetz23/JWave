@@ -1,17 +1,25 @@
 /**
- * JWave - Java implementation of wavelet transform algorithms Copyright
- * 2009-2014 Christian Scheiblich Licensed under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with the
- * License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
- * or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License. This file
- * WaveletPacketTransform.java is part of JWave.
- * 
- * @author Christian Scheiblich date 23.02.2010 13:44:05 contact
- *         cscheiblich@gmail.com
+ * JWave - Java implementation of wavelet transform algorithms
+ *
+ * Copyright 2008-2014 Christian Scheiblich
+ *  
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at 
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ *
+ * This file is part of JWave.
+ *
+ * @author Christian Scheiblich
+ * date 23.02.2008 17:42:23
+ * contact cscheiblich@gmail.com
  */
 package math.jwave.transforms;
 
@@ -35,7 +43,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
    * @param wavelet
-   *          object of type Wavelet; Haar01, Daubechie02, Coiflet06, ...
+   *          object of type Wavelet; Haar01, Daubechie02, Coiflet03, ...
    * @throws JWaveFailure
    *           if object is null or not of type wavelet
    * @throws JWaveException
@@ -63,12 +71,16 @@ public class WaveletPacketTransform extends WaveletTransform {
       arrHilb[ i ] = arrTime[ i ];
 
     int level = 0;
+    
     int k = arrTime.length;
+    
     int h = arrTime.length;
-    int minWaveLength = _wavelet.getWaveLength( ); // 2, 4, 6, 8, 10, 12, ...
-    if( h >= minWaveLength ) {
+    
+    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+    
+    if( h >= transformWavelength ) {
 
-      while( h >= minWaveLength ) {
+      while( h >= transformWavelength ) {
 
         int g = k / h; // 1 -> 2 -> 4 -> 8 -> ...
 
@@ -79,7 +91,7 @@ public class WaveletPacketTransform extends WaveletTransform {
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrHilb[ i + ( p * h ) ];
 
-          double[ ] oBuf = _wavelet.forward( iBuf );
+          double[ ] oBuf = _wavelet.forward( iBuf, h );
 
           for( int i = 0; i < h; i++ )
             arrHilb[ i + ( p * h ) ] = oBuf[ i ];
@@ -115,12 +127,16 @@ public class WaveletPacketTransform extends WaveletTransform {
       arrTime[ i ] = arrHilb[ i ];
 
     int level = 0;
-    int minWaveLength = _wavelet.getWaveLength( ); // 2, 4, 6, 8, 10, 12, ...
+    
+    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+    
     int k = arrTime.length;
-    int h = minWaveLength;
-    if( arrHilb.length >= minWaveLength ) {
+    
+    int h = transformWavelength;
+    
+    if( arrHilb.length >= transformWavelength ) {
 
-      while( h <= arrTime.length && h >= minWaveLength ) {
+      while( h <= arrTime.length && h >= transformWavelength ) {
 
         int g = k / h; // ... -> 8 -> 4 -> 2 -> 1
 
@@ -131,7 +147,7 @@ public class WaveletPacketTransform extends WaveletTransform {
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrTime[ i + ( p * h ) ];
 
-          double[ ] oBuf = _wavelet.reverse( iBuf );
+          double[ ] oBuf = _wavelet.reverse( iBuf, h );
 
           for( int i = 0; i < h; i++ )
             arrTime[ i + ( p * h ) ] = oBuf[ i ];

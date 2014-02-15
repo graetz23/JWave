@@ -1,5 +1,25 @@
 /**
- * @author tucker 10.02.2014 21:32:22 TransformTest.java
+ * JWave - Java implementation of wavelet transform algorithms
+ *
+ * Copyright 2008-2014 Christian Scheiblich
+ *  
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at 
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ *
+ * This file is part of JWave.
+ *
+ * @author Christian Scheiblich
+ * date 23.02.2008 17:42:23
+ * contact cscheiblich@gmail.com
  */
 package math.jwave;
 
@@ -8,7 +28,10 @@ import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.FastWaveletTransform;
+import math.jwave.transforms.wavelets.Battle23;
+import math.jwave.transforms.wavelets.Coiflet03;
 import math.jwave.transforms.wavelets.Coiflet06;
+import math.jwave.transforms.wavelets.Coiflet09;
 import math.jwave.transforms.wavelets.Daubechie02;
 import math.jwave.transforms.wavelets.Daubechie03;
 import math.jwave.transforms.wavelets.Daubechie04;
@@ -21,7 +44,8 @@ import math.jwave.transforms.wavelets.Wavelet;
 import org.junit.Test;
 
 /**
- * @author tucker 10.02.2014 21:32:22
+ * @author Christian Scheiblich
+ * @date 10.02.2014 21:32:22
  */
 public class TransformTest {
 
@@ -416,7 +440,7 @@ public class TransformTest {
   @Test public void testRoundingDoubleArray( ) {
 
     System.out.println( "" );
-    System.out.println( "testRoundingHaar02FWT" );
+    System.out.println( "testRounding" );
 
     double delta = 1.e-8;
 
@@ -424,14 +448,31 @@ public class TransformTest {
 
     try {
 
+      System.out.println( "testRounding Haar01" );
       testFastWaveletTransformRounding( arrTime, new Haar01( ), delta );
+      System.out.println( "testRounding Daubechie02" );
       testFastWaveletTransformRounding( arrTime, new Daubechie02( ), delta );
-      // testFastWaveletTransformRounding( arrTime, new Daubechie03( ), delta ); // not passed yet -> @Deprecated
+      System.out.println( "testRounding Daubechie03" );
+      testFastWaveletTransformRounding( arrTime, new Daubechie03( ), delta );
+      // System.out.println( "testRounding Daubechie04" );
       // testFastWaveletTransformRounding( arrTime, new Daubechie04( ), delta ); // not passed yet -> @Deprecated
+      
+      System.out.println( "testRounding Legendre01" );
       testFastWaveletTransformRounding( arrTime, new Legendre01( ), delta );
-      // testFastWaveletTransformRounding( arrTime, new Legendre02( ), delta ); // not passed yet -> @Deprecated
-      // testFastWaveletTransformRounding( arrTime, new Legendre03( ), delta ); // not passed yet -> @Deprecated
-      // testFastWaveletTransformRounding( arrTime, new Coiflet06( ), delta ); // not passed yet -> @Deprecated
+      System.out.println( "testRounding Legendre02" );
+      testFastWaveletTransformRounding( arrTime, new Legendre02( ), delta );
+      System.out.println( "testRounding Legendre03" );
+      testFastWaveletTransformRounding( arrTime, new Legendre03( ), delta ); 
+      
+      System.out.println( "testRounding Coiflet03" );
+      testFastWaveletTransformRounding( arrTime, new Coiflet03( ), delta );
+      System.out.println( "testRounding Coiflet06" );
+      testFastWaveletTransformRounding( arrTime, new Coiflet06( ), 1.e-6 ); // max is 1.e-6
+      System.out.println( "testRounding Coiflet09" );
+      testFastWaveletTransformRounding( arrTime, new Coiflet09( ), delta );
+      
+      // System.out.println( "testRounding Battle23" );
+      // testFastWaveletTransformRounding( arrTime, new Battle23( ), delta ); // not passed yet -> @Deprecated
 
     } catch( JWaveException e ) {
 

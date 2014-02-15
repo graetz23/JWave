@@ -1,17 +1,25 @@
 /**
- * JWave - Java implementation of wavelet transform algorithms Copyright
- * 2009-2014 Christian Scheiblich Licensed under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with the
- * License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
- * or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License. This file JWave.java
- * is part of JWave.
- * 
- * @author Christian Scheiblich date 23.02.2010 14:26:47 contact
- *         cscheiblich@gmail.com
+ * JWave - Java implementation of wavelet transform algorithms
+ *
+ * Copyright 2008-2014 Christian Scheiblich
+ *  
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at 
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ *
+ * This file is part of JWave.
+ *
+ * @author Christian Scheiblich
+ * date 23.02.2008 17:42:23
+ * contact cscheiblich@gmail.com
  */
 package math.jwave;
 
@@ -20,7 +28,7 @@ import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.WaveletPacketTransform;
-import math.jwave.transforms.wavelets.Coiflet06;
+import math.jwave.transforms.wavelets.Coiflet03;
 import math.jwave.transforms.wavelets.Daubechie02;
 import math.jwave.transforms.wavelets.Daubechie03;
 import math.jwave.transforms.wavelets.Daubechie04;
@@ -62,11 +70,11 @@ public class JWave {
    *          [transformType] [waveletType]
    */
   public static void main( String[ ] args ) {
-    
+
     try { // try everything ~8>
-      
+
       // String waveletTypeList =
-      // "Haar01, Daubechie02, Daubechie03, Daubechie04, Legendre01, Legendre02, Legendre03, Coiflet06";
+      // "Haar01, Daubechie02, Daubechie03, Daubechie04, Legendre01, Legendre02, Legendre03, Coiflet03";
       String waveletTypeList = "Haar01, Daubechie02, Daubechie04, Legendre01";
 
       if( args.length < 2 || args.length > 3 ) {
@@ -97,7 +105,7 @@ public class JWave {
       else if( wType.equalsIgnoreCase( "lege06" ) )
         wavelet = new Legendre03( );
       else if( wType.equalsIgnoreCase( "coif06" ) )
-        wavelet = new Coiflet06( );
+        wavelet = new Coiflet03( );
       else {
         System.err.println( "usage: JWave [transformType] {waveletType}" );
         System.err.println( "" );

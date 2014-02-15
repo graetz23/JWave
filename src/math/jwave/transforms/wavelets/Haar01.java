@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2009-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Haar01.java is part of JWave.
+ * This file is part of JWave.
  *
  * @author Christian Scheiblich
- * date 23.02.2010 05:42:23
+ * date 23.02.2008 17:42:23
  * contact cscheiblich@gmail.com
  */
 package math.jwave.transforms.wavelets;
@@ -41,14 +41,16 @@ public class Haar01 extends Wavelet {
    */
   public Haar01( ) {
     
-    _waveLength = 2;
+    _transformWavelength = 2; // minimal wavelength of input signal
     
-    _coeffs = new double[ _waveLength ];
+    _motherWavelength = 2; // wavelength of mother wavelet
+    
+    _coeffs = new double[ _motherWavelength ];
     
     _coeffs[ 0 ] = 1. / 1.4142135623730951; // w0 - normed by sqrt( 2 )
     _coeffs[ 1 ] = -1. / 1.4142135623730951; // w1 - normed by sqrt( 2 )
     
-    _scales = new double[ _waveLength ];
+    _scales = new double[ _motherWavelength ];
     
     _scales[ 0 ] = -_coeffs[ 1 ]; // -w1
     _scales[ 1 ] = _coeffs[ 0 ]; // w0

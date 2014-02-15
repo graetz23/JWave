@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2009-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Haar01Orthogonal.java is part of JWave.
+ * This file is part of JWave.
  *
  * @author Christian Scheiblich
- * date 03.06.2010 09:47:24
+ * date 23.02.2008 17:42:23
  * contact cscheiblich@gmail.com
  */
 package math.jwave.transforms.wavelets;
@@ -30,7 +30,7 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich
  */
 public class Haar01Orthogonal extends Wavelet {
-  
+
   /**
    * Constructor setting up the orthogonal Haar wavelet coeffs and the scales;
    * 
@@ -38,17 +38,19 @@ public class Haar01Orthogonal extends Wavelet {
    * @author Christian Scheiblich
    */
   public Haar01Orthogonal( ) {
-    
-    _waveLength = 2;
-    
-    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
-    
+
+    _transformWavelength = 2; // minimal wavelength of input signal
+
+    _motherWavelength = 2; // wavelength of mother wavelet
+
+    _coeffs = new double[ _motherWavelength ]; // can be done in static way also; faster?
+
     // Orthogonal wavelet coefficients; NOT orthonormal, due to missing sqrt(2.) 
     _coeffs[ 0 ] = 1.; // w0 
     _coeffs[ 1 ] = -1.; //  w1
-    
-    _scales = new double[ _waveLength ]; // can be done in static way also; faster?
-    
+
+    _scales = new double[ _motherWavelength ]; // can be done in static way also; faster?
+
     // Rule for constructing an orthogonal vector in R^2 -- scales
     _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 
     _scales[ 1 ] = _coeffs[ 0 ]; // w0
@@ -86,52 +88,52 @@ public class Haar01Orthogonal extends Wavelet {
     // to their differing "energy" or norm (||.||_2). If an "orthonormal" wavelet is
     // taken, the ||.||_2 norm does not change at any size or any transform level. This
     // allows for combining wavelet sub spaces of different dimension or even level.
-    
+
     // Also possible coefficients -> change forward and reverse functions in common
     // _coeffs[ 0 ] = .5; // w0 
     // _coeffs[ 1 ] = -.5; // w1
     // _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 
     // _scales[ 1 ] = _coeffs[ 0 ]; // w0
     // The ||.||_2 norm will shrink compared to the input signal's norm.
-    
+
   } // Haar01
-  
+
   /**
    * The forward wavelet transform using the Alfred Haar's wavelet. The arrTime
    * array keeping coefficients of time domain should be of length 2 to the
    * power of p -- length = 2^p where p is a positive integer.
    * 
-   * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
+   * @date 15.02.2014 21:16:54
    */
-  @Override
-  public double[ ] forward( double[ ] arrTime ) {
-    
-    double[ ] arrHilb = new double[ arrTime.length ];
-    
+  @Override public double[ ] forward( double[ ] arrTime, int arrTimeLength ) {
+
+    double[ ] arrHilb = new double[ arrTimeLength ]; // might be shorter than arrTime
+
     int k = 0;
-    int h = arrTime.length >> 1;
-    
+    int h = arrHilb.length >> 1;
+
     for( int i = 0; i < h; i++ ) {
-      
-      for( int j = 0; j < _waveLength; j++ ) {
-        
-        k = ( i << 1 ) + j;
-        if( k >= arrTime.length )
-          k -= arrTime.length;
-        
+
+      for( int j = 0; j < _motherWavelength; j++ ) {
+
+        while( k >= arrHilb.length )
+          // useless for Haar scaling and wavelet
+          k -= arrHilb.length; // circulate over arrays if scaling and wavelet are too long
+
         arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy
         arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter - details
-        
+
         // by each summation, "energy" is added, due to the orthogonal Haar Wavelet.
-        
+
       } // wavelet
-      
+
     } // h
-    
+
     return arrHilb;
+
   } // forward
-  
+
   /**
    * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
    * array keeping coefficients of Hilbert domain should be of length 2 to the
@@ -139,34 +141,35 @@ public class Haar01Orthogonal extends Wavelet {
    * only orthogonal Haar wavelet the reverse transform has to have a factor of
    * 0.5 to reduce the up sampled "energy" ion Hilbert space.
    * 
-   * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
+   * @date 15.02.2014 21:17:22
    */
-  @Override
-  public double[ ] reverse( double[ ] arrHilb ) {
-    
-    double[ ] arrTime = new double[ arrHilb.length ];
-    
+  @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
+
+    double[ ] arrTime = new double[ arrHilbLength ]; // might be shorter than arrHilb
+
     int k = 0;
-    int h = arrHilb.length >> 1;
+    int h = arrTime.length >> 1;
     for( int i = 0; i < h; i++ ) {
-      
-      for( int j = 0; j < _waveLength; j++ ) {
-        
-        k = ( i << 1 ) + j;
-        if( k >= arrHilb.length )
-          k -= arrHilb.length;
-        
-        arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ] * _coeffs[ j ] ); // adding up details times energy
-        
+
+      for( int j = 0; j < _motherWavelength; j++ ) {
+
+        while( k >= arrTime.length )
+          // useless for Haar scaling and wavelet
+          k -= arrTime.length; // circulate over arrays if scaling and wavelet are too long
+
+        arrTime[ k ] +=
+            ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ] * _coeffs[ j ] ); // adding up details times energy
+
         // The factor .5 gets necessary here to reduce the added "energy" of the forward method
         arrTime[ k ] *= .5; // correction of the up sampled "energy" -- ||.||_2 euclidean norm
-        
+
       } // wavelet
-      
+
     } //  h
-    
+
     return arrTime;
+
   } // reverse
-  
+
 } // class

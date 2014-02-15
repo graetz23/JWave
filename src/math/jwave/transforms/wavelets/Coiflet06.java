@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2009-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,55 +15,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Coiflet06.java is part of JWave.
+ * This file is part of JWave.
  *
  * @author Christian Scheiblich
- * date 23.02.2010 05:42:23
+ * date 23.02.2008 17:42:23
  * contact cscheiblich@gmail.com
  */
 package math.jwave.transforms.wavelets;
 
 /**
- * Ingrid Daubechies' orthonormal Coiflet wavelet of six coefficients and the
- * scales; normed, due to ||*||2 - euclidean norm.
+ * Constructor setting up the orthonormal Coiflet wavelet of 12 coefficients and
+ * the scales; normed, due to ||*||2 - euclidean norm.
  * 
- * @date 10.02.2010 16:32:38
  * @author Christian Scheiblich
+ * @date 15.02.2014 22:33:55
  */
-@Deprecated
 public class Coiflet06 extends Wavelet {
-  
+
   /**
-   * Constructor setting up the orthonormal Coiflet6 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
-   * 
-   * @date 10.02.2010 16:32:38
    * @author Christian Scheiblich
+   * @date 15.02.2014 22:33:55
    */
   public Coiflet06( ) {
+
+    _transformWavelength = 2; // minimal wavelength of input signal
+
+    _motherWavelength = 12; // wavelength of mother wavelet
+
+    // these coefficients are already orthonormal
+    _scales = new double[ _motherWavelength ];
+    _scales[ 0 ] = 0.0011945726958388; // h0
+    _scales[ 1 ] = -0.01284557955324; // h1
+    _scales[ 2 ] = 0.024804330519353; // h2
+    _scales[ 3 ] = 0.050023519962135; // h3
+    _scales[ 4 ] = -0.15535722285996; // h4
+    _scales[ 5 ] = -0.071638282295294; // h5
+    _scales[ 6 ] = 0.57046500145033; // h6
+    _scales[ 7 ] = 0.75033630585287; // h7
+    _scales[ 8 ] = 0.28061165190244; // h8
+    _scales[ 9 ] = -0.0074103835186718; // h9
+    _scales[ 10 ] = -0.014611552521451; // h19
+    _scales[ 11 ] = -0.0013587990591632; // h11
     
-    _waveLength = 6; // minimal array size for transform
-    
-    double sqrt15 = Math.sqrt( 15. );
-    
-    _scales = new double[ _waveLength ]; // can be done in static way also; faster?
-    
-    _scales[ 0 ] = 1.4142135623730951 * ( sqrt15 - 3. ) / 32.;
-    _scales[ 1 ] = 1.4142135623730951 * ( 1. - sqrt15 ) / 32.;
-    _scales[ 2 ] = 1.4142135623730951 * ( 6. - 2 * sqrt15 ) / 32.;
-    _scales[ 3 ] = 1.4142135623730951 * ( 2. * sqrt15 + 6. ) / 32.;
-    _scales[ 4 ] = 1.4142135623730951 * ( sqrt15 + 13. ) / 32.;
-    _scales[ 5 ] = 1.4142135623730951 * ( 9. - sqrt15 ) / 32.;
-    
-    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
-    
-    _coeffs[ 0 ] = _scales[ 5 ]; //    h5
-    _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4
-    _coeffs[ 2 ] = _scales[ 3 ]; //    h3
-    _coeffs[ 3 ] = -_scales[ 2 ]; //  -h2
-    _coeffs[ 4 ] = _scales[ 1 ]; //    h1
-    _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
-    
+    // building wavelet as orthogonal (orthonormal) space from
+    // scaling coefficients. Have a look into Alfred Haar's
+    // wavelet for understanding what is done. ;-)
+    _coeffs = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) 
+      if( i % 2 == 0 )
+        _coeffs[ i ] = _scales[ ( _motherWavelength - 1 ) - i ];
+      else
+        _coeffs[ i ] = -_scales[ ( _motherWavelength - 1 ) - i ];
+
   } // Coiflet06
-  
-} // class
+
+} // Coiflet06

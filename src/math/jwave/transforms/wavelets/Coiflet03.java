@@ -24,41 +24,40 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Legendre's orthonormal wavelet of six coefficients and the scales; normed,
- * due to ||*||2 - euclidean norm.
+ * Ingrid Daubechies' orthonormal Coiflet wavelet of six coefficients and the
+ * scales; normed, due to ||*||2 - euclidean norm.
  * 
- * @date 03.06.2010 22:04:35
  * @author Christian Scheiblich
+ * @date 15.02.2014 22:27:55
  */
-public class Legendre03 extends Wavelet {
+public class Coiflet03 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Legendre6 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
+   * Constructor setting up the orthonormal Coiflet wavelet of 6 coefficients
+   * and the scales; normed, due to ||*||2 - euclidean norm.
    * 
-   * @date 03.06.2010 22:04:36
    * @author Christian Scheiblich
+   * @date 15.02.2014 22:27:55
    */
-  public Legendre03( ) {
+  public Coiflet03( ) {
 
-    _transformWavelength = 4; // minimal wavelength of input signal 
+    _transformWavelength = 4; // minimal wavelength of input signal
 
     _motherWavelength = 6; // wavelength of mother wavelet
-    
-    _scales = new double[ _motherWavelength ]; // can be done in static way also; faster?
-    _scales[ 0 ] = -63. / 128.; // h0
-    _scales[ 1 ] = -35. / 128.; // h1
-    _scales[ 2 ] = -30. / 128.; // h2
-    _scales[ 3 ] = -30. / 128.; // h3
-    _scales[ 4 ] = -35. / 128.; // h4
-    _scales[ 5 ] = -63. / 128.; // h5
 
-    // normalize orthogonal space => orthonormal space!!!  
-    double sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )    
-    for( int i = 0; i < _motherWavelength; i++ )
-      _scales[ i ] /= sqrt02;
+    double sqrt02 = 1.4142135623730951;
+    double sqrt15 = Math.sqrt( 15. );
 
-    _coeffs = new double[ _motherWavelength ]; // can be done in static way also; faster?
+    // these coefficients are already orthonormal
+    _scales = new double[ _motherWavelength ];
+    _scales[ 0 ] = sqrt02 * ( sqrt15 - 3. ) / 32.;
+    _scales[ 1 ] = sqrt02 * ( 1. - sqrt15 ) / 32.;
+    _scales[ 2 ] = sqrt02 * ( 6. - 2 * sqrt15 ) / 32.;
+    _scales[ 3 ] = sqrt02 * ( 2. * sqrt15 + 6. ) / 32.;
+    _scales[ 4 ] = sqrt02 * ( sqrt15 + 13. ) / 32.;
+    _scales[ 5 ] = sqrt02 * ( 9. - sqrt15 ) / 32.;
+
+    _coeffs = new double[ _motherWavelength ];
     _coeffs[ 0 ] = _scales[ 5 ]; //    h5
     _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4
     _coeffs[ 2 ] = _scales[ 3 ]; //    h3
@@ -66,6 +65,6 @@ public class Legendre03 extends Wavelet {
     _coeffs[ 4 ] = _scales[ 1 ]; //    h1
     _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
 
-  } // Legendre03
+  } // Coiflet03
 
 } // class

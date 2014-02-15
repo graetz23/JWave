@@ -1,17 +1,25 @@
 /**
- * JWave - Java implementation of wavelet transform algorithms Copyright
- * 2009-2014 Christian Scheiblich Licensed under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with the
- * License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
- * or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License. This file
- * FastBasicTransform.java is part of JWave.
- * 
- * @author Christian Scheiblich date 23.02.2010 05:42:23 contact
- *         cscheiblich@gmail.com
+ * JWave - Java implementation of wavelet transform algorithms
+ *
+ * Copyright 2008-2014 Christian Scheiblich
+ *  
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at 
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ *
+ * This file is part of JWave.
+ *
+ * @author Christian Scheiblich
+ * date 23.02.2008 17:42:23
+ * contact cscheiblich@gmail.com
  */
 package math.jwave.transforms;
 
@@ -37,7 +45,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * @date 10.02.2010 08:10:42
    * @author Christian Scheiblich
    * @param wavelet
-   *          object of type Wavelet; Haar01, Daubechie02, Coiflet06, ...
+   *          object of type Wavelet; Haar01, Daubechie02, Coiflet03, ...
    * @throws JWaveFailure
    *           if object is null or not of type wavelet
    * @throws JWaveException
@@ -65,17 +73,17 @@ public class FastWaveletTransform extends WaveletTransform {
 
     int level = 0;
     int h = arrHilb.length;
-    int minWaveLength = _wavelet.getWaveLength( ); // 2, 4, 6, 8, 10, 12, ...
-    if( h >= minWaveLength ) {
+    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+    if( h >= transformWavelength ) {
 
-      while( h >= minWaveLength ) {
+      while( h >= transformWavelength ) {
 
-        double[ ] iBuf = new double[ h ];
+        double[ ] iBuf = new double[ h ]; // new array, due to length
 
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrHilb[ i ];
 
-        double[ ] oBuf = _wavelet.forward( iBuf );
+        double[ ] oBuf = _wavelet.forward( iBuf, h );
 
         for( int i = 0; i < h; i++ )
           arrHilb[ i ] = oBuf[ i ];
@@ -109,20 +117,21 @@ public class FastWaveletTransform extends WaveletTransform {
       arrTime[ i ] = arrHilb[ i ];
 
     int level = 0;
-    int minWaveLength = _wavelet.getWaveLength( ); // 2, 4, 6, 8, 10, 12, ...
+    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
 
-    int h = minWaveLength;
+    int h = transformWavelength;
 
-    if( !isBinary( h ) ) h = h << 1; // 6 -> 8, 10 -> 16
+    if( !isBinary( h ) ) 
+      h = h << 1; // 6 -> 8, 10 -> 16
 
-    while( h <= arrTime.length && h >= minWaveLength ) {
+    while( h <= arrTime.length && h >= transformWavelength ) {
 
       double[ ] iBuf = new double[ h ];
 
       for( int i = 0; i < h; i++ )
         iBuf[ i ] = arrTime[ i ];
 
-      double[ ] oBuf = _wavelet.reverse( iBuf );
+      double[ ] oBuf = _wavelet.reverse( iBuf, h );
 
       for( int i = 0; i < h; i++ )
         arrTime[ i ] = oBuf[ i ];
