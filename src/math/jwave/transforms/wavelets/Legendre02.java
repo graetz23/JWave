@@ -41,7 +41,7 @@ public class Legendre02 extends Wavelet {
    */
   public Legendre02( ) {
 
-    _transformWavelength = 4; // minimal wavelength of input signal - TODO: test 2 ! 
+    _transformWavelength = 2; // minimal wavelength of input signal - TODO: test 2 ! 
 
     _motherWavelength = 4; // wavelength of mother wavelet
     

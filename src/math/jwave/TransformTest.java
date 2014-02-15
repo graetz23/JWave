@@ -456,21 +456,21 @@ public class TransformTest {
       testFastWaveletTransformRounding( arrTime, new Daubechie03( ), delta );
       // System.out.println( "testRounding Daubechie04" );
       // testFastWaveletTransformRounding( arrTime, new Daubechie04( ), delta ); // not passed yet -> @Deprecated
-      
+
       System.out.println( "testRounding Legendre01" );
       testFastWaveletTransformRounding( arrTime, new Legendre01( ), delta );
       System.out.println( "testRounding Legendre02" );
       testFastWaveletTransformRounding( arrTime, new Legendre02( ), delta );
       System.out.println( "testRounding Legendre03" );
-      testFastWaveletTransformRounding( arrTime, new Legendre03( ), delta ); 
-      
+      testFastWaveletTransformRounding( arrTime, new Legendre03( ), delta );
+
       System.out.println( "testRounding Coiflet03" );
       testFastWaveletTransformRounding( arrTime, new Coiflet03( ), delta );
       System.out.println( "testRounding Coiflet06" );
       testFastWaveletTransformRounding( arrTime, new Coiflet06( ), 1.e-6 ); // max is 1.e-6
       System.out.println( "testRounding Coiflet09" );
       testFastWaveletTransformRounding( arrTime, new Coiflet09( ), delta );
-      
+
       // System.out.println( "testRounding Battle23" );
       // testFastWaveletTransformRounding( arrTime, new Battle23( ), delta ); // not passed yet -> @Deprecated
 

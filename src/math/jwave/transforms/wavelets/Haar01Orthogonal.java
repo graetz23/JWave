@@ -117,8 +117,8 @@ public class Haar01Orthogonal extends Wavelet {
 
       for( int j = 0; j < _motherWavelength; j++ ) {
 
+        // useless for Haar scaling and wavelet
         while( k >= arrHilb.length )
-          // useless for Haar scaling and wavelet
           k -= arrHilb.length; // circulate over arrays if scaling and wavelet are too long
 
         arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy
@@ -154,8 +154,8 @@ public class Haar01Orthogonal extends Wavelet {
 
       for( int j = 0; j < _motherWavelength; j++ ) {
 
+        // useless for Haar scaling and wavelet
         while( k >= arrTime.length )
-          // useless for Haar scaling and wavelet
           k -= arrTime.length; // circulate over arrays if scaling and wavelet are too long
 
         arrTime[ k ] +=

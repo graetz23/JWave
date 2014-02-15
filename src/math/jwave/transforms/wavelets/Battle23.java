@@ -40,7 +40,7 @@ public class Battle23 extends Wavelet {
    */
   public Battle23( ) {
 
-    _transformWavelength = 2; // minimal wavelength of input signal
+    _transformWavelength = 8; // minimal wavelength of input signal
     
     _motherWavelength = 23; // wavelength of mother wavelet
     
