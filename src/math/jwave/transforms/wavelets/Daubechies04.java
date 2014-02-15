@@ -30,7 +30,8 @@ package math.jwave.transforms.wavelets;
  * @date 26.03.2010 07:35:31
  * @author Christian Scheiblich
  */
-@Deprecated public class Daubechies04 extends Wavelet {
+@Deprecated 
+public class Daubechies04 extends Wavelet {
 
   /**
    * TODO: Recheck the values, due to those are not working fine in rounding
@@ -39,7 +40,8 @@ package math.jwave.transforms.wavelets;
    * @date 26.03.2010 07:35:31
    * @author Christian Scheiblich
    */
-  @Deprecated public Daubechies04( ) {
+  // @Deprecated 
+  public Daubechies04( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
@@ -56,10 +58,19 @@ package math.jwave.transforms.wavelets;
     _scales[ 1 ] = 1.0109458; //  1.01094572
     _scales[ 2 ] = 0.8922014; //  0.8922014
     _scales[ 3 ] = -0.0396750; // -0.03967503
-    _scales[ 4 ] = -0.2645071; // -0.2645071
+    _scales[ 4 ] = -0.2645071; // -0.26450717
     _scales[ 5 ] = 0.0436163; //  0.0436163
     _scales[ 6 ] = 0.0465036; //  0.0465036
     _scales[ 7 ] = -0.01498699; // -0.01498699
+
+    _scales[ 0 ] = 0.32580343;
+    _scales[ 1 ] = 1.01094572;
+    _scales[ 2 ] = 0.8922014;
+    _scales[ 3 ] = -0.03967503;
+    _scales[ 4 ] = -0.26450717;
+    _scales[ 5 ] = 0.0436163;
+    _scales[ 6 ] = 0.0465036;
+    _scales[ 7 ] = -0.01498699;
 
     // normalize orthogonal space => orthonormal space!!!  
     for( int i = 0; i < _motherWavelength; i++ )
