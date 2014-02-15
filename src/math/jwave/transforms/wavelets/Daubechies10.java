@@ -24,49 +24,52 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Ingrid Daubechies' orthonormal wavelet of eight coefficients and the scales;
+ * Ingrid Daubechies' orthonormal wavelet of 20 coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
  * 
- * @date 26.03.2010 07:35:31
  * @author Christian Scheiblich
+ * @date 16.02.2014 00:41:08
  */
-@Deprecated
-public class Daubechie04 extends Wavelet {
-  
+public class Daubechies10 extends Wavelet {
+
   /**
-   * Constructor setting up the orthonormal Daubechie6 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
-   * 
-   * @date 26.03.2010 07:35:31
    * @author Christian Scheiblich
+   * @date 16.02.2014 00:41:08
    */
-  @Deprecated
-  public Daubechie04( ) {
-    
+  public Daubechies10( ) {
+
     _transformWavelength = 2; // minimal wavelength of input signal
-    
-    _motherWavelength = 8; // wavelength of mother wavelet
-    
-    _scales = new double[ _motherWavelength ];
-    
-    double sqrt02 = 1.4142135623730951;
-    
-    // TODO Get analytical formulation, due to its precision; this is around 1.e-3 only
+
+    _motherWavelength = 20; // wavelength of mother wavelet
+
     // taken from http://de.wikipedia.org/wiki/Daubechies-Wavelets
-    //
-    _scales[ 0 ] = 0.32580343; //  0.32580343
-    _scales[ 1 ] = 1.0109458; //  1.01094572
-    _scales[ 2 ] = 0.8922014; //  0.8922014
-    _scales[ 3 ] = -0.0396750; // -0.03967503
-    _scales[ 4 ] = -0.2645071; // -0.2645071
-    _scales[ 5 ] = 0.0436163; //  0.0436163
-    _scales[ 6 ] = 0.0465036; //  0.0465036
-    _scales[ 7 ] = -0.01498699; // -0.01498699
-    
+    _scales = new double[ _motherWavelength ];
+    _scales[ 0 ] =  0.03771716;
+    _scales[ 1 ] =  0.26612218;
+    _scales[ 2 ] =  0.74557507;
+    _scales[ 3 ] =  0.97362811;
+    _scales[ 4 ] =  0.39763774;
+    _scales[ 5 ] = -0.35333620;
+    _scales[ 6 ] = -0.27710988;
+    _scales[ 7 ] =  0.18012745;
+    _scales[ 8 ] =  0.13160299;
+    _scales[ 9 ] = -0.10096657;
+    _scales[ 10 ] = -0.04165925;
+    _scales[ 11 ] =  0.04696981;
+    _scales[ 12 ] =  5.10043697e-3;
+    _scales[ 13 ] = -0.01517900;
+    _scales[ 14 ] =  1.97332536e-3;
+    _scales[ 15 ] =  2.81768659e-3;
+    _scales[ 16 ] = -9.69947840e-4;
+    _scales[ 17 ] = -1.64709006e-4;
+    _scales[ 18 ] =  1.32354367e-4;
+    _scales[ 19 ] = -1.875841e-5;
+
     // normalize orthogonal space => orthonormal space!!!  
+    double sqrt02 = 1.4142135623730951;
     for( int i = 0; i < _motherWavelength; i++ )
       _scales[ i ] /= sqrt02;
-    
+
     // building wavelet as orthogonal (orthonormal) space from
     // scaling coefficients. Have a look into Alfred Haar's
     // wavelet for understanding what is done. ;-)
@@ -77,6 +80,6 @@ public class Daubechie04 extends Wavelet {
       else
         _coeffs[ i ] = -_scales[ ( _motherWavelength - 1 ) - i ];
     
-  } // Daubechie04
-  
-} // class
+  } // Daubechies10
+
+} // Daubechies10

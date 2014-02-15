@@ -30,7 +30,7 @@ package math.jwave.transforms.wavelets;
  * @date 10.02.2010 15:42:45
  * @author Christian Scheiblich
  */
-public class Daubechie02 extends Wavelet {
+public class Daubechies02 extends Wavelet {
   
   /**
    * Constructor setting up the orthonormal Daubechie4 wavelet coeffs and the
@@ -39,7 +39,7 @@ public class Daubechie02 extends Wavelet {
    * @date 10.02.2010 15:42:45
    * @author Christian Scheiblich
    */
-  public Daubechie02( ) {
+  public Daubechies02( ) {
     
     _transformWavelength = 2; // minimal wavelength of input signal - TODO: test 2 !!!
     
@@ -61,6 +61,6 @@ public class Daubechie02 extends Wavelet {
     _coeffs[ 2 ] = _scales[ 1 ]; //    h1
     _coeffs[ 3 ] = -_scales[ 0 ]; //  -h0
     
-  } // Daubechie02
+  } // Daubechies02
   
 } // class

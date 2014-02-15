@@ -29,9 +29,9 @@ import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.WaveletPacketTransform;
 import math.jwave.transforms.wavelets.Coiflet03;
-import math.jwave.transforms.wavelets.Daubechie02;
-import math.jwave.transforms.wavelets.Daubechie03;
-import math.jwave.transforms.wavelets.Daubechie04;
+import math.jwave.transforms.wavelets.Daubechies02;
+import math.jwave.transforms.wavelets.Daubechies03;
+import math.jwave.transforms.wavelets.Daubechies04;
 import math.jwave.transforms.wavelets.Haar01;
 import math.jwave.transforms.wavelets.Legendre01;
 import math.jwave.transforms.wavelets.Legendre02;
@@ -74,8 +74,8 @@ public class JWave {
     try { // try everything ~8>
 
       // String waveletTypeList =
-      // "Haar01, Daubechie02, Daubechie03, Daubechie04, Legendre01, Legendre02, Legendre03, Coiflet03";
-      String waveletTypeList = "Haar01, Daubechie02, Daubechie04, Legendre01";
+      // "Haar01, Daubechies02, Daubechies03, Daubechies04, Legendre01, Legendre02, Legendre03, Coiflet03";
+      String waveletTypeList = "Haar01, Daubechies02, Daubechies04, Legendre01";
 
       if( args.length < 2 || args.length > 3 ) {
         System.err
@@ -95,11 +95,11 @@ public class JWave {
       else if( wType.equalsIgnoreCase( "lege02" ) )
         wavelet = new Legendre01( );
       else if( wType.equalsIgnoreCase( "daub02" ) )
-        wavelet = new Daubechie02( );
+        wavelet = new Daubechies02( );
       else if( wType.equalsIgnoreCase( "daub03" ) )
-        wavelet = new Daubechie03( );
+        wavelet = new Daubechies03( );
       else if( wType.equalsIgnoreCase( "daub04" ) )
-        wavelet = new Daubechie04( );
+        wavelet = new Daubechies04( );
       else if( wType.equalsIgnoreCase( "lege04" ) )
         wavelet = new Legendre02( );
       else if( wType.equalsIgnoreCase( "lege06" ) )

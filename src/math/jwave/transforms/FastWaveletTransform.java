@@ -45,7 +45,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * @date 10.02.2010 08:10:42
    * @author Christian Scheiblich
    * @param wavelet
-   *          object of type Wavelet; Haar01, Daubechie02, Coiflet03, ...
+   *          object of type Wavelet; Haar01, Daubechies02, Coiflet03, ...
    * @throws JWaveFailure
    *           if object is null or not of type wavelet
    * @throws JWaveException
@@ -71,25 +71,18 @@ public class FastWaveletTransform extends WaveletTransform {
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
 
-    int level = 0;
     int h = arrHilb.length;
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
     if( h >= transformWavelength ) {
 
       while( h >= transformWavelength ) {
 
-        // double[ ] iBuf = new double[ h ]; // new array, due to length
-        // for( int i = 0; i < h; i++ )
-        //   iBuf[ i ] = arrHilb[ i ];
-
-        double[ ] oBuf = _wavelet.forward( arrHilb, h );
+        double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
 
         for( int i = 0; i < h; i++ )
-          arrHilb[ i ] = oBuf[ i ];
+          arrHilb[ i ] = arrTempPart[ i ];
 
         h = h >> 1;
-
-        level++;
 
       } // levels
 
@@ -115,7 +108,6 @@ public class FastWaveletTransform extends WaveletTransform {
     for( int i = 0; i < arrHilb.length; i++ )
       arrTime[ i ] = arrHilb[ i ];
 
-    int level = 0;
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
 
     int h = transformWavelength;
@@ -124,18 +116,12 @@ public class FastWaveletTransform extends WaveletTransform {
 
     while( h <= arrTime.length && h >= transformWavelength ) {
 
-      // double[ ] iBuf = new double[ h ];
-      // for( int i = 0; i < h; i++ )
-      //   iBuf[ i ] = arrTime[ i ];
-
-      double[ ] oBuf = _wavelet.reverse( arrTime, h );
+      double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
 
       for( int i = 0; i < h; i++ )
-        arrTime[ i ] = oBuf[ i ];
+        arrTime[ i ] = arrTempPart[ i ];
 
       h = h << 1;
-
-      level++;
 
     } // levels
 

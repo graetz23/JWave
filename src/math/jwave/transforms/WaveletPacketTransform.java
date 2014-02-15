@@ -43,7 +43,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
    * @param wavelet
-   *          object of type Wavelet; Haar01, Daubechie02, Coiflet03, ...
+   *          object of type Wavelet; Haar01, Daubechies02, Coiflet03, ...
    * @throws JWaveFailure
    *           if object is null or not of type wavelet
    * @throws JWaveException
@@ -70,14 +70,12 @@ public class WaveletPacketTransform extends WaveletTransform {
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
 
-    int level = 0;
-    
     int k = arrTime.length;
-    
+
     int h = arrTime.length;
-    
+
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-    
+
     if( h >= transformWavelength ) {
 
       while( h >= transformWavelength ) {
@@ -99,8 +97,6 @@ public class WaveletPacketTransform extends WaveletTransform {
         } // packets
 
         h = h >> 1;
-
-        level++;
 
       } // levels
 
@@ -126,14 +122,12 @@ public class WaveletPacketTransform extends WaveletTransform {
     for( int i = 0; i < arrHilb.length; i++ )
       arrTime[ i ] = arrHilb[ i ];
 
-    int level = 0;
-    
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-    
+
     int k = arrTime.length;
-    
+
     int h = transformWavelength;
-    
+
     if( arrHilb.length >= transformWavelength ) {
 
       while( h <= arrTime.length && h >= transformWavelength ) {
@@ -156,14 +150,12 @@ public class WaveletPacketTransform extends WaveletTransform {
 
         h = h << 1;
 
-        level++;
-
       } // levels
 
     } // if
 
     return arrTime;
-    
+
   } // reverse
 
 } // class
