@@ -24,7 +24,7 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * BiOrthogonal Wavelet of type 1.5 - Two vanishing moments in wavelet function
+ * BiOrthogonal Wavelet of type 2.2 - Two vanishing moments in wavelet function
  * and two vanishing moments in scaling function.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)

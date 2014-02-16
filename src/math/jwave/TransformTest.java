@@ -33,6 +33,9 @@ import math.jwave.transforms.wavelets.BiOrthogonal11;
 import math.jwave.transforms.wavelets.BiOrthogonal13;
 import math.jwave.transforms.wavelets.BiOrthogonal15;
 import math.jwave.transforms.wavelets.BiOrthogonal22;
+import math.jwave.transforms.wavelets.BiOrthogonal24;
+import math.jwave.transforms.wavelets.BiOrthogonal26;
+import math.jwave.transforms.wavelets.BiOrthogonal28;
 import math.jwave.transforms.wavelets.BiOrthogonal68;
 import math.jwave.transforms.wavelets.Coiflet1;
 import math.jwave.transforms.wavelets.Coiflet2;
@@ -240,13 +243,30 @@ public class TransformTest {
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal15( ), delta );
       System.out.println( "" );
 
-
       System.out
           .println( "testRounding BiOrthogonal22 - 1000 transforms => rounding error: "
               + delta );
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal22( ), delta );
-      System.out.println( "" );      
-      
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal24 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal24( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal26 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal26( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal28 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal28( ), delta );
+      System.out.println( "" );
+
       // TODO: Implement all other BiOrthogonal filters and test here!
 
       System.out
@@ -414,9 +434,9 @@ public class TransformTest {
     } // try
 
     System.out.println( "" );
-    System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 1-D method " + "using Haar1 Wavelet "
-        + "and a random array" );
+    System.out
+        .println( "Testing the Fast Wavelet Transform " + "forward 1-D method "
+            + "using Haar1 Wavelet " + "and a random array" );
 
     try {
 
@@ -517,9 +537,9 @@ public class TransformTest {
     } // try
 
     System.out.println( "" );
-    System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using Haar1 Wavelet "
-        + "and a random array" );
+    System.out
+        .println( "Testing the Fast Wavelet Transform " + "reverse 1-D method "
+            + "using Haar1 Wavelet " + "and a random array" );
 
     try {
 
@@ -583,7 +603,7 @@ public class TransformTest {
 
       for( int i = 0; i < arrTimeLength; i++ )
         expected[ i ] = new Complex( 0., 0. ); // { 0., 0., 0., .. }
-      
+
       expected[ 0 ].setReal( 4. );  // { 4., 0., 0., .. }
 
       assertArray( expected, arrHilb, delta );
@@ -616,7 +636,7 @@ public class TransformTest {
 
       for( int i = 0; i < arrTimeLength; i++ )
         arrHilb[ i ] = new Complex( 0., 0. ); // { 0., 0., 0., .. }
-      
+
       arrHilb[ 0 ].setReal( 4. );  // { 4., 0., 0., .. }
 
       showHilb( arrHilb );

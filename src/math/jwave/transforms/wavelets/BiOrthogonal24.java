@@ -24,46 +24,46 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * BiOrthogonal Wavelet of type 1.5 - One vanishing moment in wavelet function
- * and five vanishing moments in scaling function.
+ * BiOrthogonal Wavelet of type 2.4 - Two vanishing moments in wavelet function
+ * and four vanishing moments in scaling function.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.02.2014 11:27:59
+ * @date 16.02.2014 16:24:22
  */
-public class BiOrthogonal15 extends Wavelet {
+public class BiOrthogonal24 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
-   * http://wavelets.pybytes.com/wavelet/bior1.5/ Thanks!
+   * http://wavelets.pybytes.com/wavelet/bior2.4/ Thanks!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.02.2014 11:27:59
+   * @date 16.02.2014 16:24:22
    */
-  public BiOrthogonal15( ) {
+  public BiOrthogonal24( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 10; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = 0.01657281518405971;
-    _scalingDeCom[ 1 ] = -0.01657281518405971;
-    _scalingDeCom[ 2 ] = -0.12153397801643787;
-    _scalingDeCom[ 3 ] = 0.12153397801643787;
-    _scalingDeCom[ 4 ] = 0.7071067811865476;
-    _scalingDeCom[ 5 ] = 0.7071067811865476;
-    _scalingDeCom[ 6 ] = 0.12153397801643787;
-    _scalingDeCom[ 7 ] = -0.12153397801643787;
-    _scalingDeCom[ 8 ] = -0.01657281518405971;
-    _scalingDeCom[ 9 ] = 0.01657281518405971;
+    _scalingDeCom[ 0 ] = 0.;
+    _scalingDeCom[ 1 ] = 0.03314563036811942;
+    _scalingDeCom[ 2 ] = -0.06629126073623884;
+    _scalingDeCom[ 3 ] = -0.1767766952966369;
+    _scalingDeCom[ 4 ] = 0.4198446513295126;
+    _scalingDeCom[ 5 ] = 0.9943689110435825;
+    _scalingDeCom[ 6 ] = 0.4198446513295126;
+    _scalingDeCom[ 7 ] = -0.1767766952966369;
+    _scalingDeCom[ 8 ] = -0.06629126073623884;
+    _scalingDeCom[ 9 ] = 0.03314563036811942;
 
     _waveletDeCom = new double[ _motherWavelength ];
     _waveletDeCom[ 0 ] = 0.;
     _waveletDeCom[ 1 ] = 0.;
     _waveletDeCom[ 2 ] = 0.;
-    _waveletDeCom[ 3 ] = 0.;
+    _waveletDeCom[ 3 ] = 0.3535533905932738;
     _waveletDeCom[ 4 ] = -0.7071067811865476;
-    _waveletDeCom[ 5 ] = 0.7071067811865476;
+    _waveletDeCom[ 5 ] = 0.3535533905932738;
     _waveletDeCom[ 6 ] = 0.;
     _waveletDeCom[ 7 ] = 0.;
     _waveletDeCom[ 8 ] = 0.;
@@ -73,26 +73,26 @@ public class BiOrthogonal15 extends Wavelet {
     _scalingReCon[ 0 ] = 0.;
     _scalingReCon[ 1 ] = 0.;
     _scalingReCon[ 2 ] = 0.;
-    _scalingReCon[ 3 ] = 0.;
+    _scalingReCon[ 3 ] = 0.3535533905932738;
     _scalingReCon[ 4 ] = 0.7071067811865476;
-    _scalingReCon[ 5 ] = 0.7071067811865476;
+    _scalingReCon[ 5 ] = 0.3535533905932738;
     _scalingReCon[ 6 ] = 0.;
     _scalingReCon[ 7 ] = 0.;
     _scalingReCon[ 8 ] = 0.;
     _scalingReCon[ 9 ] = 0.;
 
     _waveletReCon = new double[ _motherWavelength ];
-    _waveletReCon[ 0 ] = 0.01657281518405971;
-    _waveletReCon[ 1 ] = 0.01657281518405971;
-    _waveletReCon[ 2 ] = -0.12153397801643787;
-    _waveletReCon[ 3 ] = -0.12153397801643787;
-    _waveletReCon[ 4 ] = 0.7071067811865476;
-    _waveletReCon[ 5 ] = -0.7071067811865476;
-    _waveletReCon[ 6 ] = 0.12153397801643787;
-    _waveletReCon[ 7 ] = 0.12153397801643787;
-    _waveletReCon[ 8 ] = -0.01657281518405971;
-    _waveletReCon[ 9 ] = -0.01657281518405971;
+    _waveletReCon[ 0 ] = 0.;
+    _waveletReCon[ 1 ] = -0.03314563036811942;
+    _waveletReCon[ 2 ] = -0.06629126073623884;
+    _waveletReCon[ 3 ] = 0.1767766952966369;
+    _waveletReCon[ 4 ] = 0.4198446513295126;
+    _waveletReCon[ 5 ] = -0.9943689110435825;
+    _waveletReCon[ 6 ] = 0.4198446513295126;
+    _waveletReCon[ 7 ] = 0.1767766952966369;
+    _waveletReCon[ 8 ] = -0.06629126073623884;
+    _waveletReCon[ 9 ] = -0.03314563036811942;
 
-  } // BiOrthogonal15
+  } // BiOrthogonal24
 
-} // BiOrthogonal15
+} // BiOrthogonal24
