@@ -246,7 +246,6 @@ public class TransformTest {
               + delta );
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal_6_8( ), delta );
       System.out.println( "" );
-      
 
       System.out
           .println( "testRounding DiscreteMayer - 1000 transforms => rounding error: "
@@ -543,6 +542,103 @@ public class TransformTest {
   } // testReverseDoubleArray
 
   /**
+   * Test method for {@link math.jwave.Transform#forward(Complex[])}.
+   */
+  @Test public void testForwardComplexArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "forward 1-D method " + "using Haar01 Wavelet" );
+
+    try {
+
+      double delta = 1.e-12;
+
+      int arrTimeLength = 8;
+
+      Complex[ ] arrTime = new Complex[ arrTimeLength ];
+
+      for( int i = 0; i < arrTimeLength; i++ )
+        arrTime[ i ] = new Complex( 1., 1. );
+
+      showTime( arrTime );
+
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      // Transform t = new Transform( new FastWaveletTransform( new Haar01Orthogonal( ) ) );
+      // Transform t = new Transform( new FastWaveletTransform( new Daubechies20( ) ) );
+
+      Complex[ ] arrHilb = t.forward( arrTime );
+
+      showHilb( arrHilb );
+
+      Complex[ ] expected = new Complex[ arrTimeLength ];
+
+      for( int i = 0; i < arrTimeLength; i++ )
+        expected[ i ] = new Complex( 0., 0. ); // { 0., 0., 0., .. }
+      
+      expected[ 0 ].setReal( 4. );  // { 4., 0., 0., .. }
+
+      assertArray( expected, arrHilb, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+  } // testForwardComplexArray
+
+  /**
+   * Test method for {@link math.jwave.Transform#reverse(Complex[])}.
+   */
+  @Test public void testReverseComplexArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "reverse 1-D method " + "using Haar01 Wavelet" );
+
+    try {
+
+      double delta = 1e-12;
+
+      int arrTimeLength = 8;
+
+      Complex[ ] arrHilb = new Complex[ arrTimeLength ];
+
+      for( int i = 0; i < arrTimeLength; i++ )
+        arrHilb[ i ] = new Complex( 0., 0. ); // { 0., 0., 0., .. }
+      
+      arrHilb[ 0 ].setReal( 4. );  // { 4., 0., 0., .. }
+
+      showHilb( arrHilb );
+
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      Complex[ ] arrTime = t.reverse( arrHilb );
+
+      showTime( arrTime );
+
+      Complex[ ] expected = new Complex[ arrTimeLength ];
+
+      for( int i = 0; i < arrTimeLength; i++ )
+        expected[ i ] = new Complex( 1., 1. );
+
+      assertArray( expected, arrTime, delta );
+
+    } catch( JWaveFailure e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+    System.out.println( "" );
+    System.out.println( "Testing the Fast Wavelet Transform "
+        + "reverse 1-D method " + "using Haar01 Wavelet" );
+
+  } // testReverseComplexArray
+
+  /**
    * Test method for {@link math.jwave.Transform#forward(double[][])}.
    */
   @Test public void testForwardDoubleArrayArray( ) {
@@ -795,7 +891,7 @@ public class TransformTest {
     System.out.println( "" );
   } // showTime
 
-  protected void showFreq( Complex[ ] arrFreq ) {
+  protected void showHilb( Complex[ ] arrFreq ) {
     System.out.print( "frequency domain: " + "\t" );
     for( int c = 0; c < arrFreq.length; c++ )
       System.out.print( arrFreq[ c ].toString( ) + " " );

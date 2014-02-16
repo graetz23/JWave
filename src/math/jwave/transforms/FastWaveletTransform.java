@@ -129,5 +129,7 @@ public class FastWaveletTransform extends WaveletTransform {
     return arrTime;
 
   }// reverse
+  
+  
 
 } // class
