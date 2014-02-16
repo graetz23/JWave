@@ -45,30 +45,30 @@ public abstract class Wavelet implements WaveletInterface {
   protected int _transformWavelength;
 
   /**
-   * The coefficients of the mother scaling (high pass filter) for
-   * decomposition.
+   * The coefficients of the mother scaling (low pass filter) for decomposition.
    */
   protected double[ ] _scalingDeCom;
 
   /**
-   * The coefficients of the mother wavelet (low pass filter) for decomposition.
+   * The coefficients of the mother wavelet (high pass filter) for
+   * decomposition.
    */
   protected double[ ] _waveletDeCom;
 
   /**
-   * The coefficients of the mother scaling (high pass filter) for
+   * The coefficients of the mother scaling (low pass filter) for
    * reconstruction.
    */
   protected double[ ] _scalingReCon;
 
   /**
-   * The coefficients of the mother wavelet (low pass filter) for
+   * The coefficients of the mother wavelet (high pass filter) for
    * reconstruction.
    */
   protected double[ ] _waveletReCon;
 
   /**
-   * Constructor; predefine members to default values
+   * Constructor; predefine members to default values or null!
    * 
    * @date 15.02.2014 22:16:27
    * @author Christian Scheiblich
@@ -108,7 +108,7 @@ public abstract class Wavelet implements WaveletInterface {
 
     double[ ] arrHilb = new double[ arrTimeLength ];
 
-    int h = arrHilb.length >> 1; // .. -> 64 -> 32 -> 16 -> 8 -> 4 -> 2 -> 1
+    int h = arrHilb.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
 
     for( int i = 0; i < h; i++ ) {
 
@@ -119,14 +119,14 @@ public abstract class Wavelet implements WaveletInterface {
         int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
 
         while( k >= arrHilb.length )
-          k -= arrHilb.length; // circulate over arrays if scaling and wavelet are too long 
+          k -= arrHilb.length; // circulate over arrays if scaling and wavelet are are larger
 
-        arrHilb[ i ] += arrTime[ k ] * _scalingDeCom[ j ]; // low pass filter - energy
-        arrHilb[ i + h ] += arrTime[ k ] * _waveletDeCom[ j ]; // high pass filter - details
+        arrHilb[ i ] += arrTime[ k ] * _scalingDeCom[ j ]; // low pass filter for the energy (approximation)
+        arrHilb[ i + h ] += arrTime[ k ] * _waveletDeCom[ j ]; // high pass filter for the details
 
-      } // { scaling coefs | wavelet coefs }
+      } // Sorting each step in patterns of: { scaling coefficients | wavelet coefficients }
 
-    } // h = 2^(p-1) | p = { 1, 2, .., N } 
+    } // h = 2^(p-1) | p = { 1, 2, .., N } .. shrinks in each step by half wavelength 
 
     return arrHilb;
 
@@ -154,7 +154,7 @@ public abstract class Wavelet implements WaveletInterface {
     for( int i = 0; i < arrTime.length; i++ )
       arrTime[ i ] = 0.;
 
-    int h = arrTime.length >> 1; // .. -> 64 -> 32 -> 16 -> 8 -> 4 -> 2 -> 1
+    int h = arrTime.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
 
     for( int i = 0; i < h; i++ ) {
 
@@ -163,16 +163,15 @@ public abstract class Wavelet implements WaveletInterface {
         int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
 
         while( k >= arrTime.length )
-          k -= arrTime.length; // circulate over arrays if scaling and wavelet are too long
+          k -= arrTime.length; // circulate over arrays if scaling and wavelet are larger
 
-        // adding up details times energy (approximation)
+        // adding up energy from low pass (approximation) and details from high pass filter
         arrTime[ k ] +=
-            arrHilb[ i ] * _scalingReCon[ j ] + arrHilb[ i + h ]
-                * _waveletReCon[ j ];
+            ( ( arrHilb[ i ] * _scalingReCon[ j ] ) + ( arrHilb[ i + h ] * _waveletReCon[ j ] ) );
 
-      } // // { scaling coefs + wavelet coefs }
+      } // Reconstruction from patterns of: { scaling coefficients | wavelet coefficients }
 
-    } // h = 2^(p-1) | p = { 1, 2, .., N }
+    } // h = 2^(p-1) | p = { 1, 2, .., N } .. shrink in each step by half wavelength 
 
     return arrTime;
 
@@ -207,83 +206,83 @@ public abstract class Wavelet implements WaveletInterface {
   } // getTransformWavelength
 
   /**
-   * Returns a copy of the wavelet (low pass filter) coefficients of
-   * decomposition.
-   * 
-   * @author Christian Scheiblich
-   * @date 15.02.2014 22:11:25
-   * @return array of length of the mother wavelet wavelength keeping the
-   *         decomposition low pass filter coefficients
-   */
-  public double[ ] getWaveletDeCom( ) {
-
-    double[ ] coeffsDeCom = new double[ _waveletDeCom.length ];
-
-    for( int i = 0; i < _waveletDeCom.length; i++ )
-      coeffsDeCom[ i ] = _waveletDeCom[ i ];
-
-    return coeffsDeCom;
-
-  } // getWaveletDeCom
-
-  /**
-   * Returns a copy of the scaling (high pass filter) coefficients of
+   * Returns a copy of the scaling (low pass filter) coefficients of
    * decomposition.
    * 
    * @author Christian Scheiblich
    * @date 15.02.2010 22:11:42
    * @return array of length of the mother wavelet wavelength keeping the
-   *         decomposition high pass filter coefficients
+   *         decomposition low pass filter coefficients
    */
   public double[ ] getScalingDeCom( ) {
 
-    double[ ] scalesDeCom = new double[ _scalingDeCom.length ];
+    double[ ] scalingDeCom = new double[ _scalingDeCom.length ];
 
     for( int i = 0; i < _scalingDeCom.length; i++ )
-      scalesDeCom[ i ] = _scalingDeCom[ i ];
+      scalingDeCom[ i ] = _scalingDeCom[ i ];
 
-    return scalesDeCom;
+    return scalingDeCom;
 
-  } // getScalingDeCom
+  } // getScalingDeCom  
 
   /**
-   * Returns a copy of the wavelet (low pass filter) coefficients of
-   * reconstruction.
+   * Returns a copy of the wavelet (high pass filter) coefficients of
+   * decomposition.
    * 
    * @author Christian Scheiblich
-   * @date 16.02.2014 10:35:09
+   * @date 15.02.2014 22:11:25
    * @return array of length of the mother wavelet wavelength keeping the
-   *         reconstruction low pass filter coefficients
+   *         decomposition high pass filter coefficients
    */
-  public double[ ] getWaveletReCon( ) {
+  public double[ ] getWaveletDeCom( ) {
 
-    double[ ] coeffsReCon = new double[ _waveletReCon.length ];
+    double[ ] waveletDeCom = new double[ _waveletDeCom.length ];
 
-    for( int i = 0; i < _waveletReCon.length; i++ )
-      coeffsReCon[ i ] = _waveletReCon[ i ];
+    for( int i = 0; i < _waveletDeCom.length; i++ )
+      waveletDeCom[ i ] = _waveletDeCom[ i ];
 
-    return coeffsReCon;
+    return waveletDeCom;
 
-  } // getWaveletReCon
+  } // getWaveletDeCom
 
   /**
-   * Returns a copy of the scaling (high pass filter) coefficients of
+   * Returns a copy of the scaling (low pass filter) coefficients of
    * reconstruction.
    * 
    * @author Christian Scheiblich
    * @date 16.02.2014 10:35:11
    * @return array of length of the mother wavelet wavelength keeping the
-   *         reconstruction high pass filter coefficients
+   *         reconstruction low pass filter coefficients
    */
   public double[ ] getScalingReCon( ) {
 
-    double[ ] scalesReCon = new double[ _scalingReCon.length ];
+    double[ ] scalingReCon = new double[ _scalingReCon.length ];
 
     for( int i = 0; i < _scalingReCon.length; i++ )
-      scalesReCon[ i ] = _scalingReCon[ i ];
+      scalingReCon[ i ] = _scalingReCon[ i ];
 
-    return scalesReCon;
+    return scalingReCon;
 
   } // getScalingReCon
+
+  /**
+   * Returns a copy of the wavelet (high pass filter) coefficients of
+   * reconstruction.
+   * 
+   * @author Christian Scheiblich
+   * @date 16.02.2014 10:35:09
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         reconstruction high pass filter coefficients
+   */
+  public double[ ] getWaveletReCon( ) {
+
+    double[ ] waveletReCon = new double[ _waveletReCon.length ];
+
+    for( int i = 0; i < _waveletReCon.length; i++ )
+      waveletReCon[ i ] = _waveletReCon[ i ];
+
+    return waveletReCon;
+
+  } // getWaveletReCon
 
 } // Wavelet

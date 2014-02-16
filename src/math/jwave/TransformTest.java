@@ -223,9 +223,11 @@ public class TransformTest {
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal_6_8( ), delta );
       System.out.println( "" );
 
-      // System.out.println( "testRounding Battle23" );
-      // testFastWaveletTransformRounding( arrTime, new Battle23( ), delta ); // not passed yet -> @Deprecated
-      // System.out.println( "" );
+      //      System.out
+      //          .println( "testRounding Battle23 - 1000 transforms => rounding error: "
+      //              + delta );
+      //      testFastWaveletTransformRounding( arrTime, new Battle23( ), delta );
+      //      System.out.println( "" );
 
     } catch( JWaveException e ) {
 
@@ -320,6 +322,8 @@ public class TransformTest {
       showTime( arrTime );
 
       Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      // Transform t = new Transform( new FastWaveletTransform( new Daubechies20( ) ) );
+
       double[ ] arrHilb = t.forward( arrTime );
 
       showHilb( arrHilb );

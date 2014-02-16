@@ -71,47 +71,47 @@ public interface WaveletInterface {
   public int getTransformWavelength( );
 
   /**
+   * Returns a copy of the scaling (low pass filter) coefficients of the
+   * decomposition.
+   * 
+   * @author Christian Scheiblich
+   * @date 15.02.2010 22:11:42
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         decomposition low pass filter coefficients
+   */
+  public double[ ] getScalingDeCom( );
+
+  /**
    * Returns a copy of the wavelet (low pass filter) coefficients of the
    * decomposition.
    * 
    * @author Christian Scheiblich
    * @date 15.02.2014 22:11:25
    * @return array of length of the mother wavelet wavelength keeping the
-   *         decomposition low pass filter coefficients
+   *         decomposition high pass filter coefficients
    */
   public double[ ] getWaveletDeCom( );
 
   /**
-   * Returns a copy of the scaling (high pass filter) coefficients of the
-   * decomposition.
-   * 
-   * @author Christian Scheiblich
-   * @date 15.02.2010 22:11:42
-   * @return array of length of the mother wavelet wavelength keeping the
-   *         decomposition high pass filter coefficients
-   */
-  public double[ ] getScalingDeCom( );
-
-  /**
-   * Returns a copy of the wavelet (low pass filter) coefficients of the
-   * reconstruction.
-   * 
-   * @author Christian Scheiblich
-   * @date 16.02.2014 10:35:09
-   * @return array of length of the mother wavelet wavelength keeping the
-   *         reconstruction low pass filter coefficients
-   */
-  public double[ ] getWaveletReCon( );
-
-  /**
-   * Returns a copy of the scaling (high pass filter) coefficients of the
+   * Returns a copy of the scaling (low pass filter) coefficients of the
    * reconstruction.
    * 
    * @author Christian Scheiblich
    * @date 16.02.2014 10:35:11
    * @return array of length of the mother wavelet wavelength keeping the
-   *         reconstruction high pass filter coefficients
+   *         reconstruction low pass filter coefficients
    */
   public double[ ] getScalingReCon( );
+
+  /**
+   * Returns a copy of the wavelet (high pass filter) coefficients of the
+   * reconstruction.
+   * 
+   * @author Christian Scheiblich
+   * @date 16.02.2014 10:35:09
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         reconstruction high pass filter coefficients
+   */
+  public double[ ] getWaveletReCon( );
 
 } // WaveletInterface
