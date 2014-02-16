@@ -24,11 +24,11 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * BiOrthogonal Wavelet of type 1.1 - One vanishing moment in wavelet function
- * and three vanishing moment in scaling function.
+ * BiOrthogonal Wavelet of type 1.3 - One vanishing moment in scaling function
+ * and three vanishing moment in wavelet function.
  * 
  * @author Christian Scheiblich
- * @date16.02.2014 10:31:33
+ * @date 16.02.2014 10:31:33
  */
 public class BiOrthogonal_1_3 extends Wavelet {
 
