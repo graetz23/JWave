@@ -48,6 +48,7 @@ import math.jwave.transforms.wavelets.Daubechies08;
 import math.jwave.transforms.wavelets.Daubechies09;
 import math.jwave.transforms.wavelets.Daubechies10;
 import math.jwave.transforms.wavelets.Daubechies20;
+import math.jwave.transforms.wavelets.DiscreteMayer;
 import math.jwave.transforms.wavelets.Haar01;
 import math.jwave.transforms.wavelets.Haar01Orthogonal;
 import math.jwave.transforms.wavelets.Legendre01;
@@ -244,6 +245,13 @@ public class TransformTest {
           .println( "testRounding BiOrthogonal_6_8 - 1000 transforms => rounding error: "
               + delta );
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal_6_8( ), delta );
+      System.out.println( "" );
+      
+
+      System.out
+          .println( "testRounding DiscreteMayer - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new DiscreteMayer( ), 1.e-2 );
       System.out.println( "" );
 
       //      System.out
