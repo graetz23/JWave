@@ -50,30 +50,14 @@ public class Legendre01 extends Wavelet {
 
     _scalingDeCom = new double[ _motherWavelength ];
     _scalingDeCom[ 0 ] = -1.; // h0
-    _scalingDeCom[ 1 ] = 1.; // h1
+    _scalingDeCom[ 1 ] = -1.; // h1
 
     // normalize orthogonal space => orthonormal space!!!  
-    double sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )    
+    double sqrt02 = Math.sqrt( 2. ) ; // 1.4142135623730951
     for( int i = 0; i < _motherWavelength; i++ )
       _scalingDeCom[ i ] /= sqrt02;
 
-    // building wavelet as orthogonal (orthonormal) space from
-    // scaling coefficients (low pass filter). Have a look into
-    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
-    // vanishing moments for understanding what is done here. ;-)
-    _waveletDeCom = new double[ _motherWavelength ];
-    _waveletDeCom[ 0 ] = -_scalingDeCom[ 1 ]; // -h1 -> -1. / sqrt(2.)
-    _waveletDeCom[ 1 ] = _scalingDeCom[ 0 ]; // h0   -> -1. / sqrt(2.)
-
-    // Copy to reconstruction filters due to orthogonality (orthonormality)!
-    _scalingReCon = new double[ _motherWavelength ];
-    _waveletReCon = new double[ _motherWavelength ];
-    for( int i = 0; i < _motherWavelength; i++ ) {
-
-      _scalingReCon[ i ] = _scalingDeCom[ i ];
-      _waveletReCon[ i ] = _waveletDeCom[ i ];
-
-    } // i
+    _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
   } // Legendre01
 

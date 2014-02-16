@@ -90,6 +90,40 @@ public abstract class Wavelet implements WaveletInterface {
   } // Wavelet
 
   /**
+   * The method builds form the scaling (low pass) coefficients for
+   * decomposition of a filter, the matching coefficients for the wavelet (high
+   * pass) for decomposition, for the scaling (low pass) for reconstruction, and
+   * for the wavelet (high pass) of reconstruction. This method should be called
+   * in the constructor of an orthonormal filter directly after defining the
+   * orthonormal coefficients of the scaling (low pass) for decompositon!
+   * 
+   * @author Christian Scheiblich
+   * @date 16.02.2014 13:19:27
+   */
+  protected void _buildOrthonormalSpace( ) {
+
+    // building wavelet as orthogonal (orthonormal) space from
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
+    _waveletDeCom = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ )
+      if( i % 2 == 0 )
+        _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+      else
+        _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+    } // i
+
+  } // _initOrthogonality
+
+  /**
    * Performs the forward transform for the given array from time domain to
    * Hilbert domain and returns a new array of the same size keeping
    * coefficients of Hilbert domain and should be of length 2 to the power of p

@@ -155,7 +155,7 @@ public class Haar01Orthogonal extends Wavelet {
    * array keeping coefficients of Hilbert domain should be of length 2 to the
    * power of p -- length = 2^p where p is a positive integer. But in case of an
    * only orthogonal Haar wavelet the reverse transform has to have a factor of
-   * 0.5 to reduce the up sampled "energy" ion Hilbert space.
+   * 0.5 to reduce the up sampled "energy" in Hilbert space.
    * 
    * @author Christian Scheiblich
    * @date 15.02.2014 21:17:22

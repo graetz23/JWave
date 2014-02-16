@@ -55,26 +55,7 @@ public class Daubechies04 extends Wavelet {
     _scalingDeCom[ 6 ] = 0.7148465705525415;
     _scalingDeCom[ 7 ] = 0.23037781330885523;
 
-    // building wavelet as orthogonal (orthonormal) space from
-    // scaling coefficients (low pass filter). Have a look into
-    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
-    // vanishing moments for understanding what is done here. ;-)
-    _waveletDeCom = new double[ _motherWavelength ];
-    for( int i = 0; i < _motherWavelength; i++ )
-      if( i % 2 == 0 )
-        _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
-      else
-        _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
-
-    // Copy to reconstruction filters due to orthogonality (orthonormality)!
-    _scalingReCon = new double[ _motherWavelength ];
-    _waveletReCon = new double[ _motherWavelength ];
-    for( int i = 0; i < _motherWavelength; i++ ) {
-
-      _scalingReCon[ i ] = _scalingDeCom[ i ];
-      _waveletReCon[ i ] = _waveletDeCom[ i ];
-
-    } // i
+    _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
   } // Daubechies04
 
