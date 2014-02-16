@@ -86,18 +86,17 @@ public class Haar01Orthogonal extends Wavelet {
 
     _motherWavelength = 2; // wavelength of mother wavelet
 
-    _waveletDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
-
     // Orthogonal wavelet coefficients; NOT orthonormal, due to missing sqrt(2.) 
-    _waveletDeCom[ 0 ] = 1.; // w0 
-    _waveletDeCom[ 1 ] = -1.; //  w1
-
     _scalingDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
+    _scalingDeCom[ 0 ] = 1.; // w0 
+    _scalingDeCom[ 1 ] = 1.; //  w1
 
     // Rule for constructing an orthogonal vector in R^2 -- scales
-    _scalingDeCom[ 0 ] = -_waveletDeCom[ 1 ]; // -w1 
-    _scalingDeCom[ 1 ] = _waveletDeCom[ 0 ]; // w0
+    _waveletDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
+    _waveletDeCom[ 0 ] = _scalingDeCom[ 1 ]; // w1 
+    _waveletDeCom[ 1 ] = -_scalingDeCom[ 0 ]; // -w0
 
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
     _scalingReCon = new double[ _motherWavelength ];
     _waveletReCon = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ ) {
@@ -105,7 +104,7 @@ public class Haar01Orthogonal extends Wavelet {
       _scalingReCon[ i ] = _scalingDeCom[ i ];
       _waveletReCon[ i ] = _waveletDeCom[ i ];
 
-    } // copy to reconstruction due to orthogonality
+    } // i
 
   } // Haar01
 
@@ -119,27 +118,27 @@ public class Haar01Orthogonal extends Wavelet {
    */
   @Override public double[ ] forward( double[ ] arrTime, int arrTimeLength ) {
 
-    double[ ] arrHilb = new double[ arrTimeLength ]; // might be shorter than arrTime
+    double[ ] arrHilb = new double[ arrTimeLength ];
 
-    int k = 0;
-    int h = arrHilb.length >> 1;
+    int h = arrHilb.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
 
     for( int i = 0; i < h; i++ ) {
 
+      arrHilb[ i ] = arrHilb[ i + h ] = 0.; // set to zero before sum up
+
       for( int j = 0; j < _motherWavelength; j++ ) {
 
-        // useless for Haar scaling and wavelet
+        int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
+
         while( k >= arrHilb.length )
-          k -= arrHilb.length; // circulate over arrays if scaling and wavelet are too long
+          k -= arrHilb.length; // circulate over arrays if scaling and wavelet are are larger
 
-        arrHilb[ i ] += arrTime[ k ] * _scalingDeCom[ j ]; // low pass filter - energy
-        arrHilb[ i + h ] += arrTime[ k ] * _waveletDeCom[ j ]; // high pass filter - details
+        arrHilb[ i ] += arrTime[ k ] * _scalingDeCom[ j ]; // low pass filter for the energy (approximation)
+        arrHilb[ i + h ] += arrTime[ k ] * _waveletDeCom[ j ]; // high pass filter for the details
 
-        // by each summation, "energy" is added, due to the orthogonal Haar Wavelet.
+      } // Sorting each step in patterns of: { scaling coefficients | wavelet coefficients }
 
-      } // wavelet
-
-    } // h
+    } // h = 2^(p-1) | p = { 1, 2, .., N } .. shrinks in each step by half wavelength 
 
     return arrHilb;
 
@@ -157,28 +156,30 @@ public class Haar01Orthogonal extends Wavelet {
    */
   @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
 
-    double[ ] arrTime = new double[ arrHilbLength ]; // might be shorter than arrHilb
+    double[ ] arrTime = new double[ arrHilbLength ];
 
-    int k = 0;
-    int h = arrTime.length >> 1;
+    for( int i = 0; i < arrTime.length; i++ )
+      arrTime[ i ] = 0.;
+
+    int h = arrTime.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
+
     for( int i = 0; i < h; i++ ) {
 
       for( int j = 0; j < _motherWavelength; j++ ) {
 
-        // useless for Haar scaling and wavelet
+        int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
+
         while( k >= arrTime.length )
-          k -= arrTime.length; // circulate over arrays if scaling and wavelet are too long
+          k -= arrTime.length; // circulate over arrays if scaling and wavelet are larger
 
+        // adding up energy from low pass (approximation) and details from high pass filter;
+        // but it has to be reduced in energy by half because of vectorial length of sqrt( 2. ).
         arrTime[ k ] +=
-            arrHilb[ i ] * _scalingReCon[ j ] + arrHilb[ i + h ]
-                * _waveletReCon[ j ]; // adding up details times energy
+            .5 * ( ( arrHilb[ i ] * _scalingReCon[ j ] ) + ( arrHilb[ i + h ] * _waveletReCon[ j ] ) );
 
-        // The factor .5 gets necessary here to reduce the added "energy" of the forward method
-        arrTime[ k ] *= .5; // correction of the up sampled "energy" -- ||.||_2 euclidean norm
+      } // Reconstruction from patterns of: { scaling coefficients | wavelet coefficients }
 
-      } // wavelet
-
-    } //  h
+    } // h = 2^(p-1) | p = { 1, 2, .., N } .. shrink in each step by half wavelength 
 
     return arrTime;
 

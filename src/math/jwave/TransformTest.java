@@ -49,6 +49,7 @@ import math.jwave.transforms.wavelets.Daubechies09;
 import math.jwave.transforms.wavelets.Daubechies10;
 import math.jwave.transforms.wavelets.Daubechies20;
 import math.jwave.transforms.wavelets.Haar01;
+import math.jwave.transforms.wavelets.Haar01Orthogonal;
 import math.jwave.transforms.wavelets.Legendre01;
 import math.jwave.transforms.wavelets.Legendre02;
 import math.jwave.transforms.wavelets.Legendre03;
@@ -87,6 +88,12 @@ public class TransformTest {
           .println( "testRounding Haar01 - 1000 transforms => rounding error: "
               + delta );
       testFastWaveletTransformRounding( arrTime, new Haar01( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding Haar01Orthogonal - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new Haar01Orthogonal( ), delta );
       System.out.println( "" );
 
       System.out
@@ -322,6 +329,7 @@ public class TransformTest {
       showTime( arrTime );
 
       Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      // Transform t = new Transform( new FastWaveletTransform( new Haar01Orthogonal( ) ) );
       // Transform t = new Transform( new FastWaveletTransform( new Daubechies20( ) ) );
 
       double[ ] arrHilb = t.forward( arrTime );
@@ -329,6 +337,7 @@ public class TransformTest {
       showHilb( arrHilb );
 
       double[ ] expected = { 2., 0., 0., 0. }; // orthonormal Hilbert space
+      // double[ ] expected = { 4., 0., 0., 0. }; // orthogonal Hilbert space for Haar01Orthogonal
       assertArray( expected, arrHilb, delta );
 
     } catch( JWaveFailure e ) {
@@ -420,11 +429,11 @@ public class TransformTest {
       double delta = 1e-12;
 
       double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal Hilbert space
+      // double[ ] arrHilb = { 4., 0., 0., 0. }; // orthogonal Hilbert space for Haar01Orthogonal
 
       showHilb( arrHilb );
 
-      Transform t;
-      t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
+      Transform t = new Transform( new FastWaveletTransform( new Haar01( ) ) );
       double[ ] arrTime = t.reverse( arrHilb );
 
       showTime( arrTime );

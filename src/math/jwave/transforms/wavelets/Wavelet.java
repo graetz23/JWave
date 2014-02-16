@@ -167,7 +167,8 @@ public abstract class Wavelet implements WaveletInterface {
 
         // adding up energy from low pass (approximation) and details from high pass filter
         arrTime[ k ] +=
-            ( ( arrHilb[ i ] * _scalingReCon[ j ] ) + ( arrHilb[ i + h ] * _waveletReCon[ j ] ) );
+            ( arrHilb[ i ] * _scalingReCon[ j ] )
+                + ( arrHilb[ i + h ] * _waveletReCon[ j ] ); // looks better with brackets
 
       } // Reconstruction from patterns of: { scaling coefficients | wavelet coefficients }
 
