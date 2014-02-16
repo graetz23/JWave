@@ -45,27 +45,38 @@ public class Daubechies05 extends Wavelet {
 
     _motherWavelength = 10; // wavelength of mother wavelet
 
-    _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] = 0.003335725285001549;
-    _scales[ 1 ] = -0.012580751999015526;
-    _scales[ 2 ] = -0.006241490213011705;
-    _scales[ 3 ] = 0.07757149384006515;
-    _scales[ 4 ] = -0.03224486958502952;
-    _scales[ 5 ] = -0.24229488706619015;
-    _scales[ 6 ] = 0.13842814590110342;
-    _scales[ 7 ] = 0.7243085284385744;
-    _scales[ 8 ] = 0.6038292697974729;
-    _scales[ 9 ] = 0.160102397974125;
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = 0.003335725285001549;
+    _scalingDeCom[ 1 ] = -0.012580751999015526;
+    _scalingDeCom[ 2 ] = -0.006241490213011705;
+    _scalingDeCom[ 3 ] = 0.07757149384006515;
+    _scalingDeCom[ 4 ] = -0.03224486958502952;
+    _scalingDeCom[ 5 ] = -0.24229488706619015;
+    _scalingDeCom[ 6 ] = 0.13842814590110342;
+    _scalingDeCom[ 7 ] = 0.7243085284385744;
+    _scalingDeCom[ 8 ] = 0.6038292697974729;
+    _scalingDeCom[ 9 ] = 0.160102397974125;
 
     // building wavelet as orthogonal (orthonormal) space from
-    // scaling coefficients. Have a look into Alfred Haar's
-    // wavelet for understanding what is done. ;-)
-    _coeffs = new double[ _motherWavelength ];
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
+    _waveletDeCom = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ )
       if( i % 2 == 0 )
-        _coeffs[ i ] = _scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
       else
-        _coeffs[ i ] = -_scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // i
 
   } // Daubechies05
 

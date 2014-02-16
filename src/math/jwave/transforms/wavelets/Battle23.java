@@ -44,40 +44,40 @@ public class Battle23 extends Wavelet {
     
     _motherWavelength = 23; // wavelength of mother wavelet
     
-    _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] =  -0.002;
-    _scales[ 1 ] =  -0.003;
-    _scales[ 2 ] =   0.006;
-    _scales[ 3 ] =   0.006;
-    _scales[ 4 ] =  -0.013;
-    _scales[ 5 ] =  -0.012;
-    _scales[ 6 ] =   0.030;
-    _scales[ 7 ] =   0.023;
-    _scales[ 8 ] =  -0.078;
-    _scales[ 9 ] =  -0.035;
-    _scales[ 10 ] =  0.307;
-    _scales[ 11 ] =  0.542;
-    _scales[ 12 ] =  0.307;
-    _scales[ 13 ] = -0.035;
-    _scales[ 14 ] = -0.078;
-    _scales[ 15 ] =  0.023;
-    _scales[ 16 ] =  0.030;
-    _scales[ 17 ] = -0.012;
-    _scales[ 18 ] = -0.013;
-    _scales[ 19 ] =  0.006;
-    _scales[ 20 ] =  0.006;
-    _scales[ 21 ] = -0.003;
-    _scales[ 22 ] = -0.002;
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] =  -0.002;
+    _scalingDeCom[ 1 ] =  -0.003;
+    _scalingDeCom[ 2 ] =   0.006;
+    _scalingDeCom[ 3 ] =   0.006;
+    _scalingDeCom[ 4 ] =  -0.013;
+    _scalingDeCom[ 5 ] =  -0.012;
+    _scalingDeCom[ 6 ] =   0.030;
+    _scalingDeCom[ 7 ] =   0.023;
+    _scalingDeCom[ 8 ] =  -0.078;
+    _scalingDeCom[ 9 ] =  -0.035;
+    _scalingDeCom[ 10 ] =  0.307;
+    _scalingDeCom[ 11 ] =  0.542;
+    _scalingDeCom[ 12 ] =  0.307;
+    _scalingDeCom[ 13 ] = -0.035;
+    _scalingDeCom[ 14 ] = -0.078;
+    _scalingDeCom[ 15 ] =  0.023;
+    _scalingDeCom[ 16 ] =  0.030;
+    _scalingDeCom[ 17 ] = -0.012;
+    _scalingDeCom[ 18 ] = -0.013;
+    _scalingDeCom[ 19 ] =  0.006;
+    _scalingDeCom[ 20 ] =  0.006;
+    _scalingDeCom[ 21 ] = -0.003;
+    _scalingDeCom[ 22 ] = -0.002;
     
     // building wavelet as orthogonal (orthonormal) space from
     // scaling coefficients. Have a look into Alfred Haar's
     // wavelet for understanding what is done. ;-)
-    _coeffs = new double[ _motherWavelength ];
+    _waveletDeCom = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ )
       if( i % 2 == 0 )
-        _coeffs[ i ] = _scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
       else
-        _coeffs[ i ] = -_scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
     
   } // Battle23
 

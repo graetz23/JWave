@@ -45,27 +45,41 @@ public class Legendre03 extends Wavelet {
 
     _motherWavelength = 6; // wavelength of mother wavelet
     
-    _scales = new double[ _motherWavelength ]; // can be done in static way also; faster?
-    _scales[ 0 ] = -63. / 128.; // h0
-    _scales[ 1 ] = -35. / 128.; // h1
-    _scales[ 2 ] = -30. / 128.; // h2
-    _scales[ 3 ] = -30. / 128.; // h3
-    _scales[ 4 ] = -35. / 128.; // h4
-    _scales[ 5 ] = -63. / 128.; // h5
+    _scalingDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
+    _scalingDeCom[ 0 ] = -63. / 128.; // h0
+    _scalingDeCom[ 1 ] = -35. / 128.; // h1
+    _scalingDeCom[ 2 ] = -30. / 128.; // h2
+    _scalingDeCom[ 3 ] = -30. / 128.; // h3
+    _scalingDeCom[ 4 ] = -35. / 128.; // h4
+    _scalingDeCom[ 5 ] = -63. / 128.; // h5
 
     // normalize orthogonal space => orthonormal space!!!  
     double sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )    
     for( int i = 0; i < _motherWavelength; i++ )
-      _scales[ i ] /= sqrt02;
+      _scalingDeCom[ i ] /= sqrt02;
 
-    _coeffs = new double[ _motherWavelength ]; // can be done in static way also; faster?
-    _coeffs[ 0 ] = _scales[ 5 ]; //    h5
-    _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4
-    _coeffs[ 2 ] = _scales[ 3 ]; //    h3
-    _coeffs[ 3 ] = -_scales[ 2 ]; //  -h2
-    _coeffs[ 4 ] = _scales[ 1 ]; //    h1
-    _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
+    // building wavelet as orthogonal (orthonormal) space from
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
+    _waveletDeCom = new double[ _motherWavelength ];
+    _waveletDeCom[ 0 ] = _scalingDeCom[ 5 ]; //    h5
+    _waveletDeCom[ 1 ] = -_scalingDeCom[ 4 ]; //  -h4
+    _waveletDeCom[ 2 ] = _scalingDeCom[ 3 ]; //    h3
+    _waveletDeCom[ 3 ] = -_scalingDeCom[ 2 ]; //  -h2
+    _waveletDeCom[ 4 ] = _scalingDeCom[ 1 ]; //    h1
+    _waveletDeCom[ 5 ] = -_scalingDeCom[ 0 ]; //  -h0
 
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // i
+    
   } // Legendre03
 
 } // class

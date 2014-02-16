@@ -50,21 +50,35 @@ public class Coiflet01 extends Wavelet {
     double sqrt15 = Math.sqrt( 15. );
 
     // these coefficients are already orthonormal
-    _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] = sqrt02 * ( sqrt15 - 3. ) / 32.; //  -0.01565572813546454;
-    _scales[ 1 ] = sqrt02 * ( 1. - sqrt15 ) / 32.; // -0.0727326195128539;
-    _scales[ 2 ] = sqrt02 * ( 6. - 2 * sqrt15 ) / 32.; //  0.38486484686420286;
-    _scales[ 3 ] = sqrt02 * ( 2. * sqrt15 + 6. ) / 32.; // 0.8525720202122554;
-    _scales[ 4 ] = sqrt02 * ( sqrt15 + 13. ) / 32.; // 0.3378976624578092;
-    _scales[ 5 ] = sqrt02 * ( 9. - sqrt15 ) / 32.; //-0.0727326195128539;
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = sqrt02 * ( sqrt15 - 3. ) / 32.; //  -0.01565572813546454;
+    _scalingDeCom[ 1 ] = sqrt02 * ( 1. - sqrt15 ) / 32.; // -0.0727326195128539;
+    _scalingDeCom[ 2 ] = sqrt02 * ( 6. - 2 * sqrt15 ) / 32.; //  0.38486484686420286;
+    _scalingDeCom[ 3 ] = sqrt02 * ( 2. * sqrt15 + 6. ) / 32.; // 0.8525720202122554;
+    _scalingDeCom[ 4 ] = sqrt02 * ( sqrt15 + 13. ) / 32.; // 0.3378976624578092;
+    _scalingDeCom[ 5 ] = sqrt02 * ( 9. - sqrt15 ) / 32.; //-0.0727326195128539;
 
-    _coeffs = new double[ _motherWavelength ];
-    _coeffs[ 0 ] = _scales[ 5 ]; //    h5
-    _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4
-    _coeffs[ 2 ] = _scales[ 3 ]; //    h3
-    _coeffs[ 3 ] = -_scales[ 2 ]; //  -h2
-    _coeffs[ 4 ] = _scales[ 1 ]; //    h1
-    _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
+    // building wavelet as orthogonal (orthonormal) space from
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
+    _waveletDeCom = new double[ _motherWavelength ];
+    _waveletDeCom[ 0 ] = _scalingDeCom[ 5 ]; //    h5
+    _waveletDeCom[ 1 ] = -_scalingDeCom[ 4 ]; //  -h4
+    _waveletDeCom[ 2 ] = _scalingDeCom[ 3 ]; //    h3
+    _waveletDeCom[ 3 ] = -_scalingDeCom[ 2 ]; //  -h2
+    _waveletDeCom[ 4 ] = _scalingDeCom[ 1 ]; //    h1
+    _waveletDeCom[ 5 ] = -_scalingDeCom[ 0 ]; //  -h0
+
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // i
 
   } // Coiflet01
 

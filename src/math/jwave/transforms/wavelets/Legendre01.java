@@ -32,7 +32,7 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich
  */
 public class Legendre01 extends Wavelet {
-  
+
   /**
    * Constructor setting up the orthonormal Legendre 2 wavelet coeffs and the
    * scales; normed, due to ||*||_2 -- euclidean norm. Actually these
@@ -43,24 +43,38 @@ public class Legendre01 extends Wavelet {
    * @author Christian Scheiblich
    */
   public Legendre01( ) {
-    
+
     _transformWavelength = 2; // minimal wavelength of input signal
-    
+
     _motherWavelength = 2; // wavelength of mother wavelet
-    
-    _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] = -1.; // h0
-    _scales[ 1 ] = 1.; // h1
-    
+
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = -1.; // h0
+    _scalingDeCom[ 1 ] = 1.; // h1
+
     // normalize orthogonal space => orthonormal space!!!  
     double sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )    
     for( int i = 0; i < _motherWavelength; i++ )
-      _scales[ i ] /= sqrt02;
-    
-    _coeffs = new double[ _motherWavelength ];
-    _coeffs[ 0 ] = -_scales[ 1 ]; // -h1 -> -1. / sqrt(2.)
-    _coeffs[ 1 ] = _scales[ 0 ]; // h0   -> -1. / sqrt(2.)
-    
+      _scalingDeCom[ i ] /= sqrt02;
+
+    // building wavelet as orthogonal (orthonormal) space from
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
+    _waveletDeCom = new double[ _motherWavelength ];
+    _waveletDeCom[ 0 ] = -_scalingDeCom[ 1 ]; // -h1 -> -1. / sqrt(2.)
+    _waveletDeCom[ 1 ] = _scalingDeCom[ 0 ]; // h0   -> -1. / sqrt(2.)
+
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // i
+
   } // Legendre01
-  
+
 } // class

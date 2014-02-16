@@ -45,15 +45,23 @@ public class Haar01 extends Wavelet {
 
     _motherWavelength = 2; // wavelength of mother wavelet
 
-    _coeffs = new double[ _motherWavelength ];
+    _waveletDeCom = new double[ _motherWavelength ];
 
-    _coeffs[ 0 ] = 1. / 1.4142135623730951; // w0 - normed by sqrt( 2 )
-    _coeffs[ 1 ] = -1. / 1.4142135623730951; // w1 - normed by sqrt( 2 )
+    _waveletDeCom[ 0 ] = 1. / 1.4142135623730951; // w0 - normed by sqrt( 2 )
+    _waveletDeCom[ 1 ] = -1. / 1.4142135623730951; // w1 - normed by sqrt( 2 )
 
-    _scales = new double[ _motherWavelength ];
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = -_waveletDeCom[ 1 ]; // -w1
+    _scalingDeCom[ 1 ] = _waveletDeCom[ 0 ]; // w0
 
-    _scales[ 0 ] = -_coeffs[ 1 ]; // -w1
-    _scales[ 1 ] = _coeffs[ 0 ]; // w0
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // copy to reconstruction due to orthogonality
 
   } // Haar01
 

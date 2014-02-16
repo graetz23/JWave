@@ -45,33 +45,44 @@ public class Daubechies08 extends Wavelet {
 
     _motherWavelength = 16; // wavelength of mother wavelet
 
-    _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] = -0.00011747678400228192;
-    _scales[ 1 ] = 0.0006754494059985568;
-    _scales[ 2 ] = -0.0003917403729959771;
-    _scales[ 3 ] = -0.00487035299301066;
-    _scales[ 4 ] = 0.008746094047015655;
-    _scales[ 5 ] = 0.013981027917015516;
-    _scales[ 6 ] = -0.04408825393106472;
-    _scales[ 7 ] = -0.01736930100202211;
-    _scales[ 8 ] = 0.128747426620186;
-    _scales[ 9 ] = 0.00047248457399797254;
-    _scales[ 10 ] = -0.2840155429624281;
-    _scales[ 11 ] = -0.015829105256023893;
-    _scales[ 12 ] = 0.5853546836548691;
-    _scales[ 13 ] = 0.6756307362980128;
-    _scales[ 14 ] = 0.3128715909144659;
-    _scales[ 15 ] = 0.05441584224308161;
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = -0.00011747678400228192;
+    _scalingDeCom[ 1 ] = 0.0006754494059985568;
+    _scalingDeCom[ 2 ] = -0.0003917403729959771;
+    _scalingDeCom[ 3 ] = -0.00487035299301066;
+    _scalingDeCom[ 4 ] = 0.008746094047015655;
+    _scalingDeCom[ 5 ] = 0.013981027917015516;
+    _scalingDeCom[ 6 ] = -0.04408825393106472;
+    _scalingDeCom[ 7 ] = -0.01736930100202211;
+    _scalingDeCom[ 8 ] = 0.128747426620186;
+    _scalingDeCom[ 9 ] = 0.00047248457399797254;
+    _scalingDeCom[ 10 ] = -0.2840155429624281;
+    _scalingDeCom[ 11 ] = -0.015829105256023893;
+    _scalingDeCom[ 12 ] = 0.5853546836548691;
+    _scalingDeCom[ 13 ] = 0.6756307362980128;
+    _scalingDeCom[ 14 ] = 0.3128715909144659;
+    _scalingDeCom[ 15 ] = 0.05441584224308161;
 
     // building wavelet as orthogonal (orthonormal) space from
-    // scaling coefficients. Have a look into Alfred Haar's
-    // wavelet for understanding what is done. ;-)
-    _coeffs = new double[ _motherWavelength ];
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
+    _waveletDeCom = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ )
       if( i % 2 == 0 )
-        _coeffs[ i ] = _scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
       else
-        _coeffs[ i ] = -_scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // i
 
   } // Daubechies08
 

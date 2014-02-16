@@ -40,21 +40,6 @@ public class Haar01Orthogonal extends Wavelet {
    */
   public Haar01Orthogonal( ) {
 
-    _transformWavelength = 2; // minimal wavelength of input signal
-
-    _motherWavelength = 2; // wavelength of mother wavelet
-
-    _coeffs = new double[ _motherWavelength ]; // can be done in static way also; faster?
-
-    // Orthogonal wavelet coefficients; NOT orthonormal, due to missing sqrt(2.) 
-    _coeffs[ 0 ] = 1.; // w0 
-    _coeffs[ 1 ] = -1.; //  w1
-
-    _scales = new double[ _motherWavelength ]; // can be done in static way also; faster?
-
-    // Rule for constructing an orthogonal vector in R^2 -- scales
-    _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 
-    _scales[ 1 ] = _coeffs[ 0 ]; // w0
     //
     // Remark on mathematics (perpendicular, orthogonal, and orthonormal):
     // 
@@ -91,11 +76,36 @@ public class Haar01Orthogonal extends Wavelet {
     // allows for combining wavelet sub spaces of different dimension or even level.
 
     // Also possible coefficients -> change forward and reverse functions in common
-    // _coeffs[ 0 ] = .5; // w0 
-    // _coeffs[ 1 ] = -.5; // w1
-    // _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 
-    // _scales[ 1 ] = _coeffs[ 0 ]; // w0
+    // _waveletDeCom[ 0 ] = .5; // w0 
+    // _waveletDeCom[ 1 ] = -.5; // w1
+    // _scalingDeCom[ 0 ] = -_waveletDeCom[ 1 ]; // -w1 
+    // _scalingDeCom[ 1 ] = _waveletDeCom[ 0 ]; // w0
     // The ||.||_2 norm will shrink compared to the input signal's norm.
+
+    _transformWavelength = 2; // minimal wavelength of input signal
+
+    _motherWavelength = 2; // wavelength of mother wavelet
+
+    _waveletDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
+
+    // Orthogonal wavelet coefficients; NOT orthonormal, due to missing sqrt(2.) 
+    _waveletDeCom[ 0 ] = 1.; // w0 
+    _waveletDeCom[ 1 ] = -1.; //  w1
+
+    _scalingDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
+
+    // Rule for constructing an orthogonal vector in R^2 -- scales
+    _scalingDeCom[ 0 ] = -_waveletDeCom[ 1 ]; // -w1 
+    _scalingDeCom[ 1 ] = _waveletDeCom[ 0 ]; // w0
+
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // copy to reconstruction due to orthogonality
 
   } // Haar01
 
@@ -122,8 +132,8 @@ public class Haar01Orthogonal extends Wavelet {
         while( k >= arrHilb.length )
           k -= arrHilb.length; // circulate over arrays if scaling and wavelet are too long
 
-        arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy
-        arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter - details
+        arrHilb[ i ] += arrTime[ k ] * _scalingDeCom[ j ]; // low pass filter - energy
+        arrHilb[ i + h ] += arrTime[ k ] * _waveletDeCom[ j ]; // high pass filter - details
 
         // by each summation, "energy" is added, due to the orthogonal Haar Wavelet.
 
@@ -160,7 +170,8 @@ public class Haar01Orthogonal extends Wavelet {
           k -= arrTime.length; // circulate over arrays if scaling and wavelet are too long
 
         arrTime[ k ] +=
-            ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ] * _coeffs[ j ] ); // adding up details times energy
+            arrHilb[ i ] * _scalingReCon[ j ] + arrHilb[ i + h ]
+                * _waveletReCon[ j ]; // adding up details times energy
 
         // The factor .5 gets necessary here to reduce the added "energy" of the forward method
         arrTime[ k ] *= .5; // correction of the up sampled "energy" -- ||.||_2 euclidean norm
@@ -173,4 +184,4 @@ public class Haar01Orthogonal extends Wavelet {
 
   } // reverse
 
-} // class
+} // Haar01Orthogonal

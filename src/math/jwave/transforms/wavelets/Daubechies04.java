@@ -45,25 +45,36 @@ public class Daubechies04 extends Wavelet {
 
     _motherWavelength = 8; // wavelength of mother wavelet
 
-    _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] = -0.010597401784997278;
-    _scales[ 1 ] = 0.032883011666982945;
-    _scales[ 2 ] = 0.030841381835986965;
-    _scales[ 3 ] = -0.18703481171888114;
-    _scales[ 4 ] = -0.02798376941698385;
-    _scales[ 5 ] = 0.6308807679295904;
-    _scales[ 6 ] = 0.7148465705525415;
-    _scales[ 7 ] = 0.23037781330885523;
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = -0.010597401784997278;
+    _scalingDeCom[ 1 ] = 0.032883011666982945;
+    _scalingDeCom[ 2 ] = 0.030841381835986965;
+    _scalingDeCom[ 3 ] = -0.18703481171888114;
+    _scalingDeCom[ 4 ] = -0.02798376941698385;
+    _scalingDeCom[ 5 ] = 0.6308807679295904;
+    _scalingDeCom[ 6 ] = 0.7148465705525415;
+    _scalingDeCom[ 7 ] = 0.23037781330885523;
 
     // building wavelet as orthogonal (orthonormal) space from
-    // scaling coefficients. Have a look into Alfred Haar's
-    // wavelet for understanding what is done. ;-)
-    _coeffs = new double[ _motherWavelength ];
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
+    _waveletDeCom = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ )
       if( i % 2 == 0 )
-        _coeffs[ i ] = _scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
       else
-        _coeffs[ i ] = -_scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // i
 
   } // Daubechies04
 

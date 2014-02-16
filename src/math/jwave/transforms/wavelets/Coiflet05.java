@@ -45,47 +45,58 @@ public class Coiflet05 extends Wavelet {
 
     _motherWavelength = 30; // wavelength of mother wavelet
 
-    _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] = -9.517657273819165e-08;
-    _scales[ 1 ] = -1.6744288576823017e-07;
-    _scales[ 2 ] = 2.0637618513646814e-06;
-    _scales[ 3 ] = 3.7346551751414047e-06;
-    _scales[ 4 ] = -2.1315026809955787e-05;
-    _scales[ 5 ] = -4.134043227251251e-05;
-    _scales[ 6 ] = 0.00014054114970203437;
-    _scales[ 7 ] = 0.00030225958181306315;
-    _scales[ 8 ] = -0.0006381313430451114;
-    _scales[ 9 ] = -0.0016628637020130838;
-    _scales[ 10 ] = 0.0024333732126576722;
-    _scales[ 11 ] = 0.006764185448053083;
-    _scales[ 12 ] = -0.009164231162481846;
-    _scales[ 13 ] = -0.01976177894257264;
-    _scales[ 14 ] = 0.03268357426711183;
-    _scales[ 15 ] = 0.0412892087501817;
-    _scales[ 16 ] = -0.10557420870333893;
-    _scales[ 17 ] = -0.06203596396290357;
-    _scales[ 18 ] = 0.4379916261718371;
-    _scales[ 19 ] = 0.7742896036529562;
-    _scales[ 20 ] = 0.4215662066908515;
-    _scales[ 21 ] = -0.05204316317624377;
-    _scales[ 22 ] = -0.09192001055969624;
-    _scales[ 23 ] = 0.02816802897093635;
-    _scales[ 24 ] = 0.023408156785839195;
-    _scales[ 25 ] = -0.010131117519849788;
-    _scales[ 26 ] = -0.004159358781386048;
-    _scales[ 27 ] = 0.0021782363581090178;
-    _scales[ 28 ] = 0.00035858968789573785;
-    _scales[ 29 ] = -0.00021208083980379827;
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = -9.517657273819165e-08;
+    _scalingDeCom[ 1 ] = -1.6744288576823017e-07;
+    _scalingDeCom[ 2 ] = 2.0637618513646814e-06;
+    _scalingDeCom[ 3 ] = 3.7346551751414047e-06;
+    _scalingDeCom[ 4 ] = -2.1315026809955787e-05;
+    _scalingDeCom[ 5 ] = -4.134043227251251e-05;
+    _scalingDeCom[ 6 ] = 0.00014054114970203437;
+    _scalingDeCom[ 7 ] = 0.00030225958181306315;
+    _scalingDeCom[ 8 ] = -0.0006381313430451114;
+    _scalingDeCom[ 9 ] = -0.0016628637020130838;
+    _scalingDeCom[ 10 ] = 0.0024333732126576722;
+    _scalingDeCom[ 11 ] = 0.006764185448053083;
+    _scalingDeCom[ 12 ] = -0.009164231162481846;
+    _scalingDeCom[ 13 ] = -0.01976177894257264;
+    _scalingDeCom[ 14 ] = 0.03268357426711183;
+    _scalingDeCom[ 15 ] = 0.0412892087501817;
+    _scalingDeCom[ 16 ] = -0.10557420870333893;
+    _scalingDeCom[ 17 ] = -0.06203596396290357;
+    _scalingDeCom[ 18 ] = 0.4379916261718371;
+    _scalingDeCom[ 19 ] = 0.7742896036529562;
+    _scalingDeCom[ 20 ] = 0.4215662066908515;
+    _scalingDeCom[ 21 ] = -0.05204316317624377;
+    _scalingDeCom[ 22 ] = -0.09192001055969624;
+    _scalingDeCom[ 23 ] = 0.02816802897093635;
+    _scalingDeCom[ 24 ] = 0.023408156785839195;
+    _scalingDeCom[ 25 ] = -0.010131117519849788;
+    _scalingDeCom[ 26 ] = -0.004159358781386048;
+    _scalingDeCom[ 27 ] = 0.0021782363581090178;
+    _scalingDeCom[ 28 ] = 0.00035858968789573785;
+    _scalingDeCom[ 29 ] = -0.00021208083980379827;
 
     // building wavelet as orthogonal (orthonormal) space from
-    // scaling coefficients. Have a look into Alfred Haar's
-    // wavelet for understanding what is done. ;-)
-    _coeffs = new double[ _motherWavelength ];
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
+    _waveletDeCom = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ )
       if( i % 2 == 0 )
-        _coeffs[ i ] = _scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
       else
-        _coeffs[ i ] = -_scales[ ( _motherWavelength - 1 ) - i ];
+        _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // i
 
   } // Coiflet05
 

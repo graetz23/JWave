@@ -45,91 +45,22 @@ public class BiOrthogonal_1_1 extends Wavelet {
 
     _motherWavelength = 2; // wavelength of mother wavelet
 
-    _scalesDeCom = new double[ _motherWavelength ];
-    _scalesDeCom[ 0 ] = 0.7071067811865476;
-    _scalesDeCom[ 1 ] = 0.7071067811865476;
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = 0.7071067811865476;
+    _scalingDeCom[ 1 ] = 0.7071067811865476;
 
-    _coeffsDeCom = new double[ _motherWavelength ];
-    _coeffsDeCom[ 0 ] = -0.7071067811865476;
-    _coeffsDeCom[ 1 ] = 0.7071067811865476;
+    _waveletDeCom = new double[ _motherWavelength ];
+    _waveletDeCom[ 0 ] = -0.7071067811865476;
+    _waveletDeCom[ 1 ] = 0.7071067811865476;
 
-    _scalesReCon = new double[ _motherWavelength ];
-    _scalesReCon[ 0 ] = 0.7071067811865476;
-    _scalesReCon[ 1 ] = 0.7071067811865476;
+    _scalingReCon = new double[ _motherWavelength ];
+    _scalingReCon[ 0 ] = 0.7071067811865476;
+    _scalingReCon[ 1 ] = 0.7071067811865476;
 
-    _coeffsReCon = new double[ _motherWavelength ];
-    _coeffsReCon[ 0 ] = 0.7071067811865476;
-    _coeffsReCon[ 1 ] = -0.7071067811865476;
+    _waveletReCon = new double[ _motherWavelength ];
+    _waveletReCon[ 0 ] = 0.7071067811865476;
+    _waveletReCon[ 1 ] = -0.7071067811865476;
 
   } // BiOrthogonal_1_1
-
-  /*
-   * @author Christian Scheiblich
-   * @date 16.02.2014 10:26:31 (non-Javadoc)
-   * @see math.jwave.transforms.wavelets.Wavelet#forward(double[], int)
-   */
-  @Override public double[ ] forward( double[ ] arrTime, int arrTimeLength ) {
-
-    double[ ] arrHilb = new double[ arrTimeLength ];
-
-    int h = arrHilb.length >> 1; // .. -> 64 -> 32 -> 16 -> 8 -> 4 -> 2 -> 1
-
-    for( int i = 0; i < h; i++ ) {
-
-      arrHilb[ i ] = arrHilb[ i + h ] = 0.; // set to zero before sum up
-
-      for( int j = 0; j < _motherWavelength; j++ ) {
-
-        int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
-
-        while( k >= arrHilb.length )
-          k -= arrHilb.length; // circulate over arrays if scaling and wavelet are too long 
-
-        arrHilb[ i ] += arrTime[ k ] * _scalesDeCom[ j ]; // low pass filter - energy
-        arrHilb[ i + h ] += arrTime[ k ] * _coeffsDeCom[ j ]; // high pass filter - details
-
-      } // { scaling coefs | wavelet coefs }
-
-    } // h = 2^(p-1) | p = { 1, 2, .., N } 
-
-    return arrHilb;
-
-  } // forward
-
-  /*
-   * @author Christian Scheiblich
-   * @date 16.02.2014 10:26:31 (non-Javadoc)
-   * @see math.jwave.transforms.wavelets.Wavelet#reverse(double[], int)
-   */
-  @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
-
-    double[ ] arrTime = new double[ arrHilbLength ];
-
-    for( int i = 0; i < arrTime.length; i++ )
-      arrTime[ i ] = 0.;
-
-    int h = arrTime.length >> 1; // .. -> 64 -> 32 -> 16 -> 8 -> 4 -> 2 -> 1
-
-    for( int i = 0; i < h; i++ ) {
-
-      for( int j = 0; j < _motherWavelength; j++ ) {
-
-        int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
-
-        while( k >= arrTime.length )
-          k -= arrTime.length; // circulate over arrays if scaling and wavelet are too long
-
-        // adding up details times energy (approximation)
-        arrTime[ k ] +=
-            arrHilb[ i ] * _scalesReCon[ j ] + arrHilb[ i + h ]
-                * _coeffsReCon[ j ];
-
-      } // // { scaling coefs + wavelet coefs }
-
-    } // h = 2^(p-1) | p = { 1, 2, .., N }
-
-    return arrTime;
-
-  } // reverse
 
 } // BiOrthogonal_1_1

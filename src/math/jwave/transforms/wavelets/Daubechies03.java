@@ -46,28 +46,42 @@ public class Daubechies03 extends Wavelet {
     _motherWavelength = 6; // wavelength of mother wavelet
 
     // calculate the coefficients analytically 
-    _scales = new double[ _motherWavelength ]; // can be done in static way also; faster?
+    _scalingDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
     double sqrt10 = Math.sqrt( 10. );
     double constA = Math.sqrt( 5. + 2. * sqrt10 );
-    _scales[ 0 ] = ( 1.0 + 1. * sqrt10 + 1. * constA ) / 16.; // h0 = 0.47046720778416373
-    _scales[ 1 ] = ( 5.0 + 1. * sqrt10 + 3. * constA ) / 16.; // h1 = 1.1411169158314438
-    _scales[ 2 ] = ( 10. - 2. * sqrt10 + 2. * constA ) / 16.; // h2 = 0.6503650005262325
-    _scales[ 3 ] = ( 10. - 2. * sqrt10 - 2. * constA ) / 16.; // h3 = -0.1909344155683274
-    _scales[ 4 ] = ( 5.0 + 1. * sqrt10 - 3. * constA ) / 16.; // h4 = -0.1208322083103962
-    _scales[ 5 ] = ( 1.0 + 1. * sqrt10 - 1. * constA ) / 16.; // h5 = 0.049817499736883764
+    _scalingDeCom[ 0 ] = ( 1.0 + 1. * sqrt10 + 1. * constA ) / 16.; // h0 = 0.47046720778416373
+    _scalingDeCom[ 1 ] = ( 5.0 + 1. * sqrt10 + 3. * constA ) / 16.; // h1 = 1.1411169158314438
+    _scalingDeCom[ 2 ] = ( 10. - 2. * sqrt10 + 2. * constA ) / 16.; // h2 = 0.6503650005262325
+    _scalingDeCom[ 3 ] = ( 10. - 2. * sqrt10 - 2. * constA ) / 16.; // h3 = -0.1909344155683274
+    _scalingDeCom[ 4 ] = ( 5.0 + 1. * sqrt10 - 3. * constA ) / 16.; // h4 = -0.1208322083103962
+    _scalingDeCom[ 5 ] = ( 1.0 + 1. * sqrt10 - 1. * constA ) / 16.; // h5 = 0.049817499736883764
 
     // normalize orthogonal space => orthonormal space!!!  
     double sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )
     for( int i = 0; i < _motherWavelength; i++ )
-      _scales[ i ] /= sqrt02;
+      _scalingDeCom[ i ] /= sqrt02;
 
-    _coeffs = new double[ _motherWavelength ]; // can be done in static way also; faster?
-    _coeffs[ 0 ] = _scales[ 5 ]; //    h5
-    _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4
-    _coeffs[ 2 ] = _scales[ 3 ]; //    h3
-    _coeffs[ 3 ] = -_scales[ 2 ]; //  -h2
-    _coeffs[ 4 ] = _scales[ 1 ]; //    h1
-    _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
+    // building wavelet as orthogonal (orthonormal) space from
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
+    _waveletDeCom = new double[ _motherWavelength ];
+    _waveletDeCom[ 0 ] = _scalingDeCom[ 5 ]; //    h5
+    _waveletDeCom[ 1 ] = -_scalingDeCom[ 4 ]; //  -h4
+    _waveletDeCom[ 2 ] = _scalingDeCom[ 3 ]; //    h3
+    _waveletDeCom[ 3 ] = -_scalingDeCom[ 2 ]; //  -h2
+    _waveletDeCom[ 4 ] = _scalingDeCom[ 1 ]; //    h1
+    _waveletDeCom[ 5 ] = -_scalingDeCom[ 0 ]; //  -h0
+
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+
+      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _waveletReCon[ i ] = _waveletDeCom[ i ];
+
+    } // i
 
   } // Daubechies03
 
