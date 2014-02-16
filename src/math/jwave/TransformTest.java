@@ -32,6 +32,7 @@ import math.jwave.transforms.wavelets.Battle23;
 import math.jwave.transforms.wavelets.BiOrthogonal_1_1;
 import math.jwave.transforms.wavelets.BiOrthogonal_1_3;
 import math.jwave.transforms.wavelets.BiOrthogonal_1_5;
+import math.jwave.transforms.wavelets.BiOrthogonal_6_8;
 import math.jwave.transforms.wavelets.Coiflet01;
 import math.jwave.transforms.wavelets.Coiflet02;
 import math.jwave.transforms.wavelets.Coiflet03;
@@ -64,121 +65,155 @@ public class TransformTest {
    * Test method for {@link math.jwave.Transform#forward(double[])} and
    * {@link math.jwave.Transform#reverse(double[])}..
    */
-  @Test public void testRoundingDoubleArray( ) {
+  @Test public void testRounding( ) {
 
     System.out.println( "" );
     System.out.println( "testRounding" );
     System.out.println( "" );
 
-    double delta = 1.e-8;
+    int arrTimeLength = 1024; // 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, ..
 
-    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
+    double[ ] arrTime = new double[ arrTimeLength ];
+
+    for( int i = 0; i < arrTime.length; i++ )
+      arrTime[ i ] = 1.; // for calculating rounding error and to allow work for filters ;-) 
+
+    double delta = 1.e-10; // define a request rounding error that the test checks to be held
 
     try {
 
       System.out
-          .println( "testRounding Haar01 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Haar01 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Haar01( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies02 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Daubechies02 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Daubechies02( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies03 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Daubechies03 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Daubechies03( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies04 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Daubechies04 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Daubechies04( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies05 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Daubechies05 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Daubechies05( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies06 - 1000 transforms => rounding error: : 1.e-8" );
+          .println( "testRounding Daubechies06 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Daubechies06( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies07 - 1000 transforms => rounding error: : 1.e-8" );
+          .println( "testRounding Daubechies07 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Daubechies07( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies08 - 1000 transforms => rounding error: : 1.e-8" );
+          .println( "testRounding Daubechies08 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Daubechies08( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies09 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Daubechies09 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Daubechies09( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies10 - 1000 transforms => rounding error: : 1.e-8" );
+          .println( "testRounding Daubechies10 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Daubechies10( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Legendre01 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Legendre01 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Legendre01( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Legendre02 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Legendre02 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Legendre02( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Legendre03 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Legendre03 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Legendre03( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Coiflet01 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Coiflet01 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Coiflet01( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Coiflet02 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Coiflet02 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Coiflet02( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Coiflet03 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Coiflet03 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Coiflet03( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Coiflet04 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Coiflet04 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Coiflet04( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Coiflet05 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding Coiflet05 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new Coiflet05( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding BiOrthogonal_1_1 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding BiOrthogonal_1_1 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal_1_1( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding BiOrthogonal_1_3 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding BiOrthogonal_1_3 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal_1_3( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding BiOrthogonal_1_5 - 1000 transforms => rounding error: 1.e-8" );
+          .println( "testRounding BiOrthogonal_1_5 - 1000 transforms => rounding error: "
+              + delta );
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal_1_5( ), delta );
+      System.out.println( "" );
+
+      // TODO: Implement all other BiOrthogonal filters and test here!
+
+      System.out
+          .println( "testRounding BiOrthogonal_6_8 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal_6_8( ), delta );
       System.out.println( "" );
 
       // System.out.println( "testRounding Battle23" );
@@ -192,7 +227,73 @@ public class TransformTest {
 
     } // try
 
-  }
+  } // testRounding
+
+  /**
+   * Test method to check the rounding error of several forward and reverse
+   * transforms using the Fast Wavelet Transform algorithm and any given Wavelet
+   * object as input.
+   * 
+   * @date 10.02.2010 10:28:00
+   * @author Christian Scheiblich
+   * @throws JWaveException
+   */
+  public void testFastWaveletTransformRounding( double[ ] arr, Wavelet wavelet,
+      double delta ) throws JWaveException {
+
+    long noOfSteps = 10000000;
+
+    noOfSteps = 1000;
+
+    double[ ] arrTime = arr;
+
+    showTime( arrTime );
+
+    double[ ] arrTimeRound = new double[ arrTime.length ];
+    for( int c = 0; c < arrTime.length; c++ )
+      arrTimeRound[ c ] = arrTime[ c ];
+
+    Transform t = new Transform( new FastWaveletTransform( wavelet ) );
+
+    System.out.println( "" );
+    System.out.println( "" );
+    System.out.print( "Performing: " + noOfSteps
+        + " forward and reverse transforms ..." );
+
+    for( long s = 0; s < noOfSteps; s++ )
+      arrTimeRound = t.reverse( t.forward( arrTimeRound ) );
+
+    System.out.println( "" );
+    System.out.println( "" );
+
+    assertArray( arrTime, arrTimeRound, delta );
+
+    System.out.println( "Input ..." );
+    showTime( arrTime );
+    System.out.println( "" );
+
+    System.out.println( "Result ..." );
+    showTime( arrTimeRound );
+    System.out.println( "" );
+
+    double[ ] arrTimeErrorAbs = new double[ arrTimeRound.length ];
+    for( int c = 0; c < arrTimeRound.length; c++ )
+      arrTimeErrorAbs[ c ] = Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
+
+    System.out.println( "Absolute error" );
+    showTime( arrTimeErrorAbs );
+    System.out.println( "" );
+
+    double[ ] arrTimeErrorRel = new double[ arrTimeRound.length ];
+    for( int c = 0; c < arrTimeRound.length; c++ )
+      arrTimeErrorRel[ c ] =
+          Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] ) * 100. / arrTime[ c ] );
+
+    System.out.println( "Relative error [%] ..." );
+    showTime( arrTimeErrorRel );
+    System.out.println( "" );
+
+  } // testFastWaveletTransformRounding
 
   /**
    * Test method for {@link math.jwave.Transform#forward(double[])}.
@@ -577,72 +678,6 @@ public class TransformTest {
     } // try
 
   } // testReverseDoubleArrayArrayArray
-
-  /**
-   * Test method to check the rounding error of several forward and reverse
-   * transforms using the Fast Wavelet Transform algorithm and any given Wavelet
-   * object as input.
-   * 
-   * @date 10.02.2010 10:28:00
-   * @author Christian Scheiblich
-   * @throws JWaveException
-   */
-  public void testFastWaveletTransformRounding( double[ ] arr, Wavelet wavelet,
-      double delta ) throws JWaveException {
-
-    long noOfSteps = 10000000;
-
-    noOfSteps = 1000;
-
-    double[ ] arrTime = arr;
-
-    showTime( arrTime );
-
-    double[ ] arrTimeRound = new double[ arrTime.length ];
-    for( int c = 0; c < arrTime.length; c++ )
-      arrTimeRound[ c ] = arrTime[ c ];
-
-    Transform t = new Transform( new FastWaveletTransform( wavelet ) );
-
-    System.out.println( "" );
-    System.out.println( "" );
-    System.out.print( "Performing: " + noOfSteps
-        + " forward and reverse transforms ..." );
-
-    for( long s = 0; s < noOfSteps; s++ )
-      arrTimeRound = t.reverse( t.forward( arrTimeRound ) );
-
-    System.out.println( "" );
-    System.out.println( "" );
-
-    assertArray( arrTime, arrTimeRound, delta );
-
-    System.out.println( "Input ..." );
-    showTime( arrTime );
-    System.out.println( "" );
-
-    System.out.println( "Result ..." );
-    showTime( arrTimeRound );
-    System.out.println( "" );
-
-    double[ ] arrTimeErrorAbs = new double[ arrTimeRound.length ];
-    for( int c = 0; c < arrTimeRound.length; c++ )
-      arrTimeErrorAbs[ c ] = Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
-
-    System.out.println( "Absolute error" );
-    showTime( arrTimeErrorAbs );
-    System.out.println( "" );
-
-    double[ ] arrTimeErrorRel = new double[ arrTimeRound.length ];
-    for( int c = 0; c < arrTimeRound.length; c++ )
-      arrTimeErrorRel[ c ] =
-          Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] ) * 100. / arrTime[ c ] );
-
-    System.out.println( "Relative error [%] ..." );
-    showTime( arrTimeErrorRel );
-    System.out.println( "" );
-
-  } // testFastWaveletTransformRounding
 
   public void
       assertArray( Complex[ ] expected, Complex[ ] actual, double delta ) {
