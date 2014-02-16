@@ -29,7 +29,7 @@ package math.jwave.transforms.wavelets;
  * @date 03.06.2010 09:47:24
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-public class Haar01Orthogonal extends Wavelet {
+public class Haar1Orthogonal extends Wavelet {
 
   /**
    * Constructor setting up the orthogonal Haar scaling coefficients and
@@ -40,7 +40,7 @@ public class Haar01Orthogonal extends Wavelet {
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
-  public Haar01Orthogonal( ) {
+  public Haar1Orthogonal( ) {
 
     // Remark on mathematics (perpendicular, orthogonal, and orthonormal):
     // 
@@ -148,7 +148,7 @@ public class Haar01Orthogonal extends Wavelet {
 
     } // i
 
-  } // Haar01
+  } // Haar1
 
   /**
    * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
@@ -193,4 +193,4 @@ public class Haar01Orthogonal extends Wavelet {
 
   } // reverse
 
-} // Haar01Orthogonal
+} // Haar1Orthogonal

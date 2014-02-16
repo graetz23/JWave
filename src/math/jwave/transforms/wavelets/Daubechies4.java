@@ -24,43 +24,39 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * BiOrthogonal Wavelet of type 1.3 - One vanishing moment in wavelet function
- * and one vanishing moment in scaling function
+ * Ingrid Daubechies' orthonormal wavelet of eight coefficients and the scales;
+ * normed, due to ||*||2 - euclidean norm.
  * 
+ * @date 26.03.2010 07:35:31
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.02.2014 10:15:11
  */
-public class BiOrthogonal_1_1 extends Wavelet {
+public class Daubechies4 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
-   * http://wavelets.pybytes.com/wavelet/bior1.1/ Thanks!
+   * http://wavelets.pybytes.com/wavelet/db4/ Thanks!
    * 
+   * @date 26.03.2010 07:35:31
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.02.2014 10:15:11
    */
-  public BiOrthogonal_1_1( ) {
+  public Daubechies4( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 2; // wavelength of mother wavelet
+    _motherWavelength = 8; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = 0.7071067811865476;
-    _scalingDeCom[ 1 ] = 0.7071067811865476;
+    _scalingDeCom[ 0 ] = -0.010597401784997278;
+    _scalingDeCom[ 1 ] = 0.032883011666982945;
+    _scalingDeCom[ 2 ] = 0.030841381835986965;
+    _scalingDeCom[ 3 ] = -0.18703481171888114;
+    _scalingDeCom[ 4 ] = -0.02798376941698385;
+    _scalingDeCom[ 5 ] = 0.6308807679295904;
+    _scalingDeCom[ 6 ] = 0.7148465705525415;
+    _scalingDeCom[ 7 ] = 0.23037781330885523;
 
-    _waveletDeCom = new double[ _motherWavelength ];
-    _waveletDeCom[ 0 ] = -0.7071067811865476;
-    _waveletDeCom[ 1 ] = 0.7071067811865476;
+    _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
-    _scalingReCon = new double[ _motherWavelength ];
-    _scalingReCon[ 0 ] = 0.7071067811865476;
-    _scalingReCon[ 1 ] = 0.7071067811865476;
+  } // Daubechies4
 
-    _waveletReCon = new double[ _motherWavelength ];
-    _waveletReCon[ 0 ] = 0.7071067811865476;
-    _waveletReCon[ 1 ] = -0.7071067811865476;
-
-  } // BiOrthogonal_1_1
-
-} // BiOrthogonal_1_1
+} // class

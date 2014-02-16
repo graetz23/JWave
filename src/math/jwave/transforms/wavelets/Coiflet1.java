@@ -24,42 +24,41 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Legendre's orthonormal wavelet of six coefficients and the scales; normed,
- * due to ||*||2 - euclidean norm.
+ * Ingrid Daubechies' orthonormal Coiflet wavelet of six coefficients.
  * 
- * @date 03.06.2010 22:04:35
  * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @date 15.02.2014 22:27:55
  */
-public class Legendre03 extends Wavelet {
+public class Coiflet1 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Legendre6 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
+   * Constructor calculating analytically the orthogonal Coiflet wavelet of 6
+   * coefficients, orthonormalizes them (normed, due to ||*||2 - euclidean
+   * norm), and spreads the scaling coefficients afterwards; .
    * 
-   * @date 03.06.2010 22:04:36
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 15.02.2014 22:27:55
    */
-  public Legendre03( ) {
+  public Coiflet1( ) {
 
-    _transformWavelength = 2; // minimal wavelength of input signal 
+    _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 6; // wavelength of mother wavelet
 
-    _scalingDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
-    _scalingDeCom[ 0 ] = -63. / 128.; // h0
-    _scalingDeCom[ 1 ] = -35. / 128.; // h1
-    _scalingDeCom[ 2 ] = -30. / 128.; // h2
-    _scalingDeCom[ 3 ] = -30. / 128.; // h3
-    _scalingDeCom[ 4 ] = -35. / 128.; // h4
-    _scalingDeCom[ 5 ] = -63. / 128.; // h5
+    double sqrt02 = 1.4142135623730951;
+    double sqrt15 = Math.sqrt( 15. );
 
-    // normalize orthogonal space => orthonormal space!!!  
-    double sqrt02 = Math.sqrt( 2. ) ; // 1.4142135623730951
-    for( int i = 0; i < _motherWavelength; i++ )
-      _scalingDeCom[ i ] /= sqrt02;
+    // these coefficients are already orthonormal
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = sqrt02 * ( sqrt15 - 3. ) / 32.; //  -0.01565572813546454;
+    _scalingDeCom[ 1 ] = sqrt02 * ( 1. - sqrt15 ) / 32.; // -0.0727326195128539;
+    _scalingDeCom[ 2 ] = sqrt02 * ( 6. - 2 * sqrt15 ) / 32.; //  0.38486484686420286;
+    _scalingDeCom[ 3 ] = sqrt02 * ( 2. * sqrt15 + 6. ) / 32.; // 0.8525720202122554;
+    _scalingDeCom[ 4 ] = sqrt02 * ( sqrt15 + 13. ) / 32.; // 0.3378976624578092;
+    _scalingDeCom[ 5 ] = sqrt02 * ( 9. - sqrt15 ) / 32.; //-0.0727326195128539;
 
     _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
-  } // Legendre03
+  } // Coiflet1
 
 } // class

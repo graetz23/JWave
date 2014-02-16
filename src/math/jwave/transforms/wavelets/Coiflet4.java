@@ -29,7 +29,7 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.02.2014 01:46:10
  */
-public class Coiflet04 extends Wavelet {
+public class Coiflet4 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
@@ -38,7 +38,7 @@ public class Coiflet04 extends Wavelet {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 01:46:11
    */
-  public Coiflet04( ) {
+  public Coiflet4( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
@@ -72,6 +72,6 @@ public class Coiflet04 extends Wavelet {
 
     _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
-  } // Coiflet04
+  } // Coiflet4
 
-} // Coiflet04
+} // Coiflet4

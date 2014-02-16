@@ -24,32 +24,34 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Legendre's orthonormal wavelet of four coefficients and the scales; normed,
+ * Legendre's orthonormal wavelet of six coefficients and the scales; normed,
  * due to ||*||2 - euclidean norm.
  * 
- * @date 03.06.2010 21:19:04
+ * @date 03.06.2010 22:04:35
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-public class Legendre02 extends Wavelet {
+public class Legendre3 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Legendre4 wavelet coeffs and the
+   * Constructor setting up the orthonormal Legendre6 wavelet coeffs and the
    * scales; normed, due to ||*||2 - euclidean norm.
    * 
-   * @date 03.06.2010 21:19:04
+   * @date 03.06.2010 22:04:36
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
-  public Legendre02( ) {
+  public Legendre3( ) {
 
-    _transformWavelength = 2; // minimal wavelength of input signal - TODO: test 2 ! 
+    _transformWavelength = 2; // minimal wavelength of input signal 
 
-    _motherWavelength = 4; // wavelength of mother wavelet
+    _motherWavelength = 6; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
-    _scalingDeCom[ 0 ] = -5. / 8.; // s0
-    _scalingDeCom[ 1 ] = -3. / 8.; // s1
-    _scalingDeCom[ 2 ] = -3. / 8.; // s2
-    _scalingDeCom[ 3 ] = -5. / 8.; // s3
+    _scalingDeCom[ 0 ] = -63. / 128.; // h0
+    _scalingDeCom[ 1 ] = -35. / 128.; // h1
+    _scalingDeCom[ 2 ] = -30. / 128.; // h2
+    _scalingDeCom[ 3 ] = -30. / 128.; // h3
+    _scalingDeCom[ 4 ] = -35. / 128.; // h4
+    _scalingDeCom[ 5 ] = -63. / 128.; // h5
 
     // normalize orthogonal space => orthonormal space!!!  
     double sqrt02 = Math.sqrt( 2. ) ; // 1.4142135623730951
@@ -58,6 +60,6 @@ public class Legendre02 extends Wavelet {
 
     _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
-  } // Legendre02
+  } // Legendre3
 
 } // class

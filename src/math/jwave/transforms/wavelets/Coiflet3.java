@@ -24,47 +24,48 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Ingrid Daubechies' orthonormal wavelet of 16 coefficients and the scales;
- * normed, due to ||*||2 - euclidean norm.
+ * Ingrid Daubechies' orthonormal Coiflet wavelet of 18 coefficients.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.02.2014 00:30:05
+ * @date 15.02.2014 22:58:59
  */
-public class Daubechies08 extends Wavelet {
+public class Coiflet3 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
-   * http://wavelets.pybytes.com/wavelet/db8/ Thanks!
+   * http://wavelets.pybytes.com/wavelet/coif3/ Thanks!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.02.2014 00:30:05
+   * @date 15.02.2014 22:58:59
    */
-  public Daubechies08( ) {
+  public Coiflet3( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 16; // wavelength of mother wavelet
+    _motherWavelength = 18; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = -0.00011747678400228192;
-    _scalingDeCom[ 1 ] = 0.0006754494059985568;
-    _scalingDeCom[ 2 ] = -0.0003917403729959771;
-    _scalingDeCom[ 3 ] = -0.00487035299301066;
-    _scalingDeCom[ 4 ] = 0.008746094047015655;
-    _scalingDeCom[ 5 ] = 0.013981027917015516;
-    _scalingDeCom[ 6 ] = -0.04408825393106472;
-    _scalingDeCom[ 7 ] = -0.01736930100202211;
-    _scalingDeCom[ 8 ] = 0.128747426620186;
-    _scalingDeCom[ 9 ] = 0.00047248457399797254;
-    _scalingDeCom[ 10 ] = -0.2840155429624281;
-    _scalingDeCom[ 11 ] = -0.015829105256023893;
-    _scalingDeCom[ 12 ] = 0.5853546836548691;
-    _scalingDeCom[ 13 ] = 0.6756307362980128;
-    _scalingDeCom[ 14 ] = 0.3128715909144659;
-    _scalingDeCom[ 15 ] = 0.05441584224308161;
+    _scalingDeCom[ 0 ] = -3.459977283621256e-05;
+    _scalingDeCom[ 1 ] = -7.098330313814125e-05;
+    _scalingDeCom[ 2 ] = 0.0004662169601128863;
+    _scalingDeCom[ 3 ] = 0.0011175187708906016;
+    _scalingDeCom[ 4 ] = -0.0025745176887502236;
+    _scalingDeCom[ 5 ] = -0.00900797613666158;
+    _scalingDeCom[ 6 ] = 0.015880544863615904;
+    _scalingDeCom[ 7 ] = 0.03455502757306163;
+    _scalingDeCom[ 8 ] = -0.08230192710688598;
+    _scalingDeCom[ 9 ] = -0.07179982161931202;
+    _scalingDeCom[ 10 ] = 0.42848347637761874;
+    _scalingDeCom[ 11 ] = 0.7937772226256206;
+    _scalingDeCom[ 12 ] = 0.4051769024096169;
+    _scalingDeCom[ 13 ] = -0.06112339000267287;
+    _scalingDeCom[ 14 ] = -0.0657719112818555;
+    _scalingDeCom[ 15 ] = 0.023452696141836267;
+    _scalingDeCom[ 16 ] = 0.007782596427325418;
+    _scalingDeCom[ 17 ] = -0.003793512864491014;
 
     _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
-  } // Daubechies08
+  } // Coiflet3
 
-} // Daubechies08
+} // Coiflet3

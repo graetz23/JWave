@@ -29,17 +29,17 @@ package math.jwave.transforms.wavelets;
  * @date 08.02.2010 12:46:34
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-public class Haar01 extends Wavelet {
+public class Haar1 extends Wavelet {
 
   /**
    * Constructor setting up the orthonormal Haar wavelet coefficients and the
    * scaling coefficients; normed, due to ||*||_2 -- euclidean norm. See the
-   * orthogonal version in class Haar01Orthogonal for more details.
+   * orthogonal version in class Haar1Orthogonal for more details.
    * 
    * @date 08.02.2010 12:46:34
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
-  public Haar01( ) {
+  public Haar1( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
@@ -62,7 +62,7 @@ public class Haar01 extends Wavelet {
       _waveletReCon[ i ] = _waveletDeCom[ i ];
     } // i
 
-  } // Haar01
+  } // Haar1
 
   /**
    * The forward wavelet transform using the Alfred Haar's wavelet.

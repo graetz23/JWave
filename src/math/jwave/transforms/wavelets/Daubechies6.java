@@ -24,39 +24,43 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Ingrid Daubechies' orthonormal wavelet of eight coefficients and the scales;
+ * Ingrid Daubechies' orthonormal wavelet of 12 coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
  * 
- * @date 26.03.2010 07:35:31
  * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @date 16.02.2014 00:21:31
  */
-public class Daubechies04 extends Wavelet {
+public class Daubechies6 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
-   * http://wavelets.pybytes.com/wavelet/db4/ Thanks!
+   * http://wavelets.pybytes.com/wavelet/db6/ Thanks!
    * 
-   * @date 26.03.2010 07:35:31
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.02.2014 00:21:31
    */
-  public Daubechies04( ) {
+  public Daubechies6( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 8; // wavelength of mother wavelet
+    _motherWavelength = 12; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = -0.010597401784997278;
-    _scalingDeCom[ 1 ] = 0.032883011666982945;
-    _scalingDeCom[ 2 ] = 0.030841381835986965;
-    _scalingDeCom[ 3 ] = -0.18703481171888114;
-    _scalingDeCom[ 4 ] = -0.02798376941698385;
-    _scalingDeCom[ 5 ] = 0.6308807679295904;
-    _scalingDeCom[ 6 ] = 0.7148465705525415;
-    _scalingDeCom[ 7 ] = 0.23037781330885523;
+    _scalingDeCom[ 0 ] = -0.00107730108499558;
+    _scalingDeCom[ 1 ] = 0.004777257511010651;
+    _scalingDeCom[ 2 ] = 0.0005538422009938016;
+    _scalingDeCom[ 3 ] = -0.031582039318031156;
+    _scalingDeCom[ 4 ] = 0.02752286553001629;
+    _scalingDeCom[ 5 ] = 0.09750160558707936;
+    _scalingDeCom[ 6 ] = -0.12976686756709563;
+    _scalingDeCom[ 7 ] = -0.22626469396516913;
+    _scalingDeCom[ 8 ] = 0.3152503517092432;
+    _scalingDeCom[ 9 ] = 0.7511339080215775;
+    _scalingDeCom[ 10 ] = 0.4946238903983854;
+    _scalingDeCom[ 11 ] = 0.11154074335008017;
 
     _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
-  } // Daubechies04
+  } // Daubechies6
 
-} // class
+} // Daubechies6

@@ -24,34 +24,37 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Ingrid Daubechies' orthonormal wavelet of four coefficients and the scales;
+ * Ingrid Daubechies' orthonormal wavelet of six coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
  * 
- * @date 10.02.2010 15:42:45
+ * @date 15.02.2014 22:23:20
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-public class Daubechies02 extends Wavelet {
+public class Daubechies3 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Daubechie4 wavelet coeffs and the
+   * Constructor setting up the orthonormal Daubechie6 wavelet coeffs and the
    * scales; normed, due to ||*||2 - euclidean norm.
    * 
-   * @date 10.02.2010 15:42:45
+   * @date 25.03.2010 14:03:20
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
-  public Daubechies02( ) {
+  public Daubechies3( ) {
 
-    _transformWavelength = 2; // minimal wavelength of input signal - TODO: test 2 !!!
+    _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 4; // wavelength of mother wavelet
+    _motherWavelength = 6; // wavelength of mother wavelet
 
     // calculate the coefficients analytically 
-    double sqrt3 = Math.sqrt( 3. ); // 1.7320508075688772
     _scalingDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
-    _scalingDeCom[ 0 ] = ( ( 1. + sqrt3 ) / 4. ); // s0
-    _scalingDeCom[ 1 ] = ( ( 3. + sqrt3 ) / 4. ); // s1
-    _scalingDeCom[ 2 ] = ( ( 3. - sqrt3 ) / 4. ); // s2
-    _scalingDeCom[ 3 ] = ( ( 1. - sqrt3 ) / 4. ); // s3
+    double sqrt10 = Math.sqrt( 10. );
+    double constA = Math.sqrt( 5. + 2. * sqrt10 );
+    _scalingDeCom[ 0 ] = ( 1.0 + 1. * sqrt10 + 1. * constA ) / 16.; // h0 = 0.47046720778416373
+    _scalingDeCom[ 1 ] = ( 5.0 + 1. * sqrt10 + 3. * constA ) / 16.; // h1 = 1.1411169158314438
+    _scalingDeCom[ 2 ] = ( 10. - 2. * sqrt10 + 2. * constA ) / 16.; // h2 = 0.6503650005262325
+    _scalingDeCom[ 3 ] = ( 10. - 2. * sqrt10 - 2. * constA ) / 16.; // h3 = -0.1909344155683274
+    _scalingDeCom[ 4 ] = ( 5.0 + 1. * sqrt10 - 3. * constA ) / 16.; // h4 = -0.1208322083103962
+    _scalingDeCom[ 5 ] = ( 1.0 + 1. * sqrt10 - 1. * constA ) / 16.; // h5 = 0.049817499736883764
 
     // normalize orthogonal space => orthonormal space!!!  
     double sqrt02 = Math.sqrt( 2. ) ; // 1.4142135623730951
@@ -60,6 +63,6 @@ public class Daubechies02 extends Wavelet {
 
     _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
-  } // Daubechies02
+  } // Daubechies3
 
 } // class

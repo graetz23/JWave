@@ -3,7 +3,7 @@
  * @author tucker
  * 16.02.2014 11:42:09
  *
- * BiOrthogonal_6_8.java
+ * BiOrthogonal68.java
  */
 package math.jwave.transforms.wavelets;
 
@@ -14,7 +14,7 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.02.2014 11:42:09
  */
-public class BiOrthogonal_6_8 extends Wavelet {
+public class BiOrthogonal68 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
@@ -23,7 +23,7 @@ public class BiOrthogonal_6_8 extends Wavelet {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 11:42:09
    */
-  public BiOrthogonal_6_8( ) {
+  public BiOrthogonal68( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
@@ -109,6 +109,6 @@ public class BiOrthogonal_6_8 extends Wavelet {
     _waveletReCon[ 16 ] = -0.0019142861290887667;
     _waveletReCon[ 17 ] = -0.0019088317364812906;
 
-  } // BiOrthogonal_6_8
+  } // BiOrthogonal68
 
-} // BiOrthogonal_6_8
+} // BiOrthogonal68

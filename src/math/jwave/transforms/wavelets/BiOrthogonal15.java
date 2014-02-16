@@ -30,7 +30,7 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.02.2014 11:27:59
  */
-public class BiOrthogonal_1_5 extends Wavelet {
+public class BiOrthogonal15 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
@@ -39,7 +39,7 @@ public class BiOrthogonal_1_5 extends Wavelet {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 11:27:59
    */
-  public BiOrthogonal_1_5( ) {
+  public BiOrthogonal15( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
@@ -93,6 +93,6 @@ public class BiOrthogonal_1_5 extends Wavelet {
     _waveletReCon[ 8 ] = -0.01657281518405971;
     _waveletReCon[ 9 ] = -0.01657281518405971;
 
-  } // BiOrthogonal_1_5
+  } // BiOrthogonal15
   
-} // BiOrthogonal_1_5
+} // BiOrthogonal15
