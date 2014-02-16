@@ -45,7 +45,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * @date 10.02.2010 08:10:42
    * @author Christian Scheiblich
    * @param wavelet
-   *          object of type Wavelet; Haar01, Daubechies02, Coiflet03, ...
+   *          object of type Wavelet; Haar01, Daubechies02, Coiflet01, ...
    * @throws JWaveFailure
    *           if object is null or not of type wavelet
    * @throws JWaveException

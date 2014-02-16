@@ -24,46 +24,58 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Constructor setting up the orthonormal Coiflet wavelet of 18 coefficients and
+ * Constructor setting up the orthonormal Coiflet wavelet of 30 coefficients and
  * the scales; normed, due to ||*||2 - euclidean norm.
  * 
  * @author Christian Scheiblich
- * @date 15.02.2014 22:58:59
+ * @date 16.02.2014 01:49:39
  */
-public class Coiflet03 extends Wavelet {
+public class Coiflet05 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
-   * http://wavelets.pybytes.com/wavelet/coif3/ Thanks!
+   * http://wavelets.pybytes.com/wavelet/coif5/ Thanks!
    * 
    * @author Christian Scheiblich
-   * @date 15.02.2014 22:58:59
+   * @date 16.02.2014 01:49:39
    */
-  public Coiflet03( ) {
+  public Coiflet05( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 18; // wavelength of mother wavelet
+    _motherWavelength = 30; // wavelength of mother wavelet
 
     _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] = -3.459977283621256e-05;
-    _scales[ 1 ] = -7.098330313814125e-05;
-    _scales[ 2 ] = 0.0004662169601128863;
-    _scales[ 3 ] = 0.0011175187708906016;
-    _scales[ 4 ] = -0.0025745176887502236;
-    _scales[ 5 ] = -0.00900797613666158;
-    _scales[ 6 ] = 0.015880544863615904;
-    _scales[ 7 ] = 0.03455502757306163;
-    _scales[ 8 ] = -0.08230192710688598;
-    _scales[ 9 ] = -0.07179982161931202;
-    _scales[ 10 ] = 0.42848347637761874;
-    _scales[ 11 ] = 0.7937772226256206;
-    _scales[ 12 ] = 0.4051769024096169;
-    _scales[ 13 ] = -0.06112339000267287;
-    _scales[ 14 ] = -0.0657719112818555;
-    _scales[ 15 ] = 0.023452696141836267;
-    _scales[ 16 ] = 0.007782596427325418;
-    _scales[ 17 ] = -0.003793512864491014;
+    _scales[ 0 ] = -9.517657273819165e-08;
+    _scales[ 1 ] = -1.6744288576823017e-07;
+    _scales[ 2 ] = 2.0637618513646814e-06;
+    _scales[ 3 ] = 3.7346551751414047e-06;
+    _scales[ 4 ] = -2.1315026809955787e-05;
+    _scales[ 5 ] = -4.134043227251251e-05;
+    _scales[ 6 ] = 0.00014054114970203437;
+    _scales[ 7 ] = 0.00030225958181306315;
+    _scales[ 8 ] = -0.0006381313430451114;
+    _scales[ 9 ] = -0.0016628637020130838;
+    _scales[ 10 ] = 0.0024333732126576722;
+    _scales[ 11 ] = 0.006764185448053083;
+    _scales[ 12 ] = -0.009164231162481846;
+    _scales[ 13 ] = -0.01976177894257264;
+    _scales[ 14 ] = 0.03268357426711183;
+    _scales[ 15 ] = 0.0412892087501817;
+    _scales[ 16 ] = -0.10557420870333893;
+    _scales[ 17 ] = -0.06203596396290357;
+    _scales[ 18 ] = 0.4379916261718371;
+    _scales[ 19 ] = 0.7742896036529562;
+    _scales[ 20 ] = 0.4215662066908515;
+    _scales[ 21 ] = -0.05204316317624377;
+    _scales[ 22 ] = -0.09192001055969624;
+    _scales[ 23 ] = 0.02816802897093635;
+    _scales[ 24 ] = 0.023408156785839195;
+    _scales[ 25 ] = -0.010131117519849788;
+    _scales[ 26 ] = -0.004159358781386048;
+    _scales[ 27 ] = 0.0021782363581090178;
+    _scales[ 28 ] = 0.00035858968789573785;
+    _scales[ 29 ] = -0.00021208083980379827;
 
     // building wavelet as orthogonal (orthonormal) space from
     // scaling coefficients. Have a look into Alfred Haar's
@@ -75,6 +87,6 @@ public class Coiflet03 extends Wavelet {
       else
         _coeffs[ i ] = -_scales[ ( _motherWavelength - 1 ) - i ];
 
-  } // Coiflet03
+  } // Coiflet05
 
-} // Coiflet03
+} // Coiflet05

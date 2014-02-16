@@ -42,24 +42,13 @@ public class Daubechies03 extends Wavelet {
   public Daubechies03( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
-    
+
     _motherWavelength = 6; // wavelength of mother wavelet
 
-    double sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )
+    // calculate the coefficients analytically 
+    _scales = new double[ _motherWavelength ]; // can be done in static way also; faster?
     double sqrt10 = Math.sqrt( 10. );
     double constA = Math.sqrt( 5. + 2. * sqrt10 );
-
-    _scales = new double[ _motherWavelength ]; // can be done in static way also; faster?
-    
-    // taken from http://de.wikipedia.org/wiki/Daubechies-Wavelets
-    //
-    // _scales[ 0 ] = 0.47046721;
-    // _scales[ 1 ] = 1.14111692;
-    // _scales[ 2 ] = 0.650365;
-    // _scales[ 3 ] = -0.19093442;
-    // _scales[ 4 ] = -0.12083221;
-    // _scales[ 5 ] = 0.0498175;
-
     _scales[ 0 ] = ( 1.0 + 1. * sqrt10 + 1. * constA ) / 16.; // h0 = 0.47046720778416373
     _scales[ 1 ] = ( 5.0 + 1. * sqrt10 + 3. * constA ) / 16.; // h1 = 1.1411169158314438
     _scales[ 2 ] = ( 10. - 2. * sqrt10 + 2. * constA ) / 16.; // h2 = 0.6503650005262325
@@ -68,11 +57,11 @@ public class Daubechies03 extends Wavelet {
     _scales[ 5 ] = ( 1.0 + 1. * sqrt10 - 1. * constA ) / 16.; // h5 = 0.049817499736883764
 
     // normalize orthogonal space => orthonormal space!!!  
+    double sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )
     for( int i = 0; i < _motherWavelength; i++ )
       _scales[ i ] /= sqrt02;
 
     _coeffs = new double[ _motherWavelength ]; // can be done in static way also; faster?
-
     _coeffs[ 0 ] = _scales[ 5 ]; //    h5
     _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4
     _coeffs[ 2 ] = _scales[ 3 ]; //    h3

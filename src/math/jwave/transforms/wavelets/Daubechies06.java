@@ -33,6 +33,9 @@ package math.jwave.transforms.wavelets;
 public class Daubechies06 extends Wavelet {
 
   /**
+   * Already orthonormal coefficients taken from Filip Wasilewski's webpage
+   * http://wavelets.pybytes.com/wavelet/db6/ Thanks!
+   * 
    * @author Christian Scheiblich
    * @date 16.02.2014 00:21:31
    */
@@ -42,27 +45,19 @@ public class Daubechies06 extends Wavelet {
 
     _motherWavelength = 12; // wavelength of mother wavelet
 
-    // TODO Get analytical formulation, due to its precision; this is around 1.e-3 only
-    // taken from http://de.wikipedia.org/wiki/Daubechies-Wavelets
-    //
     _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] = 0.15774243;
-    _scales[ 1 ] = 0.69950381;
-    _scales[ 2 ] = 1.06226376;
-    _scales[ 3 ] = 0.44583132;
-    _scales[ 4 ] = -0.31998660;
-    _scales[ 5 ] = -0.18351806;
-    _scales[ 6 ] = 0.13788809;
-    _scales[ 7 ] = 0.03892321;
-    _scales[ 8 ] = -0.04466375;
-    _scales[ 9 ] = 7.883251152e-4; //   7.83251152e-4
-    _scales[ 10 ] = 6.75606236e-3;  //   6.75606236e-3
-    _scales[ 11 ] = -1.52353381e-3;  //  -1.52353381e-3  
-
-    // normalize orthogonal space => orthonormal space!!!  
-    double sqrt02 = 1.4142135623730951;
-    for( int i = 0; i < _motherWavelength; i++ )
-      _scales[ i ] /= sqrt02;
+    _scales[ 0 ] = -0.00107730108499558;
+    _scales[ 1 ] = 0.004777257511010651;
+    _scales[ 2 ] = 0.0005538422009938016;
+    _scales[ 3 ] = -0.031582039318031156;
+    _scales[ 4 ] = 0.02752286553001629;
+    _scales[ 5 ] = 0.09750160558707936;
+    _scales[ 6 ] = -0.12976686756709563;
+    _scales[ 7 ] = -0.22626469396516913;
+    _scales[ 8 ] = 0.3152503517092432;
+    _scales[ 9 ] = 0.7511339080215775;
+    _scales[ 10 ] = 0.4946238903983854;
+    _scales[ 11 ] = 0.11154074335008017;
 
     // building wavelet as orthogonal (orthonormal) space from
     // scaling coefficients. Have a look into Alfred Haar's

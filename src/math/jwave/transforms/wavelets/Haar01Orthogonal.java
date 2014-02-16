@@ -32,7 +32,8 @@ package math.jwave.transforms.wavelets;
 public class Haar01Orthogonal extends Wavelet {
 
   /**
-   * Constructor setting up the orthogonal Haar wavelet coeffs and the scales;
+   * Constructor setting up the orthogonal Haar wavelet coefficients and the
+   * scaling coefficients.
    * 
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich

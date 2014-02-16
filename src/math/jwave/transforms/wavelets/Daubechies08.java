@@ -33,6 +33,9 @@ package math.jwave.transforms.wavelets;
 public class Daubechies08 extends Wavelet {
 
   /**
+   * Already orthonormal coefficients taken from Filip Wasilewski's webpage
+   * http://wavelets.pybytes.com/wavelet/db8/ Thanks!
+   * 
    * @author Christian Scheiblich
    * @date 16.02.2014 00:30:05
    */
@@ -42,29 +45,23 @@ public class Daubechies08 extends Wavelet {
 
     _motherWavelength = 16; // wavelength of mother wavelet
 
-    // taken from http://de.wikipedia.org/wiki/Daubechies-Wavelets
     _scales = new double[ _motherWavelength ];
-    _scales[ 0 ] = 0.07695562;
-    _scales[ 1 ] = 0.44246725;
-    _scales[ 2 ] = 0.95548615;
-    _scales[ 3 ] = 0.82781653;
-    _scales[ 4 ] = -0.02238574;
-    _scales[ 5 ] = -0.40165863;
-    _scales[ 6 ] = 6.68194092e-4;
-    _scales[ 7 ] = 0.18207636;
-    _scales[ 8 ] = -0.02456390;
-    _scales[ 9 ] = -0.06235021;
-    _scales[ 10 ] = 0.01977216;
-    _scales[ 11 ] = 0.01236884;
-    _scales[ 12 ] = -6.88771926e-3;
-    _scales[ 13 ] = -5.54004549e-4;
-    _scales[ 14 ] = 9.55229711e-4;
-    _scales[ 15 ] = -1.66137261e-4;
-
-    // normalize orthogonal space => orthonormal space!!!  
-    double sqrt02 = 1.4142135623730951;
-    for( int i = 0; i < _motherWavelength; i++ )
-      _scales[ i ] /= sqrt02;
+    _scales[ 0 ] = -0.00011747678400228192;
+    _scales[ 1 ] = 0.0006754494059985568;
+    _scales[ 2 ] = -0.0003917403729959771;
+    _scales[ 3 ] = -0.00487035299301066;
+    _scales[ 4 ] = 0.008746094047015655;
+    _scales[ 5 ] = 0.013981027917015516;
+    _scales[ 6 ] = -0.04408825393106472;
+    _scales[ 7 ] = -0.01736930100202211;
+    _scales[ 8 ] = 0.128747426620186;
+    _scales[ 9 ] = 0.00047248457399797254;
+    _scales[ 10 ] = -0.2840155429624281;
+    _scales[ 11 ] = -0.015829105256023893;
+    _scales[ 12 ] = 0.5853546836548691;
+    _scales[ 13 ] = 0.6756307362980128;
+    _scales[ 14 ] = 0.3128715909144659;
+    _scales[ 15 ] = 0.05441584224308161;
 
     // building wavelet as orthogonal (orthonormal) space from
     // scaling coefficients. Have a look into Alfred Haar's

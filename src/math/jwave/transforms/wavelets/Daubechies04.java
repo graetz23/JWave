@@ -30,17 +30,15 @@ package math.jwave.transforms.wavelets;
  * @date 26.03.2010 07:35:31
  * @author Christian Scheiblich
  */
-@Deprecated 
 public class Daubechies04 extends Wavelet {
 
   /**
-   * TODO: Recheck the values, due to those are not working fine in rounding
-   * test doing 1000 and forward and reverse Fast Wavelet Transforms!
+   * Already orthonormal coefficients taken from Filip Wasilewski's webpage
+   * http://wavelets.pybytes.com/wavelet/db4/ Thanks!
    * 
    * @date 26.03.2010 07:35:31
    * @author Christian Scheiblich
    */
-  // @Deprecated 
   public Daubechies04( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
@@ -48,33 +46,14 @@ public class Daubechies04 extends Wavelet {
     _motherWavelength = 8; // wavelength of mother wavelet
 
     _scales = new double[ _motherWavelength ];
-
-    double sqrt02 = 1.4142135623730951;
-
-    // TODO Get analytical formulation, due to its precision; this is around 1.e-3 only
-    // taken from http://de.wikipedia.org/wiki/Daubechies-Wavelets
-    //
-    _scales[ 0 ] = 0.32580343; //  0.32580343
-    _scales[ 1 ] = 1.0109458; //  1.01094572
-    _scales[ 2 ] = 0.8922014; //  0.8922014
-    _scales[ 3 ] = -0.0396750; // -0.03967503
-    _scales[ 4 ] = -0.2645071; // -0.26450717
-    _scales[ 5 ] = 0.0436163; //  0.0436163
-    _scales[ 6 ] = 0.0465036; //  0.0465036
-    _scales[ 7 ] = -0.01498699; // -0.01498699
-
-    _scales[ 0 ] = 0.32580343;
-    _scales[ 1 ] = 1.01094572;
-    _scales[ 2 ] = 0.8922014;
-    _scales[ 3 ] = -0.03967503;
-    _scales[ 4 ] = -0.26450717;
-    _scales[ 5 ] = 0.0436163;
-    _scales[ 6 ] = 0.0465036;
-    _scales[ 7 ] = -0.01498699;
-
-    // normalize orthogonal space => orthonormal space!!!  
-    for( int i = 0; i < _motherWavelength; i++ )
-      _scales[ i ] /= sqrt02;
+    _scales[ 0 ] = -0.010597401784997278;
+    _scales[ 1 ] = 0.032883011666982945;
+    _scales[ 2 ] = 0.030841381835986965;
+    _scales[ 3 ] = -0.18703481171888114;
+    _scales[ 4 ] = -0.02798376941698385;
+    _scales[ 5 ] = 0.6308807679295904;
+    _scales[ 6 ] = 0.7148465705525415;
+    _scales[ 7 ] = 0.23037781330885523;
 
     // building wavelet as orthogonal (orthonormal) space from
     // scaling coefficients. Have a look into Alfred Haar's

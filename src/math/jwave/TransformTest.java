@@ -29,9 +29,11 @@ import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.wavelets.Battle23;
+import math.jwave.transforms.wavelets.Coiflet01;
+import math.jwave.transforms.wavelets.Coiflet02;
 import math.jwave.transforms.wavelets.Coiflet03;
-import math.jwave.transforms.wavelets.Coiflet06;
-import math.jwave.transforms.wavelets.Coiflet09;
+import math.jwave.transforms.wavelets.Coiflet04;
+import math.jwave.transforms.wavelets.Coiflet05;
 import math.jwave.transforms.wavelets.Daubechies02;
 import math.jwave.transforms.wavelets.Daubechies03;
 import math.jwave.transforms.wavelets.Daubechies04;
@@ -63,6 +65,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "testRounding" );
+    System.out.println( "" );
 
     double delta = 1.e-8;
 
@@ -85,37 +88,39 @@ public class TransformTest {
       testFastWaveletTransformRounding( arrTime, new Daubechies03( ), delta );
       System.out.println( "" );
 
-      // System.out.println( "testRounding Daubechies04 - 1000 transforms => rounding error:" );
-      // testFastWaveletTransformRounding( arrTime, new Daubechies04( ), delta ); // not passed yet -> @Deprecated
-      // System.out.println( "" );
-
       System.out
-          .println( "testRounding Daubechies05 - 1000 transforms => rounding error: 1.e-6" );
-      testFastWaveletTransformRounding( arrTime, new Daubechies05( ), 1.e-3 ); // max is 1.e-6
+          .println( "testRounding Daubechies04 - 1000 transforms => rounding error: 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Daubechies04( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies06 - 1000 transforms => rounding error: : 1.e-1" );
-      testFastWaveletTransformRounding( arrTime, new Daubechies06( ), 1.e-1 ); // max is 1.e-1
+          .println( "testRounding Daubechies05 - 1000 transforms => rounding error: 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Daubechies05( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies07 - 1000 transforms => rounding error: : 1.e-3" );
-      testFastWaveletTransformRounding( arrTime, new Daubechies07( ), 1.e-3 ); // max is 1.e-3
+          .println( "testRounding Daubechies06 - 1000 transforms => rounding error: : 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Daubechies06( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies08 - 1000 transforms => rounding error: : 1.e-4" );
-      testFastWaveletTransformRounding( arrTime, new Daubechies08( ), 1.e-4 ); // max is 1.e-4
+          .println( "testRounding Daubechies07 - 1000 transforms => rounding error: : 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Daubechies07( ), delta );
       System.out.println( "" );
 
-      // System.out.println( "testRounding Daubechies09 - 1000 transforms => rounding error:" );
-      // testFastWaveletTransformRounding( arrTime, new Daubechies09( ),  delta ); // not passed yet -> @Deprecated
-      // System.out.println( "" );
+      System.out
+          .println( "testRounding Daubechies08 - 1000 transforms => rounding error: : 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Daubechies08( ), delta );
+      System.out.println( "" );
 
       System.out
-          .println( "testRounding Daubechies10 - 1000 transforms => rounding error: : 1.e-5" );
-      testFastWaveletTransformRounding( arrTime, new Daubechies10( ), 1.e-5 ); // max is 1.e-5
+          .println( "testRounding Daubechies09 - 1000 transforms => rounding error: 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Daubechies09( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding Daubechies10 - 1000 transforms => rounding error: : 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Daubechies10( ), delta );
       System.out.println( "" );
 
       System.out
@@ -134,18 +139,28 @@ public class TransformTest {
       System.out.println( "" );
 
       System.out
+          .println( "testRounding Coiflet01 - 1000 transforms => rounding error: 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Coiflet01( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding Coiflet02 - 1000 transforms => rounding error: 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Coiflet02( ), delta );
+      System.out.println( "" );
+
+      System.out
           .println( "testRounding Coiflet03 - 1000 transforms => rounding error: 1.e-8" );
       testFastWaveletTransformRounding( arrTime, new Coiflet03( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Coiflet06 - 1000 transforms => rounding error: 1.e-6" );
-      testFastWaveletTransformRounding( arrTime, new Coiflet06( ), 1.e-6 ); // max is 1.e-6
+          .println( "testRounding Coiflet04 - 1000 transforms => rounding error: 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Coiflet04( ), delta );
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Coiflet09 - 1000 transforms => rounding error: 1.e-8" );
-      testFastWaveletTransformRounding( arrTime, new Coiflet09( ), delta );
+          .println( "testRounding Coiflet05 - 1000 transforms => rounding error: 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new Coiflet05( ), delta );
       System.out.println( "" );
 
       // System.out.println( "testRounding Battle23" );

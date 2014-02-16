@@ -28,7 +28,7 @@ import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.WaveletPacketTransform;
-import math.jwave.transforms.wavelets.Coiflet03;
+import math.jwave.transforms.wavelets.Coiflet01;
 import math.jwave.transforms.wavelets.Daubechies02;
 import math.jwave.transforms.wavelets.Daubechies03;
 import math.jwave.transforms.wavelets.Daubechies04;
@@ -74,7 +74,7 @@ public class JWave {
     try { // try everything ~8>
 
       // String waveletTypeList =
-      // "Haar01, Daubechies02, Daubechies03, Daubechies04, Legendre01, Legendre02, Legendre03, Coiflet03";
+      // "Haar01, Daubechies02, Daubechies03, Daubechies04, Legendre01, Legendre02, Legendre03, Coiflet01";
       String waveletTypeList = "Haar01, Daubechies02, Daubechies04, Legendre01";
 
       if( args.length < 2 || args.length > 3 ) {
@@ -105,7 +105,7 @@ public class JWave {
       else if( wType.equalsIgnoreCase( "lege06" ) )
         wavelet = new Legendre03( );
       else if( wType.equalsIgnoreCase( "coif06" ) )
-        wavelet = new Coiflet03( );
+        wavelet = new Coiflet01( );
       else {
         System.err.println( "usage: JWave [transformType] {waveletType}" );
         System.err.println( "" );
