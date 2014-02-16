@@ -24,8 +24,8 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Ingrid Daubechies' orthonormal Coiflet wavelet of six coefficients and the
- * scales; normed, due to ||*||2 - euclidean norm.
+ * Constructor setting up the orthonormal Coiflet wavelet of 12 coefficients and
+ * the scales; normed, due to ||*||2 - euclidean norm.
  * 
  * @author Christian Scheiblich
  * @date 15.02.2014 22:27:55
@@ -33,8 +33,9 @@ package math.jwave.transforms.wavelets;
 public class Coiflet01 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Coiflet wavelet of 6 coefficients
-   * and the scales; normed, due to ||*||2 - euclidean norm.
+   * Constructor calculating analytically the orthogonal Coiflet wavelet of 6
+   * coefficients, orthonormalizes them (normed, due to ||*||2 - euclidean
+   * norm), and spreads the scaling coefficients afterwards; .
    * 
    * @author Christian Scheiblich
    * @date 15.02.2014 22:27:55

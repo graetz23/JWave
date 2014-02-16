@@ -29,6 +29,7 @@ import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.wavelets.Battle23;
+import math.jwave.transforms.wavelets.BiOrthogonal_1_1;
 import math.jwave.transforms.wavelets.Coiflet01;
 import math.jwave.transforms.wavelets.Coiflet02;
 import math.jwave.transforms.wavelets.Coiflet03;
@@ -161,6 +162,11 @@ public class TransformTest {
       System.out
           .println( "testRounding Coiflet05 - 1000 transforms => rounding error: 1.e-8" );
       testFastWaveletTransformRounding( arrTime, new Coiflet05( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal_1_1 - 1000 transforms => rounding error: 1.e-8" );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal_1_1( ), delta );
       System.out.println( "" );
 
       // System.out.println( "testRounding Battle23" );
