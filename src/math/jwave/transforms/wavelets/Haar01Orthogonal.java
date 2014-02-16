@@ -32,15 +32,16 @@ package math.jwave.transforms.wavelets;
 public class Haar01Orthogonal extends Wavelet {
 
   /**
-   * Constructor setting up the orthogonal Haar wavelet coefficients and the
-   * scaling coefficients.
+   * Constructor setting up the orthogonal Haar scaling coefficients and
+   * matching wavelet coefficients. However, the reverse method has to be
+   * obverloaded, due to having an change in the energy that has to be corrected
+   * while perfoming the reconstruction.!
    * 
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
    */
   public Haar01Orthogonal( ) {
 
-    //
     // Remark on mathematics (perpendicular, orthogonal, and orthonormal):
     // 
     // "Orthogonal" is used for vectors which are perpendicular but of any length.
@@ -62,25 +63,66 @@ public class Haar01Orthogonal extends Wavelet {
     // -1 +      .  wavelet function     
     //    |         {1,-1}
     //
-    // One can see that by each step of the algorithm the input coefficients "energy" 
+    // You can see that by each step of the algorithm the input coefficients "energy" 
     // (energy := ||.||_2 euclidean norm) rises, while ever input value is multiplied
     // by 1.414213 (sqrt(2)). However, one has to correct this change of "energy" in
-    // the reverse transform by adding the factor 1/2 .
+    // the reverse transform method by multiplying the factor 1/2.
     //
     // (see http://en.wikipedia.org/wiki/Euclidean_norm  for the euclidean norm)
     //
-    // The main disadvantage using an "orthogonal" wavelet is that the generated wavelet
-    // sub spaces of different size and/or level can not be combined anymore easily, due
-    // to their differing "energy" or norm (||.||_2). If an "orthonormal" wavelet is
-    // taken, the ||.||_2 norm does not change at any size or any transform level. This
-    // allows for combining wavelet sub spaces of different dimension or even level.
-
-    // Also possible coefficients -> change forward and reverse functions in common
-    // _waveletDeCom[ 0 ] = .5; // w0 
-    // _waveletDeCom[ 1 ] = -.5; // w1
-    // _scalingDeCom[ 0 ] = -_waveletDeCom[ 1 ]; // -w1 
-    // _scalingDeCom[ 1 ] = _waveletDeCom[ 0 ]; // w0
-    // The ||.||_2 norm will shrink compared to the input signal's norm.
+    // The main disadvantage using an "orthogonal" wavelets is that the generated wavelet
+    // sub spaces of different levels can not be combined anymore easily, due to their
+    // different "energy" or norm (||.||_2). If an "orthonormal" wavelet is taken, the
+    // ||.||_2 norm does not change the energy at any level or any transform level. This
+    // allows for combining wavelet sub spaces of different levels easily!
+    //
+    // Other common used orthogonal Haar coefficients:
+    //
+    // _scalingDeCom[ 0 ] = .5; // s0 
+    // _scalingDeCom[ 1 ] = .5; //  s1
+    //
+    // _waveletDeCom[ 0 ] = .5; // w0 = s1 
+    // _waveletDeCom[ 1 ] = -.5; // w1 = -s0
+    //
+    // _scalingReCon[ 0 ] = .5; // s0 
+    // _scalingReCon[ 1 ] = .5; //  s1
+    //
+    // _waveletReCon[ 0 ] = .5; // w0 = s1 
+    // _waveletReCon[ 1 ] = -.5; // w1 = -s0
+    //
+    // The ||.||_2 norm will shrink the energy compared to the input signal's norm,
+    // due to length sqrt( .5 * .5 + .5 * .5 ) = sqrt( .5 ) = .7071. Therefore,
+    // exchange the factor in the reverse method as implemented 1/2 = .5  to 2.!!!
+    //
+    // Another alternative is to used mixed coefficients like:
+    //
+    // _scalingDeCom[ 0 ] = 1.; // s_d0 
+    // _scalingDeCom[ 1 ] = 1.; //  s_d1
+    //
+    // _waveletDeCom[ 0 ] = 1.; // w_d0 = s_d1 
+    // _waveletDeCom[ 1 ] = -1.; // w_d1 = -s_d0
+    //
+    // _scalingReCon[ 0 ] = .5; // s_r0 
+    // _scalingReCon[ 1 ] = .5; //  s_r1
+    //
+    // _waveletReCon[ 0 ] = .5; // w_r0 = s_r1 
+    // _waveletReCon[ 1 ] = -.5; // w_r1 = -s_r0
+    //
+    // or
+    //
+    // _scalingDeCom[ 0 ] = .5; // s_d0 
+    // _scalingDeCom[ 1 ] = .5; //  s_d1
+    //
+    // _waveletDeCom[ 0 ] = .5; // w_d0 = s_d1 
+    // _waveletDeCom[ 1 ] = -.5; // w_d1 = -s_d0
+    //
+    // _scalingReCon[ 0 ] = 2.; // s_r0 
+    // _scalingReCon[ 1 ] = 2.; //  s_r1
+    //
+    // _waveletReCon[ 0 ] = 2.; // w_r0 = s_r1 
+    // _waveletReCon[ 1 ] = -2.; // w_r1 = -s_r0
+    //
+    // Have fun ~8>
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
@@ -107,42 +149,6 @@ public class Haar01Orthogonal extends Wavelet {
     } // i
 
   } // Haar01
-
-  /**
-   * The forward wavelet transform using the Alfred Haar's wavelet. The arrTime
-   * array keeping coefficients of time domain should be of length 2 to the
-   * power of p -- length = 2^p where p is a positive integer.
-   * 
-   * @author Christian Scheiblich
-   * @date 15.02.2014 21:16:54
-   */
-  @Override public double[ ] forward( double[ ] arrTime, int arrTimeLength ) {
-
-    double[ ] arrHilb = new double[ arrTimeLength ];
-
-    int h = arrHilb.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
-
-    for( int i = 0; i < h; i++ ) {
-
-      arrHilb[ i ] = arrHilb[ i + h ] = 0.; // set to zero before sum up
-
-      for( int j = 0; j < _motherWavelength; j++ ) {
-
-        int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
-
-        while( k >= arrHilb.length )
-          k -= arrHilb.length; // circulate over arrays if scaling and wavelet are are larger
-
-        arrHilb[ i ] += arrTime[ k ] * _scalingDeCom[ j ]; // low pass filter for the energy (approximation)
-        arrHilb[ i + h ] += arrTime[ k ] * _waveletDeCom[ j ]; // high pass filter for the details
-
-      } // Sorting each step in patterns of: { scaling coefficients | wavelet coefficients }
-
-    } // h = 2^(p-1) | p = { 1, 2, .., N } .. shrinks in each step by half wavelength 
-
-    return arrHilb;
-
-  } // forward
 
   /**
    * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
@@ -172,8 +178,10 @@ public class Haar01Orthogonal extends Wavelet {
         while( k >= arrTime.length )
           k -= arrTime.length; // circulate over arrays if scaling and wavelet are larger
 
-        // adding up energy from low pass (approximation) and details from high pass filter;
-        // but it has to be reduced in energy by half because of vectorial length of sqrt( 2. ).
+        // adding up energy from scaling coefficients, the low pass (approximation) filter, and
+        // wavelet coefficients, the high pass filter (details). However, the raised energy has
+        // to be reduced by half for each step because of vectorial length of each base vector
+        // of the orthogonal system is of sqrt( 2. ).
         arrTime[ k ] +=
             .5 * ( ( arrHilb[ i ] * _scalingReCon[ j ] ) + ( arrHilb[ i + h ] * _waveletReCon[ j ] ) );
 
