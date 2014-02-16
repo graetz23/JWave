@@ -53,6 +53,8 @@ import math.jwave.transforms.wavelets.Haar01Orthogonal;
 import math.jwave.transforms.wavelets.Legendre01;
 import math.jwave.transforms.wavelets.Legendre02;
 import math.jwave.transforms.wavelets.Legendre03;
+import math.jwave.transforms.wavelets.Symlets2;
+import math.jwave.transforms.wavelets.Symlets20;
 import math.jwave.transforms.wavelets.Wavelet;
 
 import org.junit.Test;
@@ -202,6 +204,20 @@ public class TransformTest {
           .println( "testRounding Coiflet05 - 1000 transforms => rounding error: "
               + delta );
       testFastWaveletTransformRounding( arrTime, new Coiflet05( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding Symlets2 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new Symlets2( ), delta );
+      System.out.println( "" );
+
+      // TODO: Implement all other Symlets filters and test here!
+
+      System.out
+          .println( "testRounding Symlets20 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new Symlets20( ), delta );
       System.out.println( "" );
 
       System.out
