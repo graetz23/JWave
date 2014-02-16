@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave;
 
@@ -61,7 +61,7 @@ import math.jwave.transforms.wavelets.Wavelet;
 import org.junit.Test;
 
 /**
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 10.02.2014 21:32:22
  */
 public class TransformTest {
@@ -274,7 +274,7 @@ public class TransformTest {
    * object as input.
    * 
    * @date 10.02.2010 10:28:00
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @throws JWaveException
    */
   public void testFastWaveletTransformRounding( double[ ] arr, Wavelet wavelet,

@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,16 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.tools;
 
 import math.jwave.exceptions.*;
 
 /**
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * date Feb 11, 2013 1:42:37 PM
  *
  */
@@ -35,7 +35,7 @@ public class AncientEgyptianMultiplication {
   /**
    * Some how useless ~8>
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * date Feb 11, 2013 1:42:37 PM
    *
    */
@@ -49,7 +49,7 @@ public class AncientEgyptianMultiplication {
    * However, odd numbers always 2^0 = 1 as the last entry. Also see:
    * http://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * date Feb 11, 2013 1:50:42 PM
    *
    * @param number
@@ -91,7 +91,7 @@ public class AncientEgyptianMultiplication {
   * of two. E.g. 42 = 2^5 + 2^3 + 2^1 = 32 + 8 + 2. Also see:
   * http://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication
   * 
-  * @author Christian Scheiblich
+  * @author Christian Scheiblich (cscheiblich@gmail.com)
   * date Feb 11, 2013 1:55:54 PM
   *
   * @param ancientEgyptianMultipliers
@@ -123,7 +123,7 @@ public class AncientEgyptianMultiplication {
    * Replaced Math.getExponent due to google's Android OS is not
    * supporting it in Math library.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * date Feb 11, 2013 1:47:05 PM
    * 
    * @author sashi
@@ -144,7 +144,7 @@ public class AncientEgyptianMultiplication {
    * Replaced Math.scalb due to google's Android OS is not supporting
    * it in Math library.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * date Feb 11, 2013 1:46:33 PM
    *
    * @param f

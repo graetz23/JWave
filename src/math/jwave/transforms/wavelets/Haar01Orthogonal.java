@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms.wavelets;
 
@@ -27,7 +27,7 @@ package math.jwave.transforms.wavelets;
  * Alfred Haar's orthogonal wavelet transform.
  * 
  * @date 03.06.2010 09:47:24
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public class Haar01Orthogonal extends Wavelet {
 
@@ -38,7 +38,7 @@ public class Haar01Orthogonal extends Wavelet {
    * while perfoming the reconstruction.!
    * 
    * @date 03.06.2010 09:47:24
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public Haar01Orthogonal( ) {
 
@@ -157,7 +157,7 @@ public class Haar01Orthogonal extends Wavelet {
    * only orthogonal Haar wavelet the reverse transform has to have a factor of
    * 0.5 to reduce the up sampled "energy" in Hilbert space.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 21:17:22
    */
   @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {

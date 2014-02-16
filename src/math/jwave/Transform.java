@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave;
 
@@ -32,7 +32,7 @@ import math.jwave.transforms.BasicTransform;
  * and WaveletPacketTransform.
  * 
  * @date 19.05.2009 09:43:40
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public class Transform {
 
@@ -46,7 +46,7 @@ public class Transform {
    * FastBasicTransform, WaveletPacketTransfom, ...
    * 
    * @date 19.05.2009 09:50:24
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param transform
    *          Transform object
    */
@@ -62,7 +62,7 @@ public class Transform {
    * iteration for decomposition
    * 
    * @date 19.05.2009 09:50:24
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   @Deprecated public Transform( BasicTransform transform, int iteration ) {
     if( transform instanceof BasicTransform ) {
@@ -84,7 +84,7 @@ public class Transform {
    * Performs the forward transform of the specified BasicWave object.
    * 
    * @date 10.02.2010 09:41:01
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrTime
    *          coefficients of time domain
    * @return coefficients of frequency or Hilbert domain
@@ -106,7 +106,7 @@ public class Transform {
    * Performs the reverse transform of the specified BasicWave object.
    * 
    * @date 10.02.2010 09:42:18
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrFreq
    *          coefficients of frequency or Hilbert domain
    * @return coefficients of time domain
@@ -130,7 +130,7 @@ public class Transform {
    * inheritance.
    * 
    * @date 23.11.2010 19:19:24
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
@@ -147,7 +147,7 @@ public class Transform {
    * inheritance.
    * 
    * @date 23.11.2010 19:19:33
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
@@ -162,7 +162,7 @@ public class Transform {
    * Performs the 2-D forward transform of the specified BasicWave object.
    * 
    * @date 10.02.2010 10:58:54
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matrixTime
    *          coefficients of 2-D time domain; internal M(i),N(j)
    * @return coefficients of 2-D frequency or Hilbert domain
@@ -196,7 +196,7 @@ public class Transform {
    * Performs the 2-D reverse transform of the specified BasicWave object.
    * 
    * @date 10.02.2010 10:59:32
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matrixFreq
    *          coefficients of 2-D frequency or Hilbert domain; internal
    *          M(i),N(j)
@@ -231,7 +231,7 @@ public class Transform {
    * Performs the 3-D forward transform of the specified BasicWave object.
    * 
    * @date 10.07.2010 18:15:22
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matrixTime
    *          coefficients of 2-D time domain; internal M(i),N(j),O(k)
    * @return coefficients of 2-D frequency or Hilbert domain
@@ -281,7 +281,7 @@ public class Transform {
    * Performs the 3-D reverse transform of the specified BasicWave object.
    * 
    * @date 10.07.2010 18:15:33
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matrixFreq
    *          coefficients of 2-D frequency or Hilbert domain; internal
    *          M(i),N(j),O(k)
@@ -331,7 +331,7 @@ public class Transform {
   /**
    * Checks if given number is of type 2^p = 1, 2, 4, 8, 18, 32, 64, .., 1024, ..
    * 
-   * @author Christian Scheiblich 10.02.2014 20:18:26
+   * @author Christian Scheiblich (cscheiblich@gmail.com) 10.02.2014 20:18:26
    * @param number
    *          any positive integer
    * @return true if is 2^p else false

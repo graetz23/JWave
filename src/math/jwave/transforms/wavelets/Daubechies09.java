@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms.wavelets;
 
@@ -27,7 +27,7 @@ package math.jwave.transforms.wavelets;
  * Ingrid Daubechies' orthonormal wavelet of 18 coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
  * 
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.02.2014 00:34:30
  */
 public class Daubechies09 extends Wavelet {
@@ -36,7 +36,7 @@ public class Daubechies09 extends Wavelet {
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
    * http://wavelets.pybytes.com/wavelet/db9/ Thanks!
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 00:34:30
    */
   public Daubechies09( ) {

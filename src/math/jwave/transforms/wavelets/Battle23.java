@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms.wavelets;
 
@@ -28,13 +28,13 @@ package math.jwave.transforms.wavelets;
  * Signal Decomposition: The Wavelet Representation", IEEE PAMI, v. 11, no. 7,
  * 674-693, Table 1
  * 
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 15.02.2014 23:19:07
  */
 @Deprecated public class Battle23 extends Wavelet {
 
   /**
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 23:23:23
    */
   public Battle23( ) {

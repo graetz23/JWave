@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms;
 
@@ -33,7 +33,7 @@ import math.jwave.transforms.wavelets.Wavelet;
  * inheriting class.
  * 
  * @date 23.02.2010 13:44:05
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public class WaveletPacketTransform extends WaveletTransform {
 
@@ -41,7 +41,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * Constructor receiving a Wavelet object.
    * 
    * @date 23.02.2010 13:44:05
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param wavelet
    *          object of type Wavelet; Haar01, Daubechies02, Coiflet01, ...
    * @throws JWaveFailure
@@ -61,7 +61,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * smaller wavelet.
    * 
    * @date 23.02.2010 13:44:05
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
   @Override public double[ ] forward( double[ ] arrTime ) {
@@ -112,7 +112,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * wavelet combining two smaller and all other sub bands.
    * 
    * @date 23.02.2010 13:44:05
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#reverse(double[])
    */
   @Override public double[ ] reverse( double[ ] arrHilb ) {

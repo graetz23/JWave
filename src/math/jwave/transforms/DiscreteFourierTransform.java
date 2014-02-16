@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms;
 
@@ -34,7 +34,7 @@ import math.jwave.datatypes.Complex;
  * series.
  * 
  * @date 25.03.2010 19:56:29
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public class DiscreteFourierTransform extends BasicTransform {
   
@@ -42,7 +42,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * Constructor; does nothing
    * 
    * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public DiscreteFourierTransform( ) {
   } // DiscreteFourierTransform
@@ -55,7 +55,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * output arrFreq is organized by the same scheme.
    * 
    * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
   @Override
@@ -105,7 +105,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * output arrTime is organized by the same scheme.
    * 
    * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#reverse(double[])
    */
   @Override
@@ -151,7 +151,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * same scheme.
    * 
    * @date 23.11.2010 18:57:34
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrTime
    *          array of type Complex keeping coefficients of complex numbers
    * @return array of type Complex keeping the discrete fourier transform
@@ -197,7 +197,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * same scheme.
    * 
    * @date 23.11.2010 19:02:12
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrFreq
    *          array of type Complex keeping the discrete fourier transform
    *          coefficients
@@ -242,7 +242,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * same scheme.
    * 
    * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#forward(double[][])
    */
   @Override
@@ -260,7 +260,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * same scheme.
    * 
    * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#reverse(double[][])
    */
   @Override
@@ -272,7 +272,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * The 3-D forward version of the Discrete Fourier Transform (DFT);
    * 
    * @date 10.07.2010 18:10:43
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#forward(double[][][])
    */
   @Override
@@ -284,7 +284,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * The 3-D reverse version of the Discrete Fourier Transform (DFT);
    * 
    * @date 10.07.2010 18:10:45
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#reverse(double[][][])
    */
   @Override

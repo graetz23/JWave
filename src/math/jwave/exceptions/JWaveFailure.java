@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.exceptions;
 
@@ -27,7 +27,7 @@ package math.jwave.exceptions;
  * Marking failures for this package; failures that are recoverable
  * 
  * @date 19.05.2009 09:26:22
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public class JWaveFailure extends JWaveException {
   
@@ -35,7 +35,7 @@ public class JWaveFailure extends JWaveException {
    * Generated serial ID for this failure
    * 
    * @date 19.05.2009 09:27:18
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   private static final long serialVersionUID = 5471588833755939370L;
   
@@ -43,7 +43,7 @@ public class JWaveFailure extends JWaveException {
    * Constructor taking a failure message
    * 
    * @date 19.05.2009 09:26:22
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param message
    *          the stored failure message for this exception
    */

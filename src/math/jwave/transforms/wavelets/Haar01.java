@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms.wavelets;
 
@@ -27,7 +27,7 @@ package math.jwave.transforms.wavelets;
  * Alfred Haar's orthonormal wavelet transform.
  * 
  * @date 08.02.2010 12:46:34
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public class Haar01 extends Wavelet {
 
@@ -37,7 +37,7 @@ public class Haar01 extends Wavelet {
    * orthogonal version in class Haar01Orthogonal for more details.
    * 
    * @date 08.02.2010 12:46:34
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public Haar01( ) {
 
@@ -68,7 +68,7 @@ public class Haar01 extends Wavelet {
    * The forward wavelet transform using the Alfred Haar's wavelet.
    * 
    * @date 10.02.2010 08:26:06
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.wavelets.Wavelet#forward(double[])
    */
 
@@ -78,7 +78,7 @@ public class Haar01 extends Wavelet {
    * power of p -- length = 2^p where p is a positive integer.
    * 
    * @date 10.02.2010 08:26:06
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.wavelets.Wavelet#reverse(double[])
    */
 

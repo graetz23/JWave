@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,16 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms.wavelets;
 
 /**
  * Ingrid Daubechies' orthonormal Coiflet wavelet of six coefficients.
  * 
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 15.02.2014 22:27:55
  */
 public class Coiflet01 extends Wavelet {
@@ -36,7 +36,7 @@ public class Coiflet01 extends Wavelet {
    * coefficients, orthonormalizes them (normed, due to ||*||2 - euclidean
    * norm), and spreads the scaling coefficients afterwards; .
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:27:55
    */
   public Coiflet01( ) {

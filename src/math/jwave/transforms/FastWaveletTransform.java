@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms;
 
@@ -32,7 +32,7 @@ import math.jwave.transforms.wavelets.Wavelet;
  * and 3-D using a specified Wavelet by inheriting class.
  * 
  * @date 10.02.2010 08:10:42
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 /**
  * @author tucker 05.02.2014 22:12:45
@@ -43,7 +43,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * Constructor receiving a Wavelet object.
    * 
    * @date 10.02.2010 08:10:42
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param wavelet
    *          object of type Wavelet; Haar01, Daubechies02, Coiflet01, ...
    * @throws JWaveFailure
@@ -62,7 +62,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * algorithm.
    * 
    * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
   @Override public double[ ] forward( double[ ] arrTime ) {
@@ -98,7 +98,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * algorithm and the selected wavelet.
    * 
    * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @see math.jwave.transforms.BasicTransform#reverse(double[])
    */
   @Override public double[ ] reverse( double[ ] arrHilb ) {
@@ -129,7 +129,5 @@ public class FastWaveletTransform extends WaveletTransform {
     return arrTime;
 
   }// reverse
-  
-  
 
 } // class

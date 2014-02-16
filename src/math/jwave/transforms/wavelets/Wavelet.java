@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms.wavelets;
 
@@ -29,7 +29,7 @@ package math.jwave.transforms.wavelets;
  * reverse transform method.
  * 
  * @date 10.02.2010 08:54:48
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public abstract class Wavelet implements WaveletInterface {
 
@@ -71,7 +71,7 @@ public abstract class Wavelet implements WaveletInterface {
    * Constructor; predefine members to default values or null!
    * 
    * @date 15.02.2014 22:16:27
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public Wavelet( ) {
 
@@ -97,7 +97,7 @@ public abstract class Wavelet implements WaveletInterface {
    * in the constructor of an orthonormal filter directly after defining the
    * orthonormal coefficients of the scaling (low pass) for decompositon!
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 13:19:27
    */
   protected void _buildOrthonormalSpace( ) {
@@ -130,7 +130,7 @@ public abstract class Wavelet implements WaveletInterface {
    * -- length = 2^p where p is a positive integer.
    * 
    * @date 10.02.2010 08:18:02
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrTime
    *          array keeping time domain coefficients
    * @param arrTimeLength
@@ -173,7 +173,7 @@ public abstract class Wavelet implements WaveletInterface {
    * where p is a positive integer.
    * 
    * @date 10.02.2010 08:19:24
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrHilb
    *          array keeping frequency domain coefficients
    * @param arrHilbLength
@@ -215,7 +215,7 @@ public abstract class Wavelet implements WaveletInterface {
   /**
    * Returns the wavelength of the so called mother wavelet or scaling function.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:06:12
    * @return the minimal wavelength for the mother wavelet
    */
@@ -229,7 +229,7 @@ public abstract class Wavelet implements WaveletInterface {
    * Returns the minimal necessary wavelength for a signal that can be
    * transformed by this wavelet.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:08:43
    * @return integer representing minimal wavelength of the input signal that
    *         should be transformed by this wavelet.
@@ -244,7 +244,7 @@ public abstract class Wavelet implements WaveletInterface {
    * Returns a copy of the scaling (low pass filter) coefficients of
    * decomposition.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2010 22:11:42
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition low pass filter coefficients
@@ -264,7 +264,7 @@ public abstract class Wavelet implements WaveletInterface {
    * Returns a copy of the wavelet (high pass filter) coefficients of
    * decomposition.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:11:25
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition high pass filter coefficients
@@ -284,7 +284,7 @@ public abstract class Wavelet implements WaveletInterface {
    * Returns a copy of the scaling (low pass filter) coefficients of
    * reconstruction.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 10:35:11
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction low pass filter coefficients
@@ -304,7 +304,7 @@ public abstract class Wavelet implements WaveletInterface {
    * Returns a copy of the wavelet (high pass filter) coefficients of
    * reconstruction.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 10:35:09
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction high pass filter coefficients

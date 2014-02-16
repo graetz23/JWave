@@ -19,6 +19,7 @@
  *
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
+ * 
  */
 package math.jwave.transforms.wavelets;
 

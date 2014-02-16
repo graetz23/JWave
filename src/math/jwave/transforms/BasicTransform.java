@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms;
 
@@ -32,7 +32,7 @@ import math.jwave.datatypes.Complex;
  * write Fourier series in terms of the 'basic waves' of function: e^(2*pi*i*w).
  * 
  * @date 08.02.2010 11:11:59
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public abstract class BasicTransform {
 
@@ -42,7 +42,7 @@ public abstract class BasicTransform {
    * inheritance.
    * 
    * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
@@ -55,7 +55,7 @@ public abstract class BasicTransform {
    * inheritance.
    * 
    * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
@@ -68,7 +68,7 @@ public abstract class BasicTransform {
    * inheritance.
    * 
    * @date 16.02.2014 14:42:57
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian Scheiblich (cscheiblich@gmail.com) (cscheiblich@gmail.com)
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
@@ -106,7 +106,7 @@ public abstract class BasicTransform {
    * inheritance.
    * 
    * @date 16.02.2014 14:42:57
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian Scheiblich (cscheiblich@gmail.com) (cscheiblich@gmail.com)
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
@@ -144,7 +144,7 @@ public abstract class BasicTransform {
    * inheritance.
    * 
    * @date 10.02.2010 11:00:29
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matTime
    *          coefficients of 2-D time domain
    * @return coefficients of 2-D frequency or Hilbert domain
@@ -193,7 +193,7 @@ public abstract class BasicTransform {
    * by inheritance.
    * 
    * @date 10.02.2010 11:01:38
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matFreq
    *          coefficients of 2-D frequency or Hilbert domain
    * @return coefficients of 2-D time domain
@@ -242,7 +242,7 @@ public abstract class BasicTransform {
    * inheritance.
    * 
    * @date 10.07.2010 18:08:17
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param spcTime
    *          coefficients of 3-D time domain domain
    * @return coefficients of 3-D frequency or Hilbert domain
@@ -311,7 +311,7 @@ public abstract class BasicTransform {
    * inheritance.
    * 
    * @date 10.07.2010 18:09:54
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param spcHilb
    *          coefficients of 3-D frequency or Hilbert domain
    * @return coefficients of 3-D time domain
@@ -378,7 +378,7 @@ public abstract class BasicTransform {
    * Checks if given number is of type 2^p = 1, 2, 4, 8, 18, 32, 64, .., 1024,
    * ..
    * 
-   * @author Christian Scheiblich 10.02.2014 20:18:26
+   * @author Christian Scheiblich (cscheiblich@gmail.com) 10.02.2014 20:18:26
    * @param number
    *          any positive integer
    * @return true if is 2^p else false

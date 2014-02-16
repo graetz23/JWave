@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave;
 
@@ -43,7 +43,7 @@ import math.jwave.transforms.wavelets.Wavelet;
  * different wavelets without JUnit.
  * 
  * @date 23.02.2010 14:26:47
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 /**
  * @author tucker date 31.01.2014 20:26:06
@@ -54,7 +54,7 @@ public class JWave {
    * Constructor.
    * 
    * @date 23.02.2010 14:26:47
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public JWave( ) {
   } // JWave
@@ -65,7 +65,7 @@ public class JWave {
    * type of wavelet to be used else usage is printed.
    * 
    * @date 23.02.2010 14:26:47
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param args
    *          [transformType] [waveletType]
    */

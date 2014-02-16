@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich
+ * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,23 +17,23 @@
  *
  * This file is part of JWave.
  *
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 23.05.2008 17:42:23
- * cscheiblich@gmail.com
+ *
  */
 package math.jwave.transforms.wavelets;
 
 /**
  * Interface for the Wavelet class
  * 
- * @author Christian Scheiblich 10.02.2014 21:01:32
+ * @author Christian Scheiblich (cscheiblich@gmail.com) 10.02.2014 21:01:32
  */
 public interface WaveletInterface {
 
   /**
    * Shifts scaling and wavelet over some hilbert in forward manners.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 21:01:56
    * @param values
    * @return
@@ -43,7 +43,7 @@ public interface WaveletInterface {
   /**
    * Shifts scaling and wavelet over some hilbert in reverse manners.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 21:02:23
    * @param values
    * @return
@@ -53,7 +53,7 @@ public interface WaveletInterface {
   /**
    * Returns the wavelength of the so called mother wavelet or scaling function.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:06:12
    * @return
    */
@@ -63,7 +63,7 @@ public interface WaveletInterface {
    * Returns the minimal necessary wavelength for a signal that can be
    * transformed by this wavelet.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:08:43
    * @return integer representing minimal wavelength of the input signal that
    *         should be transformed by this wavelet.
@@ -74,7 +74,7 @@ public interface WaveletInterface {
    * Returns a copy of the scaling (low pass filter) coefficients of the
    * decomposition.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2010 22:11:42
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition low pass filter coefficients
@@ -85,7 +85,7 @@ public interface WaveletInterface {
    * Returns a copy of the wavelet (low pass filter) coefficients of the
    * decomposition.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:11:25
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition high pass filter coefficients
@@ -96,7 +96,7 @@ public interface WaveletInterface {
    * Returns a copy of the scaling (low pass filter) coefficients of the
    * reconstruction.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 10:35:11
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction low pass filter coefficients
@@ -107,7 +107,7 @@ public interface WaveletInterface {
    * Returns a copy of the wavelet (high pass filter) coefficients of the
    * reconstruction.
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 10:35:09
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction high pass filter coefficients

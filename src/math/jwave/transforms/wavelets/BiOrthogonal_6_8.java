@@ -11,7 +11,7 @@ package math.jwave.transforms.wavelets;
  * BiOrthogonal Wavelet of type 6.8 - Six vanishing moments in wavelet function
  * and eight vanishing moments in scaling function.
  * 
- * @author Christian Scheiblich
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.02.2014 11:42:09
  */
 public class BiOrthogonal_6_8 extends Wavelet {
@@ -20,7 +20,7 @@ public class BiOrthogonal_6_8 extends Wavelet {
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
    * http://wavelets.pybytes.com/wavelet/bior6.8/ Thanks!
    * 
-   * @author Christian Scheiblich
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 11:42:09
    */
   public BiOrthogonal_6_8( ) {
