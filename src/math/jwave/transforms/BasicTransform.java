@@ -18,8 +18,8 @@
  * This file is part of JWave.
  *
  * @author Christian Scheiblich
- * date 23.02.2008 17:42:23
- * contact cscheiblich@gmail.com
+ * @date 23.05.2008 17:42:23
+ * cscheiblich@gmail.com
  */
 package math.jwave.transforms;
 

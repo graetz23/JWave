@@ -25,47 +25,63 @@ package math.jwave.transforms.wavelets;
 
 /**
  * BiOrthogonal Wavelet of type 1.1 - One vanishing moment in wavelet function
- * and one vanishing moment in scaling function.
+ * and three vanishing moment in scaling function.
  * 
  * @author Christian Scheiblich
- * @date 16.02.2014 10:15:11
+ * @date16.02.2014 10:31:33
  */
-public class BiOrthogonal_1_1 extends Wavelet {
+public class BiOrthogonal_1_3 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
-   * http://wavelets.pybytes.com/wavelet/bior1.1/ Thanks!
+   * http://wavelets.pybytes.com/wavelet/bior1.3/ Thanks!
    * 
    * @author Christian Scheiblich
-   * @date 16.02.2014 10:15:11
+   * @date 16.02.2014 10:31:33
    */
-  public BiOrthogonal_1_1( ) {
+  public BiOrthogonal_1_3( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 2; // wavelength of mother wavelet
+    _motherWavelength = 6; // wavelength of mother wavelet
 
     _scalesDeCom = new double[ _motherWavelength ];
-    _scalesDeCom[ 0 ] = 0.7071067811865476;
-    _scalesDeCom[ 1 ] = 0.7071067811865476;
+    _scalesDeCom[ 0 ] = -0.08838834764831845;
+    _scalesDeCom[ 1 ] = 0.08838834764831845;
+    _scalesDeCom[ 2 ] = 0.7071067811865476;
+    _scalesDeCom[ 3 ] = 0.7071067811865476;
+    _scalesDeCom[ 4 ] = 0.08838834764831845;
+    _scalesDeCom[ 5 ] = -0.08838834764831845;
 
     _coeffsDeCom = new double[ _motherWavelength ];
-    _coeffsDeCom[ 0 ] = -0.7071067811865476;
-    _coeffsDeCom[ 1 ] = 0.7071067811865476;
+    _coeffsDeCom[ 0 ] = 0.;
+    _coeffsDeCom[ 1 ] = 0.;
+    _coeffsDeCom[ 2 ] = -0.7071067811865476;
+    _coeffsDeCom[ 3 ] = 0.7071067811865476;
+    _coeffsDeCom[ 4 ] = 0.;
+    _coeffsDeCom[ 5 ] = 0.;
 
     _scalesReCon = new double[ _motherWavelength ];
-    _scalesReCon[ 0 ] = 0.7071067811865476;
-    _scalesReCon[ 1 ] = 0.7071067811865476;
+    _scalesReCon[ 0 ] = 0.;
+    _scalesReCon[ 1 ] = 0.;
+    _scalesReCon[ 2 ] = 0.7071067811865476;
+    _scalesReCon[ 3 ] = 0.7071067811865476;
+    _scalesReCon[ 4 ] = 0.;
+    _scalesReCon[ 5 ] = 0.;
 
     _coeffsReCon = new double[ _motherWavelength ];
-    _coeffsReCon[ 0 ] = 0.7071067811865476;
-    _coeffsReCon[ 1 ] = -0.7071067811865476;
+    _coeffsReCon[ 0 ] = -0.08838834764831845;
+    _coeffsReCon[ 1 ] = -0.08838834764831845;
+    _coeffsReCon[ 2 ] = 0.7071067811865476;
+    _coeffsReCon[ 3 ] = -0.7071067811865476;
+    _coeffsReCon[ 4 ] = 0.08838834764831845;
+    _coeffsReCon[ 5 ] = 0.08838834764831845;
 
-  } // BiOrthogonal_1_1
+  } // BiOrthogonal_1_3
 
   /*
    * @author Christian Scheiblich
-   * @date 16.02.2014 10:26:31 (non-Javadoc)
+   * @date 16.02.2014 10:46:19 (non-Javadoc)
    * @see math.jwave.transforms.wavelets.Wavelet#forward(double[], int)
    */
   @Override public double[ ] forward( double[ ] arrTime, int arrTimeLength ) {
@@ -98,7 +114,7 @@ public class BiOrthogonal_1_1 extends Wavelet {
 
   /*
    * @author Christian Scheiblich
-   * @date 16.02.2014 10:26:31 (non-Javadoc)
+   * @date 16.02.2014 10:46:19 (non-Javadoc)
    * @see math.jwave.transforms.wavelets.Wavelet#reverse(double[], int)
    */
   @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
@@ -132,4 +148,4 @@ public class BiOrthogonal_1_1 extends Wavelet {
 
   } // reverse
 
-} // BiOrthogonal_1_1
+} // BiOrthogonal_1_3

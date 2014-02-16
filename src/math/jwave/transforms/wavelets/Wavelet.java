@@ -18,8 +18,8 @@
  * This file is part of JWave.
  *
  * @author Christian Scheiblich
- * date 23.02.2008 17:42:23
- * contact cscheiblich@gmail.com
+ * @date 23.05.2008 17:42:23
+ * cscheiblich@gmail.com
  */
 package math.jwave.transforms.wavelets;
 
@@ -43,6 +43,29 @@ public abstract class Wavelet implements WaveletInterface {
    * The minimal wavelength of a signal that can be transformed
    */
   protected int _transformWavelength;
+
+  /**
+   * The coefficients of the mother wavelet (low pass filter) for decomposition.
+   */
+  protected double[ ] _coeffsDeCom;
+
+  /**
+   * The coefficients of the mother scaling (high pass filter) for
+   * decomposition.
+   */
+  protected double[ ] _scalesDeCom;
+
+  /**
+   * The coefficients of the mother wavelet (low pass filter) for
+   * reconstruction.
+   */
+  protected double[ ] _coeffsReCon;
+
+  /**
+   * The coefficients of the mother scaling (high pass filter) for
+   * reconstruction.
+   */
+  protected double[ ] _scalesReCon;
 
   /**
    * The coefficients of the base wavelet; wavelet function.
@@ -189,39 +212,83 @@ public abstract class Wavelet implements WaveletInterface {
   } // getTransformWavelength
 
   /**
-   * Returns a double array with the coefficients of the wavelet function.
+   * Returns a copy of the wavelet (low pass filter) coefficients of
+   * decomposition.
    * 
    * @author Christian Scheiblich
    * @date 15.02.2014 22:11:25
-   * @return double array keeping the coeffs.
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         decomposition low pass filter coefficients
    */
-  public double[ ] getWaveletCoeffs( ) {
+  public double[ ] getWaveletCoeffsDeCom( ) {
 
-    double[ ] coeffs = new double[ _coeffs.length ];
+    double[ ] coeffsDeCom = new double[ _coeffsDeCom.length ];
 
-    for( int c = 0; c < _coeffs.length; c++ )
-      coeffs[ c ] = _coeffs[ c ];
+    for( int i = 0; i < _coeffsDeCom.length; i++ )
+      coeffsDeCom[ i ] = _coeffsDeCom[ i ];
 
-    return coeffs;
+    return coeffsDeCom;
 
-  } // getWaveletCoeffs
+  } // getWaveletCoeffsDeCom
 
   /**
-   * Returns a double array with the coefficients of the scaling function.
+   * Returns a copy of the scaling (high pass filter) coefficients of
+   * decomposition.
    * 
    * @author Christian Scheiblich
    * @date 15.02.2010 22:11:42
-   * @return double array keeping the scales.
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         decomposition high pass filter coefficients
    */
-  public double[ ] getScalingCoeffs( ) {
+  public double[ ] getScalingCoeffsDeCom( ) {
 
-    double[ ] scales = new double[ _scales.length ];
+    double[ ] scalesDeCom = new double[ _scalesDeCom.length ];
 
-    for( int s = 0; s < _scales.length; s++ )
-      scales[ s ] = _scales[ s ];
+    for( int i = 0; i < _scalesDeCom.length; i++ )
+      scalesDeCom[ i ] = _scalesDeCom[ i ];
 
-    return scales;
+    return scalesDeCom;
 
-  } // getScalingCoeffs
+  } // getScalingCoeffsDeCom
+
+  /**
+   * Returns a copy of the wavelet (low pass filter) coefficients of
+   * reconstruction.
+   * 
+   * @author Christian Scheiblich
+   * @date 16.02.2014 10:35:09
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         reconstruction low pass filter coefficients
+   */
+  public double[ ] getWaveletCoeffsReCon( ) {
+
+    double[ ] coeffsReCon = new double[ _coeffsReCon.length ];
+
+    for( int i = 0; i < _coeffsReCon.length; i++ )
+      coeffsReCon[ i ] = _coeffsReCon[ i ];
+
+    return coeffsReCon;
+
+  } // getWaveletCoeffsReCon
+
+  /**
+   * Returns a copy of the scaling (high pass filter) coefficients of
+   * reconstruction.
+   * 
+   * @author Christian Scheiblich
+   * @date 16.02.2014 10:35:11
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         reconstruction high pass filter coefficients
+   */
+  public double[ ] getScalingCoeffsReCon( ) {
+
+    double[ ] scalesReCon = new double[ _scalesReCon.length ];
+
+    for( int i = 0; i < _scalesReCon.length; i++ )
+      scalesReCon[ i ] = _scalesReCon[ i ];
+
+    return scalesReCon;
+
+  } // getScalingCoeffsReCon
 
 } // class

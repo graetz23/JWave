@@ -18,8 +18,8 @@
  * This file is part of JWave.
  *
  * @author Christian Scheiblich
- * date 23.02.2008 17:42:23
- * contact cscheiblich@gmail.com
+ * @date 23.05.2008 17:42:23
+ * cscheiblich@gmail.com
  */
 package math.jwave.transforms.wavelets;
 
@@ -73,21 +73,47 @@ public interface WaveletInterface {
   public int getTransformWavelength( );
 
   /**
-   * Returns a copy of the wavelet coefficients.
+   * Returns a copy of the wavelet (low pass filter) coefficients of
+   * decomposition.
    * 
    * @author Christian Scheiblich
    * @date 15.02.2014 22:11:25
-   * @return
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         decomposition low pass filter coefficients
    */
-  public double[ ] getWaveletCoeffs( );
+  public double[ ] getWaveletCoeffsDeCom( );
 
   /**
-   * Returns a copy of the scaling coefficients.
+   * Returns a copy of the scaling (high pass filter) coefficients of
+   * decomposition.
    * 
    * @author Christian Scheiblich
    * @date 15.02.2010 22:11:42
-   * @return
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         decomposition high pass filter coefficients
    */
-  public double[ ] getScalingCoeffs( );
+  public double[ ] getScalingCoeffsDeCom( );
+
+  /**
+   * Returns a copy of the wavelet (low pass filter) coefficients of
+   * reconstruction.
+   * 
+   * @author Christian Scheiblich
+   * @date 16.02.2014 10:35:09
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         reconstruction low pass filter coefficients
+   */
+  public double[ ] getWaveletCoeffsReCon( );
+
+  /**
+   * Returns a copy of the scaling (high pass filter) coefficients of
+   * reconstruction.
+   * 
+   * @author Christian Scheiblich
+   * @date 16.02.2014 10:35:11
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         reconstruction high pass filter coefficients
+   */
+  public double[ ] getScalingCoeffsReCon( );
 
 } // WaveletInterface
