@@ -37,6 +37,12 @@ import math.jwave.transforms.wavelets.BiOrthogonal24;
 import math.jwave.transforms.wavelets.BiOrthogonal26;
 import math.jwave.transforms.wavelets.BiOrthogonal28;
 import math.jwave.transforms.wavelets.BiOrthogonal31;
+import math.jwave.transforms.wavelets.BiOrthogonal33;
+import math.jwave.transforms.wavelets.BiOrthogonal35;
+import math.jwave.transforms.wavelets.BiOrthogonal37;
+import math.jwave.transforms.wavelets.BiOrthogonal39;
+import math.jwave.transforms.wavelets.BiOrthogonal44;
+import math.jwave.transforms.wavelets.BiOrthogonal55;
 import math.jwave.transforms.wavelets.BiOrthogonal68;
 import math.jwave.transforms.wavelets.Coiflet1;
 import math.jwave.transforms.wavelets.Coiflet2;
@@ -274,7 +280,41 @@ public class TransformTest {
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal31( ), delta );
       System.out.println( "" );
 
-      // TODO: Implement all other BiOrthogonal filters and test here!
+      System.out
+          .println( "testRounding BiOrthogonal33 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal33( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal35 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal35( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal37 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal37( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal39 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal39( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal44 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal44( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal55 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal55( ), delta );
+      System.out.println( "" );
 
       System.out
           .println( "testRounding BiOrthogonal68 - 1000 transforms => rounding error: "

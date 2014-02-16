@@ -24,42 +24,50 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * BiOrthogonal Wavelet of type 3.1 - Three vanishing moments in wavelet
- * function and one vanishing moment in scaling function.
+ * BiOrthogonal Wavelet of type 3.3 - Three vanishing moments in wavelet
+ * function and three vanishing moments in scaling function.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.02.2014 16:50:58
+ * @date 16.02.2014 17:14:24
  */
-public class BiOrthogonal31 extends Wavelet {
+public class BiOrthogonal33 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
-   * http://wavelets.pybytes.com/wavelet/bior3.1/ Thanks!
+   * http://wavelets.pybytes.com/wavelet/bior3.3/ Thanks!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.02.2014 16:50:58
+   * @date 16.02.2014 17:14:24
    */
-  public BiOrthogonal31( ) {
+  public BiOrthogonal33( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 4; // wavelength of mother wavelet
+    _motherWavelength = 8; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = -0.3535533905932738;
-    _scalingDeCom[ 1 ] = 1.0606601717798214;
-    _scalingDeCom[ 2 ] = 1.0606601717798214;
-    _scalingDeCom[ 3 ] = -0.3535533905932738;
+    _scalingDeCom[ 0 ] = 0.06629126073623884;
+    _scalingDeCom[ 1 ] = -0.19887378220871652;
+    _scalingDeCom[ 2 ] = -0.15467960838455727;
+    _scalingDeCom[ 3 ] = 0.9943689110435825;
+    _scalingDeCom[ 4 ] = 0.9943689110435825;
+    _scalingDeCom[ 5 ] = -0.15467960838455727;
+    _scalingDeCom[ 6 ] = -0.19887378220871652;
+    _scalingDeCom[ 7 ] = 0.06629126073623884;
 
     _waveletDeCom = new double[ _motherWavelength ];
-    _waveletDeCom[ 0 ] = -0.1767766952966369;
-    _waveletDeCom[ 1 ] = 0.5303300858899107;
-    _waveletDeCom[ 2 ] = -0.5303300858899107;
-    _waveletDeCom[ 3 ] = 0.1767766952966369;
+    _waveletDeCom[ 0 ] = 0.;
+    _waveletDeCom[ 1 ] = 0.;
+    _waveletDeCom[ 2 ] = -0.1767766952966369;
+    _waveletDeCom[ 3 ] = 0.5303300858899107;
+    _waveletDeCom[ 4 ] = -0.5303300858899107;
+    _waveletDeCom[ 5 ] = 0.1767766952966369;
+    _waveletDeCom[ 6 ] = 0.;
+    _waveletDeCom[ 7 ] = 0.;
 
     // build all other coefficients from low & high pass decomposition
     _buildBiOrthonormalSpace( );
 
-  } // BiOrthogonal31
+  } // BiOrthogonal33
 
-} // BiOrthogonal31
+} // BiOrthogonal33

@@ -24,42 +24,54 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * BiOrthogonal Wavelet of type 3.1 - Three vanishing moments in wavelet
- * function and one vanishing moment in scaling function.
+ * BiOrthogonal Wavelet of type 4.4 - Four vanishing moments in wavelet function
+ * and four vanishing moments in scaling function - 44 muhahaha! ~8>
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.02.2014 16:50:58
+ * @date 16.02.2014 17:36:17
  */
-public class BiOrthogonal31 extends Wavelet {
+public class BiOrthogonal44 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
-   * http://wavelets.pybytes.com/wavelet/bior3.1/ Thanks!
+   * http://wavelets.pybytes.com/wavelet/bior4.4/ Thanks!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.02.2014 16:50:58
+   * @date 16.02.2014 17:36:17
    */
-  public BiOrthogonal31( ) {
+  public BiOrthogonal44( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 4; // wavelength of mother wavelet
+    _motherWavelength = 10; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = -0.3535533905932738;
-    _scalingDeCom[ 1 ] = 1.0606601717798214;
-    _scalingDeCom[ 2 ] = 1.0606601717798214;
-    _scalingDeCom[ 3 ] = -0.3535533905932738;
+    _scalingDeCom[ 0 ] = 0.;
+    _scalingDeCom[ 1 ] = 0.03782845550726404;
+    _scalingDeCom[ 2 ] = -0.023849465019556843;
+    _scalingDeCom[ 3 ] = -0.11062440441843718;
+    _scalingDeCom[ 4 ] = 0.37740285561283066;
+    _scalingDeCom[ 5 ] = 0.8526986790088938;
+    _scalingDeCom[ 6 ] = 0.37740285561283066;
+    _scalingDeCom[ 7 ] = -0.11062440441843718;
+    _scalingDeCom[ 8 ] = -0.023849465019556843;
+    _scalingDeCom[ 9 ] = 0.03782845550726404;
 
     _waveletDeCom = new double[ _motherWavelength ];
-    _waveletDeCom[ 0 ] = -0.1767766952966369;
-    _waveletDeCom[ 1 ] = 0.5303300858899107;
-    _waveletDeCom[ 2 ] = -0.5303300858899107;
-    _waveletDeCom[ 3 ] = 0.1767766952966369;
+    _waveletDeCom[ 0 ] = 0.;
+    _waveletDeCom[ 1 ] = -0.06453888262869706;
+    _waveletDeCom[ 2 ] = 0.04068941760916406;
+    _waveletDeCom[ 3 ] = 0.41809227322161724;
+    _waveletDeCom[ 4 ] = -0.7884856164055829;
+    _waveletDeCom[ 5 ] = 0.41809227322161724;
+    _waveletDeCom[ 6 ] = 0.04068941760916406;
+    _waveletDeCom[ 7 ] = -0.06453888262869706;
+    _waveletDeCom[ 8 ] = 0.;
+    _waveletDeCom[ 9 ] = 0.;
 
     // build all other coefficients from low & high pass decomposition
     _buildBiOrthonormalSpace( );
 
-  } // BiOrthogonal31
+  } // BiOrthogonal44
 
-} // BiOrthogonal31
+} // BiOrthogonal44
