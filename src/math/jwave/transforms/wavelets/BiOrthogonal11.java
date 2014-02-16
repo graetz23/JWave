@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,20 +46,20 @@ public class BiOrthogonal11 extends Wavelet {
     _motherWavelength = 2; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = 0.7071067811865476;
-    _scalingDeCom[ 1 ] = 0.7071067811865476;
+    _scalingDeCom[ 0 ] = 0.7071067811865476; // s_d0
+    _scalingDeCom[ 1 ] = 0.7071067811865476; // s_d1
 
     _waveletDeCom = new double[ _motherWavelength ];
-    _waveletDeCom[ 0 ] = -0.7071067811865476;
-    _waveletDeCom[ 1 ] = 0.7071067811865476;
+    _waveletDeCom[ 0 ] = -0.7071067811865476; // w_d0
+    _waveletDeCom[ 1 ] = 0.7071067811865476; // w_d1
 
     _scalingReCon = new double[ _motherWavelength ];
-    _scalingReCon[ 0 ] = 0.7071067811865476;
-    _scalingReCon[ 1 ] = 0.7071067811865476;
+    _scalingReCon[ 0 ] = 0.7071067811865476; // w_r0 =  w_d1 .. biorthogonal!
+    _scalingReCon[ 1 ] = 0.7071067811865476; // w_r1 = -w_d0 .. biorthogonal!
 
     _waveletReCon = new double[ _motherWavelength ];
-    _waveletReCon[ 0 ] = 0.7071067811865476;
-    _waveletReCon[ 1 ] = -0.7071067811865476;
+    _waveletReCon[ 0 ] = 0.7071067811865476; // s_r0 =  s_d1 .. biorthogonal!
+    _waveletReCon[ 1 ] = -0.7071067811865476; //s_r1 = -s_d0 .. biorthogonal!
 
   } // BiOrthogonal11
 

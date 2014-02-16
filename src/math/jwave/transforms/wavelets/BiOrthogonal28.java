@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,46 +85,9 @@ public class BiOrthogonal28 extends Wavelet {
     _waveletDeCom[ 16 ] = 0.;
     _waveletDeCom[ 17 ] = 0.;
 
-    _scalingReCon = new double[ _motherWavelength ];
-    _scalingReCon[ 0 ] = 0.;
-    _scalingReCon[ 1 ] = 0.;
-    _scalingReCon[ 2 ] = 0.;
-    _scalingReCon[ 3 ] = 0.;
-    _scalingReCon[ 4 ] = 0.;
-    _scalingReCon[ 5 ] = 0.;
-    _scalingReCon[ 6 ] = 0.;
-    _scalingReCon[ 7 ] = 0.3535533905932738;
-    _scalingReCon[ 8 ] = 0.7071067811865476;
-    _scalingReCon[ 9 ] = 0.3535533905932738;
-    _scalingReCon[ 10 ] = 0.;
-    _scalingReCon[ 11 ] = 0.;
-    _scalingReCon[ 12 ] = 0.;
-    _scalingReCon[ 13 ] = 0.;
-    _scalingReCon[ 14 ] = 0.;
-    _scalingReCon[ 15 ] = 0.;
-    _scalingReCon[ 16 ] = 0.;
-    _scalingReCon[ 17 ] = 0.;
-
-    _waveletReCon = new double[ _motherWavelength ];
-    _waveletReCon[ 0 ] = 0.;
-    _waveletReCon[ 1 ] = -0.0015105430506304422;
-    _waveletReCon[ 2 ] = -0.0030210861012608843;
-    _waveletReCon[ 3 ] = 0.012947511862546647;
-    _waveletReCon[ 4 ] = 0.02891610982635418;
-    _waveletReCon[ 5 ] = -0.052998481890690945;
-    _waveletReCon[ 6 ] = -0.13491307360773608;
-    _waveletReCon[ 7 ] = 0.16382918343409025;
-    _waveletReCon[ 8 ] = 0.4625714404759166;
-    _waveletReCon[ 9 ] = -0.9516421218971786;
-    _waveletReCon[ 10 ] = 0.4625714404759166;
-    _waveletReCon[ 11 ] = 0.16382918343409025;
-    _waveletReCon[ 12 ] = -0.13491307360773608;
-    _waveletReCon[ 13 ] = -0.052998481890690945;
-    _waveletReCon[ 14 ] = 0.02891610982635418;
-    _waveletReCon[ 15 ] = 0.012947511862546647;
-    _waveletReCon[ 16 ] = -0.0030210861012608843;
-    _waveletReCon[ 17 ] = -0.0015105430506304422;
+    // build all other coefficients from low & high pass decomposition
+    _buildBiOrthonormalSpace( );
 
   } // BiOrthogonal28
-  
+
 } // BiOrthogonal28

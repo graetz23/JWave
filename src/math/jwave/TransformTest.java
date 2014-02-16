@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ import math.jwave.transforms.wavelets.BiOrthogonal22;
 import math.jwave.transforms.wavelets.BiOrthogonal24;
 import math.jwave.transforms.wavelets.BiOrthogonal26;
 import math.jwave.transforms.wavelets.BiOrthogonal28;
+import math.jwave.transforms.wavelets.BiOrthogonal31;
 import math.jwave.transforms.wavelets.BiOrthogonal68;
 import math.jwave.transforms.wavelets.Coiflet1;
 import math.jwave.transforms.wavelets.Coiflet2;
@@ -265,6 +266,12 @@ public class TransformTest {
           .println( "testRounding BiOrthogonal28 - 1000 transforms => rounding error: "
               + delta );
       testFastWaveletTransformRounding( arrTime, new BiOrthogonal28( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding BiOrthogonal31 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new BiOrthogonal31( ), delta );
       System.out.println( "" );
 
       // TODO: Implement all other BiOrthogonal filters and test here!

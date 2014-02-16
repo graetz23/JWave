@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,21 +61,8 @@ public class BiOrthogonal13 extends Wavelet {
     _waveletDeCom[ 4 ] = 0.;
     _waveletDeCom[ 5 ] = 0.;
 
-    _scalingReCon = new double[ _motherWavelength ];
-    _scalingReCon[ 0 ] = 0.;
-    _scalingReCon[ 1 ] = 0.;
-    _scalingReCon[ 2 ] = 0.7071067811865476;
-    _scalingReCon[ 3 ] = 0.7071067811865476;
-    _scalingReCon[ 4 ] = 0.;
-    _scalingReCon[ 5 ] = 0.;
-
-    _waveletReCon = new double[ _motherWavelength ];
-    _waveletReCon[ 0 ] = -0.08838834764831845;
-    _waveletReCon[ 1 ] = -0.08838834764831845;
-    _waveletReCon[ 2 ] = 0.7071067811865476;
-    _waveletReCon[ 3 ] = -0.7071067811865476;
-    _waveletReCon[ 4 ] = 0.08838834764831845;
-    _waveletReCon[ 5 ] = 0.08838834764831845;
+    // build all other coefficients from low & high pass decomposition
+    _buildBiOrthonormalSpace( );
 
   } // BiOrthogonal13
 

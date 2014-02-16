@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,7 +95,7 @@ public abstract class Wavelet implements WaveletInterface {
    * pass) for decomposition, for the scaling (low pass) for reconstruction, and
    * for the wavelet (high pass) of reconstruction. This method should be called
    * in the constructor of an orthonormal filter directly after defining the
-   * orthonormal coefficients of the scaling (low pass) for decompositon!
+   * orthonormal coefficients of the scaling (low pass) for decomposition!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 13:19:27
@@ -119,6 +119,37 @@ public abstract class Wavelet implements WaveletInterface {
     for( int i = 0; i < _motherWavelength; i++ ) {
       _scalingReCon[ i ] = _scalingDeCom[ i ];
       _waveletReCon[ i ] = _waveletDeCom[ i ];
+    } // i
+
+  } // _initOrthogonality
+
+  /**
+   * The method builds form the scaling (low pass) coefficients for
+   * decomposition and wavelet (high pass) coefficients for decomposition of a
+   * filter, the matching coefficients for the scaling (low pass) for
+   * reconstruction, and for the wavelet (high pass) of reconstruction. This
+   * method should be called in the constructor of an biorthogonal
+   * (biorthonormal) filter directly after defining the orthonormal coefficients
+   * of the scaling (low pass) and wavelet (high pass) for decomposition!
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.02.2014 17:04:44
+   */
+  protected void _buildBiOrthonormalSpace( ) {
+
+    // building wavelet and scaling function for reconstruction
+    // as orthogonal (orthonormal) spaces from scaling and wavelet
+    // of decomposition. ;-)
+    _scalingReCon = new double[ _motherWavelength ];
+    _waveletReCon = new double[ _motherWavelength ];
+    for( int i = 0; i < _motherWavelength; i++ ) {
+      if( i % 2 == 0 ) {
+        _scalingReCon[ i ] = _waveletDeCom[ ( _motherWavelength - 1 ) - i ];
+        _waveletReCon[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+      } else {
+        _scalingReCon[ i ] = -_waveletDeCom[ ( _motherWavelength - 1 ) - i ];
+        _waveletReCon[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+      } // if
     } // i
 
   } // _initOrthogonality

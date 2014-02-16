@@ -1,9 +1,25 @@
 /**
+ * JWave - Java implementation of wavelet transform algorithms
  *
- * @author tucker
- * 16.02.2014 11:42:09
+ * Copyright 2008-2014 Christian Scheiblich
+ *  
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at 
  *
- * BiOrthogonal68.java
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ *
+ * This file is part of JWave.
+ *
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @date 23.05.2008 17:42:23
+ *
  */
 package math.jwave.transforms.wavelets;
 
@@ -69,46 +85,9 @@ public class BiOrthogonal68 extends Wavelet {
     _waveletDeCom[ 16 ] = 0.;
     _waveletDeCom[ 17 ] = 0.;
 
-    _scalingReCon = new double[ _motherWavelength ];
-    _scalingReCon[ 0 ] = 0.;
-    _scalingReCon[ 1 ] = 0.;
-    _scalingReCon[ 2 ] = 0.;
-    _scalingReCon[ 3 ] = 0.014426282505624435;
-    _scalingReCon[ 4 ] = 0.014467504896790148;
-    _scalingReCon[ 5 ] = -0.07872200106262882;
-    _scalingReCon[ 6 ] = -0.04036797903033992;
-    _scalingReCon[ 7 ] = 0.41784910915027457;
-    _scalingReCon[ 8 ] = 0.7589077294536541;
-    _scalingReCon[ 9 ] = 0.41784910915027457;
-    _scalingReCon[ 10 ] = -0.04036797903033992;
-    _scalingReCon[ 11 ] = -0.07872200106262882;
-    _scalingReCon[ 12 ] = 0.014467504896790148;
-    _scalingReCon[ 13 ] = 0.014426282505624435;
-    _scalingReCon[ 14 ] = 0.;
-    _scalingReCon[ 15 ] = 0.;
-    _scalingReCon[ 16 ] = 0.;
-    _scalingReCon[ 17 ] = 0.;
-
-    _waveletReCon = new double[ _motherWavelength ];
-    _waveletReCon[ 0 ] = 0.;
-    _waveletReCon[ 1 ] = -0.0019088317364812906;
-    _waveletReCon[ 2 ] = -0.0019142861290887667;
-    _waveletReCon[ 3 ] = 0.016990639867602342;
-    _waveletReCon[ 4 ] = 0.01193456527972926;
-    _waveletReCon[ 5 ] = -0.04973290349094079;
-    _waveletReCon[ 6 ] = -0.07726317316720414;
-    _waveletReCon[ 7 ] = 0.09405920349573646;
-    _waveletReCon[ 8 ] = 0.4207962846098268;
-    _waveletReCon[ 9 ] = -0.8259229974584023;
-    _waveletReCon[ 10 ] = 0.4207962846098268;
-    _waveletReCon[ 11 ] = 0.09405920349573646;
-    _waveletReCon[ 12 ] = -0.07726317316720414;
-    _waveletReCon[ 13 ] = -0.04973290349094079;
-    _waveletReCon[ 14 ] = 0.01193456527972926;
-    _waveletReCon[ 15 ] = 0.016990639867602342;
-    _waveletReCon[ 16 ] = -0.0019142861290887667;
-    _waveletReCon[ 17 ] = -0.0019088317364812906;
-
+    // build all other coefficients from low & high pass decomposition
+    _buildBiOrthonormalSpace( );
+    
   } // BiOrthogonal68
 
 } // BiOrthogonal68

@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2008-2014 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright 2008-2014 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,29 +69,8 @@ public class BiOrthogonal24 extends Wavelet {
     _waveletDeCom[ 8 ] = 0.;
     _waveletDeCom[ 9 ] = 0.;
 
-    _scalingReCon = new double[ _motherWavelength ];
-    _scalingReCon[ 0 ] = 0.;
-    _scalingReCon[ 1 ] = 0.;
-    _scalingReCon[ 2 ] = 0.;
-    _scalingReCon[ 3 ] = 0.3535533905932738;
-    _scalingReCon[ 4 ] = 0.7071067811865476;
-    _scalingReCon[ 5 ] = 0.3535533905932738;
-    _scalingReCon[ 6 ] = 0.;
-    _scalingReCon[ 7 ] = 0.;
-    _scalingReCon[ 8 ] = 0.;
-    _scalingReCon[ 9 ] = 0.;
-
-    _waveletReCon = new double[ _motherWavelength ];
-    _waveletReCon[ 0 ] = 0.;
-    _waveletReCon[ 1 ] = -0.03314563036811942;
-    _waveletReCon[ 2 ] = -0.06629126073623884;
-    _waveletReCon[ 3 ] = 0.1767766952966369;
-    _waveletReCon[ 4 ] = 0.4198446513295126;
-    _waveletReCon[ 5 ] = -0.9943689110435825;
-    _waveletReCon[ 6 ] = 0.4198446513295126;
-    _waveletReCon[ 7 ] = 0.1767766952966369;
-    _waveletReCon[ 8 ] = -0.06629126073623884;
-    _waveletReCon[ 9 ] = -0.03314563036811942;
+    // build all other coefficients from low & high pass decomposition
+    _buildBiOrthonormalSpace( );
 
   } // BiOrthogonal24
 
