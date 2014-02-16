@@ -24,8 +24,7 @@
 package math.jwave.transforms.wavelets;
 
 /**
- * Ingrid Daubechies' orthonormal wavelet of 20 coefficients and the scales;
- * normed, due to ||*||2 - euclidean norm.
+ * Ingrid Daubechies' orthonormal Daubechies wavelet of 20 coefficients.
  * 
  * @author Christian Scheiblich
  * @date 16.02.2014 00:41:08
@@ -68,8 +67,9 @@ public class Daubechies10 extends Wavelet {
     _scalingDeCom[ 19 ] = -0.026670057900950818;
 
     // building wavelet as orthogonal (orthonormal) space from
-    // scaling coefficients. Have a look into Alfred Haar's
-    // wavelet for understanding what is done. ;-)
+    // scaling coefficients (low pass filter). Have a look into
+    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // vanishing moments for understanding what is done here. ;-)
     _waveletDeCom = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ )
       if( i % 2 == 0 )
@@ -77,6 +77,7 @@ public class Daubechies10 extends Wavelet {
       else
         _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
 
+    // Copy to reconstruction filters due to orthogonality (orthonormality)!
     _scalingReCon = new double[ _motherWavelength ];
     _waveletReCon = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ ) {
@@ -84,7 +85,7 @@ public class Daubechies10 extends Wavelet {
       _scalingReCon[ i ] = _scalingDeCom[ i ];
       _waveletReCon[ i ] = _waveletDeCom[ i ];
 
-    } // copy to reconstruction due to orthogonality
+    } // i
     
   } // Daubechies10
 
