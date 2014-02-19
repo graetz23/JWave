@@ -112,7 +112,7 @@ public class FastWaveletTransform extends WaveletTransform {
 
     int h = transformWavelength;
 
-    if( !isBinary( h ) )
+    if( !_mathToolKit.isBinary( h ) )
       h = h << 1; // 6 -> 8, 10 -> 16
 
     while( h <= arrTime.length && h >= transformWavelength ) {

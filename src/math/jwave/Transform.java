@@ -25,6 +25,7 @@ package math.jwave;
 
 import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveFailure;
+import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.BasicTransform;
 
 /**
@@ -42,6 +43,13 @@ public class Transform {
   protected BasicTransform _transform;
 
   /**
+   * Supplying a various number of little mathematical methods.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com) 19.02.2014 18:34:34
+   */
+  protected MathToolKit _mathToolKit;
+
+  /**
    * Constructor; needs some object like DiscreteFourierTransform,
    * FastBasicTransform, WaveletPacketTransfom, ...
    * 
@@ -53,6 +61,8 @@ public class Transform {
   public Transform( BasicTransform transform ) {
 
     _transform = transform;
+
+    _mathToolKit = new MathToolKit( );
 
   } // Transform
 
@@ -78,6 +88,9 @@ public class Transform {
           + transform.getClass( ) + " with a specific level decomposition ;"
           + " use Transform( TransformI transform ) constructor instead." );
     }
+
+    _mathToolKit = new MathToolKit( );
+
   } // Transform
 
   /**
@@ -93,7 +106,7 @@ public class Transform {
    */
   public double[ ] forward( double[ ] arrTime ) throws JWaveFailure {
 
-    if( !isBinary( arrTime.length ) )
+    if( !_mathToolKit.isBinary( arrTime.length ) )
       throw new JWaveFailure(
           "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
@@ -115,7 +128,7 @@ public class Transform {
    */
   public double[ ] reverse( double[ ] arrFreq ) throws JWaveFailure {
 
-    if( !isBinary( arrFreq.length ) )
+    if( !_mathToolKit.isBinary( arrFreq.length ) )
       throw new JWaveFailure(
           "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
@@ -173,7 +186,7 @@ public class Transform {
 
     int M = matrixTime.length;
 
-    if( !isBinary( M ) )
+    if( !_mathToolKit.isBinary( M ) )
       throw new JWaveFailure(
           "given matrix dimension "
               + M
@@ -181,7 +194,7 @@ public class Transform {
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     for( int i = 0; i < M; i++ )
-      if( !isBinary( matrixTime[ i ].length ) )
+      if( !_mathToolKit.isBinary( matrixTime[ i ].length ) )
         throw new JWaveFailure(
             "given matrix dimension N(i)="
                 + matrixTime[ i ].length
@@ -208,7 +221,7 @@ public class Transform {
 
     int M = matrixFreq.length;
 
-    if( !isBinary( M ) )
+    if( !_mathToolKit.isBinary( M ) )
       throw new JWaveFailure(
           "given matrix dimension "
               + M
@@ -216,7 +229,7 @@ public class Transform {
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     for( int i = 0; i < M; i++ )
-      if( !isBinary( matrixFreq[ i ].length ) )
+      if( !_mathToolKit.isBinary( matrixFreq[ i ].length ) )
         throw new JWaveFailure(
             "given matrix dimension N(i)="
                 + matrixFreq[ i ].length
@@ -243,7 +256,7 @@ public class Transform {
 
     int M = spaceTime.length;
 
-    if( !isBinary( M ) )
+    if( !_mathToolKit.isBinary( M ) )
       throw new JWaveFailure(
           "given space dimension "
               + M
@@ -254,7 +267,7 @@ public class Transform {
 
       int N = spaceTime[ i ].length;
 
-      if( !isBinary( N ) )
+      if( !_mathToolKit.isBinary( N ) )
         throw new JWaveFailure(
             "given space dimension N(i)="
                 + N
@@ -263,7 +276,7 @@ public class Transform {
 
       for( int j = 0; j < N; j++ )
         // // N(j)
-        if( !isBinary( spaceTime[ i ][ j ].length ) )
+        if( !_mathToolKit.isBinary( spaceTime[ i ][ j ].length ) )
           // O
           throw new JWaveFailure(
               "given space dimension M(j)="
@@ -294,7 +307,7 @@ public class Transform {
 
     int M = spaceFreq.length;
 
-    if( !isBinary( M ) )
+    if( !_mathToolKit.isBinary( M ) )
       throw new JWaveFailure(
           "given space dimension "
               + M
@@ -305,7 +318,7 @@ public class Transform {
 
       int N = spaceFreq[ i ].length;
 
-      if( !isBinary( N ) )
+      if( !_mathToolKit.isBinary( N ) )
         throw new JWaveFailure(
             "given space dimension N(i)="
                 + N
@@ -314,7 +327,7 @@ public class Transform {
 
       for( int j = 0; j < N; j++ )
         // // N(j)
-        if( !isBinary( spaceFreq[ i ][ j ].length ) )
+        if( !_mathToolKit.isBinary( spaceFreq[ i ][ j ].length ) )
           // O
           throw new JWaveFailure(
               "given space dimension M(j)="
@@ -327,27 +340,5 @@ public class Transform {
     return _transform.reverse( spaceFreq );
 
   } // reverse
-
-  /**
-   * Checks if given number is of type 2^p = 1, 2, 4, 8, 18, 32, 64, .., 1024, ..
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com) 10.02.2014 20:18:26
-   * @param number
-   *          any positive integer
-   * @return true if is 2^p else false
-   */
-  private boolean isBinary( int number ) {
-
-    boolean isBinary = false;
-
-    int power = (int)( Math.log( number ) / Math.log( 2. ) );
-
-    double result = 1. * Math.pow( 2., power );
-
-    if( result == number ) isBinary = true;
-
-    return isBinary;
-
-  } // isBinary
 
 } // class

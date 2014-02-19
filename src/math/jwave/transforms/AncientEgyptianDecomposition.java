@@ -24,7 +24,7 @@
 package math.jwave.transforms;
 
 import math.jwave.exceptions.JWaveException;
-import math.jwave.tools.AncientEgyptianMultiplication;
+import math.jwave.tools.MathToolKit;
 
 /**
  * A wavelet transform method for arrays and signals of arbitrary lengths, even
@@ -46,157 +46,144 @@ import math.jwave.tools.AncientEgyptianMultiplication;
  */
 public class AncientEgyptianDecomposition extends BasicTransform {
 
-	/**
-	 * The selected Transform (FWT or WPT) used for the sub arrays of the
-	 * ancient Egyptian decomposition. Actually, this displays somehow the
-	 * Composite Pattern of software design pattern. See:
-	 * http://en.wikipedia.org/wiki/Composite_pattern#Java
-	 */
-	protected BasicTransform _waveTransform;
+  /**
+   * The selected Transform (FWT or WPT) used for the sub arrays of the ancient
+   * Egyptian decomposition. Actually, this displays somehow the Composite
+   * Pattern of software design pattern. See:
+   * http://en.wikipedia.org/wiki/Composite_pattern#Java
+   */
+  protected BasicTransform _waveTransform;
 
-	/**
-	 * Helper for calculating the decomposition.
-	 */
-	private AncientEgyptianMultiplication _ancientEgyptianMultiplication;
+  /**
+   * the base block size for spitting an array; e. g. 127 with block size of 32
+   * ends up as: 32 | 32 | 32 | 16 | 8 | 4 | 2 | 1.
+   */
+  private int _initialWaveletSpaceSize;
 
-	/**
-	 * the base block size for spitting an array; e. g. 127 with block size of
-	 * 32 ends up as: 32 | 32 | 32 | 16 | 8 | 4 | 2 | 1.
-	 */
-	private int _initialWaveletSpaceSize;
+  /**
+   * Constructor taking the
+   * 
+   * @date 14.08.2010 10:43:28
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   */
+  public AncientEgyptianDecomposition( BasicTransform waveTransform ) {
 
-	/**
-	 * Constructor taking the
-	 * 
-	 * @date 14.08.2010 10:43:28
-	 * @author Christian Scheiblich (cscheiblich@gmail.com)
-	 */
-	public AncientEgyptianDecomposition(BasicTransform waveTransform) {
+    _waveTransform = waveTransform;
 
-		_waveTransform = waveTransform;
+    _initialWaveletSpaceSize = 0;
 
-		_initialWaveletSpaceSize = 0;
+  } // FastBasicTransformArbitrary
 
-		_ancientEgyptianMultiplication = new AncientEgyptianMultiplication();
+  public AncientEgyptianDecomposition( BasicTransform waveTransform,
+      int initialWaveletSpaceSize ) {
 
-	} // FastBasicTransformArbitrary
+    _waveTransform = waveTransform;
 
-	public AncientEgyptianDecomposition(BasicTransform waveTransform,
-			int initialWaveletSpaceSize) {
+    _initialWaveletSpaceSize = initialWaveletSpaceSize;
 
-		_waveTransform = waveTransform;
+  } // AncientEgyptianDecomposition
 
-		_initialWaveletSpaceSize = initialWaveletSpaceSize;
+  /**
+   * This forward method decomposes the given array of arbitrary length to sub
+   * arrays while applying the ancient Egyptian decomposition. Each sub array is
+   * transformed by the selected basic transform and the resulting wavelet
+   * coefficients are copied back to their original discrete positions.
+   * 
+   * @date 14.08.2010 10:43:28
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @see math.jwave.transforms.BasicTransform#forward(double[])
+   */
+  @Override public double[ ] forward( double[ ] arrTime ) {
 
-		_ancientEgyptianMultiplication = new AncientEgyptianMultiplication();
+    double[ ] arrHilb = new double[ arrTime.length ];
 
-	} // AncientEgyptianDecomposition
+    int[ ] ancientEgyptianMultipliers = null;
 
-	/**
-	 * This forward method decomposes the given array of arbitrary length to sub
-	 * arrays while applying the ancient Egyptian decomposition. Each sub array
-	 * is transformed by the selected basic transform and the resulting wavelet
-	 * coefficients are copied back to their original discrete positions.
-	 * 
-	 * @date 14.08.2010 10:43:28
-	 * @author Christian Scheiblich (cscheiblich@gmail.com)
-	 * @see math.jwave.transforms.BasicTransform#forward(double[])
-	 */
-	@Override
-	public double[] forward(double[] arrTime) {
+    try {
 
-		double[] arrHilb = new double[arrTime.length];
+      ancientEgyptianMultipliers = _mathToolKit.decompose( arrTime.length );
 
-		int[] ancientEgyptianMultipliers = null;
+    } catch( JWaveException e ) {
 
-		try {
+      e.printStackTrace( );
 
-			ancientEgyptianMultipliers = _ancientEgyptianMultiplication
-					.decompose(arrTime.length);
+    } // try 
 
-		} catch (JWaveException e) {
+    int offSet = 0;
+    for( int m = 0; m < ancientEgyptianMultipliers.length; m++ ) {
 
-			e.printStackTrace();
+      int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
 
-		} // try 
+      int arrTimeSubLength =
+          (int)_mathToolKit.scalb( 1., ancientEgyptianMultiplier );
 
-		int offSet = 0;
-		for (int m = 0; m < ancientEgyptianMultipliers.length; m++) {
+      double[ ] arrTimeSub = new double[ arrTimeSubLength ];
+      for( int i = 0; i < arrTimeSub.length; i++ )
+        arrTimeSub[ i ] = arrTime[ i + offSet ];
 
-			int ancientEgyptianMultiplier = ancientEgyptianMultipliers[m];
+      double[ ] arrHilbSub = _waveTransform.forward( arrTimeSub );
 
-			int arrTimeSubLength = (int) _ancientEgyptianMultiplication.scalb(
-					1., ancientEgyptianMultiplier);
+      for( int i = 0; i < arrHilbSub.length; i++ )
+        arrHilb[ i + offSet ] = arrHilbSub[ i ];
 
-			double[] arrTimeSub = new double[arrTimeSubLength];
-			for (int i = 0; i < arrTimeSub.length; i++)
-				arrTimeSub[i] = arrTime[i + offSet];
+      offSet += arrHilbSub.length;
 
-			double[] arrHilbSub = _waveTransform.forward(arrTimeSub);
+    } // m - no of sub transforms
 
-			for (int i = 0; i < arrHilbSub.length; i++)
-				arrHilb[i + offSet] = arrHilbSub[i];
+    return arrHilb;
 
-			offSet += arrHilbSub.length;
+  } // forward
 
-		} // m - no of sub transforms
+  /**
+   * This reverse method awaits an array of arbitrary length in wavelet space
+   * keeping the wavelet already decomposed by the ancient Egyptian
+   * decomposition. Therefore, each of the existing sub arrays of length 2^p is
+   * reverse transformed by the selected basic transform and the resulting
+   * coefficients of time domain are copied back to their original discrete
+   * positions.
+   * 
+   * @date 14.08.2010 10:43:28
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @see math.jwave.transforms.BasicTransform#reverse(double[])
+   */
+  @Override public double[ ] reverse( double[ ] arrHilb ) {
 
-		return arrHilb;
-		
-	} // forward
+    double[ ] arrTime = new double[ arrHilb.length ];
 
-	/**
-	 * This reverse method awaits an array of arbitrary length in wavelet space
-	 * keeping the wavelet already decomposed by the ancient Egyptian
-	 * decomposition. Therefore, each of the existing sub arrays of length 2^p
-	 * is reverse transformed by the selected basic transform and the resulting
-	 * coefficients of time domain are copied back to their original discrete
-	 * positions.
-	 * 
-	 * @date 14.08.2010 10:43:28
-	 * @author Christian Scheiblich (cscheiblich@gmail.com)
-	 * @see math.jwave.transforms.BasicTransform#reverse(double[])
-	 */
-	@Override
-	public double[] reverse(double[] arrHilb) {
+    int[ ] ancientEgyptianMultipliers = null;
+    try {
 
-		double[] arrTime = new double[arrHilb.length];
+      ancientEgyptianMultipliers = _mathToolKit.decompose( arrHilb.length );
 
-		int[] ancientEgyptianMultipliers = null;
-		try {
+    } catch( JWaveException e ) {
 
-			ancientEgyptianMultipliers = _ancientEgyptianMultiplication
-					.decompose(arrHilb.length);
+      e.printStackTrace( );
 
-		} catch (JWaveException e) {
+    }
 
-			e.printStackTrace();
+    int offSet = 0;
+    for( int m = 0; m < ancientEgyptianMultipliers.length; m++ ) {
 
-		}
+      int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
 
-		int offSet = 0;
-		for (int m = 0; m < ancientEgyptianMultipliers.length; m++) {
+      int arrHilbSubLength =
+          (int)_mathToolKit.scalb( 1., ancientEgyptianMultiplier );
 
-			int ancientEgyptianMultiplier = ancientEgyptianMultipliers[m];
+      double[ ] arrHilbSub = new double[ arrHilbSubLength ];
+      for( int i = 0; i < arrHilbSub.length; i++ )
+        arrHilbSub[ i ] = arrHilb[ i + offSet ];
 
-			int arrHilbSubLength = (int) _ancientEgyptianMultiplication.scalb(
-					1., ancientEgyptianMultiplier);
+      double[ ] arrTimeSub = _waveTransform.reverse( arrHilbSub );
 
-			double[] arrHilbSub = new double[arrHilbSubLength];
-			for (int i = 0; i < arrHilbSub.length; i++)
-				arrHilbSub[i] = arrHilb[i + offSet];
+      for( int i = 0; i < arrTimeSub.length; i++ )
+        arrTime[ i + offSet ] = arrTimeSub[ i ];
 
-			double[] arrTimeSub = _waveTransform.reverse(arrHilbSub);
+      offSet += arrHilbSub.length;
 
-			for (int i = 0; i < arrTimeSub.length; i++)
-				arrTime[i + offSet] = arrTimeSub[i];
+    } // m - no of sub transforms
 
-			offSet += arrHilbSub.length;
+    return arrTime;
 
-		} // m - no of sub transforms
-
-		return arrTime;
-		
-	} // reverse
+  } // reverse
 
 } // class

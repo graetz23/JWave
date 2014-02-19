@@ -24,6 +24,7 @@
 package math.jwave.transforms;
 
 import math.jwave.datatypes.Complex;
+import math.jwave.tools.MathToolKit;
 
 /**
  * Basic Wave for transformations like Fast Fourier Transform (FFT), Fast
@@ -35,6 +36,24 @@ import math.jwave.datatypes.Complex;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public abstract class BasicTransform {
+
+  /**
+   * Supplying a various number of little mathematical methods.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 19.02.2014 18:34:34
+   */
+  protected MathToolKit _mathToolKit;
+
+  /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 19.02.2014 18:38:21
+   */
+  public BasicTransform( ) {
+
+    _mathToolKit = new MathToolKit( );
+
+  } // BasicTransform
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
@@ -68,7 +87,8 @@ public abstract class BasicTransform {
    * inheritance.
    * 
    * @date 16.02.2014 14:42:57
-   * @author Christian Scheiblich (cscheiblich@gmail.com) (cscheiblich@gmail.com)
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *         (cscheiblich@gmail.com)
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
@@ -106,7 +126,8 @@ public abstract class BasicTransform {
    * inheritance.
    * 
    * @date 16.02.2014 14:42:57
-   * @author Christian Scheiblich (cscheiblich@gmail.com) (cscheiblich@gmail.com)
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *         (cscheiblich@gmail.com)
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
@@ -373,29 +394,5 @@ public abstract class BasicTransform {
     return spcTime;
 
   } // reverse
-
-  /**
-   * Checks if given number is of type 2^p = 1, 2, 4, 8, 18, 32, 64, .., 1024,
-   * ..
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com) 10.02.2014 20:18:26
-   * @param number
-   *          any positive integer
-   * @return true if is 2^p else false
-   */
-  protected boolean isBinary( int number ) {
-
-    boolean isBinary = false;
-
-    int power = (int)( Math.log( number ) / Math.log( 2. ) );
-
-    double result = 1. * Math.pow( 2., power );
-
-    if( result == number )
-      isBinary = true;
-
-    return isBinary;
-
-  } // isBinary
 
 } // class
