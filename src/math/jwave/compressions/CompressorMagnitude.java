@@ -137,9 +137,29 @@ public class CompressorMagnitude extends Compressor {
    */
   @Override protected double[ ][ ][ ] compress( double[ ][ ][ ] spcHilb ) {
 
-    // TODO Auto-generated method stub
+    _magnitude = 0.;
 
-    return null;
+    int matHilbNoOfRows = spcHilb.length;
+    int matHilbNoOfCols = spcHilb[ 0 ].length;
+    int matHilbNoOfLvls = spcHilb[ 0 ][ 0 ].length;
+
+    double[ ][ ][ ] spcComp =
+        new double[ matHilbNoOfRows ][ matHilbNoOfCols ][ matHilbNoOfLvls ];
+
+    for( int i = 0; i < matHilbNoOfRows; i++ )
+      for( int j = 0; j < matHilbNoOfCols; j++ )
+        for( int k = 0; k < matHilbNoOfLvls; k++ )
+          _magnitude += Math.abs( spcHilb[ i ][ j ][ k ] );
+
+    for( int i = 0; i < matHilbNoOfRows; i++ )
+      for( int j = 0; j < matHilbNoOfCols; j++ )
+        for( int k = 0; k < matHilbNoOfLvls; k++ )
+          if( Math.abs( spcHilb[ i ][ j ][ k ] ) >= _magnitude * _threshold )
+            spcComp[ i ][ j ][ k ] = spcHilb[ i ][ j ][ k ];
+          else
+            spcComp[ i ][ j ][ k ] = 0.;
+
+    return spcComp;
 
   } // compress
 
