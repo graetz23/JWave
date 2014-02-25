@@ -52,10 +52,11 @@ public abstract class WaveletTransform extends BasicTransform {
    */
   protected WaveletTransform( Wavelet wavelet ) throws JWaveFailure {
 
-    if( wavelet == null ) throw new JWaveFailure( "given object is null!" );
+    if( wavelet == null )
+      throw new JWaveFailure( "given object is null!" );
 
     if( !( wavelet instanceof Wavelet ) )
-      throw new JWaveFailure( "given object is not of type Wavelet object" );
+      throw new JWaveFailure( "given object is not of type Wavelet" );
 
     _wavelet = wavelet;
 
