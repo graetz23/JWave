@@ -28,15 +28,15 @@ import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.WaveletPacketTransform;
-import math.jwave.transforms.wavelets.Coiflet1;
-import math.jwave.transforms.wavelets.Daubechies2;
-import math.jwave.transforms.wavelets.Daubechies3;
-import math.jwave.transforms.wavelets.Daubechies4;
 import math.jwave.transforms.wavelets.Haar1;
 import math.jwave.transforms.wavelets.Legendre1;
 import math.jwave.transforms.wavelets.Legendre2;
 import math.jwave.transforms.wavelets.Legendre3;
 import math.jwave.transforms.wavelets.Wavelet;
+import math.jwave.transforms.wavelets.coiflet.Coiflet1;
+import math.jwave.transforms.wavelets.daubechies.Daubechies2;
+import math.jwave.transforms.wavelets.daubechies.Daubechies3;
+import math.jwave.transforms.wavelets.daubechies.Daubechies4;
 
 /**
  * Main class for doing little test runs for different transform types and

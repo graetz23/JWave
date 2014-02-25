@@ -127,6 +127,9 @@ public class WaveletPacketTransform extends WaveletTransform {
     int k = arrTime.length;
 
     int h = transformWavelength;
+    //    if( !_mathToolKit.isBinary( h ) )
+    //      for( h = 2; h <= transformWavelength; h *= 2 ) {}
+    // fixed h = h << 1; // 6 -> 8, 10 -> 16
 
     if( arrHilb.length >= transformWavelength ) {
 

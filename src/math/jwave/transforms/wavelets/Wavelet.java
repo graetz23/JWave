@@ -104,7 +104,7 @@ public abstract class Wavelet implements WaveletInterface {
 
     // building wavelet as orthogonal (orthonormal) space from
     // scaling coefficients (low pass filter). Have a look into
-    // Alfred Haar's wavelet or the Daubechie Wavelet with 2
+    // Alfred Haar's wavelet or the Daubechies Wavelet with 2
     // vanishing moments for understanding what is done here. ;-)
     _waveletDeCom = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ )
@@ -121,7 +121,7 @@ public abstract class Wavelet implements WaveletInterface {
       _waveletReCon[ i ] = _waveletDeCom[ i ];
     } // i
 
-  } // _initOrthogonality
+  } // _buildOrthonormalSpace
 
   /**
    * The method builds form the scaling (low pass) coefficients for
@@ -152,7 +152,7 @@ public abstract class Wavelet implements WaveletInterface {
       } // if
     } // i
 
-  } // _initOrthogonality
+  } // _buildBiOrthonormalSpace
 
   /**
    * Performs the forward transform for the given array from time domain to
