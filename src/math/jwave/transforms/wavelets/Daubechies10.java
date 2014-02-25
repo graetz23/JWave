@@ -46,28 +46,49 @@ public class Daubechies10 extends Wavelet {
 
     _scalingDeCom = new double[ _motherWavelength ];
     _scalingDeCom[ 0 ] = -1.326420300235487e-05;
-    _scalingDeCom[ 1 ] = -9.358867000108985e-05;
+    _scalingDeCom[ 1 ] = 9.358867000108985e-05;
     _scalingDeCom[ 2 ] = -0.0001164668549943862;
-    _scalingDeCom[ 3 ] = 0.0006858566950046825;
+    _scalingDeCom[ 3 ] = -0.0006858566950046825;
     _scalingDeCom[ 4 ] = 0.00199240529499085;
-    _scalingDeCom[ 5 ] = -0.0013953517469940798;
+    _scalingDeCom[ 5 ] = 0.0013953517469940798;
     _scalingDeCom[ 6 ] = -0.010733175482979604;
-    _scalingDeCom[ 7 ] = -0.0036065535669883944;
+    _scalingDeCom[ 7 ] = 0.0036065535669883944;
     _scalingDeCom[ 8 ] = 0.03321267405893324;
-    _scalingDeCom[ 9 ] = 0.02945753682194567;
+    _scalingDeCom[ 9 ] = -0.02945753682194567;
     _scalingDeCom[ 10 ] = -0.07139414716586077;
-    _scalingDeCom[ 11 ] = -0.09305736460380659;
+    _scalingDeCom[ 11 ] = 0.09305736460380659;
     _scalingDeCom[ 12 ] = 0.12736934033574265;
-    _scalingDeCom[ 13 ] = 0.19594627437659665;
+    _scalingDeCom[ 13 ] = -0.19594627437659665;
     _scalingDeCom[ 14 ] = -0.24984642432648865;
-    _scalingDeCom[ 15 ] = -0.2811723436604265;
+    _scalingDeCom[ 15 ] = 0.2811723436604265;
     _scalingDeCom[ 16 ] = 0.6884590394525921;
-    _scalingDeCom[ 17 ] = -0.5272011889309198;
+    _scalingDeCom[ 17 ] = 0.5272011889309198;
     _scalingDeCom[ 18 ] = 0.18817680007762133;
-    _scalingDeCom[ 19 ] = -0.026670057900950818;
+    _scalingDeCom[ 19 ] = 0.026670057900950818;
+
+//    _scalingDeCom[ 0 ] = -1.326420300235487e-05;
+//    _scalingDeCom[ 1 ] = -9.358867000108985e-05;
+//    _scalingDeCom[ 2 ] = -0.0001164668549943862;
+//    _scalingDeCom[ 3 ] = 0.0006858566950046825;
+//    _scalingDeCom[ 4 ] = 0.00199240529499085;
+//    _scalingDeCom[ 5 ] = -0.0013953517469940798;
+//    _scalingDeCom[ 6 ] = -0.010733175482979604;
+//    _scalingDeCom[ 7 ] = -0.0036065535669883944;
+//    _scalingDeCom[ 8 ] = 0.03321267405893324;
+//    _scalingDeCom[ 9 ] = 0.02945753682194567;
+//    _scalingDeCom[ 10 ] = -0.07139414716586077;
+//    _scalingDeCom[ 11 ] = -0.09305736460380659;
+//    _scalingDeCom[ 12 ] = 0.12736934033574265;
+//    _scalingDeCom[ 13 ] = 0.19594627437659665;
+//    _scalingDeCom[ 14 ] = -0.24984642432648865;
+//    _scalingDeCom[ 15 ] = -0.2811723436604265;
+//    _scalingDeCom[ 16 ] = 0.6884590394525921;
+//    _scalingDeCom[ 17 ] = -0.5272011889309198;
+//    _scalingDeCom[ 18 ] = 0.18817680007762133;
+//    _scalingDeCom[ 19 ] = -0.026670057900950818;
 
     _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
-    
+
   } // Daubechies10
 
 } // Daubechies10
