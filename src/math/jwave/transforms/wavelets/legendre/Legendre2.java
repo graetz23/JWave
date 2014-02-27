@@ -21,36 +21,37 @@
  * @date 23.05.2008 17:42:23
  *
  */
-package math.jwave.transforms.wavelets;
+package math.jwave.transforms.wavelets.legendre;
+
+import math.jwave.transforms.wavelets.Wavelet;
 
 /**
- * Orthonormal Legendre wavelet transform of 2 coefficients based on the
- * Legendre polynomial. But, actually for the smallest Legendre wavelet, the
- * wavelet is the mirrored Haar Wavelet.
+ * Legendre's orthonormal wavelet of four coefficients and the scales; normed,
+ * due to ||*||2 - euclidean norm.
  * 
- * @date 08.06.2010 09:32:08
+ * @date 03.06.2010 21:19:04
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-public class Legendre1 extends Wavelet {
+public class Legendre2 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Legendre 2 wavelet coeffs and the
-   * scales; normed, due to ||*||_2 -- euclidean norm. Actually these
-   * coefficients are the mirrored ones of Alfred Haar's wavelet -- see class
-   * Haar1 and Haar1Orthogonal.
+   * Constructor setting up the orthonormal Legendre4 wavelet coeffs and the
+   * scales; normed, due to ||*||2 - euclidean norm.
    * 
-   * @date 08.06.2010 09:32:08
+   * @date 03.06.2010 21:19:04
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
-  public Legendre1( ) {
+  public Legendre2( ) {
 
-    _transformWavelength = 2; // minimal wavelength of input signal
+    _transformWavelength = 2; // minimal wavelength of input signal - TODO: test 2 ! 
 
-    _motherWavelength = 2; // wavelength of mother wavelet
+    _motherWavelength = 4; // wavelength of mother wavelet
 
-    _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = -1.; // h0
-    _scalingDeCom[ 1 ] = -1.; // h1
+    _scalingDeCom = new double[ _motherWavelength ]; // can be done in static way also; faster?
+    _scalingDeCom[ 0 ] = -5. / 8.; // s0
+    _scalingDeCom[ 1 ] = -3. / 8.; // s1
+    _scalingDeCom[ 2 ] = -3. / 8.; // s2
+    _scalingDeCom[ 3 ] = -5. / 8.; // s3
 
     // normalize orthogonal space => orthonormal space!!!  
     double sqrt02 = Math.sqrt( 2. ) ; // 1.4142135623730951
@@ -59,6 +60,6 @@ public class Legendre1 extends Wavelet {
 
     _buildOrthonormalSpace( ); // build all other coefficients from low pass decomposition
 
-  } // Legendre1
+  } // Legendre2
 
 } // class

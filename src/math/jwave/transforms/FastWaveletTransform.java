@@ -73,20 +73,17 @@ public class FastWaveletTransform extends WaveletTransform {
 
     int h = arrHilb.length;
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-    if( h >= transformWavelength ) {
 
-      while( h >= transformWavelength ) {
+    while( h >= transformWavelength ) {
 
-        double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
+      double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
 
-        for( int i = 0; i < h; i++ )
-          arrHilb[ i ] = arrTempPart[ i ];
+      for( int i = 0; i < h; i++ )
+        arrHilb[ i ] = arrTempPart[ i ];
 
-        h = h >> 1;
+      h = h >> 1;
 
-      } // levels
-
-    } // if
+    } // levels
 
     return arrHilb;
 
@@ -112,9 +109,9 @@ public class FastWaveletTransform extends WaveletTransform {
 
     int h = transformWavelength;
 
-//    if( !_mathToolKit.isBinary( h ) )
-//      for( h = 2; h <= transformWavelength; h *= 2 ) {}
-        // fixed h = h << 1; // 6 -> 8, 10 -> 16
+    //    if( !_mathToolKit.isBinary( h ) )
+    //      for( h = 2; h <= transformWavelength; h *= 2 ) {}
+    // fixed h = h << 1; // 6 -> 8, 10 -> 16
 
     while( h <= arrTime.length && h >= transformWavelength ) {
 
@@ -131,4 +128,95 @@ public class FastWaveletTransform extends WaveletTransform {
 
   }// reverse
 
-} // class
+  /**
+   * Method splits a 1-D time domain signal into each computed hilbert space and
+   * stored them in a 2-D space.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 27.02.2014 21:31:08
+   * @param arrTime
+   *          1-D time domain signal
+   * @return a 2-D hilbert space: [ 0 .. p ][ 0 .. N ] where p is the exponent
+   *         of N=2^p
+   */
+  public double[ ][ ] forwardSplit( double[ ] arrTime ) {
+
+    int l = arrTime.length;
+
+    double[ ] arrHilb = new double[ l ];
+    for( int i = 0; i < l; i++ )
+      arrHilb[ i ] = arrTime[ i ];
+
+    int levels = _mathToolKit.getExponent( l );
+
+    double[ ][ ] arrHilbSplit = new double[ levels ][ l ];
+
+    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+
+    int lvl = 0; // the levels of the split space
+    int h = l; // begin with full length
+
+    while( h >= transformWavelength ) {
+
+      double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
+
+      for( int i = 0; i < l; i++ ) {
+
+        if( i < h )
+          arrHilb[ i ] = arrHilbSplit[ lvl ][ i ] = arrTempPart[ i ];
+        else
+          arrHilbSplit[ lvl ][ i ] = 0.;
+
+      } // i - full length l instead of h
+
+      h = h >> 1; // .. -> 8 -> 4 -> 2 
+
+      lvl++; // 0, 1, 2, ..
+
+    } // levels
+
+    return arrHilbSplit;
+
+  }// forward
+
+  /**
+   * Input 2-D Hilbert spaces which where constructed from a 1-D time domain
+   * signal and rebuild it.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 27.02.2014 21:47:08
+   * @param arrHilbSplit
+   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
+   *          of N=2^p
+   * @return a 1-D time domain signal
+   */
+  public double[ ] reverseSplit( double[ ][ ] arrHilbSplit ) {
+
+    int l = arrHilbSplit[ 0 ].length; // length of first Hilbert space
+
+    double[ ] arrTime = new double[ l ];
+
+    for( int lvl = 0; lvl < l; lvl++ )
+      for( int i = 0; i < l; i++ )
+        arrTime[ i ] += arrHilbSplit[ lvl ][ i ]; // add them together
+
+    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+
+    int h = transformWavelength;
+
+    while( h <= l && h >= transformWavelength ) {
+
+      double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
+
+      for( int i = 0; i < h; i++ )
+        arrTime[ i ] = arrTempPart[ i ];
+
+      h = h << 1;
+
+    } // levels
+
+    return arrTime;
+
+  }// reverse
+
+} // FastWaveletTransfromSplit

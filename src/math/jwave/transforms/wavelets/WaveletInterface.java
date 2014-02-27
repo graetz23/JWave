@@ -79,7 +79,7 @@ public interface WaveletInterface {
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition low pass filter coefficients
    */
-  public double[ ] getScalingDeCom( );
+  public double[ ] getScalingDeComposition( );
 
   /**
    * Returns a copy of the wavelet (low pass filter) coefficients of the
@@ -90,7 +90,7 @@ public interface WaveletInterface {
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition high pass filter coefficients
    */
-  public double[ ] getWaveletDeCom( );
+  public double[ ] getWaveletDeComposition( );
 
   /**
    * Returns a copy of the scaling (low pass filter) coefficients of the
@@ -101,7 +101,7 @@ public interface WaveletInterface {
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction low pass filter coefficients
    */
-  public double[ ] getScalingReCon( );
+  public double[ ] getScalingReConstruction( );
 
   /**
    * Returns a copy of the wavelet (high pass filter) coefficients of the
@@ -112,6 +112,6 @@ public interface WaveletInterface {
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction high pass filter coefficients
    */
-  public double[ ] getWaveletReCon( );
+  public double[ ] getWaveletReConstruction( );
 
 } // WaveletInterface

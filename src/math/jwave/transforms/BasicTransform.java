@@ -99,6 +99,7 @@ public abstract class BasicTransform {
 
     for( int i = 0; i < arrTime.length; i++ ) {
 
+      // TODO rehack this to: { r1, r2, r3, .., c1, c2, c3, .. }
       int k = i * 2;
       arrTimeBulk[ k ] = arrTime[ i ].getReal( );
       arrTimeBulk[ k + 1 ] = arrTime[ i ].getImag( );
@@ -395,4 +396,4 @@ public abstract class BasicTransform {
 
   } // reverse
 
-} // class
+} // BasicTransform

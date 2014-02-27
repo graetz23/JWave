@@ -280,7 +280,7 @@ public abstract class Wavelet implements WaveletInterface {
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition low pass filter coefficients
    */
-  public double[ ] getScalingDeCom( ) {
+  public double[ ] getScalingDeComposition( ) {
 
     double[ ] scalingDeCom = new double[ _scalingDeCom.length ];
 
@@ -300,7 +300,7 @@ public abstract class Wavelet implements WaveletInterface {
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition high pass filter coefficients
    */
-  public double[ ] getWaveletDeCom( ) {
+  public double[ ] getWaveletDeComposition( ) {
 
     double[ ] waveletDeCom = new double[ _waveletDeCom.length ];
 
@@ -320,7 +320,7 @@ public abstract class Wavelet implements WaveletInterface {
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction low pass filter coefficients
    */
-  public double[ ] getScalingReCon( ) {
+  public double[ ] getScalingReConstruction( ) {
 
     double[ ] scalingReCon = new double[ _scalingReCon.length ];
 
@@ -340,7 +340,7 @@ public abstract class Wavelet implements WaveletInterface {
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction high pass filter coefficients
    */
-  public double[ ] getWaveletReCon( ) {
+  public double[ ] getWaveletReConstruction( ) {
 
     double[ ] waveletReCon = new double[ _waveletReCon.length ];
 

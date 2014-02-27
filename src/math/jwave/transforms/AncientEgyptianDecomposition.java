@@ -24,7 +24,6 @@
 package math.jwave.transforms;
 
 import math.jwave.exceptions.JWaveException;
-import math.jwave.tools.MathToolKit;
 
 /**
  * A wavelet transform method for arrays and signals of arbitrary lengths, even
@@ -58,7 +57,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * the base block size for spitting an array; e. g. 127 with block size of 32
    * ends up as: 32 | 32 | 32 | 16 | 8 | 4 | 2 | 1.
    */
-  private int _initialWaveletSpaceSize;
+  @SuppressWarnings ( "unused") private int _initialWaveletSpaceSize;
 
   /**
    * Constructor taking the
@@ -118,6 +117,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
           (int)_mathToolKit.scalb( 1., ancientEgyptianMultiplier );
 
       double[ ] arrTimeSub = new double[ arrTimeSubLength ];
+
       for( int i = 0; i < arrTimeSub.length; i++ )
         arrTimeSub[ i ] = arrTime[ i + offSet ];
 
@@ -170,6 +170,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
           (int)_mathToolKit.scalb( 1., ancientEgyptianMultiplier );
 
       double[ ] arrHilbSub = new double[ arrHilbSubLength ];
+
       for( int i = 0; i < arrHilbSub.length; i++ )
         arrHilbSub[ i ] = arrHilb[ i + offSet ];
 
