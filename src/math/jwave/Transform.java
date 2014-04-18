@@ -24,6 +24,7 @@
 package math.jwave;
 
 import math.jwave.datatypes.Complex;
+import math.jwave.exceptions.JWaveError;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.BasicTransform;
@@ -67,9 +68,13 @@ public class Transform {
   } // Transform
 
   /**
+   * 
+   * 
    * Constructor; needs some object like DiscreteFourierTransform,
    * FastBasicTransform, WaveletPacketTransfom, ... It take also a number of
    * iteration for decomposition
+   * 
+   *
    * 
    * @date 19.05.2009 09:50:24
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -82,6 +87,15 @@ public class Transform {
       // style - after restructuring the code
 
       // ( (WaveletTransform)_transform ).set_iteration( iteration );
+      
+      
+      try { // always break down these methods
+        
+        throw new JWaveError( "THE ITERATION METHODS ARE BORKEN AT MOMENT" );
+      
+      } catch( JWaveError e ) {
+        e.printStackTrace();
+      } // try
 
     } else {
       throw new IllegalArgumentException( "Can't use transform :"
