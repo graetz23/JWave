@@ -150,7 +150,7 @@ public class Haar1Orthogonal extends Wavelet {
 
     } // i
 
-  } // LeGall53
+  } // Haar1
 
   /**
    * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb

@@ -78,6 +78,7 @@ public class Transform {
    */
   @Deprecated public Transform( BasicTransform transform, int iteration ) {
     if( transform instanceof BasicTransform ) {
+
       _transform = transform;
 
       // TODO realize the level transform in GOOD Software Engineering
@@ -86,9 +87,7 @@ public class Transform {
       // ( (WaveletTransform)_transform ).set_iteration( iteration );
 
       try { // always break down these methods
-
         throw new JWaveError( "THE ITERATION METHODS ARE BORKEN AT MOMENT" );
-
       } catch( JWaveError e ) {
         e.printStackTrace( );
       } // try
@@ -133,8 +132,8 @@ public class Transform {
    * @param arrFreq
    *          coefficients of frequency or Hilbert domain
    * @return coefficients of time domain
-   * @throws JWaveException if
-   *           array is not of type 2^p
+   * @throws JWaveException
+   *           if array is not of type 2^p
    */
   public double[ ] reverse( double[ ] arrFreq ) throws JWaveException {
 
@@ -335,15 +334,16 @@ public class Transform {
                 + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
                 + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
-      for( int j = 0; j < N; j++ )
-        // // N(j)
-        if( !_mathToolKit.isBinary( spaceFreq[ i ][ j ].length ) )
-          // O
+      for( int j = 0; j < N; j++ ) { // N(j)
+        
+        if( !_mathToolKit.isBinary( spaceFreq[ i ][ j ].length ) ) // O
           throw new JWaveFailure(
               "given space dimension M(j)="
                   + spaceFreq[ i ][ j ].length
                   + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
                   + "please use the Ancient Egyptian Decomposition for any other array length!" );
+        
+      } // j
 
     } // i
 
@@ -352,15 +352,15 @@ public class Transform {
   } // reverse
 
   /**
-   * Generates from a 1D signal a 2D output, where the second
-   * dimension are the levels of the wavelet transform.
+   * Generates from a 1D signal a 2D output, where the second dimension are the
+   * levels of the wavelet transform.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 17.08.2014 10:07:19
    * @param arrTime
    *          coefficients of time domain
    * @return matHilb coefficients of frequency or Hilbert domain
-   * @throws JWaveException 
+   * @throws JWaveException
    */
   public double[ ][ ] decompose( double[ ] arrTime ) throws JWaveException {
 
@@ -371,6 +371,6 @@ public class Transform {
 
     return _transform.decompose( arrTime );
 
-  } // forward
+  } // decompose
 
 } // class

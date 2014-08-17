@@ -48,8 +48,9 @@ public class LeGall53 extends Wavelet {
 
     _motherWavelength = 5; // wavelength of mother wavelet
 
-    _scalingDeCom = new double[ _motherWavelength ];
     //    double sqrt2 = Math.sqrt( 2. );
+
+    _scalingDeCom = new double[ _motherWavelength ];
     _scalingDeCom[ 0 ] = -1. / 8.; // - 1/8
     _scalingDeCom[ 1 ] = 1. / 4.; // + 2/8
     _scalingDeCom[ 2 ] = 3. / 4.; // + 6/8
@@ -63,7 +64,7 @@ public class LeGall53 extends Wavelet {
     _waveletDeCom[ 3 ] = 1. / 2.; // 
     _waveletDeCom[ 4 ] = 0; // 
 
-    // Copy to reconstruction filters due to orthogonality (orthonormality)!
+    // Copy to reconstruction filters due to orthogonality!
     _scalingReCon = new double[ _motherWavelength ];
     _waveletReCon = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ ) {

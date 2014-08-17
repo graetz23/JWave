@@ -43,7 +43,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param wavelet
-   *          object of type Wavelet; LeGall53, Daubechies2, Coiflet1, ...
+   *          object of type Wavelet; Haar1, Daubechies2, Coiflet1, ...
    * @throws JWaveFailure
    *           if object is null or not of type wavelet
    * @throws JWaveException

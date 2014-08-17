@@ -39,7 +39,7 @@ public class Legendre1 extends Wavelet {
    * Constructor setting up the orthonormal Legendre 2 wavelet coeffs and the
    * scales; normed, due to ||*||_2 -- euclidean norm. Actually these
    * coefficients are the mirrored ones of Alfred Haar's wavelet -- see class
-   * LeGall53 and Haar1Orthogonal.
+   * Haar1 and Haar1Orthogonal.
    * 
    * @date 08.06.2010 09:32:08
    * @author Christian Scheiblich (cscheiblich@gmail.com)

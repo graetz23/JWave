@@ -24,7 +24,6 @@
 package math.jwave;
 
 import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
@@ -75,8 +74,8 @@ public class JWave {
     try { // try everything ~8>
 
       // String waveletTypeList =
-      // "LeGall53, Daubechies2, Daubechies3, Daubechies4, Legendre1, Legendre2, Legendre3, Coiflet1";
-      String waveletTypeList = "LeGall53, Daubechies2, Daubechies4, Legendre1";
+      // "Haar1, Daubechies2, Daubechies3, Daubechies4, Legendre1, Legendre2, Legendre3, Coiflet1";
+      String waveletTypeList = "Haar1, Daubechies2, Daubechies4, Legendre1";
 
       if( args.length < 2 || args.length > 3 ) {
         System.err

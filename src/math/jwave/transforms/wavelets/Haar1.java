@@ -64,7 +64,7 @@ public class Haar1 extends Wavelet {
       _waveletReCon[ i ] = _waveletDeCom[ i ];
     } // i
 
-  } // LeGall53
+  } // Haar1
 
   /**
    * The forward wavelet transform using the Alfred Haar's wavelet.
