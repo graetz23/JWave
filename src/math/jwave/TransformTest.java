@@ -66,8 +66,11 @@ import math.jwave.transforms.wavelets.legendre.Legendre1;
 import math.jwave.transforms.wavelets.legendre.Legendre2;
 import math.jwave.transforms.wavelets.legendre.Legendre3;
 import math.jwave.transforms.wavelets.other.CDF53;
-import math.jwave.transforms.wavelets.symlets.Symlets2;
-import math.jwave.transforms.wavelets.symlets.Symlets20;
+import math.jwave.transforms.wavelets.symlets.Symlet2;
+import math.jwave.transforms.wavelets.symlets.Symlet20;
+import math.jwave.transforms.wavelets.symlets.Symlet3;
+import math.jwave.transforms.wavelets.symlets.Symlet4;
+import math.jwave.transforms.wavelets.symlets.Symlet5;
 
 import org.junit.Test;
 
@@ -219,17 +222,35 @@ public class TransformTest {
       System.out.println( "" );
 
       System.out
-          .println( "testRounding Symlets2 - 1000 transforms => rounding error: "
+          .println( "testRounding Symlet2 - 1000 transforms => rounding error: "
               + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlets2( ), delta );
+      testFastWaveletTransformRounding( arrTime, new Symlet2( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding Symlet3 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new Symlet3( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding Symlet4 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new Symlet4( ), delta );
+      System.out.println( "" );
+
+      System.out
+          .println( "testRounding Symlet5 - 1000 transforms => rounding error: "
+              + delta );
+      testFastWaveletTransformRounding( arrTime, new Symlet5( ), delta );
       System.out.println( "" );
 
       // TODO: Implement all other Symlets filters and test here!
 
       System.out
-          .println( "testRounding Symlets20 - 1000 transforms => rounding error: "
+          .println( "testRounding Symlet20 - 1000 transforms => rounding error: "
               + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlets20( ), delta );
+      testFastWaveletTransformRounding( arrTime, new Symlet20( ), delta );
       System.out.println( "" );
 
       System.out
@@ -639,7 +660,7 @@ public class TransformTest {
       arrOfWaveletObjects[ 3 ] = new Daubechies20( );
       arrOfWaveletObjects[ 4 ] = new Coiflet2( );
       arrOfWaveletObjects[ 5 ] = new Coiflet5( );
-      arrOfWaveletObjects[ 6 ] = new Symlets20( );
+      arrOfWaveletObjects[ 6 ] = new Symlet20( );
       arrOfWaveletObjects[ 7 ] = new BiOrthogonal13( );
       arrOfWaveletObjects[ 8 ] = new BiOrthogonal39( );
       arrOfWaveletObjects[ 9 ] = new BiOrthogonal68( );

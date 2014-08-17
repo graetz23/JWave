@@ -31,7 +31,7 @@ import math.jwave.transforms.wavelets.Wavelet;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.02.2014 13:47:56
  */
-public class Symlets20 extends Wavelet {
+public class Symlet20 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
@@ -40,9 +40,9 @@ public class Symlets20 extends Wavelet {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 13:47:56
    */
-  public Symlets20( ) {
+  public Symlet20( ) {
 
-    _name = "Symlets 20"; // name of the wavelet
+    _name = "Symlet 20"; // name of the wavelet
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
@@ -92,6 +92,6 @@ public class Symlets20 extends Wavelet {
 
     _buildOrthonormalSpace( );
 
-  } // Symlets20(
+  } // Symlet20(
 
-} // Symlets20(
+} // Symlet20(
