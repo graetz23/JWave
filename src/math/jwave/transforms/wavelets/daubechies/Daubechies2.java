@@ -43,6 +43,8 @@ public class Daubechies2 extends Wavelet {
    */
   public Daubechies2( ) {
 
+    _name = "Daubechies 2"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal - TODO: test 2 !!!
 
     _motherWavelength = 4; // wavelength of mother wavelet

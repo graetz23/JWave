@@ -43,6 +43,8 @@ public class BiOrthogonal26 extends Wavelet {
    */
   public BiOrthogonal26( ) {
 
+    _name = "BiOrthogonal 2/6"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 14; // wavelength of mother wavelet

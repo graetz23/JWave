@@ -45,6 +45,8 @@ public class Legendre1 extends Wavelet {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public Legendre1( ) {
+    
+    _name = "Legendre 1"; // name of the wavelet
 
     _transformWavelength = 2; // minimal wavelength of input signal
 

@@ -99,7 +99,7 @@ public class TransformTest {
     try {
 
       System.out
-          .println( "testRounding LeGall53 - 1000 transforms => rounding error: "
+          .println( "testRounding Haar1 - 1000 transforms => rounding error: "
               + delta );
       testFastWaveletTransformRounding( arrTime, new Haar1( ), delta );
       System.out.println( "" );
@@ -327,12 +327,12 @@ public class TransformTest {
               + delta );
       testFastWaveletTransformRounding( arrTime, new DiscreteMayer( ), 1.e-2 );
       System.out.println( "" );
-      
-//      System.out
-//          .println( "testRounding LeGall 5/3 - 1000 transforms => rounding error: "
-//              + delta );
-//      testFastWaveletTransformRounding( arrTime, new LeGall53( ), 1.e-2 );
-//      System.out.println( "" );      
+
+      //      System.out
+      //          .println( "testRounding LeGall 5/3 - 1000 transforms => rounding error: "
+      //              + delta );
+      //      testFastWaveletTransformRounding( arrTime, new LeGall53( ), 1.e-2 );
+      //      System.out.println( "" );      
 
       //      System.out
       //          .println( "testRounding Battle23 - 1000 transforms => rounding error: "
@@ -422,7 +422,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 1-D method " + "using LeGall53 Wavelet" );
+        + "forward 1-D method " + "using Haar1 Wavelet" );
 
     try {
 
@@ -444,7 +444,7 @@ public class TransformTest {
       // double[ ] expected = { 4., 0., 0., 0. }; // orthogonal Hilbert space for Haar1Orthogonal
       assertArray( expected, arrHilb, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );
@@ -453,7 +453,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 1-D method " + "using LeGall53 Wavelet " + "and a long array" );
+        + "forward 1-D method " + "using Haar1 Wavelet " + "and a long array" );
 
     try {
 
@@ -479,7 +479,7 @@ public class TransformTest {
               0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. }; // orthonormal Hilbert space
       assertArray( expected, arrHilb, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );
@@ -489,7 +489,7 @@ public class TransformTest {
     System.out.println( "" );
     System.out
         .println( "Testing the Fast Wavelet Transform " + "forward 1-D method "
-            + "using LeGall53 Wavelet " + "and a random array" );
+            + "using Haar1 Wavelet " + "and a random array" );
 
     try {
 
@@ -510,7 +510,7 @@ public class TransformTest {
               0.7778174593052023 }; // orthonormal Hilbert space
       assertArray( expected, arrHilb, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );
@@ -526,7 +526,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using LeGall53 Wavelet" );
+        + "reverse 1-D method " + "using Haar1 Wavelet" );
 
     try {
 
@@ -545,7 +545,7 @@ public class TransformTest {
       double[ ] expected = { 1., 1., 1., 1. };
       assertArray( expected, arrTime, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );
@@ -554,7 +554,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using LeGall53 Wavelet" );
+        + "reverse 1-D method " + "using Haar1 Wavelet" );
 
     try {
 
@@ -582,7 +582,7 @@ public class TransformTest {
           };
       assertArray( expected, arrTime, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );
@@ -592,7 +592,7 @@ public class TransformTest {
     System.out.println( "" );
     System.out
         .println( "Testing the Fast Wavelet Transform " + "reverse 1-D method "
-            + "using LeGall53 Wavelet " + "and a random array" );
+            + "using Haar1 Wavelet " + "and a random array" );
 
     try {
 
@@ -613,7 +613,7 @@ public class TransformTest {
       double[ ] expected = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
       assertArray( expected, arrTime, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );
@@ -623,13 +623,140 @@ public class TransformTest {
   } // testReverseDoubleArray
 
   /**
+   * Test method for {@link math.jwave.Transform#decompose(double[])}.
+   */
+  @Test public void testDecomposeDoubleArray( ) {
+
+    // run this part for any wavelet that is available in JWave!
+
+    try {
+
+      Wavelet[ ] arrOfWaveletObjects = new Wavelet[ 10 ];
+
+      arrOfWaveletObjects[ 0 ] = new Haar1( );
+      arrOfWaveletObjects[ 1 ] = new Daubechies4( );
+      arrOfWaveletObjects[ 2 ] = new Daubechies10( );
+      arrOfWaveletObjects[ 3 ] = new Daubechies20( );
+      arrOfWaveletObjects[ 4 ] = new Coiflet2( );
+      arrOfWaveletObjects[ 5 ] = new Coiflet5( );
+      arrOfWaveletObjects[ 6 ] = new Symlets20( );
+      arrOfWaveletObjects[ 7 ] = new BiOrthogonal13( );
+      arrOfWaveletObjects[ 8 ] = new BiOrthogonal39( );
+      arrOfWaveletObjects[ 9 ] = new BiOrthogonal68( );
+
+      double delta = 1.e-8;
+
+      for( int w = 0; w < 10; w++ ) {
+
+        Wavelet wavelet = arrOfWaveletObjects[ w ];
+
+        System.out.println( "" );
+        System.out.println( "Testing the Fast Wavelet Transform "
+            + "decompse 1-D method " + "using " + wavelet.getName( ) );
+
+        double[ ] arrTime = { 1., 1., 1., 1. };
+
+        showTime( arrTime );
+
+        Transform t = new Transform( new FastWaveletTransform( wavelet ) );
+
+        double[ ][ ] matDeComp = t.decompose( arrTime );
+
+        showHilb( matDeComp );
+
+        double sqrt2 = Math.sqrt( 2. );
+
+        double[ ][ ] expected =
+            { { sqrt2, sqrt2, 0., 0. }, { 2., 0., 0., 0. } }; // orthonormal Hilbert space
+
+        assertMatrix( expected, matDeComp, delta );
+
+        System.out.println( "" );
+        System.out.println( "Testing the Fast Wavelet Transform "
+            + "forward 1-D method " + "using " + wavelet.getName( )
+            + " and a long array" );
+
+        double[ ] arrTime64 = { // array of length 64
+            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
+
+        showTime( arrTime );
+
+        double[ ][ ] matDeComp64 = t.decompose( arrTime64 );
+
+        showHilb( matDeComp64 );
+
+        double d1sqrt2 = 1 * sqrt2; // symbolic one times square root of 2
+        double d2sqrt2 = 2. * d1sqrt2; // 2 times square root of two
+        double d4sqrt2 = 2. * d2sqrt2; // 4 times square root of two
+
+        double[ ][ ] expected64 =
+            {
+                { d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                    d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                    d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                    d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                    d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                    d1sqrt2, d1sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0. },
+
+                { 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2.,
+                    2., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0. },
+
+                { d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2,
+                    d2sqrt2, d2sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0. },
+
+                { 4., 4., 4., 4., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0. },
+
+                { d4sqrt2, d4sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0. },
+
+                { 8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                    0., 0., 0., 0. },
+
+            }; // orthonormal Hilbert space
+
+        assertMatrix( expected64, matDeComp64, delta );
+
+      } // w
+
+    } catch( JWaveException e ) {
+
+      e.showMessage( );
+      e.printStackTrace( );
+
+    } // try
+
+  } // testDecomposeDoubleArray
+
+  /**
    * Test method for {@link math.jwave.Transform#forward(Complex[])}.
    */
   @Test public void testForwardComplexArray( ) {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 1-D method " + "using LeGall53 Wavelet" );
+        + "forward 1-D method " + "using Haar1 Wavelet" );
 
     try {
 
@@ -677,7 +804,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using LeGall53 Wavelet" );
+        + "reverse 1-D method " + "using Haar1 Wavelet" );
 
     try {
 
@@ -715,7 +842,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using LeGall53 Wavelet" );
+        + "reverse 1-D method " + "using Haar1 Wavelet" );
 
   } // testReverseComplexArray
 
@@ -726,7 +853,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 2-D method " + "using LeGall53 Wavelet" );
+        + "forward 2-D method " + "using Haar1 Wavelet" );
 
     try {
 
@@ -748,7 +875,7 @@ public class TransformTest {
               { 0., 0., 0., 0. } };
       assertMatrix( expected, matrixHilb, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );
@@ -764,7 +891,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 2-D method " + "using LeGall53 Wavelet" );
+        + "reverse 2-D method " + "using Haar1 Wavelet" );
 
     try {
 
@@ -786,7 +913,7 @@ public class TransformTest {
               { 1., 1., 1., 1. } };
       assertMatrix( expected, matrixTime, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );
@@ -802,7 +929,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 3-D method " + "using LeGall53 Wavelet" );
+        + "forward 3-D method " + "using Haar1 Wavelet" );
 
     try {
 
@@ -838,7 +965,7 @@ public class TransformTest {
                   { 0., 0., 0., 0. } } };
       assertSpace( expected, spaceHilb, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );
@@ -854,7 +981,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 3-D method " + "using LeGall53 Wavelet" );
+        + "reverse 3-D method " + "using Haar1 Wavelet" );
 
     try {
 
@@ -891,7 +1018,7 @@ public class TransformTest {
 
       assertSpace( expected, spaceTime, delta );
 
-    } catch( JWaveFailure e ) {
+    } catch( JWaveException e ) {
 
       e.showMessage( );
       e.printStackTrace( );

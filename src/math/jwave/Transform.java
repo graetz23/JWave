@@ -25,6 +25,7 @@ package math.jwave;
 
 import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveError;
+import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.BasicTransform;
@@ -68,13 +69,9 @@ public class Transform {
   } // Transform
 
   /**
-   * 
-   * 
    * Constructor; needs some object like DiscreteFourierTransform,
    * FastBasicTransform, WaveletPacketTransfom, ... It take also a number of
    * iteration for decomposition
-   * 
-   *
    * 
    * @date 19.05.2009 09:50:24
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -87,14 +84,13 @@ public class Transform {
       // style - after restructuring the code
 
       // ( (WaveletTransform)_transform ).set_iteration( iteration );
-      
-      
+
       try { // always break down these methods
-        
+
         throw new JWaveError( "THE ITERATION METHODS ARE BORKEN AT MOMENT" );
-      
+
       } catch( JWaveError e ) {
-        e.printStackTrace();
+        e.printStackTrace( );
       } // try
 
     } else {
@@ -115,10 +111,10 @@ public class Transform {
    * @param arrTime
    *          coefficients of time domain
    * @return coefficients of frequency or Hilbert domain
-   * @throws JWaveFailure
+   * @throws JWaveException
    *           array is not of type 2^p
    */
-  public double[ ] forward( double[ ] arrTime ) throws JWaveFailure {
+  public double[ ] forward( double[ ] arrTime ) throws JWaveException {
 
     if( !_mathToolKit.isBinary( arrTime.length ) )
       throw new JWaveFailure(
@@ -137,10 +133,10 @@ public class Transform {
    * @param arrFreq
    *          coefficients of frequency or Hilbert domain
    * @return coefficients of time domain
-   * @throws JWaveFailureif
+   * @throws JWaveException if
    *           array is not of type 2^p
    */
-  public double[ ] reverse( double[ ] arrFreq ) throws JWaveFailure {
+  public double[ ] reverse( double[ ] arrFreq ) throws JWaveException {
 
     if( !_mathToolKit.isBinary( arrFreq.length ) )
       throw new JWaveFailure(
@@ -193,10 +189,10 @@ public class Transform {
    * @param matrixTime
    *          coefficients of 2-D time domain; internal M(i),N(j)
    * @return coefficients of 2-D frequency or Hilbert domain
-   * @throws JWaveFailure
+   * @throws JWaveException
    *           if matrix is not of type 2^p x 2^q
    */
-  public double[ ][ ] forward( double[ ][ ] matrixTime ) throws JWaveFailure {
+  public double[ ][ ] forward( double[ ][ ] matrixTime ) throws JWaveException {
 
     int M = matrixTime.length;
 
@@ -228,10 +224,10 @@ public class Transform {
    *          coefficients of 2-D frequency or Hilbert domain; internal
    *          M(i),N(j)
    * @return coefficients of 2-D time domain
-   * @throws JWaveFailure
+   * @throws JWaveException
    *           if matrix is not of type 2^p x 2^q
    */
-  public double[ ][ ] reverse( double[ ][ ] matrixFreq ) throws JWaveFailure {
+  public double[ ][ ] reverse( double[ ][ ] matrixFreq ) throws JWaveException {
 
     int M = matrixFreq.length;
 
@@ -262,11 +258,11 @@ public class Transform {
    * @param matrixTime
    *          coefficients of 2-D time domain; internal M(i),N(j),O(k)
    * @return coefficients of 2-D frequency or Hilbert domain
-   * @throws JWaveFailure
+   * @throws JWaveException
    *           if space is not of type 2^p x 2^q x 2^r
    */
   public double[ ][ ][ ] forward( double[ ][ ][ ] spaceTime )
-      throws JWaveFailure {
+      throws JWaveException {
 
     int M = spaceTime.length;
 
@@ -313,11 +309,11 @@ public class Transform {
    *          coefficients of 2-D frequency or Hilbert domain; internal
    *          M(i),N(j),O(k)
    * @return coefficients of 2-D time domain
-   * @throws JWaveFailure
+   * @throws JWaveException
    *           if space is not of type 2^p x 2^q x 2^r
    */
   public double[ ][ ][ ] reverse( double[ ][ ][ ] spaceFreq )
-      throws JWaveFailure {
+      throws JWaveException {
 
     int M = spaceFreq.length;
 
@@ -354,5 +350,27 @@ public class Transform {
     return _transform.reverse( spaceFreq );
 
   } // reverse
+
+  /**
+   * Generates from a 1D signal a 2D output, where the second
+   * dimension are the levels of the wavelet transform.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 17.08.2014 10:07:19
+   * @param arrTime
+   *          coefficients of time domain
+   * @return matHilb coefficients of frequency or Hilbert domain
+   * @throws JWaveException 
+   */
+  public double[ ][ ] decompose( double[ ] arrTime ) throws JWaveException {
+
+    if( !_mathToolKit.isBinary( arrTime.length ) )
+      throw new JWaveFailure(
+          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
+              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+
+    return _transform.decompose( arrTime );
+
+  } // forward
 
 } // class

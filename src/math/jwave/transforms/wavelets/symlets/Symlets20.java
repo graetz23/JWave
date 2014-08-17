@@ -42,6 +42,8 @@ public class Symlets20 extends Wavelet {
    */
   public Symlets20( ) {
 
+    _name = "Symlets 20"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 40; // wavelength of mother wavelet

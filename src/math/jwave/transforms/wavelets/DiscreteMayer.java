@@ -41,6 +41,8 @@ public class DiscreteMayer extends Wavelet {
    */
   public DiscreteMayer( ) {
 
+    _name = "Discrete Mayer"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 62; // wavelength of mother wavelet

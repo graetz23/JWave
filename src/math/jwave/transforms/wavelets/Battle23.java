@@ -39,6 +39,8 @@ package math.jwave.transforms.wavelets;
    */
   public Battle23( ) {
 
+    _name = "Battle 23"; // name of the wavelet
+
     _transformWavelength = 8; // minimal wavelength of input signal
 
     _motherWavelength = 23; // wavelength of mother wavelet

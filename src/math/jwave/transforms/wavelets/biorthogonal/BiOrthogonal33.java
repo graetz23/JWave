@@ -43,6 +43,8 @@ public class BiOrthogonal33 extends Wavelet {
    */
   public BiOrthogonal33( ) {
 
+    _name = "BiOrthogonal 3/3"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 8; // wavelength of mother wavelet

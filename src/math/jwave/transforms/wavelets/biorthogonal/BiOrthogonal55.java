@@ -43,6 +43,8 @@ public class BiOrthogonal55 extends Wavelet {
    */
   public BiOrthogonal55( ) {
 
+    _name = "BiOrthogonal 5/5"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 12; // wavelength of mother wavelet

@@ -42,6 +42,8 @@ public class Symlets2 extends Wavelet {
    * @date 16.02.2014 13:40:30
    */
   public Symlets2( ) {
+    
+    _name = "Symlets 2"; // name of the wavelet
 
     _transformWavelength = 2; // minimal wavelength of input signal
 

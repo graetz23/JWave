@@ -31,6 +31,15 @@ package math.jwave.transforms.wavelets;
 public interface WaveletInterface {
 
   /**
+   * Returns a String keeping the name of the current Wavelet.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 17.08.2014 10:59:13
+   * @return String keeping the name of the wavelet
+   */
+  public String getName( );
+
+  /**
    * Shifts scaling and wavelet over some hilbert in forward manners.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)

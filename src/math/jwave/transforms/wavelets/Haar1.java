@@ -41,6 +41,8 @@ public class Haar1 extends Wavelet {
    */
   public Haar1( ) {
 
+    _name = "Haar"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 2; // wavelength of mother wavelet

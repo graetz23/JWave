@@ -34,6 +34,11 @@ package math.jwave.transforms.wavelets;
 public abstract class Wavelet implements WaveletInterface {
 
   /**
+   * The name of the wavelet.
+   */
+  protected String _name;
+
+  /**
    * The wavelength of the base or so called mother wavelet and its matching
    * scaling function.
    */
@@ -74,6 +79,8 @@ public abstract class Wavelet implements WaveletInterface {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public Wavelet( ) {
+
+    _name = null;
 
     _motherWavelength = 0;
 
@@ -153,6 +160,18 @@ public abstract class Wavelet implements WaveletInterface {
     } // i
 
   } // _buildBiOrthonormalSpace
+
+  /*
+   * Returns a String keeping the name of the current Wavelet.
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 17.08.2014 11:02:31
+   * @return String keeping the name of the wavelet
+   */
+  public String getName( ) {
+
+    return _name;
+
+  } // getName
 
   /**
    * Performs the forward transform for the given array from time domain to

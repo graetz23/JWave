@@ -42,6 +42,8 @@ public class Coiflet5 extends Wavelet {
    */
   public Coiflet5( ) {
 
+    _name = "Coiflet 5"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 30; // wavelength of mother wavelet

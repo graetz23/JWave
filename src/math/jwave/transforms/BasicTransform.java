@@ -24,6 +24,8 @@
 package math.jwave.transforms;
 
 import math.jwave.datatypes.Complex;
+import math.jwave.exceptions.JWaveError;
+import math.jwave.exceptions.JWaveException;
 import math.jwave.tools.MathToolKit;
 
 /**
@@ -80,6 +82,24 @@ public abstract class BasicTransform {
    * @return coefficients of 1-D time domain
    */
   public abstract double[ ] reverse( double[ ] arrFreq );
+
+  /**
+   * Generates from a 1D signal a 2D output, where the second dimension are the
+   * levels of the wavelet transform.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 17.08.2014 10:11:16
+   * @param arrTime
+   *          coefficients of time domain
+   * @return matHilb coefficients of frequency or Hilbert domain
+   * @throws JWaveException
+   *           if used at this level
+   */
+  public double[ ][ ] decompose( double[ ] arrTime ) throws JWaveException {
+
+    throw new JWaveError( "method is not working for this transform type!" );
+
+  } // decompose
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert

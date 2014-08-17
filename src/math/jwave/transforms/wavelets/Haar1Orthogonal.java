@@ -124,6 +124,8 @@ public class Haar1Orthogonal extends Wavelet {
     //
     // Have fun ~8>
 
+    _name = "Haar orthogonal"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 2; // wavelength of mother wavelet

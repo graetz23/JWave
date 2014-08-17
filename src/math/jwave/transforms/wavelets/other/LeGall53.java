@@ -26,9 +26,8 @@ package math.jwave.transforms.wavelets.other;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
- * LeGall 5/3 biorthogonal wavelet.
- * 
- * THIS WAVELET IS NOT WORKING - DUE TO ODD NUMBER COEFFICIENTS!!!
+ * LeGall 5/3 biorthogonal wavelet. THIS WAVELET IS NOT WORKING - DUE TO ODD
+ * NUMBER COEFFICIENTS!!!
  * 
  * @date 17.08.2014 08:41:55
  * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -41,28 +40,29 @@ public class LeGall53 extends Wavelet {
    * @date 17.08.2014 08:41:55
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
-  @Deprecated
-  public LeGall53( ) {
+  @Deprecated public LeGall53( ) {
+
+    _name = "LeGall 5/3"; // name of the wavelet
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
     _motherWavelength = 5; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-//    double sqrt2 = Math.sqrt( 2. );
+    //    double sqrt2 = Math.sqrt( 2. );
     _scalingDeCom[ 0 ] = -1. / 8.; // - 1/8
-    _scalingDeCom[ 1 ] =  1. / 4.; // + 2/8
-    _scalingDeCom[ 2 ] =  3. / 4.; // + 6/8
-    _scalingDeCom[ 3 ] =  1. / 4.; // + 2/8
+    _scalingDeCom[ 1 ] = 1. / 4.; // + 2/8
+    _scalingDeCom[ 2 ] = 3. / 4.; // + 6/8
+    _scalingDeCom[ 3 ] = 1. / 4.; // + 2/8
     _scalingDeCom[ 4 ] = -1. / 8.; // - 1/8
 
     _waveletDeCom = new double[ _motherWavelength ];
     _waveletDeCom[ 0 ] = 0; // 
-    _waveletDeCom[ 1 ] = 1. / 2. ; // 
+    _waveletDeCom[ 1 ] = 1. / 2.; // 
     _waveletDeCom[ 2 ] = 1.; // 
     _waveletDeCom[ 3 ] = 1. / 2.; // 
     _waveletDeCom[ 4 ] = 0; // 
-    
+
     // Copy to reconstruction filters due to orthogonality (orthonormality)!
     _scalingReCon = new double[ _motherWavelength ];
     _waveletReCon = new double[ _motherWavelength ];

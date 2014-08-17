@@ -23,6 +23,7 @@
  */
 package math.jwave;
 
+import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
@@ -177,10 +178,14 @@ public class JWave {
       for( int p = 0; p < arrTime.length; p++ )
         System.out.printf( "%9.6f", arrReco[ p ] );
       System.out.println( "" );
-    } catch( JWaveFailure e1 ) {
+
+    } catch( JWaveException e1 ) {
+
       // TODO Auto-generated catch block
       e1.printStackTrace( );
-    }
+
+    } // try
+
   } // main
 
 } // class

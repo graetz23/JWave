@@ -43,6 +43,8 @@ public class Legendre3 extends Wavelet {
    */
   public Legendre3( ) {
 
+    _name = "Legendre 3"; // name of the wavelet
+
     _transformWavelength = 2; // minimal wavelength of input signal 
 
     _motherWavelength = 6; // wavelength of mother wavelet
@@ -56,7 +58,7 @@ public class Legendre3 extends Wavelet {
     _scalingDeCom[ 5 ] = -63. / 128.; // h5
 
     // normalize orthogonal space => orthonormal space!!!  
-    double sqrt02 = Math.sqrt( 2. ) ; // 1.4142135623730951
+    double sqrt02 = Math.sqrt( 2. ); // 1.4142135623730951
     for( int i = 0; i < _motherWavelength; i++ )
       _scalingDeCom[ i ] /= sqrt02;
 

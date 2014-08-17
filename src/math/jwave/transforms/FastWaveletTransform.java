@@ -126,7 +126,7 @@ public class FastWaveletTransform extends WaveletTransform {
 
     return arrTime;
 
-  }// reverse
+  } // reverse
 
   /**
    * Method splits a 1-D time domain signal into each computed hilbert space and
@@ -177,7 +177,7 @@ public class FastWaveletTransform extends WaveletTransform {
 
     return arrHilbSplit;
 
-  }// forward
+  } // forward
 
   /**
    * Input 2-D Hilbert spaces which where constructed from a 1-D time domain
@@ -217,6 +217,44 @@ public class FastWaveletTransform extends WaveletTransform {
 
     return arrTime;
 
-  }// reverse
+  } // reverse
+
+  @Override public double[ ][ ] decompose( double[ ] arrTime ) {
+
+    int levels = _mathToolKit.getExponent( arrTime.length );
+
+    double[ ][ ] deComp = new double[ levels ][ arrTime.length ];
+
+    double[ ] arrHilb = new double[ arrTime.length ];
+
+    for( int i = 0; i < arrTime.length; i++ )
+      arrHilb[ i ] = arrTime[ i ];
+
+    int l = 0;
+    int h = arrHilb.length;
+    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+
+    while( h >= transformWavelength ) {
+
+      double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
+
+      for( int i = 0; i < h; i++ )
+        arrHilb[ i ] = arrTempPart[ i ];
+
+      for( int i = 0; i < arrTime.length; i++ )
+        if( i < h )
+          deComp[ l ][ i ] = arrHilb[ i ];
+        else
+          deComp[ l ][ i ] = 0.;
+
+      h = h >> 1;
+
+      l++; // next level
+
+    } // levels
+
+    return deComp;
+
+  } // decompose
 
 } // FastWaveletTransfromSplit
