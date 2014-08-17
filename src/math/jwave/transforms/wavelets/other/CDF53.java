@@ -26,13 +26,13 @@ package math.jwave.transforms.wavelets.other;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
- * LeGall 5/3 biorthogonal wavelet. THIS WAVELET IS NOT WORKING - DUE TO ODD
- * NUMBER COEFFICIENTS!!!
+ * Cohen Daubechies Feauveau (CDF) 9/7 wavelet. THIS WAVELET IS NOT WORKING -
+ * DUE TO ODD NUMBER COEFFICIENTS!!!
  * 
  * @date 17.08.2014 08:41:55
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-public class LeGall53 extends Wavelet {
+public class CDF53 extends Wavelet {
 
   /**
    * THIS WAVELET IS NOT WORKING - DUE TO ODD NUMBER COEFFICIENTS!!!
@@ -40,9 +40,9 @@ public class LeGall53 extends Wavelet {
    * @date 17.08.2014 08:41:55
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
-  @Deprecated public LeGall53( ) {
+  @Deprecated public CDF53( ) {
 
-    _name = "LeGall 5/3"; // name of the wavelet
+    _name = "Cohen Daubechies Feauveau (CDF) 9/7"; // name of the wavelet
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
@@ -72,6 +72,6 @@ public class LeGall53 extends Wavelet {
       _waveletReCon[ i ] = _waveletDeCom[ i ];
     } // i
 
-  } // LeGall53
+  } // CDF53
 
 } // class

@@ -65,7 +65,7 @@ import math.jwave.transforms.wavelets.daubechies.Daubechies9;
 import math.jwave.transforms.wavelets.legendre.Legendre1;
 import math.jwave.transforms.wavelets.legendre.Legendre2;
 import math.jwave.transforms.wavelets.legendre.Legendre3;
-import math.jwave.transforms.wavelets.other.LeGall53;
+import math.jwave.transforms.wavelets.other.CDF53;
 import math.jwave.transforms.wavelets.symlets.Symlets2;
 import math.jwave.transforms.wavelets.symlets.Symlets20;
 
@@ -331,7 +331,7 @@ public class TransformTest {
       //      System.out
       //          .println( "testRounding LeGall 5/3 - 1000 transforms => rounding error: "
       //              + delta );
-      //      testFastWaveletTransformRounding( arrTime, new LeGall53( ), 1.e-2 );
+      //      testFastWaveletTransformRounding( arrTime, new CDF53( ), 1.e-2 );
       //      System.out.println( "" );      
 
       //      System.out
