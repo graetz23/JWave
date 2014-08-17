@@ -28,15 +28,15 @@ import math.jwave.transforms.wavelets.Wavelet;
 /**
  * LeGall 5/3 biorthogonal wavelet.
  * 
+ * THIS WAVELET IS NOT WORKING - DUE TO ODD NUMBER COEFFICIENTS!!!
+ * 
  * @date 17.08.2014 08:41:55
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public class LeGall53 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Haar wavelet coefficients and the
-   * scaling coefficients; normed, due to ||*||_2 -- euclidean norm. See the
-   * orthogonal version in class Haar1Orthogonal for more details.
+   * THIS WAVELET IS NOT WORKING - DUE TO ODD NUMBER COEFFICIENTS!!!
    * 
    * @date 17.08.2014 08:41:55
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -49,7 +49,7 @@ public class LeGall53 extends Wavelet {
     _motherWavelength = 5; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-    double sqrt2 = Math.sqrt( 2. );
+//    double sqrt2 = Math.sqrt( 2. );
     _scalingDeCom[ 0 ] = -1. / 8.; // - 1/8
     _scalingDeCom[ 1 ] =  1. / 4.; // + 2/8
     _scalingDeCom[ 2 ] =  3. / 4.; // + 6/8
