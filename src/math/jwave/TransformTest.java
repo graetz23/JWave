@@ -727,6 +727,12 @@ public class TransformTest {
 
         assertMatrix( expected, matDeComp, delta );
 
+        double[ ] arrTimeReComp = t.recompose( matDeComp );
+
+        showTime( arrTimeReComp );
+
+        assertArray( arrTime, arrTimeReComp, delta );
+
         System.out.println( "" );
         System.out.println( "Testing the Fast Wavelet Transform "
             + "forward 1-D method " + "using " + wavelet.getName( )
@@ -793,6 +799,12 @@ public class TransformTest {
             }; // orthonormal Hilbert space
 
         assertMatrix( expected64, matDeComp64, delta );
+
+        double[ ] arrTimeReComp64 = t.recompose( matDeComp64 );
+
+        showTime( arrTimeReComp64 );
+
+        assertArray( arrTime64, arrTimeReComp64, delta );
 
       } // w
 

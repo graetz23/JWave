@@ -191,19 +191,27 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   public double[ ] recompose( double[ ][ ] matDeComp ) {
 
-    int l = matDeComp[ 0 ].length; // length of first Hilbert space
+    int length = matDeComp[ 0 ].length; // length of first Hilbert space
 
-    double[ ] arrTime = new double[ l ];
+    int levels = matDeComp.length;
 
-    for( int lvl = 0; lvl < l; lvl++ )
-      for( int i = 0; i < l; i++ )
-        arrTime[ i ] += matDeComp[ lvl ][ i ]; // add them together
+    double[ ] arrTime = new double[ length ];
+
+    for( int l = 0; l < levels; l++ ) {
+
+      int steps = (int)_mathToolKit.scalb( (double)l, 1 );
+
+      for( int i = 0; i < length; i++ )
+        if( i < steps )
+          arrTime[ i ] = matDeComp[ l ][ i ]; // add them together
+
+    } // l
 
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
 
     int h = transformWavelength;
 
-    while( h <= l && h >= transformWavelength ) {
+    while( h <= arrTime.length && h >= transformWavelength ) {
 
       double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
 
@@ -217,5 +225,4 @@ public class FastWaveletTransform extends WaveletTransform {
     return arrTime;
 
   } // reverse
-
 } // FastWaveletTransfromSplit
