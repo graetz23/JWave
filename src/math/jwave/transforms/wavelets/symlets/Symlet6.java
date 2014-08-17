@@ -26,38 +26,44 @@ package math.jwave.transforms.wavelets.symlets;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
- * Symlet3 filter: near symmetric, orthogonal (orthonormal), biorthogonal.
+ * Symlet6 filter: near symmetric, orthogonal (orthonormal), biorthogonal.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 17.08.2014 14:06:57
+ * @date 17.08.2014 14:21:44
  */
-public class Symlet3 extends Wavelet {
+public class Symlet6 extends Wavelet {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
-   * http://wavelets.pybytes.com/wavelet/sym3/ Thanks!
+   * http://wavelets.pybytes.com/wavelet/sym6/ Thanks!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 17.08.2014 14:06:57
+   * @date 17.08.2014 14:21:44
    */
-  public Symlet3( ) {
+  public Symlet6( ) {
 
-    _name = "Symlet 3"; // name of the wavelet
+    _name = "Symlet 6"; // name of the wavelet
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 6; // wavelength of mother wavelet
+    _motherWavelength = 12; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = 0.035226291882100656;
-    _scalingDeCom[ 1 ] = -0.08544127388224149;
-    _scalingDeCom[ 2 ] = -0.13501102001039084;
-    _scalingDeCom[ 3 ] = 0.4598775021193313;
-    _scalingDeCom[ 4 ] = 0.8068915093133388;
-    _scalingDeCom[ 5 ] = 0.3326705529509569;
+    _scalingDeCom[ 0 ] = 0.015404109327027373;
+    _scalingDeCom[ 1 ] = 0.0034907120842174702;
+    _scalingDeCom[ 2 ] = -0.11799011114819057;
+    _scalingDeCom[ 3 ] = -0.048311742585633;
+    _scalingDeCom[ 4 ] = 0.4910559419267466;
+    _scalingDeCom[ 5 ] = 0.787641141030194;
+    _scalingDeCom[ 6 ] = 0.3379294217276218;
+    _scalingDeCom[ 7 ] = -0.07263752278646252;
+    _scalingDeCom[ 8 ] = -0.021060292512300564;
+    _scalingDeCom[ 9 ] = 0.04472490177066578;
+    _scalingDeCom[ 10 ] = 0.0017677118642428036;
+    _scalingDeCom[ 11 ] = -0.007800708325034148;
 
     _buildOrthonormalSpace( );
+    
+  } // Symlet6
 
-  } // Symlet3
-
-} // Symlet3
+} // Symlet6
