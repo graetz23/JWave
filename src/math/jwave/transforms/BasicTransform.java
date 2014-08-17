@@ -79,27 +79,33 @@ public abstract class BasicTransform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
-   * @return coefficients of 1-D time domain
+   * @return matDeComp 2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the
+   *         exponent of N=2^p
    */
   public abstract double[ ] reverse( double[ ] arrFreq );
 
   /**
-   * Generates from a 1D signal a 2D output, where the second dimension are the
-   * levels of the wavelet transform.
+   * Generates from a 2-D decomposition a 1-D time series.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 17.08.2014 10:11:16
-   * @param arrTime
-   *          coefficients of time domain
-   * @return matHilb coefficients of frequency or Hilbert domain
+   * @date 17.08.2014 10:07:19
+   * @param matDeComp
+   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
+   *          of N=2^p
+   * @return a 1-D time domain signal
    * @throws JWaveException
-   *           if used at this level
    */
   public double[ ][ ] decompose( double[ ] arrTime ) throws JWaveException {
 
     throw new JWaveError( "method is not working for this transform type!" );
 
   } // decompose
+
+  public double[ ] recompose( double[ ][ ] matDeComp ) throws JWaveException {
+
+    throw new JWaveError( "method is not working for this transform type!" );
+
+  } // recompose
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert

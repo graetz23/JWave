@@ -335,14 +335,14 @@ public class Transform {
                 + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
       for( int j = 0; j < N; j++ ) { // N(j)
-        
+
         if( !_mathToolKit.isBinary( spaceFreq[ i ][ j ].length ) ) // O
           throw new JWaveFailure(
               "given space dimension M(j)="
                   + spaceFreq[ i ][ j ].length
                   + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
                   + "please use the Ancient Egyptian Decomposition for any other array length!" );
-        
+
       } // j
 
     } // i
@@ -359,8 +359,10 @@ public class Transform {
    * @date 17.08.2014 10:07:19
    * @param arrTime
    *          coefficients of time domain
-   * @return matHilb coefficients of frequency or Hilbert domain
+   * @return matDeComp 2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the
+   *         exponent of N=2^p
    * @throws JWaveException
+   *           if not available or signal is not of 2^p
    */
   public double[ ][ ] decompose( double[ ] arrTime ) throws JWaveException {
 
@@ -372,5 +374,28 @@ public class Transform {
     return _transform.decompose( arrTime );
 
   } // decompose
+
+  /**
+   * Generates from a 2-D decomposition a 1-D time series.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 17.08.2014 10:07:19
+   * @param matDeComp
+   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
+   *          of N=2^p
+   * @return a 1-D time domain signal
+   * @throws JWaveException
+   *           if not available or signal is not of 2^p
+   */
+  public double[ ] recompose( double[ ][ ] matDeComp ) throws JWaveException {
+
+    if( !_mathToolKit.isBinary( matDeComp[ 0 ].length ) )
+      throw new JWaveFailure(
+          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
+              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+
+    return _transform.recompose( matDeComp );
+
+  } // recompose
 
 } // class
