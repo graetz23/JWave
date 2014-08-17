@@ -11,5 +11,4 @@ and the Discrete Mayer FIR filter are available too.
 The implementation of JWave is based on several Design Patterns and - hopefully - appears user-friendly.
 However, have a look at the Wiki pages for a usage info.
 
-Have fun
 Christian.
