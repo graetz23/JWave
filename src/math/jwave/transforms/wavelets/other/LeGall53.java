@@ -18,42 +18,51 @@
  * This file is part of JWave.
  *
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 23.05.2008 17:42:23
+ * @date 17.08.2014 08:41:55
  *
  */
-package math.jwave.transforms.wavelets;
+package math.jwave.transforms.wavelets.other;
+
+import math.jwave.transforms.wavelets.Wavelet;
 
 /**
- * Alfred Haar's orthonormal wavelet transform.
+ * LeGall 5/3 biorthogonal wavelet.
  * 
- * @date 08.02.2010 12:46:34
+ * @date 17.08.2014 08:41:55
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-public class Haar1 extends Wavelet {
+public class LeGall53 extends Wavelet {
 
   /**
    * Constructor setting up the orthonormal Haar wavelet coefficients and the
    * scaling coefficients; normed, due to ||*||_2 -- euclidean norm. See the
    * orthogonal version in class Haar1Orthogonal for more details.
    * 
-   * @date 08.02.2010 12:46:34
+   * @date 17.08.2014 08:41:55
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
-  public Haar1( ) {
+  @Deprecated
+  public LeGall53( ) {
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
-    _motherWavelength = 2; // wavelength of mother wavelet
+    _motherWavelength = 5; // wavelength of mother wavelet
 
     _scalingDeCom = new double[ _motherWavelength ];
     double sqrt2 = Math.sqrt( 2. );
-    _scalingDeCom[ 0 ] = 1. / sqrt2; // 1.4142135623730951 w0 - normed by sqrt( 2 )
-    _scalingDeCom[ 1 ] = 1. / sqrt2; // 1.4142135623730951 w1 - normed by sqrt( 2 )
+    _scalingDeCom[ 0 ] = -1. / 8.; // - 1/8
+    _scalingDeCom[ 1 ] =  1. / 4.; // + 2/8
+    _scalingDeCom[ 2 ] =  3. / 4.; // + 6/8
+    _scalingDeCom[ 3 ] =  1. / 4.; // + 2/8
+    _scalingDeCom[ 4 ] = -1. / 8.; // - 1/8
 
     _waveletDeCom = new double[ _motherWavelength ];
-    _waveletDeCom[ 0 ] = _scalingDeCom[ 1 ]; // w1
-    _waveletDeCom[ 1 ] = -_scalingDeCom[ 0 ]; // -w0
-
+    _waveletDeCom[ 0 ] = 0; // 
+    _waveletDeCom[ 1 ] = 1. / 2. ; // 
+    _waveletDeCom[ 2 ] = 1.; // 
+    _waveletDeCom[ 3 ] = 1. / 2.; // 
+    _waveletDeCom[ 4 ] = 0; // 
+    
     // Copy to reconstruction filters due to orthogonality (orthonormality)!
     _scalingReCon = new double[ _motherWavelength ];
     _waveletReCon = new double[ _motherWavelength ];
@@ -63,23 +72,5 @@ public class Haar1 extends Wavelet {
     } // i
 
   } // LeGall53
-
-  /**
-   * The forward wavelet transform using the Alfred Haar's wavelet.
-   * 
-   * @date 10.02.2010 08:26:06
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @see math.jwave.transforms.wavelets.Wavelet#forward(double[])
-   */
-
-  /**
-   * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
-   * array keeping coefficients of Hilbert domain should be of length 2 to the
-   * power of p -- length = 2^p where p is a positive integer.
-   * 
-   * @date 10.02.2010 08:26:06
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @see math.jwave.transforms.wavelets.Wavelet#reverse(double[])
-   */
 
 } // class

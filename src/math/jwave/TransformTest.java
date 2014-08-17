@@ -28,7 +28,6 @@ import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.FastWaveletTransform;
-import math.jwave.transforms.wavelets.Battle23;
 import math.jwave.transforms.wavelets.DiscreteMayer;
 import math.jwave.transforms.wavelets.Haar1;
 import math.jwave.transforms.wavelets.Haar1Orthogonal;
@@ -66,6 +65,7 @@ import math.jwave.transforms.wavelets.daubechies.Daubechies9;
 import math.jwave.transforms.wavelets.legendre.Legendre1;
 import math.jwave.transforms.wavelets.legendre.Legendre2;
 import math.jwave.transforms.wavelets.legendre.Legendre3;
+import math.jwave.transforms.wavelets.other.LeGall53;
 import math.jwave.transforms.wavelets.symlets.Symlets2;
 import math.jwave.transforms.wavelets.symlets.Symlets20;
 
@@ -99,7 +99,7 @@ public class TransformTest {
     try {
 
       System.out
-          .println( "testRounding Haar1 - 1000 transforms => rounding error: "
+          .println( "testRounding LeGall53 - 1000 transforms => rounding error: "
               + delta );
       testFastWaveletTransformRounding( arrTime, new Haar1( ), delta );
       System.out.println( "" );
@@ -327,6 +327,12 @@ public class TransformTest {
               + delta );
       testFastWaveletTransformRounding( arrTime, new DiscreteMayer( ), 1.e-2 );
       System.out.println( "" );
+      
+//      System.out
+//          .println( "testRounding LeGall 5/3 - 1000 transforms => rounding error: "
+//              + delta );
+//      testFastWaveletTransformRounding( arrTime, new LeGall53( ), 1.e-2 );
+//      System.out.println( "" );      
 
       //      System.out
       //          .println( "testRounding Battle23 - 1000 transforms => rounding error: "
@@ -416,7 +422,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 1-D method " + "using Haar1 Wavelet" );
+        + "forward 1-D method " + "using LeGall53 Wavelet" );
 
     try {
 
@@ -447,7 +453,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 1-D method " + "using Haar1 Wavelet " + "and a long array" );
+        + "forward 1-D method " + "using LeGall53 Wavelet " + "and a long array" );
 
     try {
 
@@ -483,7 +489,7 @@ public class TransformTest {
     System.out.println( "" );
     System.out
         .println( "Testing the Fast Wavelet Transform " + "forward 1-D method "
-            + "using Haar1 Wavelet " + "and a random array" );
+            + "using LeGall53 Wavelet " + "and a random array" );
 
     try {
 
@@ -520,7 +526,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using Haar1 Wavelet" );
+        + "reverse 1-D method " + "using LeGall53 Wavelet" );
 
     try {
 
@@ -548,7 +554,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using Haar1 Wavelet" );
+        + "reverse 1-D method " + "using LeGall53 Wavelet" );
 
     try {
 
@@ -586,7 +592,7 @@ public class TransformTest {
     System.out.println( "" );
     System.out
         .println( "Testing the Fast Wavelet Transform " + "reverse 1-D method "
-            + "using Haar1 Wavelet " + "and a random array" );
+            + "using LeGall53 Wavelet " + "and a random array" );
 
     try {
 
@@ -623,7 +629,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 1-D method " + "using Haar1 Wavelet" );
+        + "forward 1-D method " + "using LeGall53 Wavelet" );
 
     try {
 
@@ -671,7 +677,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using Haar1 Wavelet" );
+        + "reverse 1-D method " + "using LeGall53 Wavelet" );
 
     try {
 
@@ -709,7 +715,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using Haar1 Wavelet" );
+        + "reverse 1-D method " + "using LeGall53 Wavelet" );
 
   } // testReverseComplexArray
 
@@ -720,7 +726,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 2-D method " + "using Haar1 Wavelet" );
+        + "forward 2-D method " + "using LeGall53 Wavelet" );
 
     try {
 
@@ -758,7 +764,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 2-D method " + "using Haar1 Wavelet" );
+        + "reverse 2-D method " + "using LeGall53 Wavelet" );
 
     try {
 
@@ -796,7 +802,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 3-D method " + "using Haar1 Wavelet" );
+        + "forward 3-D method " + "using LeGall53 Wavelet" );
 
     try {
 
@@ -848,7 +854,7 @@ public class TransformTest {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 3-D method " + "using Haar1 Wavelet" );
+        + "reverse 3-D method " + "using LeGall53 Wavelet" );
 
     try {
 
