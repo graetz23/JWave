@@ -21,7 +21,9 @@
  * @date 23.05.2008 17:42:23
  *
  */
-package math.jwave.transforms.wavelets;
+package math.jwave.transforms.wavelets.other;
+
+import math.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Discrete Mayer (FIR approximation) filter: symmetric, orthogonal

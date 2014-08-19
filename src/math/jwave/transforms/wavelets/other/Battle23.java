@@ -21,7 +21,9 @@
  * @date 23.05.2008 17:42:23
  *
  */
-package math.jwave.transforms.wavelets;
+package math.jwave.transforms.wavelets.other;
+
+import math.jwave.transforms.wavelets.Wavelet;
 
 /**
  * The Battle 23 Wavelet from Mallat's book: "A Theory for Multiresolution
