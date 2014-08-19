@@ -541,9 +541,7 @@ public class TransformTest {
   public void testFastWaveletTransformRounding( double[ ] arr, Wavelet wavelet,
       double delta ) throws JWaveException {
 
-    long noOfSteps = 10000000;
-
-    noOfSteps = 1000;
+    long noOfSteps = 1000;
 
     double[ ] arrTime = arr;
 
@@ -811,22 +809,34 @@ public class TransformTest {
 
     try {
 
-      Wavelet[ ] arrOfWaveletObjects = new Wavelet[ 10 ];
+      double delta = 1.e-8;
+      
+      int noOfWavelets = 20;
+
+      Wavelet[ ] arrOfWaveletObjects = new Wavelet[ noOfWavelets ];
 
       arrOfWaveletObjects[ 0 ] = new Haar1( );
       arrOfWaveletObjects[ 1 ] = new Daubechies4( );
-      arrOfWaveletObjects[ 2 ] = new Daubechies10( );
-      arrOfWaveletObjects[ 3 ] = new Daubechies20( );
-      arrOfWaveletObjects[ 4 ] = new Coiflet2( );
-      arrOfWaveletObjects[ 5 ] = new Coiflet5( );
-      arrOfWaveletObjects[ 6 ] = new Symlet20( );
-      arrOfWaveletObjects[ 7 ] = new BiOrthogonal13( );
-      arrOfWaveletObjects[ 8 ] = new BiOrthogonal39( );
-      arrOfWaveletObjects[ 9 ] = new BiOrthogonal68( );
+      arrOfWaveletObjects[ 2 ] = new Daubechies6( );
+      arrOfWaveletObjects[ 3 ] = new Daubechies8( );
+      arrOfWaveletObjects[ 4 ] = new Daubechies10( );
+      arrOfWaveletObjects[ 5 ] = new Daubechies12( );
+      arrOfWaveletObjects[ 6 ] = new Daubechies14( );
+      arrOfWaveletObjects[ 7 ] = new Daubechies16( );
+      arrOfWaveletObjects[ 8 ] = new Daubechies18( );
+      arrOfWaveletObjects[ 9 ] = new Daubechies20( );
+      arrOfWaveletObjects[ 10 ] = new Coiflet3( );
+      arrOfWaveletObjects[ 11 ] = new Coiflet5( );
+      arrOfWaveletObjects[ 12 ] = new Symlet4( );
+      arrOfWaveletObjects[ 13 ] = new Symlet8( );
+      arrOfWaveletObjects[ 14 ] = new Symlet12( );
+      arrOfWaveletObjects[ 15 ] = new Symlet16( );
+      arrOfWaveletObjects[ 16 ] = new Symlet20( );
+      arrOfWaveletObjects[ 17 ] = new BiOrthogonal13( );
+      arrOfWaveletObjects[ 18 ] = new BiOrthogonal39( );
+      arrOfWaveletObjects[ 19 ] = new BiOrthogonal68( );
 
-      double delta = 1.e-8;
-
-      for( int w = 0; w < 10; w++ ) {
+      for( int w = 0; w < noOfWavelets; w++ ) {
 
         Wavelet wavelet = arrOfWaveletObjects[ w ];
 
