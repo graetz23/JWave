@@ -857,7 +857,10 @@ public class TransformTest {
         double sqrt2 = Math.sqrt( 2. );
 
         double[ ][ ] expected =
-            { { sqrt2, sqrt2, 0., 0. }, { 2., 0., 0., 0. } }; // orthonormal Hilbert space
+            { { 1., 1., 1., 1., },
+              { sqrt2, sqrt2, 0., 0. }, 
+              { 2., 0., 0., 0. } 
+            }; // orthonormal Hilbert space
 
         assertMatrix( expected, matDeComp, delta );
 
@@ -889,7 +892,11 @@ public class TransformTest {
         double d4sqrt2 = 2. * d2sqrt2; // 4 times square root of two
 
         double[ ][ ] expected64 =
-            {
+            { { // array of length 64
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. },
                 { d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
                     d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
                     d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,

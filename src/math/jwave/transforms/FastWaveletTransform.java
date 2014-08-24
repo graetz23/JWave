@@ -130,7 +130,9 @@ public class FastWaveletTransform extends WaveletTransform {
 
   /**
    * Generates from a 1-D signal a 2-D output, where the second dimension are
-   * the levels of the wavelet transform.
+   * the levels of the wavelet transform. The first level is keeping the
+   * original coefficients. All following levels keep each step of the
+   * decompostion of the Fast Wavelet Transform.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 17.08.2014 10:07:19
@@ -144,14 +146,18 @@ public class FastWaveletTransform extends WaveletTransform {
 
     int levels = _mathToolKit.getExponent( arrTime.length );
 
-    double[ ][ ] matDeComp = new double[ levels ][ arrTime.length ];
+    double[ ][ ] matDeComp = new double[ levels + 1 ][ arrTime.length ];
 
     double[ ] arrHilb = new double[ arrTime.length ];
 
-    for( int i = 0; i < arrTime.length; i++ )
-      arrHilb[ i ] = arrTime[ i ];
+    for( int i = 0; i < arrTime.length; i++ ) {
 
-    int l = 0;
+      arrHilb[ i ] = arrTime[ i ];
+      matDeComp[ 0 ][ i ] = arrTime[ i ];
+
+    } // i
+
+    int l = 1; // start with level 1 cause level 0 is the normal space
     int h = arrHilb.length;
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
 
@@ -180,7 +186,9 @@ public class FastWaveletTransform extends WaveletTransform {
 
   /**
    * Generates from a 1-D signal a 2-D output, where the second dimension are
-   * the levels of the wavelet transform.
+   * the levels of the wavelet transform. The first level should keep the
+   * original coefficients. All following levels should keep each step of the
+   * decompostion of the Fast Wavelet Transform.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 17.08.2014 10:07:19
@@ -197,7 +205,7 @@ public class FastWaveletTransform extends WaveletTransform {
 
     double[ ] arrTime = new double[ length ];
 
-    for( int l = 0; l < levels; l++ ) {
+    for( int l = 1; l < levels; l++ ) {
 
       int steps = (int)_mathToolKit.scalb( (double)l, 1 );
 
@@ -225,4 +233,5 @@ public class FastWaveletTransform extends WaveletTransform {
     return arrTime;
 
   } // reverse
+
 } // FastWaveletTransfromSplit
