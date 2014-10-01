@@ -46,9 +46,8 @@ public class WaveletPacketTransform extends WaveletTransform {
    *          object of type Wavelet; Haar1, Daubechies2, Coiflet1, ...
    * @throws JWaveFailure
    *           if object is null or not of type wavelet
-   * @throws JWaveException
    */
-  public WaveletPacketTransform( Wavelet wavelet ) throws JWaveFailure {
+  public WaveletPacketTransform( Wavelet wavelet ) {
 
     super( wavelet );
 
@@ -62,9 +61,15 @@ public class WaveletPacketTransform extends WaveletTransform {
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @throws JWaveException
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
-  @Override public double[ ] forward( double[ ] arrTime ) {
+  @Override public double[ ] forward( double[ ] arrTime ) throws JWaveException {
+
+    if( !_mathToolKit.isBinary( arrTime.length ) )
+      throw new JWaveFailure(
+          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
+              + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
@@ -113,9 +118,15 @@ public class WaveletPacketTransform extends WaveletTransform {
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @throws JWaveException
    * @see math.jwave.transforms.BasicTransform#reverse(double[])
    */
-  @Override public double[ ] reverse( double[ ] arrHilb ) {
+  @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
+
+    if( !_mathToolKit.isBinary( arrHilb.length ) )
+      throw new JWaveFailure(
+          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
+              + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     double[ ] arrTime = new double[ arrHilb.length ];
 

@@ -47,16 +47,8 @@ public abstract class WaveletTransform extends BasicTransform {
    * @date 15.02.2014 21:05:33
    * @param wavelet
    *          object of type Wavelet
-   * @throws JWaveFailure
-   *           if given object is null or not of type wavelet
    */
-  protected WaveletTransform( Wavelet wavelet ) throws JWaveFailure {
-
-    if( wavelet == null )
-      throw new JWaveFailure( "given object is null!" );
-
-    if( !( wavelet instanceof Wavelet ) )
-      throw new JWaveFailure( "given object is not of type Wavelet" );
+  protected WaveletTransform( Wavelet wavelet ) {
 
     _wavelet = wavelet;
 

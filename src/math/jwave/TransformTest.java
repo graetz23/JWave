@@ -122,410 +122,401 @@ public class TransformTest {
 
     double delta = 1.e-10; // define a request rounding error that the test checks to be held
 
-    try {
-
-      System.out
-          .println( "testRounding Haar1 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Haar1( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Haar1Orthogonal - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Haar1Orthogonal( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies2 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies2( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies3 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies3( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies4 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies4( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies5 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies5( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies6 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies6( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies7 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies7( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies8 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies8( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies9 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies9( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies10 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies10( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies11 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies11( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies12 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies12( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies13 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies13( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies14 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies14( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies15 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies15( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies16 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies16( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies17 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies17( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies18 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies18( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies19 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies19( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Daubechies20 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Daubechies20( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Legendre1 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Legendre1( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Legendre2 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Legendre2( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Legendre3 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Legendre3( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Coiflet1 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Coiflet1( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Coiflet2 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Coiflet2( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Coiflet3 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Coiflet3( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Coiflet4 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Coiflet4( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Coiflet5 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Coiflet5( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet2 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet2( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet3 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet3( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet4 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet4( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet5 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet5( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet6 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet6( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet7 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet7( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet8 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet8( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet9 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet9( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet10 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet10( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet11 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet11( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet12 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet12( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet13 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet13( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet14 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet14( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet15 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet15( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet16 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet16( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet17 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet17( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet18 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet18( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet19 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet19( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding Symlet20 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new Symlet20( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal11 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal11( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal13 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal13( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal15 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal15( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal22 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal22( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal24 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal24( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal26 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal26( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal28 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal28( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal31 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal31( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal33 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal33( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal35 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal35( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal37 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal37( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal39 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal39( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal44 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal44( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal55 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal55( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding BiOrthogonal68 - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new BiOrthogonal68( ), delta );
-      System.out.println( "" );
-
-      System.out
-          .println( "testRounding DiscreteMayer - 1000 transforms => rounding error: "
-              + delta );
-      testFastWaveletTransformRounding( arrTime, new DiscreteMayer( ), 1.e-2 );
-      System.out.println( "" );
-
-      //      System.out
-      //          .println( "testRounding LeGall 5/3 - 1000 transforms => rounding error: "
-      //              + delta );
-      //      testFastWaveletTransformRounding( arrTime, new CDF53( ), 1.e-2 );
-      //      System.out.println( "" );      
-
-      //      System.out
-      //          .println( "testRounding Battle23 - 1000 transforms => rounding error: "
-      //              + delta );
-      //      testFastWaveletTransformRounding( arrTime, new Battle23( ), delta );
-      //      System.out.println( "" );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    System.out
+        .println( "testRounding Haar1 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Haar1( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Haar1Orthogonal - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Haar1Orthogonal( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies2 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies2( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies3 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies3( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies4 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies4( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies5 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies5( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies6 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies6( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies7 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies7( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies8 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies8( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies9 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies9( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies10 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies10( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies11 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies11( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies12 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies12( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies13 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies13( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies14 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies14( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies15 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies15( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies16 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies16( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies17 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies17( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies18 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies18( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies19 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies19( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Daubechies20 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Daubechies20( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Legendre1 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Legendre1( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Legendre2 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Legendre2( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Legendre3 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Legendre3( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Coiflet1 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Coiflet1( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Coiflet2 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Coiflet2( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Coiflet3 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Coiflet3( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Coiflet4 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Coiflet4( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Coiflet5 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Coiflet5( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet2 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet2( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet3 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet3( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet4 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet4( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet5 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet5( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet6 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet6( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet7 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet7( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet8 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet8( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet9 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet9( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet10 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet10( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet11 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet11( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet12 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet12( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet13 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet13( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet14 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet14( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet15 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet15( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet16 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet16( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet17 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet17( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet18 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet18( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet19 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet19( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding Symlet20 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new Symlet20( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal11 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal11( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal13 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal13( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal15 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal15( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal22 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal22( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal24 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal24( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal26 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal26( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal28 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal28( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal31 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal31( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal33 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal33( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal35 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal35( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal37 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal37( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal39 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal39( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal44 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal44( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal55 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal55( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding BiOrthogonal68 - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new BiOrthogonal68( ), delta );
+    System.out.println( "" );
+
+    System.out
+        .println( "testRounding DiscreteMayer - 1000 transforms => rounding error: "
+            + delta );
+    testFastWaveletTransformRounding( arrTime, new DiscreteMayer( ), 1.e-2 );
+    System.out.println( "" );
+
+    //      System.out
+    //          .println( "testRounding LeGall 5/3 - 1000 transforms => rounding error: "
+    //              + delta );
+    //      testFastWaveletTransformRounding( arrTime, new CDF53( ), 1.e-2 );
+    //      System.out.println( "" );      
+
+    //      System.out
+    //          .println( "testRounding Battle23 - 1000 transforms => rounding error: "
+    //              + delta );
+    //      testFastWaveletTransformRounding( arrTime, new Battle23( ), delta );
+    //      System.out.println( "" );
 
   } // testRounding
 
@@ -536,10 +527,9 @@ public class TransformTest {
    * 
    * @date 10.02.2010 10:28:00
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @throws JWaveException
    */
   public void testFastWaveletTransformRounding( double[ ] arr, Wavelet wavelet,
-      double delta ) throws JWaveException {
+      double delta ) {
 
     long noOfSteps = 1000;
 
@@ -602,98 +592,72 @@ public class TransformTest {
     System.out.println( "Testing the Fast Wavelet Transform "
         + "forward 1-D method " + "using Haar1 Wavelet" );
 
-    try {
+    double delta = 1.e-12;
 
-      double delta = 1.e-12;
+    double[ ] arrTime = { 1., 1., 1., 1. };
 
-      double[ ] arrTime = { 1., 1., 1., 1. };
+    showTime( arrTime );
 
-      showTime( arrTime );
+    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    // Transform t = new Transform( new FastWaveletTransform( new Haar1Orthogonal( ) ) );
+    // Transform t = new Transform( new FastWaveletTransform( new Daubechies20( ) ) );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      // Transform t = new Transform( new FastWaveletTransform( new Haar1Orthogonal( ) ) );
-      // Transform t = new Transform( new FastWaveletTransform( new Daubechies20( ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
 
-      double[ ] arrHilb = t.forward( arrTime );
+    showHilb( arrHilb );
 
-      showHilb( arrHilb );
-
-      double[ ] expected = { 2., 0., 0., 0. }; // orthonormal Hilbert space
-      // double[ ] expected = { 4., 0., 0., 0. }; // orthogonal Hilbert space for Haar1Orthogonal
-      assertArray( expected, arrHilb, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    double[ ] expected = { 2., 0., 0., 0. }; // orthonormal Hilbert space
+    // double[ ] expected = { 4., 0., 0., 0. }; // orthogonal Hilbert space for Haar1Orthogonal
+    assertArray( expected, arrHilb, delta );
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
         + "forward 1-D method " + "using Haar1 Wavelet " + "and a long array" );
 
-    try {
+    delta = 1.e-12;
 
-      double delta = 1.e-12;
+    double[ ] arrTime2 = { // array of length 64
+        1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
 
-      double[ ] arrTime = { // array of length 64
-          1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
+    showTime( arrTime2 );
 
-      showTime( arrTime );
+    t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    arrHilb = t.forward( arrTime2 );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      double[ ] arrHilb = t.forward( arrTime );
+    showHilb( arrHilb );
 
-      showHilb( arrHilb );
-
-      double[ ] expected = { // array of length 64
-          8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. }; // orthonormal Hilbert space
-      assertArray( expected, arrHilb, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    double[ ] expected2 = { // array of length 64
+        8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. }; // orthonormal Hilbert space
+    assertArray( expected2, arrHilb, delta );
 
     System.out.println( "" );
     System.out
         .println( "Testing the Fast Wavelet Transform " + "forward 1-D method "
             + "using Haar1 Wavelet " + "and a random array" );
 
-    try {
+    delta = 1.e-12;
 
-      double delta = 1.e-12;
+    double[ ] arrTime3 = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
 
-      double[ ] arrTime = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
+    showTime( arrTime3 );
 
-      showTime( arrTime );
+    t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    arrHilb = t.forward( arrTime3 );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      double[ ] arrHilb = t.forward( arrTime );
+    showHilb( arrHilb );
 
-      showHilb( arrHilb );
+    double[ ] expected3 =
+        { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2,
+            -0.7778174593052021, -0.7778174593052025, 0.7778174593052025,
+            0.7778174593052023 }; // orthonormal Hilbert space
 
-      double[ ] expected =
-          { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2,
-              -0.7778174593052021, -0.7778174593052025, 0.7778174593052025,
-              0.7778174593052023 }; // orthonormal Hilbert space
-      assertArray( expected, arrHilb, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    assertArray( expected3, arrHilb, delta );
 
   } // testForwardDoubleArray
 
@@ -706,97 +670,71 @@ public class TransformTest {
     System.out.println( "Testing the Fast Wavelet Transform "
         + "reverse 1-D method " + "using Haar1 Wavelet" );
 
-    try {
+    double delta = 1e-12;
 
-      double delta = 1e-12;
+    double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal Hilbert space
+    // double[ ] arrHilb = { 4., 0., 0., 0. }; // orthogonal Hilbert space for Haar1Orthogonal
 
-      double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal Hilbert space
-      // double[ ] arrHilb = { 4., 0., 0., 0. }; // orthogonal Hilbert space for Haar1Orthogonal
+    showHilb( arrHilb );
 
-      showHilb( arrHilb );
+    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      double[ ] arrTime = t.reverse( arrHilb );
+    showTime( arrTime );
 
-      showTime( arrTime );
-
-      double[ ] expected = { 1., 1., 1., 1. };
-      assertArray( expected, arrTime, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    double[ ] expected = { 1., 1., 1., 1. };
+    assertArray( expected, arrTime, delta );
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
         + "reverse 1-D method " + "using Haar1 Wavelet" );
 
-    try {
+    delta = 1e-12;
 
-      double delta = 1e-12;
+    double[ ] arrHilb2 = {  // array of length 64
+        8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. }; // orthonormal Hilbert space
 
-      double[ ] arrHilb = {  // array of length 64
-          8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. }; // orthonormal Hilbert space
+    showHilb( arrHilb2 );
 
-      showHilb( arrHilb );
+    t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    arrTime = t.reverse( arrHilb2 );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      double[ ] arrTime = t.reverse( arrHilb );
+    showTime( arrTime );
 
-      showTime( arrTime );
+    double[ ] expected2 = {  // array of length 64
+        1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.
 
-      double[ ] expected = {  // array of length 64
-          1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.
-
-          };
-      assertArray( expected, arrTime, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+        };
+    assertArray( expected2, arrTime, delta );
 
     System.out.println( "" );
     System.out
         .println( "Testing the Fast Wavelet Transform " + "reverse 1-D method "
             + "using Haar1 Wavelet " + "and a random array" );
 
-    try {
+    delta = 1e-12;
 
-      double delta = 1e-12;
+    double[ ] arrHilb3 =
+        { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2,
+            -0.7778174593052021, -0.7778174593052025, 0.7778174593052025,
+            0.7778174593052023 }; // orthonormal Hilbert space
 
-      double[ ] arrHilb =
-          { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2,
-              -0.7778174593052021, -0.7778174593052025, 0.7778174593052025,
-              0.7778174593052023 }; // orthonormal Hilbert space
+    showHilb( arrHilb3 );
 
-      showHilb( arrHilb );
+    t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    arrTime = t.reverse( arrHilb3 );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      double[ ] arrTime = t.reverse( arrHilb );
+    showTime( arrTime );
 
-      showTime( arrTime );
+    double[ ] expected3 = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
 
-      double[ ] expected = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
-      assertArray( expected, arrTime, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    assertArray( expected3, arrTime, delta );
 
   } // testReverseDoubleArray
 
@@ -807,154 +745,143 @@ public class TransformTest {
 
     // run this part for any wavelet that is available in JWave!
 
-    try {
+    double delta = 1.e-8;
 
-      double delta = 1.e-8;
-      
-      int noOfWavelets = 20;
+    int noOfWavelets = 20;
 
-      Wavelet[ ] arrOfWaveletObjects = new Wavelet[ noOfWavelets ];
+    Wavelet[ ] arrOfWaveletObjects = new Wavelet[ noOfWavelets ];
 
-      arrOfWaveletObjects[ 0 ] = new Haar1( );
-      arrOfWaveletObjects[ 1 ] = new Daubechies4( );
-      arrOfWaveletObjects[ 2 ] = new Daubechies6( );
-      arrOfWaveletObjects[ 3 ] = new Daubechies8( );
-      arrOfWaveletObjects[ 4 ] = new Daubechies10( );
-      arrOfWaveletObjects[ 5 ] = new Daubechies12( );
-      arrOfWaveletObjects[ 6 ] = new Daubechies14( );
-      arrOfWaveletObjects[ 7 ] = new Daubechies16( );
-      arrOfWaveletObjects[ 8 ] = new Daubechies18( );
-      arrOfWaveletObjects[ 9 ] = new Daubechies20( );
-      arrOfWaveletObjects[ 10 ] = new Coiflet3( );
-      arrOfWaveletObjects[ 11 ] = new Coiflet5( );
-      arrOfWaveletObjects[ 12 ] = new Symlet4( );
-      arrOfWaveletObjects[ 13 ] = new Symlet8( );
-      arrOfWaveletObjects[ 14 ] = new Symlet12( );
-      arrOfWaveletObjects[ 15 ] = new Symlet16( );
-      arrOfWaveletObjects[ 16 ] = new Symlet20( );
-      arrOfWaveletObjects[ 17 ] = new BiOrthogonal13( );
-      arrOfWaveletObjects[ 18 ] = new BiOrthogonal39( );
-      arrOfWaveletObjects[ 19 ] = new BiOrthogonal68( );
+    arrOfWaveletObjects[ 0 ] = new Haar1( );
+    arrOfWaveletObjects[ 1 ] = new Daubechies4( );
+    arrOfWaveletObjects[ 2 ] = new Daubechies6( );
+    arrOfWaveletObjects[ 3 ] = new Daubechies8( );
+    arrOfWaveletObjects[ 4 ] = new Daubechies10( );
+    arrOfWaveletObjects[ 5 ] = new Daubechies12( );
+    arrOfWaveletObjects[ 6 ] = new Daubechies14( );
+    arrOfWaveletObjects[ 7 ] = new Daubechies16( );
+    arrOfWaveletObjects[ 8 ] = new Daubechies18( );
+    arrOfWaveletObjects[ 9 ] = new Daubechies20( );
+    arrOfWaveletObjects[ 10 ] = new Coiflet3( );
+    arrOfWaveletObjects[ 11 ] = new Coiflet5( );
+    arrOfWaveletObjects[ 12 ] = new Symlet4( );
+    arrOfWaveletObjects[ 13 ] = new Symlet8( );
+    arrOfWaveletObjects[ 14 ] = new Symlet12( );
+    arrOfWaveletObjects[ 15 ] = new Symlet16( );
+    arrOfWaveletObjects[ 16 ] = new Symlet20( );
+    arrOfWaveletObjects[ 17 ] = new BiOrthogonal13( );
+    arrOfWaveletObjects[ 18 ] = new BiOrthogonal39( );
+    arrOfWaveletObjects[ 19 ] = new BiOrthogonal68( );
 
-      for( int w = 0; w < noOfWavelets; w++ ) {
+    for( int w = 0; w < noOfWavelets; w++ ) {
 
-        Wavelet wavelet = arrOfWaveletObjects[ w ];
+      Wavelet wavelet = arrOfWaveletObjects[ w ];
 
-        System.out.println( "" );
-        System.out.println( "Testing the Fast Wavelet Transform "
-            + "decompse 1-D method " + "using " + wavelet.getName( ) );
+      System.out.println( "" );
+      System.out.println( "Testing the Fast Wavelet Transform "
+          + "decompse 1-D method " + "using " + wavelet.getName( ) );
 
-        double[ ] arrTime = { 1., 1., 1., 1. };
+      double[ ] arrTime = { 1., 1., 1., 1. };
 
-        showTime( arrTime );
+      showTime( arrTime );
 
-        Transform t = new Transform( new FastWaveletTransform( wavelet ) );
+      Transform t = new Transform( new FastWaveletTransform( wavelet ) );
 
-        double[ ][ ] matDeComp = t.decompose( arrTime );
+      double[ ][ ] matDeComp = t.decompose( arrTime );
 
-        showHilb( matDeComp );
+      showHilb( matDeComp );
 
-        double sqrt2 = Math.sqrt( 2. );
+      double sqrt2 = Math.sqrt( 2. );
 
-        double[ ][ ] expected =
-            { { 1., 1., 1., 1., },
-              { sqrt2, sqrt2, 0., 0. }, 
-              { 2., 0., 0., 0. } 
-            }; // orthonormal Hilbert space
+      double[ ][ ] expected =
+          { { 1., 1., 1., 1., }, { sqrt2, sqrt2, 0., 0. }, { 2., 0., 0., 0. } }; // orthonormal Hilbert space
 
-        assertMatrix( expected, matDeComp, delta );
+      assertMatrix( expected, matDeComp, delta );
 
-        double[ ] arrTimeReComp = t.recompose( matDeComp );
+      double[ ] arrTimeReComp = t.recompose( matDeComp );
 
-        showTime( arrTimeReComp );
+      showTime( arrTimeReComp );
 
-        assertArray( arrTime, arrTimeReComp, delta );
+      assertArray( arrTime, arrTimeReComp, delta );
 
-        System.out.println( "" );
-        System.out.println( "Testing the Fast Wavelet Transform "
-            + "forward 1-D method " + "using " + wavelet.getName( )
-            + " and a long array" );
+      System.out.println( "" );
+      System.out.println( "Testing the Fast Wavelet Transform "
+          + "forward 1-D method " + "using " + wavelet.getName( )
+          + " and a long array" );
 
-        double[ ] arrTime64 = { // array of length 64
-            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-                1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-                1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-                1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
-
-        showTime( arrTime );
-
-        double[ ][ ] matDeComp64 = t.decompose( arrTime64 );
-
-        showHilb( matDeComp64 );
-
-        double d1sqrt2 = 1 * sqrt2; // symbolic one times square root of 2
-        double d2sqrt2 = 2. * d1sqrt2; // 2 times square root of two
-        double d4sqrt2 = 2. * d2sqrt2; // 4 times square root of two
-
-        double[ ][ ] expected64 =
-            { { // array of length 64
-              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+      double[ ] arrTime64 = { // array of length 64
+          1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
               1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
               1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. },
-                { d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
-                    d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
-                    d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
-                    d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
-                    d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
-                    d1sqrt2, d1sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0. },
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
 
-                { 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2.,
-                    2., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0. },
+      showTime( arrTime );
 
-                { d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2,
-                    d2sqrt2, d2sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0. },
+      double[ ][ ] matDeComp64 = t.decompose( arrTime64 );
 
-                { 4., 4., 4., 4., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0. },
+      showHilb( matDeComp64 );
 
-                { d4sqrt2, d4sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0. },
+      double d1sqrt2 = 1 * sqrt2; // symbolic one times square root of 2
+      double d2sqrt2 = 2. * d1sqrt2; // 2 times square root of two
+      double d4sqrt2 = 2. * d2sqrt2; // 4 times square root of two
 
-                { 8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-                    0., 0., 0., 0. },
+      double[ ][ ] expected64 =
+          {
+              { // array of length 64
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                  1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                  1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                  1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                  1., 1., 1. },
+              { d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0. },
 
-            }; // orthonormal Hilbert space
+              { 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0. },
 
-        assertMatrix( expected64, matDeComp64, delta );
+              { d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2,
+                  d2sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. },
 
-        double[ ] arrTimeReComp64 = t.recompose( matDeComp64 );
+              { 4., 4., 4., 4., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0. },
 
-        showTime( arrTimeReComp64 );
+              { d4sqrt2, d4sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0. },
 
-        assertArray( arrTime64, arrTimeReComp64, delta );
+              { 8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0. },
 
-      } // w
+          }; // orthonormal Hilbert space
 
-    } catch( JWaveException e ) {
+      assertMatrix( expected64, matDeComp64, delta );
 
-      e.showMessage( );
-      e.printStackTrace( );
+      double[ ] arrTimeReComp64 = t.recompose( matDeComp64 );
 
-    } // try
+      showTime( arrTimeReComp64 );
+
+      assertArray( arrTime64, arrTimeReComp64, delta );
+
+    } // w
 
   } // testDecomposeDoubleArray
 
@@ -967,42 +894,33 @@ public class TransformTest {
     System.out.println( "Testing the Fast Wavelet Transform "
         + "forward 1-D method " + "using Haar1 Wavelet" );
 
-    try {
+    double delta = 1.e-12;
 
-      double delta = 1.e-12;
+    int arrTimeLength = 8;
 
-      int arrTimeLength = 8;
+    Complex[ ] arrTime = new Complex[ arrTimeLength ];
 
-      Complex[ ] arrTime = new Complex[ arrTimeLength ];
+    for( int i = 0; i < arrTimeLength; i++ )
+      arrTime[ i ] = new Complex( 1., 1. );
 
-      for( int i = 0; i < arrTimeLength; i++ )
-        arrTime[ i ] = new Complex( 1., 1. );
+    showTime( arrTime );
 
-      showTime( arrTime );
+    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    // Transform t = new Transform( new FastWaveletTransform( new Haar1Orthogonal( ) ) );
+    // Transform t = new Transform( new FastWaveletTransform( new Daubechies20( ) ) );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      // Transform t = new Transform( new FastWaveletTransform( new Haar1Orthogonal( ) ) );
-      // Transform t = new Transform( new FastWaveletTransform( new Daubechies20( ) ) );
+    Complex[ ] arrHilb = t.forward( arrTime );
 
-      Complex[ ] arrHilb = t.forward( arrTime );
+    showHilb( arrHilb );
 
-      showHilb( arrHilb );
+    Complex[ ] expected = new Complex[ arrTimeLength ];
 
-      Complex[ ] expected = new Complex[ arrTimeLength ];
+    for( int i = 0; i < arrTimeLength; i++ )
+      expected[ i ] = new Complex( 0., 0. ); // { 0., 0., 0., .. }
 
-      for( int i = 0; i < arrTimeLength; i++ )
-        expected[ i ] = new Complex( 0., 0. ); // { 0., 0., 0., .. }
+    expected[ 0 ].setReal( 4. );  // { 4., 0., 0., .. }
 
-      expected[ 0 ].setReal( 4. );  // { 4., 0., 0., .. }
-
-      assertArray( expected, arrHilb, delta );
-
-    } catch( JWaveFailure e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    assertArray( expected, arrHilb, delta );
 
   } // testForwardComplexArray
 
@@ -1015,39 +933,30 @@ public class TransformTest {
     System.out.println( "Testing the Fast Wavelet Transform "
         + "reverse 1-D method " + "using Haar1 Wavelet" );
 
-    try {
+    double delta = 1e-12;
 
-      double delta = 1e-12;
+    int arrTimeLength = 8;
 
-      int arrTimeLength = 8;
+    Complex[ ] arrHilb = new Complex[ arrTimeLength ];
 
-      Complex[ ] arrHilb = new Complex[ arrTimeLength ];
+    for( int i = 0; i < arrTimeLength; i++ )
+      arrHilb[ i ] = new Complex( 0., 0. ); // { 0., 0., 0., .. }
 
-      for( int i = 0; i < arrTimeLength; i++ )
-        arrHilb[ i ] = new Complex( 0., 0. ); // { 0., 0., 0., .. }
+    arrHilb[ 0 ].setReal( 4. );  // { 4., 0., 0., .. }
 
-      arrHilb[ 0 ].setReal( 4. );  // { 4., 0., 0., .. }
+    showHilb( arrHilb );
 
-      showHilb( arrHilb );
+    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    Complex[ ] arrTime = t.reverse( arrHilb );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      Complex[ ] arrTime = t.reverse( arrHilb );
+    showTime( arrTime );
 
-      showTime( arrTime );
+    Complex[ ] expected = new Complex[ arrTimeLength ];
 
-      Complex[ ] expected = new Complex[ arrTimeLength ];
+    for( int i = 0; i < arrTimeLength; i++ )
+      expected[ i ] = new Complex( 1., 1. );
 
-      for( int i = 0; i < arrTimeLength; i++ )
-        expected[ i ] = new Complex( 1., 1. );
-
-      assertArray( expected, arrTime, delta );
-
-    } catch( JWaveFailure e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    assertArray( expected, arrTime, delta );
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
@@ -1064,32 +973,23 @@ public class TransformTest {
     System.out.println( "Testing the Fast Wavelet Transform "
         + "forward 2-D method " + "using Haar1 Wavelet" );
 
-    try {
+    double delta = 1.e-12;
 
-      double delta = 1.e-12;
+    double[ ][ ] matrixTime =
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } };
 
-      double[ ][ ] matrixTime =
-          { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-              { 1., 1., 1., 1. } };
+    showTime( matrixTime );
 
-      showTime( matrixTime );
+    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    double[ ][ ] matrixHilb = t.forward( matrixTime );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      double[ ][ ] matrixHilb = t.forward( matrixTime );
+    showHilb( matrixHilb );
 
-      showHilb( matrixHilb );
-
-      double[ ][ ] expected =
-          { { 4., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-              { 0., 0., 0., 0. } };
-      assertMatrix( expected, matrixHilb, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    double[ ][ ] expected =
+        { { 4., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } };
+    assertMatrix( expected, matrixHilb, delta );
 
   } // testForwardDoubleArrayArray
 
@@ -1102,32 +1002,23 @@ public class TransformTest {
     System.out.println( "Testing the Fast Wavelet Transform "
         + "reverse 2-D method " + "using Haar1 Wavelet" );
 
-    try {
+    double delta = 1.e-12;
 
-      double delta = 1.e-12;
+    double[ ][ ] matrixHilb =
+        { { 4., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } };
 
-      double[ ][ ] matrixHilb =
-          { { 4., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-              { 0., 0., 0., 0. } };
+    showHilb( matrixHilb );
 
-      showHilb( matrixHilb );
+    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    double[ ][ ] matrixTime = t.reverse( matrixHilb );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      double[ ][ ] matrixTime = t.reverse( matrixHilb );
+    showTime( matrixTime );
 
-      showTime( matrixTime );
-
-      double[ ][ ] expected =
-          { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-              { 1., 1., 1., 1. } };
-      assertMatrix( expected, matrixTime, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    double[ ][ ] expected =
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } };
+    assertMatrix( expected, matrixTime, delta );
 
   }
 
@@ -1140,46 +1031,37 @@ public class TransformTest {
     System.out.println( "Testing the Fast Wavelet Transform "
         + "forward 3-D method " + "using Haar1 Wavelet" );
 
-    try {
+    double delta = 1.e-12;
 
-      double delta = 1.e-12;
+    double[ ][ ][ ] spaceTime =
+        {
+            { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+                { 1., 1., 1., 1. } },
+            { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+                { 1., 1., 1., 1. } },
+            { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+                { 1., 1., 1., 1. } },
+            { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+                { 1., 1., 1., 1. } } };
 
-      double[ ][ ][ ] spaceTime =
-          {
-              { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-                  { 1., 1., 1., 1. } },
-              { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-                  { 1., 1., 1., 1. } },
-              { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-                  { 1., 1., 1., 1. } },
-              { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-                  { 1., 1., 1., 1. } } };
+    showTime( spaceTime );
 
-      showTime( spaceTime );
+    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    double[ ][ ][ ] spaceHilb = t.forward( spaceTime );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      double[ ][ ][ ] spaceHilb = t.forward( spaceTime );
+    showHilb( spaceHilb );
 
-      showHilb( spaceHilb );
-
-      double[ ][ ][ ] expected =
-          {
-              { { 8., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                  { 0., 0., 0., 0. } },
-              { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                  { 0., 0., 0., 0. } },
-              { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                  { 0., 0., 0., 0. } },
-              { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                  { 0., 0., 0., 0. } } };
-      assertSpace( expected, spaceHilb, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    double[ ][ ][ ] expected =
+        {
+            { { 8., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+                { 0., 0., 0., 0. } },
+            { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+                { 0., 0., 0., 0. } },
+            { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+                { 0., 0., 0., 0. } },
+            { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+                { 0., 0., 0., 0. } } };
+    assertSpace( expected, spaceHilb, delta );
 
   } // testForwardDoubleArrayArrayArray
 
@@ -1192,47 +1074,38 @@ public class TransformTest {
     System.out.println( "Testing the Fast Wavelet Transform "
         + "reverse 3-D method " + "using Haar1 Wavelet" );
 
-    try {
+    double delta = 1.e-12;
 
-      double delta = 1.e-12;
+    double[ ][ ][ ] spaceHilb =
+        {
+            { { 8., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+                { 0., 0., 0., 0. } },
+            { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+                { 0., 0., 0., 0. } },
+            { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+                { 0., 0., 0., 0. } },
+            { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+                { 0., 0., 0., 0. } } };
 
-      double[ ][ ][ ] spaceHilb =
-          {
-              { { 8., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                  { 0., 0., 0., 0. } },
-              { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                  { 0., 0., 0., 0. } },
-              { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                  { 0., 0., 0., 0. } },
-              { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                  { 0., 0., 0., 0. } } };
+    showHilb( spaceHilb );
 
-      showHilb( spaceHilb );
+    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+    double[ ][ ][ ] spaceTime = t.reverse( spaceHilb );
 
-      Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-      double[ ][ ][ ] spaceTime = t.reverse( spaceHilb );
+    showTime( spaceTime );
 
-      showTime( spaceTime );
+    double[ ][ ][ ] expected =
+        {
+            { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+                { 1., 1., 1., 1. } },
+            { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+                { 1., 1., 1., 1. } },
+            { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+                { 1., 1., 1., 1. } },
+            { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+                { 1., 1., 1., 1. } } };
 
-      double[ ][ ][ ] expected =
-          {
-              { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-                  { 1., 1., 1., 1. } },
-              { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-                  { 1., 1., 1., 1. } },
-              { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-                  { 1., 1., 1., 1. } },
-              { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
-                  { 1., 1., 1., 1. } } };
-
-      assertSpace( expected, spaceTime, delta );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-      e.printStackTrace( );
-
-    } // try
+    assertSpace( expected, spaceTime, delta );
 
   } // testReverseDoubleArrayArrayArray
 

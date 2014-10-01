@@ -90,9 +90,10 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * 
    * @date 14.08.2010 10:43:28
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @throws JWaveException
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
-  @Override public double[ ] forward( double[ ] arrTime ) {
+  @Override public double[ ] forward( double[ ] arrTime ) throws JWaveException {
 
     double[ ] arrHilb = new double[ arrTime.length ];
 
@@ -144,9 +145,10 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * 
    * @date 14.08.2010 10:43:28
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @throws JWaveException
    * @see math.jwave.transforms.BasicTransform#reverse(double[])
    */
-  @Override public double[ ] reverse( double[ ] arrHilb ) {
+  @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
 
     double[ ] arrTime = new double[ arrHilb.length ];
 

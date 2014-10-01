@@ -67,8 +67,9 @@ public abstract class BasicTransform {
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
+   * @throws JWaveException
    */
-  public abstract double[ ] forward( double[ ] arrTime );
+  public abstract double[ ] forward( double[ ] arrTime ) throws JWaveException;
 
   /**
    * Performs the reverse transform from frequency or Hilbert domain to time
@@ -81,8 +82,9 @@ public abstract class BasicTransform {
    *          coefficients of 1-D frequency or Hilbert domain
    * @return matDeComp 2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the
    *         exponent of N=2^p
+   * @throws JWaveException
    */
-  public abstract double[ ] reverse( double[ ] arrFreq );
+  public abstract double[ ] reverse( double[ ] arrFreq ) throws JWaveException;
 
   /**
    * Generates from a 2-D decomposition a 1-D time series.
@@ -118,8 +120,9 @@ public abstract class BasicTransform {
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
+   * @throws JWaveException
    */
-  public Complex[ ] forward( Complex[ ] arrTime ) {
+  public Complex[ ] forward( Complex[ ] arrTime ) throws JWaveException {
 
     double[ ] arrTimeBulk = new double[ 2 * arrTime.length ];
 
@@ -158,8 +161,9 @@ public abstract class BasicTransform {
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
+   * @throws JWaveException
    */
-  public Complex[ ] reverse( Complex[ ] arrHilb ) {
+  public Complex[ ] reverse( Complex[ ] arrHilb ) throws JWaveException {
 
     double[ ] arrHilbBulk = new double[ 2 * arrHilb.length ];
 
@@ -196,8 +200,9 @@ public abstract class BasicTransform {
    * @param matTime
    *          coefficients of 2-D time domain
    * @return coefficients of 2-D frequency or Hilbert domain
+   * @throws JWaveException
    */
-  public double[ ][ ] forward( double[ ][ ] matTime ) {
+  public double[ ][ ] forward( double[ ][ ] matTime ) throws JWaveException {
 
     int noOfRows = matTime.length;
     int noOfCols = matTime[ 0 ].length;
@@ -245,8 +250,9 @@ public abstract class BasicTransform {
    * @param matFreq
    *          coefficients of 2-D frequency or Hilbert domain
    * @return coefficients of 2-D time domain
+   * @throws JWaveException
    */
-  public double[ ][ ] reverse( double[ ][ ] matFreq ) {
+  public double[ ][ ] reverse( double[ ][ ] matFreq ) throws JWaveException {
 
     int noOfRows = matFreq.length;
     int noOfCols = matFreq[ 0 ].length;
@@ -294,8 +300,10 @@ public abstract class BasicTransform {
    * @param spcTime
    *          coefficients of 3-D time domain domain
    * @return coefficients of 3-D frequency or Hilbert domain
+   * @throws JWaveException
    */
-  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime )
+      throws JWaveException {
 
     int noOfRows = spcTime.length; // first dimension
     int noOfCols = spcTime[ 0 ].length; // second dimension
@@ -363,8 +371,10 @@ public abstract class BasicTransform {
    * @param spcHilb
    *          coefficients of 3-D frequency or Hilbert domain
    * @return coefficients of 3-D time domain
+   * @throws JWaveException
    */
-  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb )
+      throws JWaveException {
 
     int noOfRows = spcHilb.length; // first dimension
     int noOfCols = spcHilb[ 0 ].length; // second dimension

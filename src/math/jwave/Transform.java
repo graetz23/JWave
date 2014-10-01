@@ -29,6 +29,7 @@ import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.BasicTransform;
+import math.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Base class for transforms like DiscreteFourierTransform, FastBasicTransform,
@@ -63,6 +64,20 @@ public class Transform {
   public Transform( BasicTransform transform ) {
 
     _transform = transform;
+
+    try {
+
+      if( _transform == null )
+        throw new JWaveFailure( "given object is null!" );
+
+      if( !( _transform instanceof BasicTransform ) )
+        throw new JWaveFailure( "given object is not of type Wavelet" );
+
+    } catch( JWaveFailure e ) {
+
+      e.printStackTrace( );
+
+    } // try
 
     _mathToolKit = new MathToolKit( );
 
@@ -110,17 +125,22 @@ public class Transform {
    * @param arrTime
    *          coefficients of time domain
    * @return coefficients of frequency or Hilbert domain
-   * @throws JWaveException
-   *           array is not of type 2^p
    */
-  public double[ ] forward( double[ ] arrTime ) throws JWaveException {
+  public double[ ] forward( double[ ] arrTime ) {
 
-    if( !_mathToolKit.isBinary( arrTime.length ) )
-      throw new JWaveFailure(
-          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    double[ ] arrHilb = null;
 
-    return _transform.forward( arrTime );
+    try {
+
+      arrHilb = _transform.forward( arrTime );
+
+    } catch( JWaveException e ) {
+
+      e.printStackTrace( );
+
+    } // try
+
+    return arrHilb;
 
   } // forward
 
@@ -129,20 +149,25 @@ public class Transform {
    * 
    * @date 10.02.2010 09:42:18
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @param arrFreq
+   * @param arrHilb
    *          coefficients of frequency or Hilbert domain
    * @return coefficients of time domain
-   * @throws JWaveException
-   *           if array is not of type 2^p
    */
-  public double[ ] reverse( double[ ] arrFreq ) throws JWaveException {
+  public double[ ] reverse( double[ ] arrHilb ) {
 
-    if( !_mathToolKit.isBinary( arrFreq.length ) )
-      throw new JWaveFailure(
-          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    double[ ] arrTime = null;
 
-    return _transform.reverse( arrFreq );
+    try {
+
+      arrTime = _transform.reverse( arrHilb );
+
+    } catch( JWaveException e ) {
+
+      e.printStackTrace( );
+
+    } // try
+
+    return arrTime;
 
   } // reverse
 
@@ -159,7 +184,19 @@ public class Transform {
    */
   public Complex[ ] forward( Complex[ ] arrTime ) {
 
-    return ( (BasicTransform)_transform ).forward( arrTime );
+    Complex[ ] arrFreq = null;
+
+    try {
+
+      arrFreq = ( (BasicTransform)_transform ).forward( arrTime );
+
+    } catch( JWaveException e ) {
+
+      e.printStackTrace( );
+
+    } // try
+
+    return arrFreq;
 
   } // forward
 
@@ -176,7 +213,19 @@ public class Transform {
    */
   public Complex[ ] reverse( Complex[ ] arrFreq ) {
 
-    return ( (BasicTransform)_transform ).reverse( arrFreq );
+    Complex[ ] arrTime = null;
+
+    try {
+
+      arrTime = ( (BasicTransform)_transform ).reverse( arrFreq );
+
+    } catch( JWaveException e ) {
+
+      e.printStackTrace( );
+
+    } // try
+
+    return arrTime;
 
   } // reverse
 
@@ -188,29 +237,22 @@ public class Transform {
    * @param matrixTime
    *          coefficients of 2-D time domain; internal M(i),N(j)
    * @return coefficients of 2-D frequency or Hilbert domain
-   * @throws JWaveException
-   *           if matrix is not of type 2^p x 2^q
    */
-  public double[ ][ ] forward( double[ ][ ] matrixTime ) throws JWaveException {
+  public double[ ][ ] forward( double[ ][ ] matrixTime ) {
 
-    int M = matrixTime.length;
+    double[ ][ ] matrixHilb = null;
 
-    if( !_mathToolKit.isBinary( M ) )
-      throw new JWaveFailure(
-          "given matrix dimension "
-              + M
-              + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    try {
 
-    for( int i = 0; i < M; i++ )
-      if( !_mathToolKit.isBinary( matrixTime[ i ].length ) )
-        throw new JWaveFailure(
-            "given matrix dimension N(i)="
-                + matrixTime[ i ].length
-                + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-                + "please use the Ancient Egyptian Decomposition for any other array length!" );
+      matrixHilb = _transform.forward( matrixTime );
 
-    return _transform.forward( matrixTime );
+    } catch( JWaveException e ) {
+
+      e.printStackTrace( );
+
+    } // try
+
+    return matrixHilb;
 
   } // forward
 
@@ -223,29 +265,22 @@ public class Transform {
    *          coefficients of 2-D frequency or Hilbert domain; internal
    *          M(i),N(j)
    * @return coefficients of 2-D time domain
-   * @throws JWaveException
-   *           if matrix is not of type 2^p x 2^q
    */
-  public double[ ][ ] reverse( double[ ][ ] matrixFreq ) throws JWaveException {
+  public double[ ][ ] reverse( double[ ][ ] matrixHilb ) {
 
-    int M = matrixFreq.length;
+    double[ ][ ] matrixTime = null;
 
-    if( !_mathToolKit.isBinary( M ) )
-      throw new JWaveFailure(
-          "given matrix dimension "
-              + M
-              + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    try {
 
-    for( int i = 0; i < M; i++ )
-      if( !_mathToolKit.isBinary( matrixFreq[ i ].length ) )
-        throw new JWaveFailure(
-            "given matrix dimension N(i)="
-                + matrixFreq[ i ].length
-                + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-                + "please use the Ancient Egyptian Decomposition for any other array length!" );
+      matrixTime = _transform.reverse( matrixHilb );
 
-    return _transform.reverse( matrixFreq );
+    } catch( JWaveException e ) {
+
+      e.printStackTrace( );
+
+    } // try
+
+    return matrixTime;
 
   } // reverse
 
@@ -257,45 +292,22 @@ public class Transform {
    * @param matrixTime
    *          coefficients of 2-D time domain; internal M(i),N(j),O(k)
    * @return coefficients of 2-D frequency or Hilbert domain
-   * @throws JWaveException
-   *           if space is not of type 2^p x 2^q x 2^r
    */
-  public double[ ][ ][ ] forward( double[ ][ ][ ] spaceTime )
-      throws JWaveException {
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spaceTime ) {
 
-    int M = spaceTime.length;
+    double[ ][ ][ ] spaceHilb = null;
 
-    if( !_mathToolKit.isBinary( M ) )
-      throw new JWaveFailure(
-          "given space dimension "
-              + M
-              + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    try {
 
-    for( int i = 0; i < M; i++ ) { // M(i)
+      spaceHilb = _transform.forward( spaceTime );
 
-      int N = spaceTime[ i ].length;
+    } catch( JWaveException e ) {
 
-      if( !_mathToolKit.isBinary( N ) )
-        throw new JWaveFailure(
-            "given space dimension N(i)="
-                + N
-                + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-                + "please use the Ancient Egyptian Decomposition for any other array length!" );
+      e.printStackTrace( );
 
-      for( int j = 0; j < N; j++ )
-        // // N(j)
-        if( !_mathToolKit.isBinary( spaceTime[ i ][ j ].length ) )
-          // O
-          throw new JWaveFailure(
-              "given space dimension M(j)="
-                  + spaceTime[ i ][ j ].length
-                  + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-                  + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    } // try
 
-    } // i
-
-    return _transform.forward( spaceTime );
+    return spaceHilb;
 
   } // forward
 
@@ -308,46 +320,22 @@ public class Transform {
    *          coefficients of 2-D frequency or Hilbert domain; internal
    *          M(i),N(j),O(k)
    * @return coefficients of 2-D time domain
-   * @throws JWaveException
-   *           if space is not of type 2^p x 2^q x 2^r
    */
-  public double[ ][ ][ ] reverse( double[ ][ ][ ] spaceFreq )
-      throws JWaveException {
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spaceHilb ) {
 
-    int M = spaceFreq.length;
+    double[ ][ ][ ] spaceTime = null;
 
-    if( !_mathToolKit.isBinary( M ) )
-      throw new JWaveFailure(
-          "given space dimension "
-              + M
-              + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    try {
 
-    for( int i = 0; i < M; i++ ) { // M(i)
+      spaceTime = _transform.reverse( spaceHilb );
 
-      int N = spaceFreq[ i ].length;
+    } catch( JWaveException e ) {
 
-      if( !_mathToolKit.isBinary( N ) )
-        throw new JWaveFailure(
-            "given space dimension N(i)="
-                + N
-                + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-                + "please use the Ancient Egyptian Decomposition for any other array length!" );
+      e.printStackTrace( );
 
-      for( int j = 0; j < N; j++ ) { // N(j)
+    } // try
 
-        if( !_mathToolKit.isBinary( spaceFreq[ i ][ j ].length ) ) // O
-          throw new JWaveFailure(
-              "given space dimension M(j)="
-                  + spaceFreq[ i ][ j ].length
-                  + " is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-                  + "please use the Ancient Egyptian Decomposition for any other array length!" );
-
-      } // j
-
-    } // i
-
-    return _transform.reverse( spaceFreq );
+    return spaceTime;
 
   } // reverse
 
@@ -361,17 +349,22 @@ public class Transform {
    *          coefficients of time domain
    * @return matDeComp 2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the
    *         exponent of N=2^p
-   * @throws JWaveException
-   *           if not available or signal is not of 2^p
    */
-  public double[ ][ ] decompose( double[ ] arrTime ) throws JWaveException {
+  public double[ ][ ] decompose( double[ ] arrTime ) {
 
-    if( !_mathToolKit.isBinary( arrTime.length ) )
-      throw new JWaveFailure(
-          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    double[ ][ ] matDeComp = null;
 
-    return _transform.decompose( arrTime );
+    try {
+
+      matDeComp = _transform.decompose( arrTime );
+
+    } catch( JWaveException e ) {
+
+      e.printStackTrace( );
+
+    } // try
+
+    return matDeComp;
 
   } // decompose
 
@@ -384,17 +377,22 @@ public class Transform {
    *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
    *          of N=2^p
    * @return a 1-D time domain signal
-   * @throws JWaveException
-   *           if not available or signal is not of 2^p
    */
-  public double[ ] recompose( double[ ][ ] matDeComp ) throws JWaveException {
+  public double[ ] recompose( double[ ][ ] matDeComp ) {
 
-    if( !_mathToolKit.isBinary( matDeComp[ 0 ].length ) )
-      throw new JWaveFailure(
-          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    double[ ] arrTime = null;
 
-    return _transform.recompose( matDeComp );
+    try {
+
+      arrTime = _transform.recompose( matDeComp );
+
+    } catch( JWaveException e ) {
+
+      e.printStackTrace( );
+
+    } // try
+
+    return arrTime;
 
   } // recompose
 
