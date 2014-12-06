@@ -23,6 +23,8 @@
  */
 package math.jwave.transforms;
 
+import java.util.Arrays;
+
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.wavelets.Wavelet;
@@ -70,9 +72,7 @@ public class FastWaveletTransform extends WaveletTransform {
           "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
-    double[ ] arrHilb = new double[ arrTime.length ];
-    for( int i = 0; i < arrTime.length; i++ )
-      arrHilb[ i ] = arrTime[ i ];
+    double[ ] arrHilb = Arrays.copyOf(arrTime, arrTime.length);
 
     int h = arrHilb.length;
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
@@ -81,8 +81,7 @@ public class FastWaveletTransform extends WaveletTransform {
 
       double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
 
-      for( int i = 0; i < h; i++ )
-        arrHilb[ i ] = arrTempPart[ i ];
+      System.arraycopy(arrTempPart, 0, arrHilb, 0, h);
 
       h = h >> 1;
 
