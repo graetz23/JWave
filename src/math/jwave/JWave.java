@@ -45,9 +45,6 @@ import math.jwave.transforms.wavelets.legendre.Legendre3;
  * @date 23.02.2010 14:26:47
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-/**
- * @author tucker date 31.01.2014 20:26:06
- */
 public class JWave {
 
   /**
