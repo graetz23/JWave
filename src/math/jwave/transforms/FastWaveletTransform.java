@@ -37,7 +37,7 @@ import math.jwave.transforms.wavelets.Wavelet;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 /**
- * @author tucker 05.02.2014 22:12:45
+ * @author Christian Scheiblich 05.02.2014 22:12:45
  */
 public class FastWaveletTransform extends WaveletTransform {
 
@@ -50,9 +50,7 @@ public class FastWaveletTransform extends WaveletTransform {
    *          object of type Wavelet; Haar1, Daubechies2, Coiflet1, ...
    */
   public FastWaveletTransform( Wavelet wavelet ) {
-
     super( wavelet );
-
   } // FastWaveletTransform
 
   /**
@@ -72,17 +70,14 @@ public class FastWaveletTransform extends WaveletTransform {
           "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
-    double[ ] arrHilb = Arrays.copyOf(arrTime, arrTime.length);
+    double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
 
     int h = arrHilb.length;
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-
     while( h >= transformWavelength ) {
 
       double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
-
-      System.arraycopy(arrTempPart, 0, arrHilb, 0, h);
-
+      System.arraycopy( arrTempPart, 0, arrHilb, 0, h );
       h = h >> 1;
 
     } // levels
@@ -108,26 +103,14 @@ public class FastWaveletTransform extends WaveletTransform {
           "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
-    double[ ] arrTime = new double[ arrHilb.length ];
-
-    for( int i = 0; i < arrHilb.length; i++ )
-      arrTime[ i ] = arrHilb[ i ];
+    double[ ] arrTime = Arrays.copyOf( arrHilb, arrHilb.length );
 
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-
     int h = transformWavelength;
-
-    //    if( !_mathToolKit.isBinary( h ) )
-    //      for( h = 2; h <= transformWavelength; h *= 2 ) {}
-    // fixed h = h << 1; // 6 -> 8, 10 -> 16
-
     while( h <= arrTime.length && h >= transformWavelength ) {
 
       double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
-
-      for( int i = 0; i < h; i++ )
-        arrTime[ i ] = arrTempPart[ i ];
-
+      System.arraycopy( arrTempPart, 0, arrTime, 0, h );
       h = h << 1;
 
     } // levels
@@ -140,7 +123,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * Generates from a 1-D signal a 2-D output, where the second dimension are
    * the levels of the wavelet transform. The first level is keeping the
    * original coefficients. All following levels keep each step of the
-   * decompostion of the Fast Wavelet Transform.
+   * decomposition of the Fast Wavelet Transform.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 17.08.2014 10:07:19
@@ -153,28 +136,18 @@ public class FastWaveletTransform extends WaveletTransform {
   @Override public double[ ][ ] decompose( double[ ] arrTime ) {
 
     int levels = _mathToolKit.getExponent( arrTime.length );
-
+    double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
     double[ ][ ] matDeComp = new double[ levels + 1 ][ arrTime.length ];
-
-    double[ ] arrHilb = new double[ arrTime.length ];
-
-    for( int i = 0; i < arrTime.length; i++ ) {
-
-      arrHilb[ i ] = arrTime[ i ];
+    for( int i = 0; i < arrTime.length; i++ )
       matDeComp[ 0 ][ i ] = arrTime[ i ];
-
-    } // i
 
     int l = 1; // start with level 1 cause level 0 is the normal space
     int h = arrHilb.length;
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-
     while( h >= transformWavelength ) {
 
       double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
-
-      for( int i = 0; i < h; i++ )
-        arrHilb[ i ] = arrTempPart[ i ];
+      System.arraycopy( arrTempPart, 0, arrHilb, 0, h );
 
       for( int i = 0; i < arrTime.length; i++ )
         if( i < h )
@@ -183,7 +156,6 @@ public class FastWaveletTransform extends WaveletTransform {
           matDeComp[ l ][ i ] = 0.;
 
       h = h >> 1;
-
       l++; // next level
 
     } // levels
@@ -208,15 +180,12 @@ public class FastWaveletTransform extends WaveletTransform {
   public double[ ] recompose( double[ ][ ] matDeComp ) {
 
     int length = matDeComp[ 0 ].length; // length of first Hilbert space
-
-    int levels = matDeComp.length;
-
     double[ ] arrTime = new double[ length ];
 
+    int levels = matDeComp.length;
     for( int l = 1; l < levels; l++ ) {
 
       int steps = (int)_mathToolKit.scalb( (double)l, 1 );
-
       for( int i = 0; i < length; i++ )
         if( i < steps )
           arrTime[ i ] = matDeComp[ l ][ i ]; // add them together
@@ -226,14 +195,10 @@ public class FastWaveletTransform extends WaveletTransform {
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
 
     int h = transformWavelength;
-
     while( h <= arrTime.length && h >= transformWavelength ) {
 
       double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
-
-      for( int i = 0; i < h; i++ )
-        arrTime[ i ] = arrTempPart[ i ];
-
+      System.arraycopy( arrTempPart, 0, arrTime, 0, h );
       h = h << 1;
 
     } // levels

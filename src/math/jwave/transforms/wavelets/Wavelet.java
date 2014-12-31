@@ -23,6 +23,8 @@
  */
 package math.jwave.transforms.wavelets;
 
+import java.util.Arrays;
+
 /**
  * Basic class for one wavelet keeping coefficients of the wavelet function, the
  * scaling function, the base wavelength, the forward transform method, and the
@@ -193,15 +195,13 @@ public abstract class Wavelet implements WaveletInterface {
     double[ ] arrHilb = new double[ arrTimeLength ];
 
     int h = arrHilb.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
-
     for( int i = 0; i < h; i++ ) {
 
       arrHilb[ i ] = arrHilb[ i + h ] = 0.; // set to zero before sum up
 
       for( int j = 0; j < _motherWavelength; j++ ) {
 
-        int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
-
+        int k = ( i << 1 ) + j; // k = ( i * 2 ) + j;
         while( k >= arrHilb.length )
           k -= arrHilb.length; // circulate over arrays if scaling and wavelet are are larger
 
@@ -234,18 +234,15 @@ public abstract class Wavelet implements WaveletInterface {
   public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
 
     double[ ] arrTime = new double[ arrHilbLength ];
-
     for( int i = 0; i < arrTime.length; i++ )
       arrTime[ i ] = 0.;
 
     int h = arrTime.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
-
     for( int i = 0; i < h; i++ ) {
 
       for( int j = 0; j < _motherWavelength; j++ ) {
 
-        int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
-
+        int k = ( i << 1 ) + j; // k = ( i * 2 ) + j;
         while( k >= arrTime.length )
           k -= arrTime.length; // circulate over arrays if scaling and wavelet are larger
 
