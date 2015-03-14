@@ -39,15 +39,6 @@ import math.jwave.transforms.wavelets.WaveletBuilder;
 public class JWave {
 
   /**
-   * Constructor.
-   * 
-   * @date 23.02.2010 14:26:47
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   */
-  public JWave( ) {
-  } // JWave
-
-  /**
    * Main method for doing little test runs for different transform types and
    * different wavelets without JUnit. Requesting the transform type and the
    * type of wavelet to be used else usage is printed.
@@ -62,7 +53,8 @@ public class JWave {
     try {
 
       if( args.length < 3 || args.length > 5 ) {
-        System.err.println( "usage: JWave [transformType] {waveletType}" );
+        System.err
+            .println( "example usage: JWave [transformType] {waveletType}" );
         System.err.println( "" );
         System.err.println( "Transform names: "
             + "'Discrete Fourier Transform'" + " " + "'Fast Wavelet Transform'"
@@ -79,43 +71,41 @@ public class JWave {
 
       String waveletIdentifier = args[ 3 ] + " " + args[ 4 ]; // raw n dirty but working
       String transformIdentifier = args[ 0 ] + " " + args[ 1 ] + " " + args[ 2 ]; // raw n dirty but working
-      Transform t =
+
+      Transform transform =
           TransformBuilder.create( transformIdentifier, waveletIdentifier );
 
-      BasicTransform basicTransform = t.getBasicTransform( );
-      Wavelet wavelet = basicTransform.getWavelet( );
+      Wavelet wavelet = transform.getWavelet( );
 
-      double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
+      double[ ] arrTime =
+          { 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
 
-      if( basicTransform instanceof DiscreteFourierTransform )
-        System.out.print( TransformBuilder.identify( basicTransform ) );
+      if( transform.getBasicTransform( ) instanceof DiscreteFourierTransform )
+        System.out.print( TransformBuilder.identify( transform ) );
       else
-        System.out.print( TransformBuilder.identify( basicTransform )
-            + " using " + WaveletBuilder.identify( wavelet ) );
+        System.out.print( TransformBuilder.identify( transform ) + " using "
+            + WaveletBuilder.identify( wavelet ) );
       System.out.println( "" );
       System.out.println( "time domain:" );
       for( int p = 0; p < arrTime.length; p++ )
-        System.out.printf( "%9.6f", arrTime[ p ] );
+        System.out.printf( "%7.4f", arrTime[ p ] );
       System.out.println( "" );
 
-      double[ ] arrFreqOrHilb = null;
-      arrFreqOrHilb = t.forward( arrTime );
+      double[ ] arrFreqOrHilb = transform.forward( arrTime );
 
-      if( basicTransform instanceof DiscreteFourierTransform )
+      if( transform.getBasicTransform( ) instanceof DiscreteFourierTransform )
         System.out.println( "frequency domain:" );
       else
         System.out.println( "Hilbert domain:" );
       for( int p = 0; p < arrTime.length; p++ )
-        System.out.printf( "%9.6f", arrFreqOrHilb[ p ] );
+        System.out.printf( "%7.4f", arrFreqOrHilb[ p ] );
       System.out.println( "" );
 
-      double[ ] arrReco = null;
-
-      arrReco = t.reverse( arrFreqOrHilb );
+      double[ ] arrReco = transform.reverse( arrFreqOrHilb );
 
       System.out.println( "reconstruction:" );
       for( int p = 0; p < arrTime.length; p++ )
-        System.out.printf( "%9.6f", arrReco[ p ] );
+        System.out.printf( "%7.4f", arrReco[ p ] );
       System.out.println( "" );
 
     } catch( JWaveException e ) {

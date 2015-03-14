@@ -97,9 +97,10 @@ public class TransformBuilder {
    *          string identifier of the given Transform object
    * @return a string as the identifier of the given Transform object
    */
-  static public String identify( BasicTransform transform ) {
+  static public String identify( Transform transform ) {
 
-    return transform.getName( );
+    BasicTransform basicTransform = transform.getBasicTransform( );
+    return basicTransform.getName( );
 
   } // identify
 

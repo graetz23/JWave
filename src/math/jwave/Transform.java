@@ -33,6 +33,7 @@ import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.BasicTransform;
+import math.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Base class for transforms like DiscreteFourierTransform, FastBasicTransform,
@@ -409,5 +410,19 @@ public class Transform {
   public BasicTransform getBasicTransform( ) {
     return _basicTransform;
   } // getBasicTransform
+
+  /**
+   * Returns the used Wavelet object or null pointer.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 18:58:50
+   * @return object of type Wavelet
+   */
+  public Wavelet getWavelet( ) {
+
+    BasicTransform basicTransform = getBasicTransform( );
+    return basicTransform.getWavelet( );
+
+  } // getWavelet
 
 } // class
