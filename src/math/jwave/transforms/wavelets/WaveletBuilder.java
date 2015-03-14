@@ -48,6 +48,8 @@ import math.jwave.transforms.wavelets.daubechies.Daubechies6;
 import math.jwave.transforms.wavelets.daubechies.Daubechies7;
 import math.jwave.transforms.wavelets.daubechies.Daubechies8;
 import math.jwave.transforms.wavelets.daubechies.Daubechies9;
+import math.jwave.transforms.wavelets.haar.Haar1;
+import math.jwave.transforms.wavelets.haar.Haar1Orthogonal;
 import math.jwave.transforms.wavelets.legendre.Legendre1;
 import math.jwave.transforms.wavelets.legendre.Legendre2;
 import math.jwave.transforms.wavelets.legendre.Legendre3;

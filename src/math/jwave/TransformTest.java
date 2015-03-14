@@ -29,8 +29,6 @@ import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
-import math.jwave.transforms.wavelets.Haar1;
-import math.jwave.transforms.wavelets.Haar1Orthogonal;
 import math.jwave.transforms.wavelets.Wavelet;
 import math.jwave.transforms.wavelets.biorthogonal.BiOrthogonal11;
 import math.jwave.transforms.wavelets.biorthogonal.BiOrthogonal13;
@@ -71,6 +69,8 @@ import math.jwave.transforms.wavelets.daubechies.Daubechies6;
 import math.jwave.transforms.wavelets.daubechies.Daubechies7;
 import math.jwave.transforms.wavelets.daubechies.Daubechies8;
 import math.jwave.transforms.wavelets.daubechies.Daubechies9;
+import math.jwave.transforms.wavelets.haar.Haar1;
+import math.jwave.transforms.wavelets.haar.Haar1Orthogonal;
 import math.jwave.transforms.wavelets.legendre.Legendre1;
 import math.jwave.transforms.wavelets.legendre.Legendre2;
 import math.jwave.transforms.wavelets.legendre.Legendre3;
@@ -155,7 +155,7 @@ public class TransformTest {
 
   } // testSamplingCosine
 
-  @Test public void testDiscreteFourierTransform( ) {
+  @Test public void testDiscreteFourierTransform( ) throws JWaveFailure {
 
     int samplingRate = 8; // sampling rate
     int noOfOscillations = 1;
@@ -182,6 +182,26 @@ public class TransformTest {
     showFreq( arrFreqCosine );
     double[ ] arrRecoCosine = transform.reverse( arrFreqCosine );
     showTime( arrRecoCosine );
+    assertArray( arrTimeCosine, arrRecoCosine, 1e-10 );
+
+    transform = TransformBuilder.create( "Fast Wavelet Transform", "Haar" );
+    
+    // generate sampled (discrete) sine over 2 pi
+    arrTimeSine =
+        MathToolKit.createSineOscillation( samplingRate, noOfOscillations );
+    // showTime( arrTimeSine );
+    arrFreqSine = transform.forward( arrTimeSine );
+    // showFreq( arrFreqSine );
+    arrRecoSine = transform.reverse( arrFreqSine );
+    // showTime( arrRecoSine );
+    assertArray( arrTimeSine, arrRecoSine, 1e-10 );
+    
+    // generate sampled (discrete) sine over 2 pi
+    // showTime( arrTimeCosine );
+    arrFreqCosine = transform.forward( arrTimeCosine );
+    // showFreq( arrFreqCosine );
+    arrRecoCosine = transform.reverse( arrFreqCosine );
+    // showTime( arrRecoCosine );
     assertArray( arrTimeCosine, arrRecoCosine, 1e-10 );
 
   } // testSamplingSine
