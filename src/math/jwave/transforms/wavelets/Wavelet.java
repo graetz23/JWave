@@ -31,7 +31,7 @@ package math.jwave.transforms.wavelets;
  * @date 10.02.2010 08:54:48
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-public abstract class Wavelet implements WaveletInterface {
+public abstract class Wavelet {
 
   /**
    * The name of the wavelet.
@@ -303,7 +303,7 @@ public abstract class Wavelet implements WaveletInterface {
 
     return scalingDeCom;
 
-  } // getScalingDeCom  
+  } // getScalingDeComposition  
 
   /**
    * Returns a copy of the wavelet (high pass filter) coefficients of
@@ -323,7 +323,7 @@ public abstract class Wavelet implements WaveletInterface {
 
     return waveletDeCom;
 
-  } // getWaveletDeCom
+  } // getWaveletDeComposition
 
   /**
    * Returns a copy of the scaling (low pass filter) coefficients of
@@ -343,7 +343,7 @@ public abstract class Wavelet implements WaveletInterface {
 
     return scalingReCon;
 
-  } // getScalingReCon
+  } // getScalingReConstruction
 
   /**
    * Returns a copy of the wavelet (high pass filter) coefficients of
@@ -363,6 +363,6 @@ public abstract class Wavelet implements WaveletInterface {
 
     return waveletReCon;
 
-  } // getWaveletReCon
+  } // getWaveletReConstruction
 
 } // Wavelet
