@@ -26,18 +26,8 @@ package math.jwave;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
-import math.jwave.transforms.FastWaveletTransform;
-import math.jwave.transforms.WaveletPacketTransform;
-import math.jwave.transforms.wavelets.Haar1;
 import math.jwave.transforms.wavelets.Wavelet;
 import math.jwave.transforms.wavelets.WaveletBuilder;
-import math.jwave.transforms.wavelets.coiflet.Coiflet1;
-import math.jwave.transforms.wavelets.daubechies.Daubechies2;
-import math.jwave.transforms.wavelets.daubechies.Daubechies3;
-import math.jwave.transforms.wavelets.daubechies.Daubechies4;
-import math.jwave.transforms.wavelets.legendre.Legendre1;
-import math.jwave.transforms.wavelets.legendre.Legendre2;
-import math.jwave.transforms.wavelets.legendre.Legendre3;
 
 /**
  * Main class for doing little test runs for different transform types and
@@ -90,7 +80,7 @@ public class JWave {
       String waveletIdentifier = args[ 3 ] + " " + args[ 4 ]; // raw n dirty but working
       String transformIdentifier = args[ 0 ] + " " + args[ 1 ] + " " + args[ 2 ]; // raw n dirty but working
       Transform t =
-          TransformBuilder.create( transformIdentifier, waveletIdentifier ); // perform all steps
+          TransformBuilder.create( transformIdentifier, waveletIdentifier );
 
       BasicTransform basicTransform = t.getBasicTransform( );
       Wavelet wavelet = basicTransform.getWavelet( );
@@ -100,8 +90,8 @@ public class JWave {
       if( basicTransform instanceof DiscreteFourierTransform )
         System.out.print( TransformBuilder.identify( basicTransform ) );
       else
-        System.out.print( TransformBuilder.identify( basicTransform ) + " using "
-            + WaveletBuilder.identify( wavelet ) );
+        System.out.print( TransformBuilder.identify( basicTransform )
+            + " using " + WaveletBuilder.identify( wavelet ) );
       System.out.println( "" );
       System.out.println( "time domain:" );
       for( int p = 0; p < arrTime.length; p++ )

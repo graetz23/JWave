@@ -25,8 +25,6 @@ package math.jwave;
 
 import static org.junit.Assert.*;
 import math.jwave.datatypes.Complex;
-import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.wavelets.Haar1;
 import math.jwave.transforms.wavelets.Haar1Orthogonal;
@@ -73,7 +71,6 @@ import math.jwave.transforms.wavelets.daubechies.Daubechies9;
 import math.jwave.transforms.wavelets.legendre.Legendre1;
 import math.jwave.transforms.wavelets.legendre.Legendre2;
 import math.jwave.transforms.wavelets.legendre.Legendre3;
-import math.jwave.transforms.wavelets.other.CDF53;
 import math.jwave.transforms.wavelets.other.DiscreteMayer;
 import math.jwave.transforms.wavelets.symlets.Symlet10;
 import math.jwave.transforms.wavelets.symlets.Symlet11;

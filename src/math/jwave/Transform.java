@@ -33,7 +33,6 @@ import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.BasicTransform;
-import math.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Base class for transforms like DiscreteFourierTransform, FastBasicTransform,

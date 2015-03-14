@@ -23,8 +23,6 @@
  */
 package math.jwave.transforms.wavelets;
 
-import java.util.Arrays;
-
 /**
  * Basic class for one wavelet keeping coefficients of the wavelet function, the
  * scaling function, the base wavelength, the forward transform method, and the
