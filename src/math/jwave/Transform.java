@@ -417,8 +417,10 @@ public class Transform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 18:58:50
    * @return object of type Wavelet
+   * @throws JWaveFailure
+   *           if Wavelet object is not available
    */
-  public Wavelet getWavelet( ) {
+  public Wavelet getWavelet( ) throws JWaveFailure {
 
     BasicTransform basicTransform = getBasicTransform( );
     return basicTransform.getWavelet( );

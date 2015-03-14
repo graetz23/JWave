@@ -24,6 +24,7 @@
 package math.jwave.transforms;
 
 import math.jwave.exceptions.JWaveException;
+import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -196,7 +197,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * @date 14.03.2015 18:33:36 (non-Javadoc)
    * @see math.jwave.transforms.BasicTransform#getWavelet()
    */
-  @Override public Wavelet getWavelet( ) {
+  @Override public Wavelet getWavelet( ) throws JWaveFailure {
     return _basicTransform.getWavelet( );
   } // getWavelet
 

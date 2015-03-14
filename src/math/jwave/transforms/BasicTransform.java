@@ -26,6 +26,7 @@ package math.jwave.transforms;
 import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveError;
 import math.jwave.exceptions.JWaveException;
+import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.wavelets.Wavelet;
 
@@ -460,7 +461,9 @@ public abstract class BasicTransform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 18:26:44
    * @return object of type Wavelet of null pointer
+   * @throws JWaveFailure
+   *           if Wavelet object is not available
    */
-  public abstract Wavelet getWavelet( );
+  public abstract Wavelet getWavelet( ) throws JWaveFailure;
 
 } // BasicTransform

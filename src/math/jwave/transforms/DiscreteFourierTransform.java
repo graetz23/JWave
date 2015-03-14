@@ -316,8 +316,9 @@ public class DiscreteFourierTransform extends BasicTransform {
    * @date 14.03.2015 18:30:38 (non-Javadoc)
    * @see math.jwave.transforms.BasicTransform#getWavelet()
    */
-  public Wavelet getWavelet( ) {
-    return null;
+  public Wavelet getWavelet( ) throws JWaveFailure {
+    throw new JWaveFailure(
+        "DiscreteFourierTransfomr::getWavelet - not available" );
   } // getWavelet
 
 } // class
