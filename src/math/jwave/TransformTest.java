@@ -25,6 +25,9 @@ package math.jwave;
 
 import static org.junit.Assert.*;
 import math.jwave.datatypes.Complex;
+import math.jwave.exceptions.JWaveFailure;
+import math.jwave.tools.MathToolKit;
+import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.wavelets.Haar1;
 import math.jwave.transforms.wavelets.Haar1Orthogonal;
@@ -99,6 +102,89 @@ import org.junit.Test;
  * @date 10.02.2014 21:32:22
  */
 public class TransformTest {
+
+  @Test public void testSamplingSine( ) {
+
+    int samplingRate = 1024 * 1024; // sampling rate
+    int noOfOscillations = 1024;
+
+    try {
+
+      // generate sampled (discrete) sine over 2 pi
+      double[ ] arrTime =
+          MathToolKit.createSineOscillation( samplingRate, noOfOscillations );
+
+      Transform transform =
+          TransformBuilder.create( "Fast Wavelet Transform", "Haar" );
+
+      double[ ] arrHilb = transform.forward( arrTime );
+
+      double[ ] arrReco = transform.reverse( arrHilb );
+
+      assertArray( arrTime, arrReco, 1e-10 );
+
+    } catch( JWaveFailure e ) {
+      e.printStackTrace( );
+    } // try
+
+  } // testSamplingSine
+
+  @Test public void testSamplingCosine( ) {
+
+    int samplingRate = 1024 * 1024; // sampling rate
+    int noOfOscillations = 1024;
+
+    try {
+
+      // generate sampled (discrete) sine over 2 pi
+      double[ ] arrTime =
+          MathToolKit.createCosineOscillation( samplingRate, noOfOscillations );
+
+      Transform transform =
+          TransformBuilder.create( "Fast Wavelet Transform", "Haar" );
+
+      double[ ] arrHilb = transform.forward( arrTime );
+
+      double[ ] arrReco = transform.reverse( arrHilb );
+
+      assertArray( arrTime, arrReco, 1e-10 );
+
+    } catch( JWaveFailure e ) {
+      e.printStackTrace( );
+    } // try
+
+  } // testSamplingCosine
+
+  @Test public void testDiscreteFourierTransform( ) {
+
+    int samplingRate = 8; // sampling rate
+    int noOfOscillations = 1;
+
+    Transform transform = new Transform( new DiscreteFourierTransform( ) );
+
+    System.out.println( " " );
+    // generate sampled (discrete) sine over 2 pi
+    double[ ] arrTimeSine =
+        MathToolKit.createSineOscillation( samplingRate, noOfOscillations );
+    showTime( arrTimeSine );
+    double[ ] arrFreqSine = transform.forward( arrTimeSine );
+    showFreq( arrFreqSine );
+    double[ ] arrRecoSine = transform.reverse( arrFreqSine );
+    showTime( arrRecoSine );
+    assertArray( arrTimeSine, arrRecoSine, 1e-10 );
+
+    System.out.println( " " );
+    // generate sampled (discrete) sine over 2 pi
+    double[ ] arrTimeCosine =
+        MathToolKit.createCosineOscillation( samplingRate, noOfOscillations );
+    showTime( arrTimeCosine );
+    double[ ] arrFreqCosine = transform.forward( arrTimeCosine );
+    showFreq( arrFreqCosine );
+    double[ ] arrRecoCosine = transform.reverse( arrFreqCosine );
+    showTime( arrRecoCosine );
+    assertArray( arrTimeCosine, arrRecoCosine, 1e-10 );
+
+  } // testSamplingSine
 
   /**
    * Test method for {@link math.jwave.Transform#forward(double[])} and
@@ -1150,24 +1236,34 @@ public class TransformTest {
           assertEquals( expected[ i ][ j ][ k ], actual[ i ][ j ][ k ], delta );
   } // assertSpace
 
+  protected void show( double value ) {
+    System.out.printf( "%6.3f", value );
+  } // show
+
   protected void showTime( double[ ] arrTime ) {
     System.out.print( "time domain: " + "\t" + "\t" );
-    for( int c = 0; c < arrTime.length; c++ )
-      System.out.print( arrTime[ c ] + " " );
+    for( int c = 0; c < arrTime.length; c++ ) {
+      show( arrTime[ c ] );
+      System.out.print( " " );
+    }
     System.out.println( "" );
   } // showTime
 
   protected void showFreq( double[ ] arrFreq ) {
     System.out.print( "frequency domain: " + "\t" );
-    for( int c = 0; c < arrFreq.length; c++ )
-      System.out.print( arrFreq[ c ] + " " );
+    for( int c = 0; c < arrFreq.length; c++ ) {
+      show( arrFreq[ c ] );
+      System.out.print( " " );
+    }
     System.out.println( "" );
   } // showHilb
 
   protected void showHilb( double[ ] arrHilb ) {
     System.out.print( "Hilbert domain: " + "\t" );
-    for( int c = 0; c < arrHilb.length; c++ )
-      System.out.print( arrHilb[ c ] + " " );
+    for( int c = 0; c < arrHilb.length; c++ ) {
+      show( arrHilb[ c ] );
+      System.out.print( " " );
+    }
     System.out.println( "" );
   } // showHilb
 
@@ -1188,8 +1284,10 @@ public class TransformTest {
   protected void showTime( double[ ][ ] matrixTime ) {
     System.out.println( "time domain: " + "\t" );
     for( int i = 0; i < matrixTime.length; i++ ) {
-      for( int j = 0; j < matrixTime[ i ].length; j++ )
-        System.out.print( matrixTime[ i ][ j ] + " " );
+      for( int j = 0; j < matrixTime[ i ].length; j++ ) {
+        show( matrixTime[ i ][ j ] );
+        System.out.print( " " );
+      }
       System.out.println( "" );
     }
     System.out.println( "" );
@@ -1198,8 +1296,10 @@ public class TransformTest {
   protected void showFreq( double[ ][ ] matrixFreq ) {
     System.out.println( "frequency domain: " + "\t" );
     for( int i = 0; i < matrixFreq.length; i++ ) {
-      for( int j = 0; j < matrixFreq[ i ].length; j++ )
-        System.out.print( matrixFreq[ i ][ j ] + " " );
+      for( int j = 0; j < matrixFreq[ i ].length; j++ ) {
+        show( matrixFreq[ i ][ j ] );
+        System.out.print( " " );
+      }
       System.out.println( "" );
     }
     System.out.println( "" );
@@ -1208,8 +1308,10 @@ public class TransformTest {
   protected void showHilb( double[ ][ ] matrixHilb ) {
     System.out.println( "Hilbert domain: " + "\t" );
     for( int i = 0; i < matrixHilb.length; i++ ) {
-      for( int j = 0; j < matrixHilb[ i ].length; j++ )
-        System.out.print( matrixHilb[ i ][ j ] + " " );
+      for( int j = 0; j < matrixHilb[ i ].length; j++ ) {
+        show( matrixHilb[ i ][ j ] );
+        System.out.print( " " );
+      }
       System.out.println( "" );
     }
     System.out.println( "" );
@@ -1219,8 +1321,10 @@ public class TransformTest {
     System.out.println( "time domain: " + "\t" );
     for( int i = 0; i < spaceTime.length; i++ ) {
       for( int j = 0; j < spaceTime[ i ].length; j++ ) {
-        for( int k = 0; k < spaceTime[ i ][ j ].length; k++ )
-          System.out.print( spaceTime[ i ][ j ][ k ] + " " );
+        for( int k = 0; k < spaceTime[ i ][ j ].length; k++ ) {
+          show( spaceTime[ i ][ j ][ k ] );
+          System.out.print( " " );
+        }
         System.out.println( "" );
       }
       System.out.println( "" );
@@ -1228,12 +1332,14 @@ public class TransformTest {
     System.out.println( "" );
   } // showTime
 
-  protected void showFreq( double[ ][ ][ ] spaceTime ) {
+  protected void showFreq( double[ ][ ][ ] spaceFreq ) {
     System.out.println( "frequency domain: " + "\t" );
-    for( int i = 0; i < spaceTime.length; i++ ) {
-      for( int j = 0; j < spaceTime[ i ].length; j++ ) {
-        for( int k = 0; k < spaceTime[ i ][ j ].length; k++ )
-          System.out.print( spaceTime[ i ][ j ][ k ] + " " );
+    for( int i = 0; i < spaceFreq.length; i++ ) {
+      for( int j = 0; j < spaceFreq[ i ].length; j++ ) {
+        for( int k = 0; k < spaceFreq[ i ][ j ].length; k++ ) {
+          show( spaceFreq[ i ][ j ][ k ] );
+          System.out.print( " " );
+        }
         System.out.println( "" );
       }
       System.out.println( "" );
@@ -1245,8 +1351,10 @@ public class TransformTest {
     System.out.println( "Hilbert domain: " + "\t" );
     for( int i = 0; i < spaceTime.length; i++ ) {
       for( int j = 0; j < spaceTime[ i ].length; j++ ) {
-        for( int k = 0; k < spaceTime[ i ][ j ].length; k++ )
-          System.out.print( spaceTime[ i ][ j ][ k ] + " " );
+        for( int k = 0; k < spaceTime[ i ][ j ].length; k++ ) {
+          show( spaceTime[ i ][ j ][ k ] );
+          System.out.print( " " );
+        }
         System.out.println( "" );
       }
       System.out.println( "" );

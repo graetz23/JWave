@@ -54,7 +54,7 @@ public class MathToolKit {
    * @return
    * @throws JWaveException
    */
-  public int[ ] decompose( int number ) throws JWaveException {
+  public static int[ ] decompose( int number ) throws JWaveException {
 
     if( number < 1 )
       throw new JWaveFailure(
@@ -99,7 +99,7 @@ public class MathToolKit {
    *           if block size is not of type 2^p|p={1,2,4,..}, if block size is
    *           smaller than number or negative input is given.
    */
-  public int[ ] decompose( int number, int blockSize ) throws JWaveException {
+  public static int[ ] decompose( int number, int blockSize ) throws JWaveException {
 
     int[ ] blockedAncientEgyptianMultipliers = null;
 
@@ -135,7 +135,7 @@ public class MathToolKit {
 
     return blockedAncientEgyptianMultipliers;
 
-  } // decomppse
+  } // decompose
 
   /**
    * The method converts a list of ancient Egyptian multipliers to the
@@ -151,7 +151,7 @@ public class MathToolKit {
    * @return resulting integer as sum of powers of two
    * @throws JWaveException
    */
-  public int compose( int[ ] ancientEgyptianMultipliers ) throws JWaveException {
+  public static int compose( int[ ] ancientEgyptianMultipliers ) throws JWaveException {
 
     if( ancientEgyptianMultipliers == null )
       throw new JWaveError( "given array is null" );
@@ -180,7 +180,7 @@ public class MathToolKit {
    *          any positive integer
    * @return true if is 2^p else false
    */
-  public boolean isBinary( int number ) {
+  public static boolean isBinary( int number ) {
 
     boolean isBinary = false;
 
@@ -206,7 +206,7 @@ public class MathToolKit {
    * @param f
    * @return p of 2^p <= f < 2^(p+1)
    */
-  public int getExponent( double f ) {
+  public static int getExponent( double f ) {
 
     int exp = (int)( Math.log( f ) / Math.log( 2. ) );
 
@@ -224,7 +224,7 @@ public class MathToolKit {
    * @param scaleFactor
    * @return f times 2^(scaleFactor)
    */
-  public double scalb( double f, int scaleFactor ) {
+  public static double scalb( double f, int scaleFactor ) {
 
     double res = f * Math.pow( 2., scaleFactor );
 
@@ -232,4 +232,72 @@ public class MathToolKit {
 
   } // scalb
 
-}
+  /**
+   * Returns a sampled array of sine waves for given number of oscillations.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 19:38:39
+   * @param samplingRate
+   *          should be great than 2 and likely to be of 2^p | p € N
+   * @param noOfOscillations
+   *          should be of natural numbers except zero
+   * @return sampled array keeping a number of sine waves
+   */
+  public static double[ ]
+      createSineOscillation( int samplingRate, int noOfOscillations ) {
+
+    if( samplingRate < 1 )
+      samplingRate = 2;
+
+    if( noOfOscillations < 1 )
+      noOfOscillations = 1;
+
+    double[ ] arrTime = new double[ samplingRate ];
+
+    for( int i = 0; i < samplingRate; i++ ) {
+      double arg =
+          2. * Math.PI * (double)i / (double)samplingRate
+              * (double)noOfOscillations;
+      double sine = Math.sin( arg );
+      arrTime[ i ] = sine;
+    } // i
+
+    return arrTime;
+
+  } // createSineOscillation
+
+  /**
+   * Returns a sampled array of cosine waves for given number of oscillations.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 19:41:16
+   * @param samplingRate
+   *          should be great than 2 and likely to be of 2^p | p € N
+   * @param noOfOscillations
+   *          should be of natural numbers except zero
+   * @return sampled array keeping a number of cosine waves
+   */
+  public static double[ ] createCosineOscillation( int samplingRate,
+      int noOfOscillations ) {
+
+    if( samplingRate < 1 )
+      samplingRate = 2;
+
+    if( noOfOscillations < 1 )
+      noOfOscillations = 1;
+
+    double[ ] arrTime = new double[ samplingRate ];
+
+    for( int i = 0; i < samplingRate; i++ ) {
+      double arg =
+          2. * Math.PI * (double)i / (double)samplingRate
+              * (double)noOfOscillations;
+      double sine = Math.cos( arg );
+      arrTime[ i ] = sine;
+    } // i
+
+    return arrTime;
+
+  } // createCoSineOscillation
+
+} // class

@@ -31,7 +31,6 @@ import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveError;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
-import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.wavelets.Wavelet;
 
@@ -48,13 +47,6 @@ public class Transform {
    * Transform object of type base class
    */
   protected BasicTransform _basicTransform;
-
-  /**
-   * Supplying a various number of little mathematical methods.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com) 19.02.2014 18:34:34
-   */
-  protected MathToolKit _mathToolKit;
 
   /**
    * Constructor; needs some object like DiscreteFourierTransform,
@@ -82,8 +74,6 @@ public class Transform {
       e.printStackTrace( );
 
     } // try
-
-    _mathToolKit = new MathToolKit( );
 
   } // Transform
 
@@ -116,8 +106,6 @@ public class Transform {
           + transform.getClass( ) + " with a specific level decomposition ;"
           + " use Transform( TransformI transform ) constructor instead." );
     }
-
-    _mathToolKit = new MathToolKit( );
 
   } // Transform
 

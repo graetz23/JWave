@@ -47,20 +47,21 @@ public class Haar1 extends Wavelet {
 
     _motherWavelength = 2; // wavelength of mother wavelet
 
-    _scalingDeCom = new double[ _motherWavelength ];
     double sqrt2 = Math.sqrt( 2. );
-    _scalingDeCom[ 0 ] = 1. / sqrt2; // 1.4142135623730951 w0 - normed by sqrt( 2 )
-    _scalingDeCom[ 1 ] = 1. / sqrt2; // 1.4142135623730951 w1 - normed by sqrt( 2 )
+
+    _scalingDeCom = new double[ _motherWavelength ];
+    _scalingDeCom[ 0 ] = 1. / sqrt2; // w0 = 1.4142135623730951 - normalized by square root of 2
+    _scalingDeCom[ 1 ] = 1. / sqrt2; // w1 = 1.4142135623730951 - normalized by square root of 2
 
     _waveletDeCom = new double[ _motherWavelength ];
-    _waveletDeCom[ 0 ] = _scalingDeCom[ 1 ]; // w1
-    _waveletDeCom[ 1 ] = -_scalingDeCom[ 0 ]; // -w0
+    _waveletDeCom[ 0 ] = _scalingDeCom[ 1 ]; // s0 = w1 - odd scaling is even wavelet parameter
+    _waveletDeCom[ 1 ] = -_scalingDeCom[ 0 ]; // s1 = -w0 - even scaling is negative odd wavelet parameter
 
     // Copy to reconstruction filters due to orthogonality (orthonormality)!
     _scalingReCon = new double[ _motherWavelength ];
     _waveletReCon = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ ) {
-      _scalingReCon[ i ] = _scalingDeCom[ i ];
+      _scalingReCon[ i ] = _scalingDeCom[ i ]; // 
       _waveletReCon[ i ] = _waveletDeCom[ i ];
     } // i
 
