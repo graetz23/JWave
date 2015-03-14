@@ -40,6 +40,14 @@ import math.jwave.tools.MathToolKit;
 public abstract class BasicTransform {
 
   /**
+   * String identifier of the current Transform object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 14:25:56
+   */
+  protected String _name;
+
+  /**
    * Supplying a various number of little mathematical methods.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)

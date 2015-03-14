@@ -42,7 +42,7 @@ public class CDF97 extends Wavelet {
    */
   public CDF97( ) {
 
-    _name = "Cohen Daubechies Feauveau (CDF) 9/7"; // name of the wavelet
+    _name = "CDF 9/7"; // name of the wavelet
 
     _transformWavelength = 2; // minimal wavelength of input signal
 

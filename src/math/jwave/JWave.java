@@ -27,9 +27,11 @@ import math.jwave.exceptions.JWaveException;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
+import math.jwave.transforms.TransformBuilder;
 import math.jwave.transforms.WaveletPacketTransform;
 import math.jwave.transforms.wavelets.Haar1;
 import math.jwave.transforms.wavelets.Wavelet;
+import math.jwave.transforms.wavelets.WaveletBuilder;
 import math.jwave.transforms.wavelets.coiflet.Coiflet1;
 import math.jwave.transforms.wavelets.daubechies.Daubechies2;
 import math.jwave.transforms.wavelets.daubechies.Daubechies3;
@@ -68,110 +70,75 @@ public class JWave {
    */
   public static void main( String[ ] args ) {
 
-    // String waveletTypeList =
-    // "Haar1, Daubechies2, Daubechies3, Daubechies4, Legendre1, Legendre2, Legendre3, Coiflet1";
-    String waveletTypeList = "Haar1, Daubechies2, Daubechies4, Legendre1";
+    try {
 
-    if( args.length < 2 || args.length > 3 ) {
-      System.err
-          .println( "usage: JWave [transformType] {waveletType} {noOfSteps}" );
-      System.err.println( "" );
-      System.err.println( "transformType: DFT, FWT, WPT, DWT" );
-      System.err.println( "waveletType : " + waveletTypeList );
-      System.err.println( "noOfSteps : "
-          + "no of steps forward and reverse; optional" );
-      return;
-    } // if args
+      if( args.length < 3 || args.length > 5 ) {
+        System.err.println( "usage: JWave [transformType] {waveletType}" );
+        System.err.println( "" );
+        System.err.println( "Transform names: "
+            + "'Discrete Fourier Transform'" + " " + "'Fast Wavelet Transform'"
+            + " " + "'Wavelet Packet Transform'" );
+        System.err.println( "Wavelet names: " + "'Haar'," + " "
+            + "'Haar orthogonal'," + " " + "'Daubechies 2'" + " " + ".." + " "
+            + "'Daubechies 20'," + " " + "'Symlet 2'" + " " + ".." + " "
+            + "'Symlet 20'," + " " + "'Coiflet 1'" + " " + ".." + " "
+            + "'Coiflet 5'," + " " + "'Legendre 1'" + " " + ".." + " "
+            + "'Legendre 3'," + " " + " ... 'BiOrthogonal 1/1'"
+            + " have a look for more in the 'transform.wavelets' package!" );
+        return;
+      } // if args
 
-    String wType = args[ 1 ];
-    Wavelet wavelet = null;
-    if( wType.equalsIgnoreCase( "haar02" ) )
-      wavelet = new Haar1( );
-    else if( wType.equalsIgnoreCase( "lege02" ) )
-      wavelet = new Legendre1( );
-    else if( wType.equalsIgnoreCase( "daub02" ) )
-      wavelet = new Daubechies2( );
-    else if( wType.equalsIgnoreCase( "daub03" ) )
-      wavelet = new Daubechies3( );
-    else if( wType.equalsIgnoreCase( "daub04" ) )
-      wavelet = new Daubechies4( );
-    else if( wType.equalsIgnoreCase( "lege04" ) )
-      wavelet = new Legendre2( );
-    else if( wType.equalsIgnoreCase( "lege06" ) )
-      wavelet = new Legendre3( );
-    else if( wType.equalsIgnoreCase( "coif06" ) )
-      wavelet = new Coiflet1( );
-    else {
-      System.err.println( "usage: JWave [transformType] {waveletType}" );
-      System.err.println( "" );
-      System.err.println( "available wavelets are " + waveletTypeList );
-      return;
-    } // if wType
+      String wType = args[ 3 ] + " " + args[ 4 ]; // raw n dirty but working
+      Wavelet wavelet = null;
+      wavelet = WaveletBuilder.create( wType );
 
-    String tType = args[ 0 ];
-    BasicTransform bWave = null;
+      String tType = args[ 0 ] + " " + args[ 1 ] + " " + args[ 2 ]; // raw n dirty but working
+      BasicTransform bWave = null;
+      bWave = TransformBuilder.create( tType, wavelet );
 
-    if( tType.equalsIgnoreCase( "dft" ) )
-      bWave = new DiscreteFourierTransform( );
-    else if( tType.equalsIgnoreCase( "fwt" ) )
-
-      bWave = new FastWaveletTransform( wavelet );
-
-    else if( tType.equalsIgnoreCase( "wpt" ) )
-
-      bWave = new WaveletPacketTransform( wavelet );
-
-    else {
-      System.err.println( "usage: JWave [transformType] {waveletType}" );
-      System.err.println( "" );
-      System.err.println( "available transforms are DFT, FWT, WPT" );
-      return;
-    } // if tType
-
-    // instance of transform
-    Transform t;
-
-    if( args.length > 2 ) {
-
-      String argNoOfSteps = args[ 2 ];
-      int noOfSteps = Integer.parseInt( argNoOfSteps );
-
-      t = new Transform( bWave, noOfSteps ); // perform less steps than
-                                             // possible
-
-    } else {
+      // instance of transform
+      Transform t;
 
       t = new Transform( bWave ); // perform all steps
 
-    }
+      double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
 
-    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
+      if( bWave instanceof DiscreteFourierTransform )
+        System.out.print( TransformBuilder.identify( bWave ) );
+      else
+        System.out.print( TransformBuilder.identify( bWave ) + " using "
+            + WaveletBuilder.identify( wavelet ) );
+      System.out.println( "" );
+      System.out.println( "time domain:" );
+      for( int p = 0; p < arrTime.length; p++ )
+        System.out.printf( "%9.6f", arrTime[ p ] );
+      System.out.println( "" );
 
-    System.out.println( "" );
-    System.out.println( "time domain:" );
-    for( int p = 0; p < arrTime.length; p++ )
-      System.out.printf( "%9.6f", arrTime[ p ] );
-    System.out.println( "" );
+      double[ ] arrFreqOrHilb = null;
+      arrFreqOrHilb = t.forward( arrTime );
 
-    double[ ] arrFreqOrHilb = null;
-    arrFreqOrHilb = t.forward( arrTime );
+      if( bWave instanceof DiscreteFourierTransform )
+        System.out.println( "frequency domain:" );
+      else
+        System.out.println( "Hilbert domain:" );
+      for( int p = 0; p < arrTime.length; p++ )
+        System.out.printf( "%9.6f", arrFreqOrHilb[ p ] );
+      System.out.println( "" );
 
-    if( bWave instanceof DiscreteFourierTransform )
-      System.out.println( "frequency domain:" );
-    else
-      System.out.println( "Hilbert domain:" );
-    for( int p = 0; p < arrTime.length; p++ )
-      System.out.printf( "%9.6f", arrFreqOrHilb[ p ] );
-    System.out.println( "" );
+      double[ ] arrReco = null;
 
-    double[ ] arrReco = null;
+      arrReco = t.reverse( arrFreqOrHilb );
 
-    arrReco = t.reverse( arrFreqOrHilb );
+      System.out.println( "reconstruction:" );
+      for( int p = 0; p < arrTime.length; p++ )
+        System.out.printf( "%9.6f", arrReco[ p ] );
+      System.out.println( "" );
 
-    System.out.println( "reconstruction:" );
-    for( int p = 0; p < arrTime.length; p++ )
-      System.out.printf( "%9.6f", arrReco[ p ] );
-    System.out.println( "" );
+    } catch( JWaveException e ) {
+
+      e.showMessage( );
+
+    } // try
 
   } // main
 

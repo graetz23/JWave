@@ -50,7 +50,11 @@ public class FastWaveletTransform extends WaveletTransform {
    *          object of type Wavelet; Haar1, Daubechies2, Coiflet1, ...
    */
   public FastWaveletTransform( Wavelet wavelet ) {
+  
     super( wavelet );
+    
+    _name = "Fast Wavelet Transform";
+
   } // FastWaveletTransform
 
   /**

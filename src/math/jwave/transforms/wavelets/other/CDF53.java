@@ -42,7 +42,7 @@ public class CDF53 extends Wavelet {
    */
   @Deprecated public CDF53( ) {
 
-    _name = "Cohen Daubechies Feauveau (CDF) 9/7"; // name of the wavelet
+    _name = "CDF 5/3"; // name of the wavelet
 
     _transformWavelength = 2; // minimal wavelength of input signal
 

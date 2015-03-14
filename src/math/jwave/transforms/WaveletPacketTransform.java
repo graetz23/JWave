@@ -50,6 +50,8 @@ public class WaveletPacketTransform extends WaveletTransform {
   public WaveletPacketTransform( Wavelet wavelet ) {
 
     super( wavelet );
+    
+    _name = "Wavelet Packet Transform";
 
   } // WaveletPacketTransform
 

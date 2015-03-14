@@ -47,6 +47,9 @@ public class DiscreteFourierTransform extends BasicTransform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public DiscreteFourierTransform( ) {
+    
+    _name = "Discrete Fourier Transform";
+    
   } // DiscreteFourierTransform
 
   /**
