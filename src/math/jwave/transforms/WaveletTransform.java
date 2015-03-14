@@ -53,5 +53,18 @@ public abstract class WaveletTransform extends BasicTransform {
     _wavelet = wavelet;
 
   } // check for objects od type Wavelet
+  
+  /* 
+   * Returns the stored Wavelet object.
+   *
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 18:27:05 
+   *
+   * (non-Javadoc)
+   * @see math.jwave.transforms.BasicTransform#getWavelet()
+   */
+  public Wavelet getWavelet( ) {
+    return _wavelet;
+  } // getWavelet
 
 } // WaveletTransform

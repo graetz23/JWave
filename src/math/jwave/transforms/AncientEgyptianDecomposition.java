@@ -24,6 +24,7 @@
 package math.jwave.transforms;
 
 import math.jwave.exceptions.JWaveException;
+import math.jwave.transforms.wavelets.Wavelet;
 
 /**
  * A wavelet transform method for arrays and signals of arbitrary lengths, even
@@ -51,7 +52,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * Pattern of software design pattern. See:
    * http://en.wikipedia.org/wiki/Composite_pattern#Java
    */
-  protected BasicTransform _waveTransform;
+  protected BasicTransform _basicTransform;
 
   /**
    * the base block size for spitting an array; e. g. 127 with block size of 32
@@ -65,9 +66,9 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * @date 14.08.2010 10:43:28
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
-  public AncientEgyptianDecomposition( BasicTransform waveTransform ) {
+  public AncientEgyptianDecomposition( BasicTransform basicTransform ) {
 
-    _waveTransform = waveTransform;
+    _basicTransform = basicTransform;
 
     _initialWaveletSpaceSize = 0;
 
@@ -76,7 +77,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
   public AncientEgyptianDecomposition( BasicTransform waveTransform,
       int initialWaveletSpaceSize ) {
 
-    _waveTransform = waveTransform;
+    _basicTransform = waveTransform;
 
     _initialWaveletSpaceSize = initialWaveletSpaceSize;
 
@@ -122,7 +123,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
       for( int i = 0; i < arrTimeSub.length; i++ )
         arrTimeSub[ i ] = arrTime[ i + offSet ];
 
-      double[ ] arrHilbSub = _waveTransform.forward( arrTimeSub );
+      double[ ] arrHilbSub = _basicTransform.forward( arrTimeSub );
 
       for( int i = 0; i < arrHilbSub.length; i++ )
         arrHilb[ i + offSet ] = arrHilbSub[ i ];
@@ -176,7 +177,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
       for( int i = 0; i < arrHilbSub.length; i++ )
         arrHilbSub[ i ] = arrHilb[ i + offSet ];
 
-      double[ ] arrTimeSub = _waveTransform.reverse( arrHilbSub );
+      double[ ] arrTimeSub = _basicTransform.reverse( arrHilbSub );
 
       for( int i = 0; i < arrTimeSub.length; i++ )
         arrTime[ i + offSet ] = arrTimeSub[ i ];
@@ -188,5 +189,15 @@ public class AncientEgyptianDecomposition extends BasicTransform {
     return arrTime;
 
   } // reverse
+
+  /*
+   * Returns stored Wavelet object.
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 18:33:36 (non-Javadoc)
+   * @see math.jwave.transforms.BasicTransform#getWavelet()
+   */
+  @Override public Wavelet getWavelet( ) {
+    return _basicTransform.getWavelet( );
+  } // getWavelet
 
 } // class

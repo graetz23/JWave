@@ -27,6 +27,7 @@ import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveError;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.tools.MathToolKit;
+import math.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Basic Wave for transformations like Fast Fourier Transform (FFT), Fast
@@ -61,9 +62,22 @@ public abstract class BasicTransform {
    */
   public BasicTransform( ) {
 
+    _name = null;
+
     _mathToolKit = new MathToolKit( );
 
   } // BasicTransform
+
+  /**
+   * Returns String identifier of current type of BasicTransform Object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 18:13:34
+   * @return identifier as String
+   */
+  public String getName( ) {
+    return _name;
+  } // getName
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
@@ -439,5 +453,14 @@ public abstract class BasicTransform {
     return spcTime;
 
   } // reverse
+
+  /**
+   * Returns the stored Wavelet object or null pointer.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 18:26:44
+   * @return object of type Wavelet of null pointer
+   */
+  public abstract Wavelet getWavelet( );
 
 } // BasicTransform

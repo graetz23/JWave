@@ -27,7 +27,6 @@ import math.jwave.exceptions.JWaveException;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
-import math.jwave.transforms.TransformBuilder;
 import math.jwave.transforms.WaveletPacketTransform;
 import math.jwave.transforms.wavelets.Haar1;
 import math.jwave.transforms.wavelets.Wavelet;
@@ -88,25 +87,20 @@ public class JWave {
         return;
       } // if args
 
-      String wType = args[ 3 ] + " " + args[ 4 ]; // raw n dirty but working
-      Wavelet wavelet = null;
-      wavelet = WaveletBuilder.create( wType );
+      String waveletIdentifier = args[ 3 ] + " " + args[ 4 ]; // raw n dirty but working
+      String transformIdentifier = args[ 0 ] + " " + args[ 1 ] + " " + args[ 2 ]; // raw n dirty but working
+      Transform t =
+          TransformBuilder.create( transformIdentifier, waveletIdentifier ); // perform all steps
 
-      String tType = args[ 0 ] + " " + args[ 1 ] + " " + args[ 2 ]; // raw n dirty but working
-      BasicTransform bWave = null;
-      bWave = TransformBuilder.create( tType, wavelet );
-
-      // instance of transform
-      Transform t;
-
-      t = new Transform( bWave ); // perform all steps
+      BasicTransform basicTransform = t.getBasicTransform( );
+      Wavelet wavelet = basicTransform.getWavelet( );
 
       double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
 
-      if( bWave instanceof DiscreteFourierTransform )
-        System.out.print( TransformBuilder.identify( bWave ) );
+      if( basicTransform instanceof DiscreteFourierTransform )
+        System.out.print( TransformBuilder.identify( basicTransform ) );
       else
-        System.out.print( TransformBuilder.identify( bWave ) + " using "
+        System.out.print( TransformBuilder.identify( basicTransform ) + " using "
             + WaveletBuilder.identify( wavelet ) );
       System.out.println( "" );
       System.out.println( "time domain:" );
@@ -117,7 +111,7 @@ public class JWave {
       double[ ] arrFreqOrHilb = null;
       arrFreqOrHilb = t.forward( arrTime );
 
-      if( bWave instanceof DiscreteFourierTransform )
+      if( basicTransform instanceof DiscreteFourierTransform )
         System.out.println( "frequency domain:" );
       else
         System.out.println( "Hilbert domain:" );

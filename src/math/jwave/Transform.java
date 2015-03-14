@@ -47,7 +47,7 @@ public class Transform {
   /**
    * Transform object of type base class
    */
-  protected BasicTransform _transform;
+  protected BasicTransform _basicTransform;
 
   /**
    * Supplying a various number of little mathematical methods.
@@ -67,14 +67,14 @@ public class Transform {
    */
   public Transform( BasicTransform transform ) {
 
-    _transform = transform;
+    _basicTransform = transform;
 
     try {
 
-      if( _transform == null )
+      if( _basicTransform == null )
         throw new JWaveFailure( "given object is null!" );
 
-      if( !( _transform instanceof BasicTransform ) )
+      if( !( _basicTransform instanceof BasicTransform ) )
         throw new JWaveFailure( "given object is not of type Wavelet" );
 
     } catch( JWaveFailure e ) {
@@ -98,12 +98,12 @@ public class Transform {
   @Deprecated public Transform( BasicTransform transform, int iteration ) {
     if( transform instanceof BasicTransform ) {
 
-      _transform = transform;
+      _basicTransform = transform;
 
       // TODO realize the level transform in GOOD Software Engineering
       // style - after restructuring the code
 
-      // ( (WaveletTransform)_transform ).set_iteration( iteration );
+      // ( (WaveletTransform)_basicTransform ).set_iteration( iteration );
 
       try { // always break down these methods
         throw new JWaveError( "THE ITERATION METHODS ARE BORKEN AT MOMENT" );
@@ -136,7 +136,7 @@ public class Transform {
 
     try {
 
-      arrHilb = _transform.forward( arrTime );
+      arrHilb = _basicTransform.forward( arrTime );
 
     } catch( JWaveException e ) {
 
@@ -163,7 +163,7 @@ public class Transform {
 
     try {
 
-      arrTime = _transform.reverse( arrHilb );
+      arrTime = _basicTransform.reverse( arrHilb );
 
     } catch( JWaveException e ) {
 
@@ -192,7 +192,7 @@ public class Transform {
 
     try {
 
-      arrFreq = ( (BasicTransform)_transform ).forward( arrTime );
+      arrFreq = ( (BasicTransform)_basicTransform ).forward( arrTime );
 
     } catch( JWaveException e ) {
 
@@ -221,7 +221,7 @@ public class Transform {
 
     try {
 
-      arrTime = ( (BasicTransform)_transform ).reverse( arrFreq );
+      arrTime = ( (BasicTransform)_basicTransform ).reverse( arrFreq );
 
     } catch( JWaveException e ) {
 
@@ -248,7 +248,7 @@ public class Transform {
 
     try {
 
-      matrixHilb = _transform.forward( matrixTime );
+      matrixHilb = _basicTransform.forward( matrixTime );
 
     } catch( JWaveException e ) {
 
@@ -276,7 +276,7 @@ public class Transform {
 
     try {
 
-      matrixTime = _transform.reverse( matrixHilb );
+      matrixTime = _basicTransform.reverse( matrixHilb );
 
     } catch( JWaveException e ) {
 
@@ -303,7 +303,7 @@ public class Transform {
 
     try {
 
-      spaceHilb = _transform.forward( spaceTime );
+      spaceHilb = _basicTransform.forward( spaceTime );
 
     } catch( JWaveException e ) {
 
@@ -331,7 +331,7 @@ public class Transform {
 
     try {
 
-      spaceTime = _transform.reverse( spaceHilb );
+      spaceTime = _basicTransform.reverse( spaceHilb );
 
     } catch( JWaveException e ) {
 
@@ -360,7 +360,7 @@ public class Transform {
 
     try {
 
-      matDeComp = _transform.decompose( arrTime );
+      matDeComp = _basicTransform.decompose( arrTime );
 
     } catch( JWaveException e ) {
 
@@ -388,7 +388,7 @@ public class Transform {
 
     try {
 
-      arrTime = _transform.recompose( matDeComp );
+      arrTime = _basicTransform.recompose( matDeComp );
 
     } catch( JWaveException e ) {
 
@@ -399,5 +399,16 @@ public class Transform {
     return arrTime;
 
   } // recompose
+
+  /**
+   * Return the used object of type BasicTransform.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 18:19:13
+   * @return identifier of object of type Basic Transform
+   */
+  public BasicTransform getBasicTransform( ) {
+    return _basicTransform;
+  } // getBasicTransform
 
 } // class

@@ -6,10 +6,13 @@
  *
  * TransformBuilder.java
  */
-package math.jwave.transforms;
+package math.jwave;
 
-import math.jwave.Transform;
 import math.jwave.exceptions.JWaveFailure;
+import math.jwave.transforms.BasicTransform;
+import math.jwave.transforms.DiscreteFourierTransform;
+import math.jwave.transforms.FastWaveletTransform;
+import math.jwave.transforms.WaveletPacketTransform;
 import math.jwave.transforms.wavelets.Wavelet;
 import math.jwave.transforms.wavelets.WaveletBuilder;
 
@@ -34,23 +37,23 @@ public class TransformBuilder {
    * @throws JWaveFailure
    *           if string is not valid or Transform is broken yet
    */
-  static public BasicTransform create( String name, Wavelet wavelet )
+  static public Transform create( String name, Wavelet wavelet )
       throws JWaveFailure {
 
-    BasicTransform transform = null;
+    BasicTransform basicTransform = null;
 
     switch( name ){
 
       case "Discrete Fourier Transform":
-        transform = new DiscreteFourierTransform( );
+        basicTransform = new DiscreteFourierTransform( );
         break;
 
       case "Fast Wavelet Transform":
-        transform = new FastWaveletTransform( wavelet );
+        basicTransform = new FastWaveletTransform( wavelet );
         break;
 
       case "Wavelet Packet Transform":
-        transform = new WaveletPacketTransform( wavelet );
+        basicTransform = new WaveletPacketTransform( wavelet );
         break;
 
       default:
@@ -60,7 +63,7 @@ public class TransformBuilder {
 
     } // switch
 
-    return transform;
+    return new Transform( basicTransform );
 
   } // create
 
@@ -78,10 +81,10 @@ public class TransformBuilder {
    * @throws JWaveFailure
    *           if string is not valid or Transform is broken yet
    */
-  static public BasicTransform create( String name, String waveletName )
+  static public Transform create( String name, String waveletName )
       throws JWaveFailure {
 
-    return create( waveletName, WaveletBuilder.create( waveletName ) );
+    return create( name, WaveletBuilder.create( waveletName ) );
 
   } // create
 
@@ -96,7 +99,7 @@ public class TransformBuilder {
    */
   static public String identify( BasicTransform transform ) {
 
-    return transform._name;
+    return transform.getName( );
 
   } // identify
 

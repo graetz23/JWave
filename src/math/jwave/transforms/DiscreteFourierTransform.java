@@ -26,6 +26,7 @@ package math.jwave.transforms;
 import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
+import math.jwave.transforms.wavelets.Wavelet;
 
 /**
  * The Discrete Fourier Transform (DFT) is - as the name says - the discrete
@@ -38,6 +39,12 @@ import math.jwave.exceptions.JWaveFailure;
  * @date 25.03.2010 19:56:29
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
+/**
+ * TODO Comment me please!
+ * 
+ * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @date 14.03.2015 18:30:35
+ */
 public class DiscreteFourierTransform extends BasicTransform {
 
   /**
@@ -47,9 +54,9 @@ public class DiscreteFourierTransform extends BasicTransform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public DiscreteFourierTransform( ) {
-    
+
     _name = "Discrete Fourier Transform";
-    
+
   } // DiscreteFourierTransform
 
   /**
@@ -302,5 +309,15 @@ public class DiscreteFourierTransform extends BasicTransform {
   @Override public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
     return null;
   } // reverse
+
+  /*
+   * Returns null pointer while DFT has sine or cosine as wavelet.
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 18:30:38 (non-Javadoc)
+   * @see math.jwave.transforms.BasicTransform#getWavelet()
+   */
+  public Wavelet getWavelet( ) {
+    return null;
+  } // getWavelet
 
 } // class
