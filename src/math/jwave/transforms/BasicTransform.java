@@ -27,7 +27,6 @@ import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveError;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
-import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -141,7 +140,7 @@ public abstract class BasicTransform {
 
     for( int i = 0; i < arrTime.length; i++ ) {
 
-      // TODO rehack this to: { r1, r2, r3, .., c1, c2, c3, .. }
+      // TODO rehack complex number splitting this to: { r1, r2, r3, .., c1, c2, c3, .. }
       int k = i * 2;
       arrTimeBulk[ k ] = arrTime[ i ].getReal( );
       arrTimeBulk[ k + 1 ] = arrTime[ i ].getImag( );

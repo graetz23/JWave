@@ -28,8 +28,10 @@ import math.jwave.transforms.wavelets.Wavelet;
 import math.jwave.transforms.wavelets.WaveletBuilder;
 
 /**
- * Main class for doing little test runs for different transform types and
- * different wavelets without JUnit.
+ * Main class can be used to do a little console test by entering a transform
+ * type and a wavelet by their names. However, this should only make a quick n
+ * dirty test available by skipping the JUnit framework. JWave is supported as a
+ * library and foreseen to be used like this.
  * 
  * @date 23.02.2010 14:26:47
  * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -38,8 +40,19 @@ public class JWave {
 
   /**
    * Main method for doing little test runs for different transform types and
-   * different wavelets without JUnit. Requesting the transform type and the
-   * type of wavelet to be used else usage is printed.
+   * different wavelets without JUnit. Type in the name of the transform and the
+   * name of the wavelet. The result is an array of length 16 (2^p | p € N) is
+   * transformed in four hierarchical steps (16/2=8 .. 8/2=4 .. 4/2=2 .. 2/1=1)
+   * and reduced by 1/sqrt(2.). The result is an array in Hilbert space keeping
+   * only one coefficient, the energy of value 4. (low pass), in the first
+   * position of the array. All detail coefficients (high pass of four stages)
+   * are zero, due to the fact that the input array was constant. This shows an
+   * application of a loss less compression of 93.75 % (15/16 * 100 %).
+   * Therefore, the reverse transform allows, due to orthogonality (even
+   * orthonormality) a located reconstruction of any coefficient that is
+   * currently supported in Hilbert space. Anyway, this little example already
+   * reveals the application power of wavelets. that can be used for any kind of
+   * data!
    * 
    * @date 23.02.2010 14:26:47
    * @author Christian Scheiblich (cscheiblich@gmail.com)
