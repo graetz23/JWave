@@ -32,5 +32,5 @@ are orthogonal (orthonormal).
 The original time series can be reconstructed by
 the reverse( .. ) method with no losses; see examples or JUnit tests! Anyway,
 the implementation of JWave is based on several Design Patterns and hopefully
-appears user-friendly. Have a look at the Wiki pages or into the JUnit tests for
-usage.
+appears user-friendly. Have a look at the the JUnit tests or at the Wiki pages
+for a detailed usage.
