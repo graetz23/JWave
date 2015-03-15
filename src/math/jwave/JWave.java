@@ -23,7 +23,6 @@
  */
 package math.jwave;
 
-import math.jwave.exceptions.JWaveException;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.wavelets.Wavelet;
 import math.jwave.transforms.wavelets.WaveletBuilder;

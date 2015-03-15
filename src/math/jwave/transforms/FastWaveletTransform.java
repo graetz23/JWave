@@ -27,6 +27,7 @@ import java.util.Arrays;
 
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
+import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -69,9 +70,9 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   @Override public double[ ] forward( double[ ] arrTime ) throws JWaveException {
 
-    if( !_mathToolKit.isBinary( arrTime.length ) )
+    if( !MathToolKit.isBinary( arrTime.length ) )
       throw new JWaveFailure(
-          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
+          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
@@ -102,9 +103,9 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
 
-    if( !_mathToolKit.isBinary( arrHilb.length ) )
+    if( !MathToolKit.isBinary( arrHilb.length ) )
       throw new JWaveFailure(
-          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
+          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     double[ ] arrTime = Arrays.copyOf( arrHilb, arrHilb.length );
@@ -139,7 +140,7 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   @Override public double[ ][ ] decompose( double[ ] arrTime ) {
 
-    int levels = _mathToolKit.getExponent( arrTime.length );
+    int levels = MathToolKit.getExponent( arrTime.length );
     double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
     double[ ][ ] matDeComp = new double[ levels + 1 ][ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
@@ -189,7 +190,7 @@ public class FastWaveletTransform extends WaveletTransform {
     int levels = matDeComp.length;
     for( int l = 1; l < levels; l++ ) {
 
-      int steps = (int)_mathToolKit.scalb( (double)l, 1 );
+      int steps = (int)MathToolKit.scalb( (double)l, 1 );
       for( int i = 0; i < length; i++ )
         if( i < steps )
           arrTime[ i ] = matDeComp[ l ][ i ]; // add them together

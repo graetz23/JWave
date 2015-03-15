@@ -25,6 +25,7 @@ package math.jwave.transforms;
 
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
+import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -68,9 +69,9 @@ public class WaveletPacketTransform extends WaveletTransform {
    */
   @Override public double[ ] forward( double[ ] arrTime ) throws JWaveException {
 
-    if( !_mathToolKit.isBinary( arrTime.length ) )
+    if( !MathToolKit.isBinary( arrTime.length ) )
       throw new JWaveFailure(
-          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
+          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     double[ ] arrHilb = new double[ arrTime.length ];
@@ -125,9 +126,9 @@ public class WaveletPacketTransform extends WaveletTransform {
    */
   @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
 
-    if( !_mathToolKit.isBinary( arrHilb.length ) )
+    if( !MathToolKit.isBinary( arrHilb.length ) )
       throw new JWaveFailure(
-          "given array length is not 2^p = 1, 2, 4, 8, 16, 32, .. "
+          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     double[ ] arrTime = new double[ arrHilb.length ];

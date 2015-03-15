@@ -25,6 +25,7 @@ package math.jwave.transforms;
 
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
+import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -101,15 +102,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
 
     int[ ] ancientEgyptianMultipliers = null;
 
-    try {
-
-      ancientEgyptianMultipliers = _mathToolKit.decompose( arrTime.length );
-
-    } catch( JWaveException e ) {
-
-      e.printStackTrace( );
-
-    } // try 
+    ancientEgyptianMultipliers = MathToolKit.decompose( arrTime.length );
 
     int offSet = 0;
     for( int m = 0; m < ancientEgyptianMultipliers.length; m++ ) {
@@ -117,7 +110,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
       int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
 
       int arrTimeSubLength =
-          (int)_mathToolKit.scalb( 1., ancientEgyptianMultiplier );
+          (int)MathToolKit.scalb( 1., ancientEgyptianMultiplier );
 
       double[ ] arrTimeSub = new double[ arrTimeSubLength ];
 
@@ -157,7 +150,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
     int[ ] ancientEgyptianMultipliers = null;
     try {
 
-      ancientEgyptianMultipliers = _mathToolKit.decompose( arrHilb.length );
+      ancientEgyptianMultipliers = MathToolKit.decompose( arrHilb.length );
 
     } catch( JWaveException e ) {
 
@@ -171,7 +164,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
       int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
 
       int arrHilbSubLength =
-          (int)_mathToolKit.scalb( 1., ancientEgyptianMultiplier );
+          (int)MathToolKit.scalb( 1., ancientEgyptianMultiplier );
 
       double[ ] arrHilbSub = new double[ arrHilbSubLength ];
 

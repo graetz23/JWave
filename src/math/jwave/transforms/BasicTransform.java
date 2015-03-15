@@ -50,22 +50,12 @@ public abstract class BasicTransform {
   protected String _name;
 
   /**
-   * Supplying a various number of little mathematical methods.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 19.02.2014 18:34:34
-   */
-  protected MathToolKit _mathToolKit;
-
-  /**
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 19.02.2014 18:38:21
    */
   public BasicTransform( ) {
 
     _name = null;
-
-    _mathToolKit = new MathToolKit( );
 
   } // BasicTransform
 
