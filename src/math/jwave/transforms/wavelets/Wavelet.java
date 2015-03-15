@@ -23,6 +23,8 @@
  */
 package math.jwave.transforms.wavelets;
 
+import java.util.Arrays;
+
 /**
  * Basic class for one wavelet keeping coefficients of the wavelet function, the
  * scaling function, the base wavelength, the forward transform method, and the
@@ -79,21 +81,13 @@ public abstract class Wavelet {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   public Wavelet( ) {
-
     _name = null;
-
     _motherWavelength = 0;
-
     _transformWavelength = 0;
-
     _scalingDeCom = null;
-
     _waveletDeCom = null;
-
     _scalingReCon = null;
-
     _waveletReCon = null;
-
   } // Wavelet
 
   /**
@@ -108,7 +102,6 @@ public abstract class Wavelet {
    * @date 16.02.2014 13:19:27
    */
   protected void _buildOrthonormalSpace( ) {
-
     // building wavelet as orthogonal (orthonormal) space from
     // scaling coefficients (low pass filter). Have a look into
     // Alfred Haar's wavelet or the Daubechies Wavelet with 2
@@ -119,7 +112,6 @@ public abstract class Wavelet {
         _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
       else
         _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
-
     // Copy to reconstruction filters due to orthogonality (orthonormality)!
     _scalingReCon = new double[ _motherWavelength ];
     _waveletReCon = new double[ _motherWavelength ];
@@ -127,7 +119,6 @@ public abstract class Wavelet {
       _scalingReCon[ i ] = _scalingDeCom[ i ];
       _waveletReCon[ i ] = _waveletDeCom[ i ];
     } // i
-
   } // _buildOrthonormalSpace
 
   /**
@@ -143,7 +134,6 @@ public abstract class Wavelet {
    * @date 16.02.2014 17:04:44
    */
   protected void _buildBiOrthonormalSpace( ) {
-
     // building wavelet and scaling function for reconstruction
     // as orthogonal (orthonormal) spaces from scaling and wavelet
     // of decomposition. ;-)
@@ -158,7 +148,6 @@ public abstract class Wavelet {
         _waveletReCon[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
       } // if
     } // i
-
   } // _buildBiOrthonormalSpace
 
   /*
@@ -168,10 +157,84 @@ public abstract class Wavelet {
    * @return String keeping the name of the wavelet
    */
   public String getName( ) {
-
     return _name;
-
   } // getName
+
+  /**
+   * Returns the wavelength of the so called mother wavelet or scaling function.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 15.02.2014 22:06:12
+   * @return the minimal wavelength for the mother wavelet
+   */
+  public int getMotherWavelength( ) {
+    return _motherWavelength;
+  } // getMotherWavelength
+
+  /**
+   * Returns the minimal necessary wavelength for a signal that can be
+   * transformed by this wavelet.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 15.02.2014 22:08:43
+   * @return integer representing minimal wavelength of the input signal that
+   *         should be transformed by this wavelet.
+   */
+  public int getTransformWavelength( ) {
+    return _transformWavelength;
+  } // getTransformWavelength
+
+  /**
+   * Returns a copy of the scaling (low pass filter) coefficients of
+   * decomposition.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 15.02.2010 22:11:42
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         decomposition low pass filter coefficients
+   */
+  public final double[ ] getScalingDeComposition( ) {
+    return Arrays.copyOf( _scalingDeCom, _scalingDeCom.length );
+  } // getScalingDeComposition  
+
+  /**
+   * Returns a copy of the wavelet (high pass filter) coefficients of
+   * decomposition.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 15.02.2014 22:11:25
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         decomposition high pass filter coefficients
+   */
+  public final double[ ] getWaveletDeComposition( ) {
+    return Arrays.copyOf( _waveletDeCom, _waveletDeCom.length );
+  } // getWaveletDeComposition
+
+  /**
+   * Returns a copy of the scaling (low pass filter) coefficients of
+   * reconstruction.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.02.2014 10:35:11
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         reconstruction low pass filter coefficients
+   */
+  public final double[ ] getScalingReConstruction( ) {
+    return Arrays.copyOf( _scalingReCon, _scalingReCon.length );
+  } // getScalingReConstruction
+
+  /**
+   * Returns a copy of the wavelet (high pass filter) coefficients of
+   * reconstruction.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.02.2014 10:35:09
+   * @return array of length of the mother wavelet wavelength keeping the
+   *         reconstruction high pass filter coefficients
+   */
+  public final double[ ] getWaveletReConstruction( ) {
+    return Arrays.copyOf( _waveletReCon, _waveletReCon.length );
+  } // getWaveletReConstruction
 
   /**
    * Performs the forward transform for the given array from time domain to
@@ -256,113 +319,5 @@ public abstract class Wavelet {
     return arrTime;
 
   } // reverse
-
-  /**
-   * Returns the wavelength of the so called mother wavelet or scaling function.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 15.02.2014 22:06:12
-   * @return the minimal wavelength for the mother wavelet
-   */
-  public int getMotherWavelength( ) {
-
-    return _motherWavelength;
-
-  } // getMotherWavelength
-
-  /**
-   * Returns the minimal necessary wavelength for a signal that can be
-   * transformed by this wavelet.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 15.02.2014 22:08:43
-   * @return integer representing minimal wavelength of the input signal that
-   *         should be transformed by this wavelet.
-   */
-  public int getTransformWavelength( ) {
-
-    return _transformWavelength;
-
-  } // getTransformWavelength
-
-  /**
-   * Returns a copy of the scaling (low pass filter) coefficients of
-   * decomposition.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 15.02.2010 22:11:42
-   * @return array of length of the mother wavelet wavelength keeping the
-   *         decomposition low pass filter coefficients
-   */
-  public double[ ] getScalingDeComposition( ) {
-
-    double[ ] scalingDeCom = new double[ _scalingDeCom.length ];
-
-    for( int i = 0; i < _scalingDeCom.length; i++ )
-      scalingDeCom[ i ] = _scalingDeCom[ i ];
-
-    return scalingDeCom;
-
-  } // getScalingDeComposition  
-
-  /**
-   * Returns a copy of the wavelet (high pass filter) coefficients of
-   * decomposition.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 15.02.2014 22:11:25
-   * @return array of length of the mother wavelet wavelength keeping the
-   *         decomposition high pass filter coefficients
-   */
-  public double[ ] getWaveletDeComposition( ) {
-
-    double[ ] waveletDeCom = new double[ _waveletDeCom.length ];
-
-    for( int i = 0; i < _waveletDeCom.length; i++ )
-      waveletDeCom[ i ] = _waveletDeCom[ i ];
-
-    return waveletDeCom;
-
-  } // getWaveletDeComposition
-
-  /**
-   * Returns a copy of the scaling (low pass filter) coefficients of
-   * reconstruction.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.02.2014 10:35:11
-   * @return array of length of the mother wavelet wavelength keeping the
-   *         reconstruction low pass filter coefficients
-   */
-  public double[ ] getScalingReConstruction( ) {
-
-    double[ ] scalingReCon = new double[ _scalingReCon.length ];
-
-    for( int i = 0; i < _scalingReCon.length; i++ )
-      scalingReCon[ i ] = _scalingReCon[ i ];
-
-    return scalingReCon;
-
-  } // getScalingReConstruction
-
-  /**
-   * Returns a copy of the wavelet (high pass filter) coefficients of
-   * reconstruction.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.02.2014 10:35:09
-   * @return array of length of the mother wavelet wavelength keeping the
-   *         reconstruction high pass filter coefficients
-   */
-  public double[ ] getWaveletReConstruction( ) {
-
-    double[ ] waveletReCon = new double[ _waveletReCon.length ];
-
-    for( int i = 0; i < _waveletReCon.length; i++ )
-      waveletReCon[ i ] = _waveletReCon[ i ];
-
-    return waveletReCon;
-
-  } // getWaveletReConstruction
 
 } // Wavelet
