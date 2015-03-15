@@ -49,69 +49,60 @@ public class JWave {
    */
   public static void main( String[ ] args ) {
 
-    try {
+    if( args.length < 3 || args.length > 5 ) {
+      System.err.println( "example usage: JWave [transformType] {waveletType}" );
+      System.err.println( "" );
+      System.err.println( "Transform names: " + "'Discrete Fourier Transform'"
+          + " " + "'Fast Wavelet Transform'" + " "
+          + "'Wavelet Packet Transform'" );
+      System.err.println( "Wavelet names: " + "'Haar'," + " "
+          + "'Haar orthogonal'," + " " + "'Daubechies 2'" + " " + ".." + " "
+          + "'Daubechies 20'," + " " + "'Symlet 2'" + " " + ".." + " "
+          + "'Symlet 20'," + " " + "'Coiflet 1'" + " " + ".." + " "
+          + "'Coiflet 5'," + " " + "'Legendre 1'" + " " + ".." + " "
+          + "'Legendre 3'," + " " + " ... 'BiOrthogonal 1/1'"
+          + " have a look for more in the 'transform.wavelets' package!" );
+      return;
+    } // if args
 
-      if( args.length < 3 || args.length > 5 ) {
-        System.err
-            .println( "example usage: JWave [transformType] {waveletType}" );
-        System.err.println( "" );
-        System.err.println( "Transform names: "
-            + "'Discrete Fourier Transform'" + " " + "'Fast Wavelet Transform'"
-            + " " + "'Wavelet Packet Transform'" );
-        System.err.println( "Wavelet names: " + "'Haar'," + " "
-            + "'Haar orthogonal'," + " " + "'Daubechies 2'" + " " + ".." + " "
-            + "'Daubechies 20'," + " " + "'Symlet 2'" + " " + ".." + " "
-            + "'Symlet 20'," + " " + "'Coiflet 1'" + " " + ".." + " "
-            + "'Coiflet 5'," + " " + "'Legendre 1'" + " " + ".." + " "
-            + "'Legendre 3'," + " " + " ... 'BiOrthogonal 1/1'"
-            + " have a look for more in the 'transform.wavelets' package!" );
-        return;
-      } // if args
+    String waveletIdentifier = args[ 3 ] + " " + args[ 4 ]; // raw n dirty but working
+    String transformIdentifier = args[ 0 ] + " " + args[ 1 ] + " " + args[ 2 ]; // raw n dirty but working
 
-      String waveletIdentifier = args[ 3 ] + " " + args[ 4 ]; // raw n dirty but working
-      String transformIdentifier = args[ 0 ] + " " + args[ 1 ] + " " + args[ 2 ]; // raw n dirty but working
+    Transform transform =
+        TransformBuilder.create( transformIdentifier, waveletIdentifier );
 
-      Transform transform =
-          TransformBuilder.create( transformIdentifier, waveletIdentifier );
+    Wavelet wavelet = transform.getWavelet( );
 
-      Wavelet wavelet = transform.getWavelet( );
+    double[ ] arrTime =
+        { 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
 
-      double[ ] arrTime =
-          { 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
+    if( transform.getBasicTransform( ) instanceof DiscreteFourierTransform )
+      System.out.print( TransformBuilder.identify( transform ) );
+    else
+      System.out.print( TransformBuilder.identify( transform ) + " using "
+          + WaveletBuilder.identify( wavelet ) );
+    System.out.println( "" );
+    System.out.println( "time domain:" );
+    for( int p = 0; p < arrTime.length; p++ )
+      System.out.printf( "%7.4f", arrTime[ p ] );
+    System.out.println( "" );
 
-      if( transform.getBasicTransform( ) instanceof DiscreteFourierTransform )
-        System.out.print( TransformBuilder.identify( transform ) );
-      else
-        System.out.print( TransformBuilder.identify( transform ) + " using "
-            + WaveletBuilder.identify( wavelet ) );
-      System.out.println( "" );
-      System.out.println( "time domain:" );
-      for( int p = 0; p < arrTime.length; p++ )
-        System.out.printf( "%7.4f", arrTime[ p ] );
-      System.out.println( "" );
+    double[ ] arrFreqOrHilb = transform.forward( arrTime );
 
-      double[ ] arrFreqOrHilb = transform.forward( arrTime );
+    if( transform.getBasicTransform( ) instanceof DiscreteFourierTransform )
+      System.out.println( "frequency domain:" );
+    else
+      System.out.println( "Hilbert domain:" );
+    for( int p = 0; p < arrTime.length; p++ )
+      System.out.printf( "%7.4f", arrFreqOrHilb[ p ] );
+    System.out.println( "" );
 
-      if( transform.getBasicTransform( ) instanceof DiscreteFourierTransform )
-        System.out.println( "frequency domain:" );
-      else
-        System.out.println( "Hilbert domain:" );
-      for( int p = 0; p < arrTime.length; p++ )
-        System.out.printf( "%7.4f", arrFreqOrHilb[ p ] );
-      System.out.println( "" );
+    double[ ] arrReco = transform.reverse( arrFreqOrHilb );
 
-      double[ ] arrReco = transform.reverse( arrFreqOrHilb );
-
-      System.out.println( "reconstruction:" );
-      for( int p = 0; p < arrTime.length; p++ )
-        System.out.printf( "%7.4f", arrReco[ p ] );
-      System.out.println( "" );
-
-    } catch( JWaveException e ) {
-
-      e.showMessage( );
-
-    } // try
+    System.out.println( "reconstruction:" );
+    for( int p = 0; p < arrTime.length; p++ )
+      System.out.printf( "%7.4f", arrReco[ p ] );
+    System.out.println( "" );
 
   } // main
 

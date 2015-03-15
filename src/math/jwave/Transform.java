@@ -28,7 +28,6 @@
 package math.jwave;
 
 import math.jwave.datatypes.Complex;
-import math.jwave.exceptions.JWaveError;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.BasicTransform;
@@ -41,12 +40,12 @@ import math.jwave.transforms.wavelets.Wavelet;
  * @date 19.05.2009 09:43:40
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
-public class Transform {
+public final class Transform {
 
   /**
    * Transform object of type base class
    */
-  protected BasicTransform _basicTransform;
+  protected final BasicTransform _basicTransform;
 
   /**
    * Constructor; needs some object like DiscreteFourierTransform,
@@ -58,55 +57,16 @@ public class Transform {
    *          Transform object
    */
   public Transform( BasicTransform transform ) {
-
     _basicTransform = transform;
-
     try {
-
       if( _basicTransform == null )
         throw new JWaveFailure( "given object is null!" );
-
       if( !( _basicTransform instanceof BasicTransform ) )
-        throw new JWaveFailure( "given object is not of type Wavelet" );
-
-    } catch( JWaveFailure e ) {
-
+        throw new JWaveFailure( "given object is not of type BasicTransform" );
+    } catch( JWaveException e ) {
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
-  } // Transform
-
-  /**
-   * Constructor; needs some object like DiscreteFourierTransform,
-   * FastBasicTransform, WaveletPacketTransfom, ... It take also a number of
-   * iteration for decomposition
-   * 
-   * @date 19.05.2009 09:50:24
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   */
-  @Deprecated public Transform( BasicTransform transform, int iteration ) {
-    if( transform instanceof BasicTransform ) {
-
-      _basicTransform = transform;
-
-      // TODO realize the level transform in GOOD Software Engineering
-      // style - after restructuring the code
-
-      // ( (WaveletTransform)_basicTransform ).set_iteration( iteration );
-
-      try { // always break down these methods
-        throw new JWaveError( "THE ITERATION METHODS ARE BORKEN AT MOMENT" );
-      } catch( JWaveError e ) {
-        e.printStackTrace( );
-      } // try
-
-    } else {
-      throw new IllegalArgumentException( "Can't use transform :"
-          + transform.getClass( ) + " with a specific level decomposition ;"
-          + " use Transform( TransformI transform ) constructor instead." );
-    }
-
   } // Transform
 
   /**
@@ -118,22 +78,15 @@ public class Transform {
    *          coefficients of time domain
    * @return coefficients of frequency or Hilbert domain
    */
-  public double[ ] forward( double[ ] arrTime ) {
-
+  public final double[ ] forward( double[ ] arrTime ) {
     double[ ] arrHilb = null;
-
     try {
-
       arrHilb = _basicTransform.forward( arrTime );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return arrHilb;
-
   } // forward
 
   /**
@@ -145,22 +98,15 @@ public class Transform {
    *          coefficients of frequency or Hilbert domain
    * @return coefficients of time domain
    */
-  public double[ ] reverse( double[ ] arrHilb ) {
-
+  public final double[ ] reverse( double[ ] arrHilb ) {
     double[ ] arrTime = null;
-
     try {
-
       arrTime = _basicTransform.reverse( arrHilb );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return arrTime;
-
   } // reverse
 
   /**
@@ -174,22 +120,15 @@ public class Transform {
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
    */
-  public Complex[ ] forward( Complex[ ] arrTime ) {
-
+  public final Complex[ ] forward( Complex[ ] arrTime ) {
     Complex[ ] arrFreq = null;
-
     try {
-
       arrFreq = ( (BasicTransform)_basicTransform ).forward( arrTime );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return arrFreq;
-
   } // forward
 
   /**
@@ -203,22 +142,15 @@ public class Transform {
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
    */
-  public Complex[ ] reverse( Complex[ ] arrFreq ) {
-
+  public final Complex[ ] reverse( Complex[ ] arrFreq ) {
     Complex[ ] arrTime = null;
-
     try {
-
       arrTime = ( (BasicTransform)_basicTransform ).reverse( arrFreq );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return arrTime;
-
   } // reverse
 
   /**
@@ -230,22 +162,15 @@ public class Transform {
    *          coefficients of 2-D time domain; internal M(i),N(j)
    * @return coefficients of 2-D frequency or Hilbert domain
    */
-  public double[ ][ ] forward( double[ ][ ] matrixTime ) {
-
+  public final double[ ][ ] forward( double[ ][ ] matrixTime ) {
     double[ ][ ] matrixHilb = null;
-
     try {
-
       matrixHilb = _basicTransform.forward( matrixTime );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return matrixHilb;
-
   } // forward
 
   /**
@@ -258,22 +183,15 @@ public class Transform {
    *          M(i),N(j)
    * @return coefficients of 2-D time domain
    */
-  public double[ ][ ] reverse( double[ ][ ] matrixHilb ) {
-
+  public final double[ ][ ] reverse( double[ ][ ] matrixHilb ) {
     double[ ][ ] matrixTime = null;
-
     try {
-
       matrixTime = _basicTransform.reverse( matrixHilb );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return matrixTime;
-
   } // reverse
 
   /**
@@ -285,22 +203,15 @@ public class Transform {
    *          coefficients of 2-D time domain; internal M(i),N(j),O(k)
    * @return coefficients of 2-D frequency or Hilbert domain
    */
-  public double[ ][ ][ ] forward( double[ ][ ][ ] spaceTime ) {
-
+  public final double[ ][ ][ ] forward( double[ ][ ][ ] spaceTime ) {
     double[ ][ ][ ] spaceHilb = null;
-
     try {
-
       spaceHilb = _basicTransform.forward( spaceTime );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return spaceHilb;
-
   } // forward
 
   /**
@@ -313,22 +224,15 @@ public class Transform {
    *          M(i),N(j),O(k)
    * @return coefficients of 2-D time domain
    */
-  public double[ ][ ][ ] reverse( double[ ][ ][ ] spaceHilb ) {
-
+  public final double[ ][ ][ ] reverse( double[ ][ ][ ] spaceHilb ) {
     double[ ][ ][ ] spaceTime = null;
-
     try {
-
       spaceTime = _basicTransform.reverse( spaceHilb );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return spaceTime;
-
   } // reverse
 
   /**
@@ -342,22 +246,15 @@ public class Transform {
    * @return matDeComp 2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the
    *         exponent of N=2^p
    */
-  public double[ ][ ] decompose( double[ ] arrTime ) {
-
+  public final double[ ][ ] decompose( double[ ] arrTime ) {
     double[ ][ ] matDeComp = null;
-
     try {
-
       matDeComp = _basicTransform.decompose( arrTime );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return matDeComp;
-
   } // decompose
 
   /**
@@ -370,22 +267,15 @@ public class Transform {
    *          of N=2^p
    * @return a 1-D time domain signal
    */
-  public double[ ] recompose( double[ ][ ] matDeComp ) {
-
+  public final double[ ] recompose( double[ ][ ] matDeComp ) {
     double[ ] arrTime = null;
-
     try {
-
       arrTime = _basicTransform.recompose( matDeComp );
-
     } catch( JWaveException e ) {
-
+      e.showMessage( );
       e.printStackTrace( );
-
     } // try
-
     return arrTime;
-
   } // recompose
 
   /**
@@ -395,7 +285,7 @@ public class Transform {
    * @date 14.03.2015 18:19:13
    * @return identifier of object of type Basic Transform
    */
-  public BasicTransform getBasicTransform( ) {
+  public final BasicTransform getBasicTransform( ) {
     return _basicTransform;
   } // getBasicTransform
 
@@ -408,10 +298,22 @@ public class Transform {
    * @throws JWaveFailure
    *           if Wavelet object is not available
    */
-  public Wavelet getWavelet( ) throws JWaveFailure {
+  public final Wavelet getWavelet( ) {
 
-    BasicTransform basicTransform = getBasicTransform( );
-    return basicTransform.getWavelet( );
+    Wavelet wavelet = null;
+    BasicTransform basicTransform = null;
+
+    try {
+
+      basicTransform = getBasicTransform( );
+      wavelet = basicTransform.getWavelet( );
+
+    } catch( JWaveException e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+
+    return wavelet;
 
   } // getWavelet
 

@@ -108,24 +108,18 @@ public class TransformTest {
     int samplingRate = 1024 * 1024; // sampling rate
     int noOfOscillations = 1024;
 
-    try {
+    // generate sampled (discrete) sine over 2 pi
+    double[ ] arrTime =
+        MathToolKit.createSineOscillation( samplingRate, noOfOscillations );
 
-      // generate sampled (discrete) sine over 2 pi
-      double[ ] arrTime =
-          MathToolKit.createSineOscillation( samplingRate, noOfOscillations );
+    Transform transform =
+        TransformBuilder.create( "Fast Wavelet Transform", "Haar" );
 
-      Transform transform =
-          TransformBuilder.create( "Fast Wavelet Transform", "Haar" );
+    double[ ] arrHilb = transform.forward( arrTime );
 
-      double[ ] arrHilb = transform.forward( arrTime );
+    double[ ] arrReco = transform.reverse( arrHilb );
 
-      double[ ] arrReco = transform.reverse( arrHilb );
-
-      assertArray( arrTime, arrReco, 1e-10 );
-
-    } catch( JWaveFailure e ) {
-      e.printStackTrace( );
-    } // try
+    assertArray( arrTime, arrReco, 1e-10 );
 
   } // testSamplingSine
 
@@ -134,24 +128,18 @@ public class TransformTest {
     int samplingRate = 1024 * 1024; // sampling rate
     int noOfOscillations = 1024;
 
-    try {
+    // generate sampled (discrete) sine over 2 pi
+    double[ ] arrTime =
+        MathToolKit.createCosineOscillation( samplingRate, noOfOscillations );
 
-      // generate sampled (discrete) sine over 2 pi
-      double[ ] arrTime =
-          MathToolKit.createCosineOscillation( samplingRate, noOfOscillations );
+    Transform transform =
+        TransformBuilder.create( "Fast Wavelet Transform", "Haar" );
 
-      Transform transform =
-          TransformBuilder.create( "Fast Wavelet Transform", "Haar" );
+    double[ ] arrHilb = transform.forward( arrTime );
 
-      double[ ] arrHilb = transform.forward( arrTime );
+    double[ ] arrReco = transform.reverse( arrHilb );
 
-      double[ ] arrReco = transform.reverse( arrHilb );
-
-      assertArray( arrTime, arrReco, 1e-10 );
-
-    } catch( JWaveFailure e ) {
-      e.printStackTrace( );
-    } // try
+    assertArray( arrTime, arrReco, 1e-10 );
 
   } // testSamplingCosine
 
@@ -185,7 +173,7 @@ public class TransformTest {
     assertArray( arrTimeCosine, arrRecoCosine, 1e-10 );
 
     transform = TransformBuilder.create( "Fast Wavelet Transform", "Haar" );
-    
+
     // generate sampled (discrete) sine over 2 pi
     arrTimeSine =
         MathToolKit.createSineOscillation( samplingRate, noOfOscillations );
@@ -195,7 +183,7 @@ public class TransformTest {
     arrRecoSine = transform.reverse( arrFreqSine );
     // showTime( arrRecoSine );
     assertArray( arrTimeSine, arrRecoSine, 1e-10 );
-    
+
     // generate sampled (discrete) sine over 2 pi
     // showTime( arrTimeCosine );
     arrFreqCosine = transform.forward( arrTimeCosine );
@@ -635,10 +623,7 @@ public class TransformTest {
       double delta ) {
 
     long noOfSteps = 1000;
-
     double[ ] arrTime = arr;
-
-    showTime( arrTime );
 
     double[ ] arrTimeRound = new double[ arrTime.length ];
     for( int c = 0; c < arrTime.length; c++ )
@@ -646,43 +631,32 @@ public class TransformTest {
 
     Transform t = new Transform( new FastWaveletTransform( wavelet ) );
 
-    System.out.println( "" );
-    System.out.println( "" );
     System.out.print( "Performing: " + noOfSteps
         + " forward and reverse transforms ..." );
-
     for( long s = 0; s < noOfSteps; s++ )
       arrTimeRound = t.reverse( t.forward( arrTimeRound ) );
-
-    System.out.println( "" );
-    System.out.println( "" );
+    System.out.println( "done!" );
 
     assertArray( arrTime, arrTimeRound, delta );
 
-    System.out.println( "Input ..." );
-    showTime( arrTime );
-    System.out.println( "" );
-
-    System.out.println( "Result ..." );
-    showTime( arrTimeRound );
-    System.out.println( "" );
-
-    double[ ] arrTimeErrorAbs = new double[ arrTimeRound.length ];
+    //    double[ ] arrTimeErrorAbs = new double[ arrTimeRound.length ];
+    //    for( int c = 0; c < arrTimeRound.length; c++ )
+    //      arrTimeErrorAbs[ c ] = Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
+    double timeErrorAbs = 0.;
     for( int c = 0; c < arrTimeRound.length; c++ )
-      arrTimeErrorAbs[ c ] = Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
+      timeErrorAbs += Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
+    System.out.println( "Absolute error: " + timeErrorAbs );
 
-    System.out.println( "Absolute error" );
-    showTime( arrTimeErrorAbs );
-    System.out.println( "" );
-
-    double[ ] arrTimeErrorRel = new double[ arrTimeRound.length ];
+    //    double[ ] arrTimeErrorRel = new double[ arrTimeRound.length ];
+    //    for( int c = 0; c < arrTimeRound.length; c++ )
+    //      arrTimeErrorRel[ c ] =
+    //          Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] ) * 100. / arrTime[ c ] );
+    double timeErrorRel = 0.;
     for( int c = 0; c < arrTimeRound.length; c++ )
-      arrTimeErrorRel[ c ] =
+      timeErrorRel +=
           Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] ) * 100. / arrTime[ c ] );
 
-    System.out.println( "Relative error [%] ..." );
-    showTime( arrTimeErrorRel );
-    System.out.println( "" );
+    System.out.println( "Relative error [%]: " + timeErrorRel );
 
   } // testFastWaveletTransformRounding
 

@@ -8,6 +8,7 @@
  */
 package math.jwave;
 
+import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
@@ -34,34 +35,40 @@ public class TransformBuilder {
    *          identifier as stored in Transform object
    * @param wavelet
    * @return a matching object of type Transform
-   * @throws JWaveFailure
-   *           if string is not valid or Transform is broken yet
    */
-  static public Transform create( String name, Wavelet wavelet )
-      throws JWaveFailure {
+  static public Transform create( String name, Wavelet wavelet ) {
 
     BasicTransform basicTransform = null;
 
-    switch( name ){
+    try {
 
-      case "Discrete Fourier Transform":
-        basicTransform = new DiscreteFourierTransform( );
-        break;
+      switch( name ){
 
-      case "Fast Wavelet Transform":
-        basicTransform = new FastWaveletTransform( wavelet );
-        break;
+        case "Discrete Fourier Transform":
+          basicTransform = new DiscreteFourierTransform( );
+          break;
 
-      case "Wavelet Packet Transform":
-        basicTransform = new WaveletPacketTransform( wavelet );
-        break;
+        case "Fast Wavelet Transform":
+          basicTransform = new FastWaveletTransform( wavelet );
+          break;
 
-      default:
+        case "Wavelet Packet Transform":
+          basicTransform = new WaveletPacketTransform( wavelet );
+          break;
 
-        throw new JWaveFailure(
-            "TransformBuilder::create - unknown type of transform for given string!" );
+        default:
 
-    } // switch
+          throw new JWaveFailure(
+              "TransformBuilder::create - unknown type of transform for given string!" );
+
+      } // switch
+
+    } catch( JWaveException e ) {
+    
+      e.showMessage( );
+      e.printStackTrace( );
+    
+    } // try
 
     return new Transform( basicTransform );
 
@@ -78,12 +85,9 @@ public class TransformBuilder {
    *          identifier as stored in Transform object
    * @param waveletName
    * @return identifier as stored in Wavelet object
-   * @throws JWaveFailure
-   *           if string is not valid or Transform is broken yet
    */
-  static public Transform create( String name, String waveletName )
-      throws JWaveFailure {
-
+  static public Transform create( String name, String waveletName ) {
+ 
     return create( name, WaveletBuilder.create( waveletName ) );
 
   } // create
