@@ -277,6 +277,29 @@ public final class Transform {
     } // try
     return arrTime;
   } // recompose
+  
+  /**
+   * Recompose signal from a certain level of decomposition.
+   *
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 10:08:52 
+   *
+   * @param matDeComp
+   * @param level
+   * @return
+   */
+  public final double[ ] recomposeFromLevel( double[ ][ ] matDeComp, int level ) {
+    double[ ] arrTime = null;
+    try {
+      arrTime = _basicTransform.recomposeFromLevel( matDeComp, level );
+    } catch( JWaveException e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+    return arrTime;
+  } // recompose
+  
+  
 
   /**
    * Return the used object of type BasicTransform.

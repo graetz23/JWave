@@ -120,6 +120,13 @@ public abstract class BasicTransform {
     throw new JWaveError( "method is not working for this transform type!" );
 
   } // recompose
+  
+  public double[ ] recomposeFromLevel( double[ ][ ] matDeComp, int level ) throws JWaveException {
+
+    throw new JWaveError( "method is not working for this transform type!" );
+
+  } // recomposeFromLevel
+
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert

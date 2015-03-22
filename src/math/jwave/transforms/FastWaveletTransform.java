@@ -51,9 +51,9 @@ public class FastWaveletTransform extends WaveletTransform {
    *          object of type Wavelet; Haar1, Daubechies2, Coiflet1, ...
    */
   public FastWaveletTransform( Wavelet wavelet ) {
-  
+
     super( wavelet );
-    
+
     _name = "Fast Wavelet Transform";
 
   } // FastWaveletTransform
@@ -136,7 +136,6 @@ public class FastWaveletTransform extends WaveletTransform {
    *          coefficients of time domain
    * @return matDeComp coefficients of frequency or Hilbert domain in 2-D
    *         spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent of N=2^p
-   * @throws JWaveException
    */
   @Override public double[ ][ ] decompose( double[ ] arrTime ) {
 
@@ -144,7 +143,7 @@ public class FastWaveletTransform extends WaveletTransform {
     double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
     double[ ][ ] matDeComp = new double[ levels + 1 ][ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
-      matDeComp[ 0 ][ i ] = arrTime[ i ];
+      matDeComp[ 0 ][ i ] = arrTime[ i ]; // copy hilbert space of level 0; normal space 
 
     int l = 1; // start with level 1 cause level 0 is the normal space
     int h = arrHilb.length;
@@ -154,6 +153,8 @@ public class FastWaveletTransform extends WaveletTransform {
       double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
       System.arraycopy( arrTempPart, 0, arrHilb, 0, h );
 
+      // each level is keepinh the energy and details of the one before!
+      // So from each level there can be a reconstruction! 
       for( int i = 0; i < arrTime.length; i++ )
         if( i < h )
           matDeComp[ l ][ i ] = arrHilb[ i ];
@@ -173,7 +174,11 @@ public class FastWaveletTransform extends WaveletTransform {
    * Generates from a 1-D signal a 2-D output, where the second dimension are
    * the levels of the wavelet transform. The first level should keep the
    * original coefficients. All following levels should keep each step of the
-   * decompostion of the Fast Wavelet Transform.
+   * decompostion of the Fast Wavelet Transform. However, each level of the this
+   * decomposition matrix is having the full set, full energy and full details,
+   * that are needed to do a full reconstruction. So one can select a level
+   * filter it and then do reconstuction only from this single line! BY THIS
+   * METHOD, THE _HIGHEST_ LEVEL IS _ALWAYS_ TAKEN FOR RECONSTRUCTION!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 17.08.2014 10:07:19
@@ -184,23 +189,60 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   public double[ ] recompose( double[ ][ ] matDeComp ) {
 
+    // Each level of the matrix is having the full set (full energy + details)
+    // of decomposition. Therefore, each level can be used to do a full reconstruction,
+    int level = matDeComp.length - 1; // selected highest level in general.
+    double[ ] arrTime = null;
+    try {
+      arrTime = recomposeFromLevel( matDeComp, level );
+    } catch( JWaveFailure e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+
+    return arrTime;
+
+  } // recompose
+
+  /**
+   * Generates from a 1-D signal a 2-D output, where the second dimension are
+   * the levels of the wavelet transform. The first level should keep the
+   * original coefficients. All following levels should keep each step of the
+   * decompostion of the Fast Wavelet Transform. However, each level of the this
+   * decomposition matrix is having the full set, full energy and full details,
+   * that are needed to do a full reconstruction. So one can select a level
+   * filter it and then do reconstuction only from this single line!
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 17.08.2014 10:07:19
+   * @see math.jwave.transforms.BasicTransform#recomposeFromLevel(double[][],
+   *      int)
+   * @param matDeComp
+   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
+   *          of N=2^p
+   * @return a 1-D time domain signal
+   */
+  public double[ ] recomposeFromLevel( double[ ][ ] matDeComp, int level )
+      throws JWaveFailure {
+
+    int noOfLevels = matDeComp.length;
+    if( level < 0 || level >= noOfLevels )
+      throw new JWaveFailure(
+          "FastWaveletTransform#recomposeFromLevel - given level is out of range" );
+
     int length = matDeComp[ 0 ].length; // length of first Hilbert space
+
     double[ ] arrTime = new double[ length ];
+    for( int i = 0; i < length; i++ )
+      arrTime[ i ] = matDeComp[ level ][ i ]; // take selected level for reconstruction
 
-    int levels = matDeComp.length;
-    for( int l = 1; l < levels; l++ ) {
+    // go to selected level and perform matching reverse transform for selected level
+    int h = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+    int steps = (int)MathToolKit.getExponent( length );
+    for( int l = level; l < steps; l++ )
+      h = h << 1; // begin reverse transform at certain - matching - level of hilbert space
 
-      int steps = (int)MathToolKit.scalb( (double)l, 1 );
-      for( int i = 0; i < length; i++ )
-        if( i < steps )
-          arrTime[ i ] = matDeComp[ l ][ i ]; // add them together
-
-    } // l
-
-    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-
-    int h = transformWavelength;
-    while( h <= arrTime.length && h >= transformWavelength ) {
+    while( h <= arrTime.length ) {
 
       double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
       System.arraycopy( arrTempPart, 0, arrTime, 0, h );
@@ -210,6 +252,6 @@ public class FastWaveletTransform extends WaveletTransform {
 
     return arrTime;
 
-  } // reverse
+  } // recompose
 
 } // FastWaveletTransfromSplit

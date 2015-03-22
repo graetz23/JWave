@@ -855,17 +855,14 @@ public class TransformTest {
 
       System.out.println( "" );
       System.out.println( "Testing the Fast Wavelet Transform "
-          + "decompse 1-D method " + "using " + wavelet.getName( ) );
+          + "decompose, recompose, and recomposeFromLevel 1-D methods "
+          + "using " + wavelet.getName( ) + " and small array" );
 
       double[ ] arrTime = { 1., 1., 1., 1. };
-
-      showTime( arrTime );
 
       Transform t = new Transform( new FastWaveletTransform( wavelet ) );
 
       double[ ][ ] matDeComp = t.decompose( arrTime );
-
-      showHilb( matDeComp );
 
       double sqrt2 = Math.sqrt( 2. );
 
@@ -876,14 +873,21 @@ public class TransformTest {
 
       double[ ] arrTimeReComp = t.recompose( matDeComp );
 
-      showTime( arrTimeReComp );
-
       assertArray( arrTime, arrTimeReComp, delta );
 
-      System.out.println( "" );
+      // test reconstruction from a certain level of decomposition
+      double[ ] arrTimeReCompLevel0 = t.recomposeFromLevel( matDeComp, 0 );
+      assertArray( arrTime, arrTimeReCompLevel0, delta );
+
+      double[ ] arrTimeReCompLevel1 = t.recomposeFromLevel( matDeComp, 0 );
+      assertArray( arrTime, arrTimeReCompLevel1, delta );
+
+      double[ ] arrTimeReCompLevel2 = t.recomposeFromLevel( matDeComp, 0 );
+      assertArray( arrTime, arrTimeReCompLevel2, delta );
+
       System.out.println( "Testing the Fast Wavelet Transform "
-          + "forward 1-D method " + "using " + wavelet.getName( )
-          + " and a long array" );
+          + "decompose, recompose, and recomposeFromLevel 1-D methods "
+          + "using " + wavelet.getName( ) + " and long array" );
 
       double[ ] arrTime64 = { // array of length 64
           1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
@@ -891,11 +895,7 @@ public class TransformTest {
               1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
               1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
 
-      showTime( arrTime );
-
       double[ ][ ] matDeComp64 = t.decompose( arrTime64 );
-
-      showHilb( matDeComp64 );
 
       double d1sqrt2 = 1 * sqrt2; // symbolic one times square root of 2
       double d2sqrt2 = 2. * d1sqrt2; // 2 times square root of two
@@ -909,6 +909,7 @@ public class TransformTest {
                   1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
                   1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
                   1., 1., 1. },
+
               { d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
                   d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
                   d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
@@ -952,11 +953,31 @@ public class TransformTest {
 
       assertMatrix( expected64, matDeComp64, delta );
 
+      // decompose from highest level: 64 = 2^p | p = 6
       double[ ] arrTimeReComp64 = t.recompose( matDeComp64 );
-
-      showTime( arrTimeReComp64 );
-
       assertArray( arrTime64, arrTimeReComp64, delta );
+
+      // test reconstruction from a certain level of decomposition
+      double[ ] arrTimeReComp64Level0 = t.recomposeFromLevel( matDeComp64, 0 );
+      assertArray( arrTime64, arrTimeReComp64Level0, delta );
+
+      double[ ] arrTimeReComp64Level1 = t.recomposeFromLevel( matDeComp64, 1 );
+      assertArray( arrTime64, arrTimeReComp64Level1, delta );
+
+      double[ ] arrTimeReComp64Level2 = t.recomposeFromLevel( matDeComp64, 2 );
+      assertArray( arrTime64, arrTimeReComp64Level2, delta );
+
+      double[ ] arrTimeReComp64Level3 = t.recomposeFromLevel( matDeComp64, 3 );
+      assertArray( arrTime64, arrTimeReComp64Level3, delta );
+
+      double[ ] arrTimeReComp64Level4 = t.recomposeFromLevel( matDeComp64, 4 );
+      assertArray( arrTime64, arrTimeReComp64Level4, delta );
+
+      double[ ] arrTimeReComp64Level5 = t.recomposeFromLevel( matDeComp64, 5 );
+      assertArray( arrTime64, arrTimeReComp64Level5, delta );
+
+      double[ ] arrTimeReComp64Level6 = t.recomposeFromLevel( matDeComp64, 6 );
+      assertArray( arrTime64, arrTimeReComp64Level6, delta );
 
     } // w
 
