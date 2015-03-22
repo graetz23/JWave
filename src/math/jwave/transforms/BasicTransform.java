@@ -184,8 +184,8 @@ public abstract class BasicTransform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 17.08.2014 10:07:19
    * @param matDeComp
-   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
-   *          of N=2^p
+   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
+   *          of M=2^p | p€N
    * @return a 1-D time domain signal
    */
   public double[ ] recompose( double[ ][ ] matDeComp ) throws JWaveException {
@@ -205,11 +205,37 @@ public abstract class BasicTransform {
 
   } // recompose
 
+  /**
+   * Generates from a 1-D signal a 2-D output, where the second dimension are
+   * the levels of the wavelet transform. The first level should keep the
+   * original coefficients. All following levels should keep each step of the
+   * decomposition of the Fast Wavelet Transform. However, each level of the
+   * this decomposition matrix is having the full set, full energy and full
+   * details, that are needed to do a full reconstruction. So one can select a
+   * level filter it and then do reconstruction only from this single line!
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 15:12:19
+   * @param matDeComp
+   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
+   *          of M=2^p | p€N
+   * @param level
+   *          the level that should be used for reconstruction
+   * @return the reconstructed time series of a selected level
+   * @throws JWaveException
+   */
   public double[ ] recompose( double[ ][ ] matDeComp, int level )
       throws JWaveException {
 
-    throw new JWaveError( "BasicTransform#recompose - "
-        + "method is not implemented for this transform type!" );
+    double[ ] arrTime = null;
+    try {
+      arrTime = recompose( matDeComp, level );
+    } catch( JWaveFailure e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+
+    return arrTime;
 
   } // recompose
 
@@ -630,7 +656,6 @@ public abstract class BasicTransform {
     return spcTime;
 
   } // reverse
-  
 
   /**
    * Returns true if given integer is of type binary (2, 4, 8, 16, ..) else the
@@ -643,9 +668,9 @@ public abstract class BasicTransform {
    * @return true if number is a binary number else false
    */
   protected boolean isBinary( int number ) {
-  
+
     return MathToolKit.isBinary( number ); // use MathToolKit or implement
-  
+
   } // isBinary
 
   /**
@@ -660,14 +685,14 @@ public abstract class BasicTransform {
    *           if given number is not a binary number
    */
   protected int calcExponent( int number ) throws JWaveException {
-    
+
     if( !isBinary( number ) )
       throw new JWaveFailure( "BasicTransform#calcExponent - "
           + "given number is not binary: "
           + "2^p | p€N .. = 1, 2, 4, 8, 16, 32, .. " );
-    
+
     return (int)( MathToolKit.getExponent( (int)( number ) ) ); // use MathToolKit or implement
-    
+
   } // calcExponent
 
 } // BasicTransform

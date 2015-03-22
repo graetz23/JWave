@@ -54,8 +54,8 @@ public class BiOrthogonal11 extends Wavelet {
     _scalingDeCom[ 1 ] = 0.7071067811865476; // s_d1
 
     _waveletDeCom = new double[ _motherWavelength ];
-    _waveletDeCom[ 0 ] = -0.7071067811865476; // w_d0
-    _waveletDeCom[ 1 ] = 0.7071067811865476; // w_d1
+    _waveletDeCom[ 0 ] = 0.7071067811865476; // w_d0
+    _waveletDeCom[ 1 ] = -0.7071067811865476; // w_d1
 
     _scalingReCon = new double[ _motherWavelength ];
     _scalingReCon[ 0 ] = 0.7071067811865476; // w_r0 =  w_d1 .. biorthogonal!

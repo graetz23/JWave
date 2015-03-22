@@ -65,8 +65,24 @@ public class BiOrthogonal13 extends Wavelet {
     _waveletDeCom[ 4 ] = 0.;
     _waveletDeCom[ 5 ] = 0.;
 
+    _scalingReCon = new double[ _motherWavelength ];
+    _scalingReCon[ 0 ] = 0.; // w_r0 =  w_d1 .. biorthogonal!
+    _scalingReCon[ 1 ] = 0.; // w_r1 = -w_d0 .. biorthogonal!
+    _scalingReCon[ 2 ] = 0.7071067811865476; // w_r0 =  w_d1 .. biorthogonal!
+    _scalingReCon[ 3 ] = 0.7071067811865476; // w_r1 = -w_d0 .. biorthogonal!
+    _scalingReCon[ 4 ] = 0.; // w_r0 =  w_d1 .. biorthogonal!
+    _scalingReCon[ 5 ] = 0.; // w_r1 = -w_d0 .. biorthogonal!
+
+    _waveletReCon = new double[ _motherWavelength ];
+    _waveletReCon[ 0 ] = -0.08838834764831845;
+    _waveletReCon[ 1 ] = -0.08838834764831845;
+    _waveletReCon[ 2 ] = 0.7071067811865476;
+    _waveletReCon[ 3 ] = -0.7071067811865476;
+    _waveletReCon[ 4 ] = 0.08838834764831845;
+    _waveletReCon[ 5 ] = 0.08838834764831845;
+
     // build all other coefficients from low & high pass decomposition
-    _buildBiOrthonormalSpace( );
+    // _buildBiOrthonormalSpace( );
 
   } // BiOrthogonal13
 

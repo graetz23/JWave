@@ -148,7 +148,7 @@ public abstract class Wavelet {
         _waveletReCon[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
       } // if
     } // i
-  } // _buildBiOrthonormalSpace
+  }// _buildBiOrthonormalSpace
 
   /*
    * Returns a String keeping the name of the current Wavelet.

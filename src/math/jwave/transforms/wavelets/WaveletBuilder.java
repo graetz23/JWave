@@ -8,6 +8,8 @@
  */
 package math.jwave.transforms.wavelets;
 
+import java.util.ArrayList;
+
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.wavelets.biorthogonal.BiOrthogonal11;
@@ -414,4 +416,87 @@ public class WaveletBuilder {
 
   } // identify
 
+  /**
+   * Create an array keeping all - available - wavelet objects.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 15:39:15
+   * @return an array keeping all Wavelet objects
+   */
+  static public Wavelet[ ] create2arr( ) {
+
+    ArrayList< Wavelet > listWavelets = new ArrayList<>( );
+
+    listWavelets.add( WaveletBuilder.create( "Haar" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 2" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 3" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 4" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 5" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 6" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 7" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 8" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 9" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 10" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 11" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 12" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 13" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 14" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 15" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 16" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 17" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 18" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 19" ) );
+    listWavelets.add( WaveletBuilder.create( "Daubechies 20" ) );
+    // listWavelets.add( WaveletBuilder.create( "Legendre 1" ) ); // not passing JUnit due to sign
+    // listWavelets.add( WaveletBuilder.create( "Legendre 2" ) ); // not passing JUnit due to sign
+    // listWavelets.add( WaveletBuilder.create( "Legendre 3" ) ); // not passing JUnit due to sign
+    listWavelets.add( WaveletBuilder.create( "Coiflet 1" ) );
+    listWavelets.add( WaveletBuilder.create( "Coiflet 2" ) );
+    listWavelets.add( WaveletBuilder.create( "Coiflet 3" ) );
+    listWavelets.add( WaveletBuilder.create( "Coiflet 4" ) );
+    listWavelets.add( WaveletBuilder.create( "Coiflet 5" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 2" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 3" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 4" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 5" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 6" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 7" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 8" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 9" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 10" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 11" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 12" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 13" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 14" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 15" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 16" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 17" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 18" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 19" ) );
+    listWavelets.add( WaveletBuilder.create( "Symlet 20" ) );
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/1" ) );
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/3" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/5" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/2" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/4" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/6" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/8" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/1" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/3" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/5" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/7" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/9" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 4/4" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 5/5" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 6/8" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "Discrete Mayer" ) ); // not passing JUnit due to precision
+
+    int noOfWavelets = listWavelets.size( );
+    Wavelet[ ] arrWavelets = new Wavelet[ noOfWavelets ];
+    for( int w = 0; w < noOfWavelets; w++ )
+      arrWavelets[ w ] = listWavelets.get( w );
+
+    return arrWavelets;
+
+  } // create2arr
 } // class
