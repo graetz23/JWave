@@ -25,15 +25,14 @@ package math.jwave.transforms;
 
 import java.util.Arrays;
 
+import math.jwave.transforms.wavelets.Wavelet;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
-import math.jwave.tools.MathToolKit;
-import math.jwave.transforms.wavelets.Wavelet;
 
 /**
- * Base class for the forward and reverse Wavelet Packet Transform (WPT) also
- * called Wavelet Packet Decomposition (WPD) using a specified Wavelet by
- * inheriting class.
+ * Base class for - stepping - forward and reverse methods, due to one kind of a
+ * Fast Wavelet Packet Transform (WPT) or Wavelet Packet Decomposition (WPD) in
+ * 1-D using a specific Wavelet.
  * 
  * @date 23.02.2010 13:44:05
  * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -41,14 +40,12 @@ import math.jwave.transforms.wavelets.Wavelet;
 public class WaveletPacketTransform extends WaveletTransform {
 
   /**
-   * Constructor receiving a Wavelet object.
+   * Constructor receiving a Wavelet object and setting identifier of transform.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param wavelet
-   *          object of type Wavelet; Haar1, Daubechies2, Coiflet1, ...
-   * @throws JWaveFailure
-   *           if object is null or not of type wavelet
+   *          object of type Wavelet
    */
   public WaveletPacketTransform( Wavelet wavelet ) {
 
@@ -59,51 +56,12 @@ public class WaveletPacketTransform extends WaveletTransform {
   } // WaveletPacketTransform
 
   /**
-   * Implementation of the 1-D forward wavelet packet transform for arrays of
-   * dim N by filtering with the longest wavelet first and then always with both
-   * sub bands -- low and high (approximation and details) -- by the next
-   * smaller wavelet.
-   * 
-   * @date 23.02.2010 13:44:05
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @throws JWaveException
-   * @see math.jwave.transforms.BasicTransform#forward(double[])
-   */
-  @Override public double[ ] forward( double[ ] arrTime ) throws JWaveException {
-
-    int max = MathToolKit.getExponent( arrTime.length );
-    return forward( arrTime, max );
-
-    //    double[ ] arrHilb = new double[ arrTime.length ];
-    //    for( int i = 0; i < arrTime.length; i++ )
-    //      arrHilb[ i ] = arrTime[ i ];
-    //    int k = arrTime.length;
-    //    int h = arrTime.length;
-    //    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-    //    while( h >= transformWavelength ) {
-    //      int g = k / h; // 1 -> 2 -> 4 -> 8 -> ...
-    //      for( int p = 0; p < g; p++ ) {
-    //        double[ ] iBuf = new double[ h ];
-    //        for( int i = 0; i < h; i++ )
-    //          iBuf[ i ] = arrHilb[ i + ( p * h ) ];
-    //        double[ ] oBuf = _wavelet.forward( iBuf, h );
-    //        for( int i = 0; i < h; i++ )
-    //          arrHilb[ i + ( p * h ) ] = oBuf[ i ];
-    //      } // packets
-    //      h = h >> 1;
-    //    } // levels
-    //    return arrHilb;
-
-  } // forward
-
-  /**
-   * Implementation of the 1-D forward wavelet packet transform for arrays of
-   * dim 2^p | p€N by filtering with the longest wavelet wavelength first and
-   * then always with both sub bands - low and high (approximation and details)
-   * - by the next smaller wavelet wavelength. Within the supported - matching -
-   * level the algorithm stops at a certain level of sub band. This sub band
-   * keeps the coefficients to allow for a full reconstruction - after denoising
-   * for example.
+   * Performs a 1-D forward transform from time domain to Hilbert domain using
+   * one kind of a Wavelet Packet Transform (WPT) algorithm for a given array of
+   * dimension (length) 2^p | p€N; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
+   * However, the algorithms stops for a supported level that has be in the
+   * range 0, .., p of the dimension of the input array; 0 is the time series
+   * itself and p is the maximal number of possible levels.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 12:35:15
@@ -115,12 +73,12 @@ public class WaveletPacketTransform extends WaveletTransform {
   @Override public double[ ] forward( double[ ] arrTime, int level )
       throws JWaveException {
 
-    if( !MathToolKit.isBinary( arrTime.length ) )
+    if( !isBinary( arrTime.length ) )
       throw new JWaveFailure(
           "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
-    int noOfLevels = MathToolKit.getExponent( arrTime.length );
+    int noOfLevels = calcExponent( arrTime.length );
     if( level < 0 || level > noOfLevels )
       throw new JWaveFailure(
           "WaveletPacketTransform#forward - given level is out of range for given array" );
@@ -166,52 +124,13 @@ public class WaveletPacketTransform extends WaveletTransform {
   } // forward
 
   /**
-   * Implementation of the 1-D reverse wavelet packet transform for arrays of
-   * dim 2^p | p€N by filtering with the smallest wavelet wavelength for all sub
-   * bands -- low and high bands (approximation and details) -- and the by the
-   * next greater wavelet wavelength combining two smaller and all other sub
-   * bands.
-   * 
-   * @date 23.02.2010 13:44:05
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @throws JWaveException
-   * @see math.jwave.transforms.BasicTransform#reverse(double[])
-   */
-  @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
-
-    int max = MathToolKit.getExponent( arrHilb.length );
-    return reverse( arrHilb, max );
-
-    //    double[ ] arrTime = new double[ arrHilb.length ];
-    //    for( int i = 0; i < arrHilb.length; i++ )
-    //      arrTime[ i ] = arrHilb[ i ];
-    //    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-    //    int k = arrTime.length;
-    //    int h = transformWavelength;
-    //    while( h <= arrTime.length && h >= transformWavelength ) {
-    //      int g = k / h; // ... -> 8 -> 4 -> 2 -> 1
-    //      for( int p = 0; p < g; p++ ) {
-    //        double[ ] iBuf = new double[ h ];
-    //        for( int i = 0; i < h; i++ )
-    //          iBuf[ i ] = arrTime[ i + ( p * h ) ];
-    //        double[ ] oBuf = _wavelet.reverse( iBuf, h );
-    //        for( int i = 0; i < h; i++ )
-    //          arrTime[ i + ( p * h ) ] = oBuf[ i ];
-    //      } // packets
-    //      h = h << 1;
-    //    } // levels
-    //    return arrTime;
-
-  } // reverse
-
-  /**
-   * Implementation of the 1-D reverse wavelet packet transform for arrays of
-   * dim 2^p | p€N by filtering with the smallest wavelet wavelength for all sub
-   * bands -- low and high bands (approximation and details) -- and the by the
-   * next greater wavelet wavelength combining two smaller and all other sub
-   * bands. Within the supported - matching - level, the algorithm starts at a
-   * certain level of sub band. This sub band should keep all coefficients to
-   * allow for a full reconstruction - after denoising for example.
+   * Performs a 1-D reverse transform from Hilbert domain to time domain using
+   * one kind of a Wavelet Packet Transform (WPT) algorithm for a given array of
+   * dimension (length) 2^p | p€N; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
+   * However, the algorithms starts for at a supported level that has be in the
+   * range 0, .., p of the dimension of the input array; 0 is the time series
+   * itself and p is the maximal number of possible levels. The coefficients of
+   * the input array have to match to the supported level.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 12:38:23
@@ -222,12 +141,12 @@ public class WaveletPacketTransform extends WaveletTransform {
   @Override public double[ ] reverse( double[ ] arrHilb, int level )
       throws JWaveException {
 
-    if( !MathToolKit.isBinary( arrHilb.length ) )
+    if( !isBinary( arrHilb.length ) )
       throw new JWaveFailure(
           "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
-    int noOfLevels = MathToolKit.getExponent( arrHilb.length );
+    int noOfLevels = calcExponent( arrHilb.length );
     if( level < 0 || level > noOfLevels )
       throw new JWaveFailure(
           "WaveletPacketTransform#reverse - given level is out of range for given array" );
@@ -241,7 +160,7 @@ public class WaveletPacketTransform extends WaveletTransform {
 
     int h = transformWavelength;
 
-    int steps = (int)MathToolKit.getExponent( length );
+    int steps = calcExponent( length );
     for( int l = level; l < steps; l++ )
       h = h << 1; // begin reverse transform at certain - matching - level of hilbert space
 

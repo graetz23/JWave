@@ -630,6 +630,7 @@ public abstract class BasicTransform {
     return spcTime;
 
   } // reverse
+  
 
   /**
    * Returns true if given integer is of type binary (2, 4, 8, 16, ..) else the
@@ -642,7 +643,9 @@ public abstract class BasicTransform {
    * @return true if number is a binary number else false
    */
   protected boolean isBinary( int number ) {
-    return MathToolKit.isBinary( number ); // use MathToolKit or implement algorithm here
+  
+    return MathToolKit.isBinary( number ); // use MathToolKit or implement
+  
   } // isBinary
 
   /**
@@ -657,11 +660,14 @@ public abstract class BasicTransform {
    *           if given number is not a binary number
    */
   protected int calcExponent( int number ) throws JWaveException {
+    
     if( !isBinary( number ) )
       throw new JWaveFailure( "BasicTransform#calcExponent - "
           + "given number is not binary: "
           + "2^p | p€N .. = 1, 2, 4, 8, 16, 32, .. " );
-    return (int)( MathToolKit.getExponent( (int)( number ) ) );
+    
+    return (int)( MathToolKit.getExponent( (int)( number ) ) ); // use MathToolKit or implement
+    
   } // calcExponent
 
 } // BasicTransform

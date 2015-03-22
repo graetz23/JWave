@@ -24,6 +24,8 @@
 package math.jwave.transforms;
 
 import math.jwave.transforms.wavelets.Wavelet;
+import math.jwave.exceptions.JWaveException;
+import math.jwave.exceptions.JWaveFailure;
 
 /**
  * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -48,9 +50,7 @@ public abstract class WaveletTransform extends BasicTransform {
    *          object of type Wavelet
    */
   protected WaveletTransform( Wavelet wavelet ) {
-
     _wavelet = wavelet;
-
   } // check for objects od type Wavelet
 
   /*
@@ -62,5 +62,123 @@ public abstract class WaveletTransform extends BasicTransform {
   public Wavelet getWavelet( ) {
     return _wavelet;
   } // getWavelet
+
+  /**
+   * Performs a 1-D forward transform from time domain to Hilbert domain using
+   * one kind of wavelet transform algorithm for a given array of dimension
+   * (length) 2^p | p€N; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
+   * 
+   * @date 10.02.2010 08:23:24
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @throws JWaveException
+   *           if given array is not of length 2^p | p€N
+   * @see math.jwave.transforms.BasicTransform#forward(double[])
+   */
+  @Override public double[ ] forward( double[ ] arrTime ) throws JWaveException {
+
+    if( !isBinary( arrTime.length ) )
+      throw new JWaveFailure(
+          "WaveletTransform#forward - "
+              + "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
+              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+
+    int maxLevel = calcExponent( arrTime.length );
+    return forward( arrTime, maxLevel ); // forward by maximal steps
+
+  } // forward
+
+  /**
+   * Performs a 1-D reverse transform from Hilbert domain to time domain using
+   * one kind of wavelet transform algorithm for a given array of dimension
+   * (length) 2^p | p€N; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
+   * 
+   * @date 10.02.2010 08:23:24
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @throws JWaveException
+   *           if given array is not of length 2^p | p€N
+   * @see math.jwave.transforms.BasicTransform#reverse(double[])
+   */
+  @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
+
+    if( !isBinary( arrHilb.length ) )
+      throw new JWaveFailure(
+          "WaveletTransform#reverse - "
+              + "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
+              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+
+    int maxLevel = calcExponent( arrHilb.length );
+    return reverse( arrHilb, maxLevel ); // reverse by maximal steps
+
+  } // reverse
+
+  /**
+   * Performs several 1-D forward transforms from time domain to all possible
+   * Hilbert domains using one kind of wavelet transform algorithm for a given
+   * array of dimension (length) 2^p | p€N; N = 2, 4, 8, 16, 32, 64, 128, ..,
+   * and so on. However, the algorithm stores all levels in a matrix that has in
+   * first dimension the range of 0, .., p and in second dimension the
+   * coefficients (energy & details) of a certain level. From any level a full
+   * reconstruction can be performed. The first dimension is keeping the time
+   * series, due to being the Hilbert space of level 0. All following dimensions
+   * are keeping the next higher Hilbert spaces, so the next step in wavelet
+   * filtering.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 14:28:49
+   * @param arrTime
+   *          coefficients of time domain
+   * @return matDeComp coefficients of frequency or Hilbert domain in 2-D
+   *         spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent of M=2^p | p€N
+   * @throws JWaveException
+   *           if something does not match upon the criteria of input
+   * @see math.jwave.transforms.BasicTransform#decompose(double[])
+   */
+  @Override public double[ ][ ] decompose( double[ ] arrTime )
+      throws JWaveException {
+
+    int length = arrTime.length;
+    int levels = calcExponent( length );
+    double[ ][ ] matDeComp = new double[ levels + 1 ][ length ];
+    for( int p = 0; p <= levels; p++ )
+      System.arraycopy( forward( arrTime, p ), 0, matDeComp[ p ], 0, length );
+    return matDeComp;
+
+  } // decompose
+
+  /**
+   * Performs one 1-D reverse transform from Hilbert domain to time domain using
+   * one kind of wavelet transform algorithm for a given array of dimension
+   * (length) 2^p | p€N; N = 2, 4, 8, 16, 32, 64, 128, .., and so on. However,
+   * the algorithm uses on of level in a matrix that has in first dimension the
+   * range of 0, .., p and in second dimension the coefficients (energy &
+   * details) the level. From any level a full a reconstruction can be
+   * performed; so from the selected by "level". Anyway, the first dimension is
+   * keeping the time series, due to being the Hilbert space of level 0. All
+   * following dimensions are keeping the next higher Hilbert spaces, so the
+   * next step in wavelet filtering. If one want to denoise each level in the
+   * same way and compare results after reverse transform, this is the best
+   * input for it.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 14:29:01
+   * @see math.jwave.transforms.BasicTransform#recompose(double[][], int)
+   * @param matDeComp
+   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
+   *          of M=2^p | p€N
+   * @throws JWaveException
+   *           if something does not match upon the criteria of input
+   * @return a 1-D time domain signal
+   * @see math.jwave.transforms.BasicTransform#recompose(double[])
+   */
+  public double[ ] recompose( double[ ][ ] matDeComp, int level )
+      throws JWaveException {
+
+    if( level < 0 || level >= matDeComp.length )
+      throw new JWaveFailure( "WaveletTransform#recompose - "
+          + "given level is out of range" );
+
+    return reverse( matDeComp[ level ], level );
+
+  } // recompose
 
 } // WaveletTransform
