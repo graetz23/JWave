@@ -241,6 +241,57 @@ public final class Transform {
   } // reverse
 
   /**
+   * Performs the 2-D forward transform of the specified BasicWave object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 14:40:54
+   * @param matrixTime
+   *          coefficients of 2-D time domain; internal M(i),N(j)
+   * @param levelM
+   *          a certain level to stop transform for over rows
+   * @param levelN
+   *          a certain level to stop transform for over columns
+   * @return coefficients of 2-D frequency or Hilbert domain
+   */
+  public final double[ ][ ] forward( double[ ][ ] matrixTime, int levelM,
+      int levelN ) {
+    double[ ][ ] matrixHilb = null;
+    try {
+      matrixHilb = _basicTransform.forward( matrixTime, levelM, levelN );
+    } catch( JWaveException e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+    return matrixHilb;
+  } // forward
+
+  /**
+   * Performs the 2-D reverse transform of the specified BasicWave object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 14:42:12
+   * @param matrixFreq
+   *          coefficients of 2-D frequency or Hilbert domain; internal
+   *          M(i),N(j)
+   * @param levelM
+   *          a certain level to stop transform for over rows
+   * @param levelN
+   *          a certain level to stop transform for over columns
+   * @return coefficients of 2-D time domain
+   */
+  public final double[ ][ ] reverse( double[ ][ ] matrixHilb, int levelM,
+      int levelN ) {
+    double[ ][ ] matrixTime = null;
+    try {
+      matrixTime = _basicTransform.reverse( matrixHilb, levelM, levelN );
+    } catch( JWaveException e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+    return matrixTime;
+  } // reverse
+
+  /**
    * Performs the 3-D forward transform of the specified BasicWave object.
    * 
    * @date 10.07.2010 18:15:22
@@ -274,6 +325,61 @@ public final class Transform {
     double[ ][ ][ ] spaceTime = null;
     try {
       spaceTime = _basicTransform.reverse( spaceHilb );
+    } catch( JWaveException e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+    return spaceTime;
+  } // reverse
+
+  /**
+   * Performs the 3-D forward transform of the specified BasicWave object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 14:45:46
+   * @param spaceTime
+   *          coefficients of 2-D time domain; internal M(i),N(j),O(k)
+   * @param levelP
+   *          a certain level to stop transform for over rows
+   * @param levelQ
+   *          a certain level to stop transform for over columns
+   * @param levelR
+   *          a certain level to stop transform for over height
+   * @return coefficients of 2-D frequency or Hilbert domain
+   */
+  public final double[ ][ ][ ] forward( double[ ][ ][ ] spaceTime, int levelP,
+      int levelQ, int levelR ) {
+    double[ ][ ][ ] spaceHilb = null;
+    try {
+      spaceHilb = _basicTransform.forward( spaceTime, levelP, levelQ, levelR );
+    } catch( JWaveException e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+    return spaceHilb;
+  } // forward
+
+  /**
+   * Performs the 3-D reverse transform of the specified BasicWave object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 14:46:09
+   * @param spaceHilb
+   *          coefficients of 2-D frequency or Hilbert domain; internal
+   *          M(i),N(j),O(k)
+   * @param levelP
+   *          a certain level to start transform from over rows
+   * @param levelQ
+   *          a certain level to stop transform for over columns
+   * @param levelR
+   *          a certain level to start transform from over height
+   * @return coefficients of 2-D time domain
+   */
+  public final double[ ][ ][ ] reverse( double[ ][ ][ ] spaceHilb, int levelP,
+      int levelQ, int levelR ) {
+    double[ ][ ][ ] spaceTime = null;
+    try {
+      spaceTime = _basicTransform.reverse( spaceHilb, levelP, levelQ, levelR );
     } catch( JWaveException e ) {
       e.showMessage( );
       e.printStackTrace( );

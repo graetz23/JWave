@@ -13,24 +13,20 @@ available. Those wavelets have an odd number of coefficients and, therefore, do
 not match to the FWT & WPT algorithms which are requesting an even number of
 filter (scaling & wavelet) coefficients.
 
-However, those two wavelet transform
-algorithms are an example for one kind of a wavelet filtering. There are other
-ways (!) to filter or implement these algorithms; feel free. ;-) Furthermore,
-there is a new method beside forward( .. ) and reverse( .. ) of the FWT & WPT
-called decompose( ). This method allows for splitting a 1-D time signal into all
-possible filter levels or so in each posible wavelet space. The result is 2-D,
-starting with original signal; e.g. matrixResult[0][N]. Therefore, the method
-decompose( .. ) replaces an often requested stepping method that stops a set
-level; just take the coeffs from the requested level p of the 2-D result;
-matrixResult[p][N]. The methods forward( .. ) ande reverse( .. ) are always
-performing the maximal number of steps of a given signal of length N=2^p |
-p:={0,1,2,3,..}. Each step or level p is add up to the coefficients form the
-level p-1 before. So the result is 1-D, which is a (!) wanted - great -
-advantage of these kind of wavelet algorithms; available due to the transforms
-are orthogonal (orthonormal).
+However, those two wavelet transform algorithms are an example for one kind of
+a wavelet filtering. There are other ways (!) to filter or implement these
+algorithms; feel free. ;-) 
 
-The original time series can be reconstructed by
-the reverse( .. ) method with no losses; see examples or JUnit tests! Anyway,
-the implementation of JWave is based on several Design Patterns and hopefully
+For each there is a forward( .. ) and reverse( .. ) method implemented. The
+original time series can be reconstructed by the reverse( .. ) methods with
+no losses; see examples or JUnit tests! Otherwise if a thresholding is applied
+to Hilbert space there is either a denoising or a data compression possible.
+
+There are also new methods beside the old forward( .. ) and reverse( .. ).
+There are stepping forward( .. ) and reverse( .. ), that stop at a certain
+level, and decompose( .. ) and recompose( .. ), that supports all level of
+possible Hilbert spaces by using the stepping methods.
+
+Anyway, the implementation of JWave is based on several Design Patterns and hopefully
 appears user-friendly. Have a look at the the JUnit tests or at the Wiki pages
 for a detailed usage.
