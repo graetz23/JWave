@@ -255,62 +255,6 @@ public class DiscreteFourierTransform extends BasicTransform {
     return arrTime;
   } // reverse
 
-  /**
-   * The 2-D forward version of the Discrete Fourier Transform (DFT); The input
-   * array matTime is organized by real and imaginary parts of a complex number
-   * using even and odd places for the indices. For example: matTime[0][0] =
-   * real11, matTime[0][1] = imag11, matTime[0][2] = real12, matTime[0][3] =
-   * imag12, matTime[1][0] = real21, matTime[1][1] = imag21, matTime[1][2] =
-   * real22, matTime[1][3] = imag2... The output matFreq is organized by the
-   * same scheme.
-   * 
-   * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @see math.jwave.transforms.BasicTransform#forward(double[][])
-   */
-  @Override public double[ ][ ] forward( double[ ][ ] matTime ) {
-    return null;
-  } // forward
-
-  /**
-   * The 2-D reverse version of the Discrete Fourier Transform (DFT); The input
-   * array matFreq is organized by real and imaginary parts of a complex number
-   * using even and odd places for the indices. For example: matFreq[0][0] =
-   * real11, matFreq[0][1] = imag11, matFreq[0][2] = real12, matFreq[0][3] =
-   * imag12, matFreq[1][0] = real21, matFreq[1][1] = imag21, matFreq[1][2] =
-   * real22, matFreq[1][3] = imag2... The output matTime is organized by the
-   * same scheme.
-   * 
-   * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @see math.jwave.transforms.BasicTransform#reverse(double[][])
-   */
-  @Override public double[ ][ ] reverse( double[ ][ ] matFreq ) {
-    return null;
-  } // reverse
-
-  /**
-   * The 3-D forward version of the Discrete Fourier Transform (DFT);
-   * 
-   * @date 10.07.2010 18:10:43
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @see math.jwave.transforms.BasicTransform#forward(double[][][])
-   */
-  @Override public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
-    return null;
-  } // forward
-
-  /**
-   * The 3-D reverse version of the Discrete Fourier Transform (DFT);
-   * 
-   * @date 10.07.2010 18:10:45
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @see math.jwave.transforms.BasicTransform#reverse(double[][][])
-   */
-  @Override public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
-    return null;
-  } // reverse
-
   /*
    * Returns null pointer while DFT has sine or cosine as wavelet.
    * @author Christian Scheiblich (cscheiblich@gmail.com)

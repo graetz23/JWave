@@ -658,8 +658,10 @@ public abstract class BasicTransform {
    */
   protected int calcExponent( int number ) throws JWaveException {
     if( !isBinary( number ) )
-      throw new JWaveFailure( "BasicTransform#calcExponent - " + "given number is not binary" );
-    return MathToolKit.getExponent( (int)( number ) );
+      throw new JWaveFailure( "BasicTransform#calcExponent - "
+          + "given number is not binary: "
+          + "2^p | p€N .. = 1, 2, 4, 8, 16, 32, .. " );
+    return (int)( MathToolKit.getExponent( (int)( number ) ) );
   } // calcExponent
 
 } // BasicTransform
