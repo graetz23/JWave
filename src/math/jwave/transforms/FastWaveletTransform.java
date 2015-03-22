@@ -75,19 +75,18 @@ public class FastWaveletTransform extends WaveletTransform {
           "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
-    double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
+    int max = MathToolKit.getExponent( arrTime.length );
+    return forward( arrTime, max );
 
-    int h = arrHilb.length;
-    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-    while( h >= transformWavelength ) {
-
-      double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
-      System.arraycopy( arrTempPart, 0, arrHilb, 0, h );
-      h = h >> 1;
-
-    } // levels
-
-    return arrHilb;
+    //    double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
+    //    int h = arrHilb.length;
+    //    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+    //    while( h >= transformWavelength ) {
+    //      double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
+    //      System.arraycopy( arrTempPart, 0, arrHilb, 0, h );
+    //      h = h >> 1;
+    //    } // levels
+    //    return arrHilb;
 
   } // forward
 
@@ -108,19 +107,18 @@ public class FastWaveletTransform extends WaveletTransform {
           "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
-    double[ ] arrTime = Arrays.copyOf( arrHilb, arrHilb.length );
+    int max = MathToolKit.getExponent( arrHilb.length );
+    return reverse( arrHilb, max );
 
-    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-    int h = transformWavelength;
-    while( h <= arrTime.length && h >= transformWavelength ) {
-
-      double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
-      System.arraycopy( arrTempPart, 0, arrTime, 0, h );
-      h = h << 1;
-
-    } // levels
-
-    return arrTime;
+    //    double[ ] arrTime = Arrays.copyOf( arrHilb, arrHilb.length );
+    //    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+    //    int h = transformWavelength;
+    //    while( h <= arrTime.length && h >= transformWavelength ) {
+    //      double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
+    //      System.arraycopy( arrTempPart, 0, arrTime, 0, h );
+    //      h = h << 1;
+    //    } // levels
+    //    return arrTime;
 
   } // reverse
 
@@ -239,7 +237,7 @@ public class FastWaveletTransform extends WaveletTransform {
       double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
       System.arraycopy( arrTempPart, 0, arrHilb, 0, h );
 
-      // each level is keepinh the energy and details of the one before!
+      // each level is keeping the energy and details of the one before!
       // So from each level there can be a reconstruction! 
       for( int i = 0; i < arrTime.length; i++ )
         if( i < h )
@@ -255,9 +253,6 @@ public class FastWaveletTransform extends WaveletTransform {
     return matDeComp;
 
   } // decompose
-
-
-
 
   /**
    * Generates from a 1-D signal a 2-D output, where the second dimension are
