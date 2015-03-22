@@ -631,4 +631,35 @@ public abstract class BasicTransform {
 
   } // reverse
 
+  /**
+   * Returns true if given integer is of type binary (2, 4, 8, 16, ..) else the
+   * method returns false.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 13:31:39
+   * @param number
+   *          an integer of type 2, 4, 8, 16, 32, 64, ...
+   * @return true if number is a binary number else false
+   */
+  protected boolean isBinary( int number ) {
+    return MathToolKit.isBinary( number ); // use MathToolKit or implement algorithm here
+  } // isBinary
+
+  /**
+   * Return the exponent of a binary a number
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 13:35:50
+   * @param number
+   *          any integer that fulfills 2^p | p€N
+   * @return p as number = 2^p | p€N
+   * @throws JWaveException
+   *           if given number is not a binary number
+   */
+  protected int calcExponent( int number ) throws JWaveException {
+    if( !isBinary( number ) )
+      throw new JWaveFailure( "BasicTransform#calcExponent - " + "given number is not binary" );
+    return MathToolKit.getExponent( (int)( number ) );
+  } // calcExponent
+
 } // BasicTransform
