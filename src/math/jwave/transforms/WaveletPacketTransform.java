@@ -23,6 +23,8 @@
  */
 package math.jwave.transforms;
 
+import java.util.Arrays;
+
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
@@ -51,7 +53,7 @@ public class WaveletPacketTransform extends WaveletTransform {
   public WaveletPacketTransform( Wavelet wavelet ) {
 
     super( wavelet );
-    
+
     _name = "Wavelet Packet Transform";
 
   } // WaveletPacketTransform
@@ -111,6 +113,71 @@ public class WaveletPacketTransform extends WaveletTransform {
     } // if
 
     return arrHilb;
+
+  } // forward
+
+  /**
+   * Implementation of the 1-D forward wavelet packet transform for arrays of
+   * dim N by filtering with the longest wavelet first and then always with both
+   * sub bands -- low and high (approximation and details) -- by the next
+   * smaller wavelet.
+   * 
+   * @date 23.02.2010 13:44:05
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @throws JWaveException
+   * @see math.jwave.transforms.BasicTransform#forward(double[])
+   */
+  @Override public double[ ] forward( double[ ] arrTime, int level )
+      throws JWaveException {
+
+    if( !MathToolKit.isBinary( arrTime.length ) )
+      throw new JWaveFailure(
+          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
+              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+
+    int noOfLevels = MathToolKit.getExponent( arrTime.length );
+    if( level < 0 || level > noOfLevels )
+      throw new JWaveFailure(
+          "WaveletPacketTransform#forward - given level is out of range for given array" );
+
+    double[ ] arrHilb = new double[ arrTime.length ];
+    for( int i = 0; i < arrTime.length; i++ )
+      arrHilb[ i ] = arrTime[ i ];
+
+    int k = arrTime.length;
+
+    int h = arrTime.length;
+
+    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+
+    int l = 0;
+
+    while( h >= transformWavelength && l < level ) {
+
+      int g = k / h; // 1 -> 2 -> 4 -> 8 -> ...
+
+      for( int p = 0; p < g; p++ ) {
+
+        double[ ] iBuf = new double[ h ];
+
+        for( int i = 0; i < h; i++ )
+          iBuf[ i ] = arrHilb[ i + ( p * h ) ];
+
+        double[ ] oBuf = _wavelet.forward( iBuf, h );
+
+        for( int i = 0; i < h; i++ )
+          arrHilb[ i + ( p * h ) ] = oBuf[ i ];
+
+      } // packets
+
+      h = h >> 1;
+
+      l++;
+
+    } // levels
+
+    return arrHilb;
+
   } // forward
 
   /**
@@ -170,6 +237,58 @@ public class WaveletPacketTransform extends WaveletTransform {
       } // levels
 
     } // if
+
+    return arrTime;
+
+  } // reverse
+
+  @Override public double[ ] reverse( double[ ] arrHilb, int level )
+      throws JWaveException {
+
+    if( !MathToolKit.isBinary( arrHilb.length ) )
+      throw new JWaveFailure(
+          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
+              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+
+    int noOfLevels = MathToolKit.getExponent( arrHilb.length );
+    if( level < 0 || level > noOfLevels )
+      throw new JWaveFailure(
+          "WaveletPacketTransform#reverse - given level is out of range for given array" );
+
+    int length = arrHilb.length; // length of first Hilbert space
+    double[ ] arrTime = Arrays.copyOf( arrHilb, length );
+
+    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+
+    int k = arrTime.length;
+
+    int h = transformWavelength;
+
+    int steps = (int)MathToolKit.getExponent( length );
+    for( int l = level; l < steps; l++ )
+      h = h << 1; // begin reverse transform at certain - matching - level of hilbert space
+
+    while( h <= arrTime.length && h >= transformWavelength ) {
+
+      int g = k / h; // ... -> 8 -> 4 -> 2 -> 1
+
+      for( int p = 0; p < g; p++ ) {
+
+        double[ ] iBuf = new double[ h ];
+
+        for( int i = 0; i < h; i++ )
+          iBuf[ i ] = arrTime[ i + ( p * h ) ];
+
+        double[ ] oBuf = _wavelet.reverse( iBuf, h );
+
+        for( int i = 0; i < h; i++ )
+          arrTime[ i + ( p * h ) ] = oBuf[ i ];
+
+      } // packets
+
+      h = h << 1;
+
+    } // levels
 
     return arrTime;
 

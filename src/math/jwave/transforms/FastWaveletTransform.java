@@ -185,9 +185,8 @@ public class FastWaveletTransform extends WaveletTransform {
       throw new JWaveFailure(
           "FastWaveletTransform#reverse - given level is out of range for given array" );
 
-    double[ ] arrTime = Arrays.copyOf( arrHilb, arrHilb.length );
-
-    int length = arrTime.length; // length of first Hilbert space
+    int length = arrHilb.length; // length of first Hilbert space
+    double[ ] arrTime = Arrays.copyOf( arrHilb, length );
 
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
     int h = transformWavelength;
