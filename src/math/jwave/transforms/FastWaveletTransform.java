@@ -250,6 +250,7 @@ public class FastWaveletTransform extends WaveletTransform {
     double[ ][ ] matDeComp = new double[ levels + 1 ][ length ];
     for( int p = 0; p <= levels; p++ )
       System.arraycopy( forward( arrTime, p ), 0, matDeComp[ p ], 0, length );
+    return matDeComp;
 
     //    for( int i = 0; i < arrTime.length; i++ )
     //      matDeComp[ 0 ][ i ] = arrTime[ i ]; // copy hilbert space of level 0; normal space 
@@ -269,8 +270,7 @@ public class FastWaveletTransform extends WaveletTransform {
     //      h = h >> 1;
     //      l++; // next level
     //    } // levels
-
-    return matDeComp;
+    //    return matDeComp;
 
   } // decompose
 
@@ -303,31 +303,27 @@ public class FastWaveletTransform extends WaveletTransform {
 
     int noOfLevels = matDeComp.length;
     if( level < 0 || level >= noOfLevels )
-      throw new JWaveFailure( "FastWaveletTransform#recomposeFromLevel - "
+      throw new JWaveFailure( "FastWaveletTransform#recompose - "
           + "given level is out of range" );
 
-    int length = matDeComp[ 0 ].length; // length of first Hilbert space
+    return reverse( matDeComp[ level ], level );
 
-    double[ ] arrTime = new double[ length ];
-    for( int i = 0; i < length; i++ )
-      arrTime[ i ] = matDeComp[ level ][ i ]; // take selected level for reconstruction
-
-    // go to selected level and perform matching reverse transform for selected level
-    int transformWavelength = _wavelet.getTransformWavelength( ); // normally 2
-    int h = transformWavelength;
-    int steps = calcExponent( length );
-    for( int l = level; l < steps; l++ )
-      h = h << 1; // begin reverse transform at certain - matching - level of hilbert space
-
-    while( h <= arrTime.length && h >= transformWavelength ) {
-
-      double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
-      System.arraycopy( arrTempPart, 0, arrTime, 0, h );
-      h = h << 1;
-
-    } // levels
-
-    return arrTime;
+    //    int length = matDeComp[ 0 ].length; // length of first Hilbert space
+    //    double[ ] arrTime = new double[ length ];
+    //    for( int i = 0; i < length; i++ )
+    //      arrTime[ i ] = matDeComp[ level ][ i ]; // take selected level for reconstruction
+    //    // go to selected level and perform matching reverse transform for selected level
+    //    int transformWavelength = _wavelet.getTransformWavelength( ); // normally 2
+    //    int h = transformWavelength;
+    //    int steps = calcExponent( length );
+    //    for( int l = level; l < steps; l++ )
+    //      h = h << 1; // begin reverse transform at certain - matching - level of hilbert space
+    //    while( h <= arrTime.length && h >= transformWavelength ) {
+    //      double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
+    //      System.arraycopy( arrTempPart, 0, arrTime, 0, h );
+    //      h = h << 1;
+    //    } // levels
+    //    return arrTime;
 
   } // recompose
 
