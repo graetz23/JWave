@@ -91,38 +91,6 @@ public class FastWaveletTransform extends WaveletTransform {
   } // forward
 
   /**
-   * Performs the 1-D reverse transform for arrays of dim N from Hilbert domain
-   * to time domain for the given array using the Fast Wavelet Transform (FWT)
-   * algorithm and the selected wavelet.
-   * 
-   * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @throws JWaveException
-   * @see math.jwave.transforms.BasicTransform#reverse(double[])
-   */
-  @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
-
-    if( !MathToolKit.isBinary( arrHilb.length ) )
-      throw new JWaveFailure(
-          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
-
-    int max = MathToolKit.getExponent( arrHilb.length );
-    return reverse( arrHilb, max );
-
-    //    double[ ] arrTime = Arrays.copyOf( arrHilb, arrHilb.length );
-    //    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
-    //    int h = transformWavelength;
-    //    while( h <= arrTime.length && h >= transformWavelength ) {
-    //      double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
-    //      System.arraycopy( arrTempPart, 0, arrTime, 0, h );
-    //      h = h << 1;
-    //    } // levels
-    //    return arrTime;
-
-  } // reverse
-
-  /**
    * Performs the 1-D forward transform to a Hilbert space of a certain domain
    * (level) for arrays of dim 2^p | p€N of time domain, by using the Fast
    * Wavelet Transform (FWT) algorithm.
@@ -161,6 +129,38 @@ public class FastWaveletTransform extends WaveletTransform {
     return arrHilb;
 
   } // forward
+
+  /**
+   * Performs the 1-D reverse transform for arrays of dim N from Hilbert domain
+   * to time domain for the given array using the Fast Wavelet Transform (FWT)
+   * algorithm and the selected wavelet.
+   * 
+   * @date 10.02.2010 08:23:24
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @throws JWaveException
+   * @see math.jwave.transforms.BasicTransform#reverse(double[])
+   */
+  @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
+
+    if( !MathToolKit.isBinary( arrHilb.length ) )
+      throw new JWaveFailure(
+          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
+              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+
+    int max = MathToolKit.getExponent( arrHilb.length );
+    return reverse( arrHilb, max );
+
+    //    double[ ] arrTime = Arrays.copyOf( arrHilb, arrHilb.length );
+    //    int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
+    //    int h = transformWavelength;
+    //    while( h <= arrTime.length && h >= transformWavelength ) {
+    //      double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
+    //      System.arraycopy( arrTempPart, 0, arrTime, 0, h );
+    //      h = h << 1;
+    //    } // levels
+    //    return arrTime;
+
+  } // reverse
 
   /**
    * Performs the 1-D reverse transform from a certain domain of dim 2^p | p€N

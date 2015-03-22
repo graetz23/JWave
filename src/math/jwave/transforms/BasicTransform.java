@@ -27,6 +27,7 @@ import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveError;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
+import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -89,7 +90,7 @@ public abstract class BasicTransform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrTime
    *          coefficients of 1-D time domain
-   * @return coefficients of 1-D frequency or Hilbert domain
+   * @return coefficients of 1-D frequency or Hilbert space
    * @throws JWaveException
    */
   public abstract double[ ] forward( double[ ] arrTime ) throws JWaveException;
@@ -103,8 +104,7 @@ public abstract class BasicTransform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
-   * @return matDeComp 2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the
-   *         exponent of N=2^p
+   * @return coefficients of time series of 1-D frequency or Hilbert space
    * @throws JWaveException
    */
   public abstract double[ ] reverse( double[ ] arrFreq ) throws JWaveException;
@@ -126,7 +126,8 @@ public abstract class BasicTransform {
   public double[ ] forward( double[ ] arrTime, int level )
       throws JWaveException {
 
-    throw new JWaveError( "method is not implemented for this transform type!" );
+    throw new JWaveError( "BasicTransform#forward - "
+        + "method is not implemented for this transform type!" );
 
   } // forward
 
@@ -147,7 +148,8 @@ public abstract class BasicTransform {
   public double[ ] reverse( double[ ] arrFreq, int level )
       throws JWaveException {
 
-    throw new JWaveError( "method is not implemented for this transform type!" );
+    throw new JWaveError( "BasicTransform#reverse - "
+        + "method is not implemented for this transform type!" );
 
   } // reverse
 
@@ -164,7 +166,8 @@ public abstract class BasicTransform {
    */
   public double[ ][ ] decompose( double[ ] arrTime ) throws JWaveException {
 
-    throw new JWaveError( "method is not implemented for this transform type!" );
+    throw new JWaveError( "BasicTransform#decompose - "
+        + "method is not implemented for this transform type!" );
 
   } // decompose
 
@@ -205,7 +208,8 @@ public abstract class BasicTransform {
   public double[ ] recompose( double[ ][ ] matDeComp, int level )
       throws JWaveException {
 
-    throw new JWaveError( "method is not working for this transform type!" );
+    throw new JWaveError( "BasicTransform#recompose - "
+        + "method is not implemented for this transform type!" );
 
   } // recompose
 
@@ -292,17 +296,43 @@ public abstract class BasicTransform {
 
   /**
    * Performs the 2-D forward transform from time domain to frequency or Hilbert
-   * domain for a given array depending on the used transform algorithm by
+   * domain for a given matrix depending on the used transform algorithm by
    * inheritance.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 12:47:01
+   * @param matTime
+   * @return
+   * @throws JWaveException
+   *           if matrix id not of matching dimension like 2^p | p€N
+   */
+  public double[ ][ ] forward( double[ ][ ] matTime ) throws JWaveException {
+
+    int maxM = MathToolKit.getExponent( matTime.length );
+    int maxN = MathToolKit.getExponent( matTime[ 0 ].length );
+    return forward( matTime, maxM, maxN );
+
+  } // forward
+
+  /**
+   * Performs the 2-D forward transform from time domain to frequency or Hilbert
+   * domain of a certain level for a given matrix depending on the used
+   * transform algorithm by inheritance. The supported level has to match the
+   * possible dimensions of the given matrix.
    * 
    * @date 10.02.2010 11:00:29
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matTime
    *          coefficients of 2-D time domain
+   * @param lvlM
+   *          level to stop in dimension M of the matrix
+   * @param lvlN
+   *          level to stop in dimension N of the matrix
    * @return coefficients of 2-D frequency or Hilbert domain
    * @throws JWaveException
    */
-  public double[ ][ ] forward( double[ ][ ] matTime ) throws JWaveException {
+  public double[ ][ ] forward( double[ ][ ] matTime, int lvlM, int lvlN )
+      throws JWaveException {
 
     int noOfRows = matTime.length;
     int noOfCols = matTime[ 0 ].length;
@@ -316,7 +346,7 @@ public abstract class BasicTransform {
       for( int j = 0; j < noOfCols; j++ )
         arrTime[ j ] = matTime[ i ][ j ];
 
-      double[ ] arrHilb = forward( arrTime );
+      double[ ] arrHilb = forward( arrTime, lvlN );
 
       for( int j = 0; j < noOfCols; j++ )
         matHilb[ i ][ j ] = arrHilb[ j ];
@@ -330,7 +360,7 @@ public abstract class BasicTransform {
       for( int i = 0; i < noOfRows; i++ )
         arrTime[ i ] = matHilb[ i ][ j ];
 
-      double[ ] arrHilb = forward( arrTime );
+      double[ ] arrHilb = forward( arrTime, lvlM );
 
       for( int i = 0; i < noOfRows; i++ )
         matHilb[ i ][ j ] = arrHilb[ i ];
@@ -338,21 +368,46 @@ public abstract class BasicTransform {
     } // cols
 
     return matHilb;
+
   } // forward
 
   /**
    * Performs the 2-D reverse transform from frequency or Hilbert or time domain
-   * to time domain for a given array depending on the used transform algorithm
+   * to time domain for a given matrix depending on the used transform algorithm
    * by inheritance.
    * 
-   * @date 10.02.2010 11:01:38
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 10.02.2010 11:01:38
    * @param matFreq
-   *          coefficients of 2-D frequency or Hilbert domain
-   * @return coefficients of 2-D time domain
+   * @return
    * @throws JWaveException
    */
   public double[ ][ ] reverse( double[ ][ ] matFreq ) throws JWaveException {
+
+    int maxM = MathToolKit.getExponent( matFreq.length );
+    int maxN = MathToolKit.getExponent( matFreq[ 0 ].length );
+    return reverse( matFreq, maxM, maxN );
+
+  } // reverse
+
+  /**
+   * Performs the 2-D reverse transform from frequency or Hilbert or time domain
+   * to time domain of a certain level for a given matrix depending on the used
+   * transform algorithm by inheritance.
+   * 
+   * @date 22.03.2015 12:49:16
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @param matFreq
+   *          coefficients of 2-D frequency or Hilbert domain
+   * @param lvlM
+   *          level to start reconstruction for dimension M of the matrix
+   * @param lvlN
+   *          level to start reconstruction for dimension N of the matrix
+   * @return coefficients of 2-D time domain
+   * @throws JWaveException
+   */
+  public double[ ][ ] reverse( double[ ][ ] matFreq, int lvlM, int lvlN )
+      throws JWaveException {
 
     int noOfRows = matFreq.length;
     int noOfCols = matFreq[ 0 ].length;
@@ -366,7 +421,7 @@ public abstract class BasicTransform {
       for( int i = 0; i < noOfRows; i++ )
         arrFreq[ i ] = matFreq[ i ][ j ];
 
-      double[ ] arrTime = reverse( arrFreq ); // AED 
+      double[ ] arrTime = reverse( arrFreq, lvlM ); // AED 
 
       for( int i = 0; i < noOfRows; i++ )
         matTime[ i ][ j ] = arrTime[ i ];
@@ -380,7 +435,7 @@ public abstract class BasicTransform {
       for( int j = 0; j < noOfCols; j++ )
         arrFreq[ j ] = matTime[ i ][ j ];
 
-      double[ ] arrTime = reverse( arrFreq ); // AED 
+      double[ ] arrTime = reverse( arrFreq, lvlN ); // AED 
 
       for( int j = 0; j < noOfCols; j++ )
         matTime[ i ][ j ] = arrTime[ j ];
@@ -388,22 +443,44 @@ public abstract class BasicTransform {
     } // rows
 
     return matTime;
+
   } // reverse
 
   /**
    * Performs the 3-D forward transform from time domain to frequency or Hilbert
-   * domain for a given array depending on the used transform algorithm by
+   * domain for a given space (3-D) depending on the used transform algorithm by
    * inheritance.
    * 
-   * @date 10.07.2010 18:08:17
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 10.07.2010 18:08:17
+   * @param spcTime
+   * @return
+   * @throws JWaveException
+   */
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime )
+      throws JWaveException {
+
+    int maxP = MathToolKit.getExponent( spcTime.length );
+    int maxQ = MathToolKit.getExponent( spcTime[ 0 ].length );
+    int maxR = MathToolKit.getExponent( spcTime[ 0 ][ 0 ].length );
+    return forward( spcTime, maxP, maxQ, maxR );
+
+  } // forward
+
+  /**
+   * Performs the 3-D forward transform from time domain to frequency or Hilbert
+   * domain of a certain level for a given space (3-D) depending on the used
+   * transform algorithm by inheritance.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 12:58:34
    * @param spcTime
    *          coefficients of 3-D time domain domain
    * @return coefficients of 3-D frequency or Hilbert domain
    * @throws JWaveException
    */
-  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime )
-      throws JWaveException {
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime, int lvlP, int lvlQ,
+      int lvlR ) throws JWaveException {
 
     int noOfRows = spcTime.length; // first dimension
     int noOfCols = spcTime[ 0 ].length; // second dimension
@@ -425,7 +502,7 @@ public abstract class BasicTransform {
 
       } // cols      
 
-      double[ ][ ] matHilb = forward( matTime ); // 2-D forward
+      double[ ][ ] matHilb = forward( matTime, lvlP, lvlQ ); // 2-D forward
 
       for( int j = 0; j < noOfCols; j++ ) {
 
@@ -448,7 +525,7 @@ public abstract class BasicTransform {
         for( int i = 0; i < noOfRows; i++ )
           arrTime[ i ] = spcHilb[ i ][ j ][ k ];
 
-        double[ ] arrHilb = forward( arrTime ); // 1-D forward
+        double[ ] arrHilb = forward( arrTime, lvlR ); // 1-D forward
 
         for( int i = 0; i < noOfRows; i++ )
           spcHilb[ i ][ j ][ k ] = arrHilb[ i ];
@@ -463,18 +540,40 @@ public abstract class BasicTransform {
 
   /**
    * Performs the 3-D reverse transform from frequency or Hilbert domain to time
-   * domain for a given array depending on the used transform algorithm by
+   * domain for a given space (3-D) depending on the used transform algorithm by
    * inheritance.
    * 
-   * @date 10.07.2010 18:09:54
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 10.07.2010 18:09:54
+   * @param spcHilb
+   * @return
+   * @throws JWaveException
+   */
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb )
+      throws JWaveException {
+
+    int maxP = MathToolKit.getExponent( spcHilb.length );
+    int maxQ = MathToolKit.getExponent( spcHilb[ 0 ].length );
+    int maxR = MathToolKit.getExponent( spcHilb[ 0 ][ 0 ].length );
+    return reverse( spcHilb, maxP, maxQ, maxR );
+
+  } // reverse
+
+  /**
+   * Performs the 3-D reverse transform from frequency or Hilbert domain of a
+   * certain level to time domain for a given space (3-D) depending on the used
+   * transform algorithm by inheritance. The supported coefficients have to
+   * match the level of Hilbert space.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 13:01:47
    * @param spcHilb
    *          coefficients of 3-D frequency or Hilbert domain
    * @return coefficients of 3-D time domain
    * @throws JWaveException
    */
-  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb )
-      throws JWaveException {
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb, int lvlP, int lvlQ,
+      int lvlR ) throws JWaveException {
 
     int noOfRows = spcHilb.length; // first dimension
     int noOfCols = spcHilb[ 0 ].length; // second dimension
@@ -496,7 +595,7 @@ public abstract class BasicTransform {
 
       } // cols      
 
-      double[ ][ ] matTime = reverse( matHilb ); // 2-D reverse
+      double[ ][ ] matTime = reverse( matHilb, lvlP, lvlQ ); // 2-D reverse
 
       for( int j = 0; j < noOfCols; j++ ) {
 
@@ -519,7 +618,7 @@ public abstract class BasicTransform {
         for( int i = 0; i < noOfRows; i++ )
           arrHilb[ i ] = spcTime[ i ][ j ][ k ];
 
-        double[ ] arrTime = reverse( arrHilb ); // 1-D reverse
+        double[ ] arrTime = reverse( arrHilb, lvlR ); // 1-D reverse
 
         for( int i = 0; i < noOfRows; i++ )
           spcTime[ i ][ j ][ k ] = arrTime[ i ];
