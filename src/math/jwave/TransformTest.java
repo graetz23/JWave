@@ -46,7 +46,7 @@ import org.junit.Test;
  */
 public class TransformTest {
 
-  @Test public void testSamplingSine( ) {
+  @Test public void testSampling( ) {
 
     int samplingRate = 1024 * 1024; // sampling rate
     int noOfOscillations = 1024;
@@ -64,29 +64,26 @@ public class TransformTest {
 
     assertArray( arrTime, arrReco, 1e-10 );
 
-  } // testSamplingSine
-
-  @Test public void testSamplingCosine( ) {
-
-    int samplingRate = 1024 * 1024; // sampling rate
-    int noOfOscillations = 1024;
-
     // generate sampled (discrete) sine over 2 pi
-    double[ ] arrTime =
+    arrTime =
         MathToolKit.createCosineOscillation( samplingRate, noOfOscillations );
 
-    Transform transform =
-        TransformBuilder.create( "Fast Wavelet Transform", "Haar" );
+    arrHilb = transform.forward( arrTime );
 
-    double[ ] arrHilb = transform.forward( arrTime );
-
-    double[ ] arrReco = transform.reverse( arrHilb );
+    arrReco = transform.reverse( arrHilb );
 
     assertArray( arrTime, arrReco, 1e-10 );
 
-  } // testSamplingCosine
+  } // testSampling
 
-  @Test public void testDiscreteFourierTransform( ) throws JWaveFailure {
+  /**
+   * JUnit for Discrete Fourier Transform
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 17:03:44
+   * @throws JWaveFailure
+   */
+  @Test public void testDFT( ) throws JWaveFailure {
 
     int samplingRate = 8; // sampling rate
     int noOfOscillations = 1;
@@ -218,254 +215,6 @@ public class TransformTest {
   } // testRounding
 
   /**
-   * Test method to check the rounding error of several forward and reverse
-   * transforms using the Fast Wavelet Transform algorithm and any given Wavelet
-   * object as input.
-   * 
-   * @date 10.02.2010 10:28:00
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   */
-  public void testFastWaveletTransformRounding( double[ ] arr, Wavelet wavelet,
-      double delta ) {
-
-    long noOfSteps = 1000;
-    double[ ] arrTime = arr;
-
-    double[ ] arrTimeRound = new double[ arrTime.length ];
-    for( int c = 0; c < arrTime.length; c++ )
-      arrTimeRound[ c ] = arrTime[ c ];
-
-    Transform t = new Transform( new FastWaveletTransform( wavelet ) );
-
-    System.out.println( "testRounding FWT " + wavelet.getName( ) + " - "
-        + noOfSteps + " transforms => rounding error: " + delta );
-
-    System.out.print( "Performing: " + noOfSteps
-        + " forward and reverse transforms ..." );
-    for( long s = 0; s < noOfSteps; s++ )
-      arrTimeRound = t.reverse( t.forward( arrTimeRound ) );
-    System.out.println( "done!" );
-
-    assertArray( arrTime, arrTimeRound, delta );
-
-    double timeErrorAbs = 0.;
-    for( int c = 0; c < arrTimeRound.length; c++ )
-      timeErrorAbs += Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
-    System.out.println( "Absolute error: " + timeErrorAbs );
-
-    double timeErrorRel = 0.;
-    for( int c = 0; c < arrTimeRound.length; c++ )
-      timeErrorRel +=
-          Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] ) * 100. / arrTime[ c ] );
-
-    System.out.println( "Relative error [%]: " + timeErrorRel );
-
-  } // testFastWaveletTransformRounding
-
-  /**
-   * Test method to check the rounding error of several forward and reverse
-   * transforms using the Wavelet Packet Transform algorithm and any given
-   * Wavelet object as input.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 22.03.2015 16:00:57
-   * @param arr
-   * @param wavelet
-   * @param delta
-   */
-  public void testWaveletPacketTransformRounding( double[ ] arr,
-      Wavelet wavelet, double delta ) {
-
-    long noOfSteps = 256;
-    double[ ] arrTime = arr;
-
-    double[ ] arrTimeRound = new double[ arrTime.length ];
-    for( int c = 0; c < arrTime.length; c++ )
-      arrTimeRound[ c ] = arrTime[ c ];
-
-    System.out.println( "testRounding WPT " + wavelet.getName( ) + " - "
-        + noOfSteps + " transforms => rounding error: " + delta );
-
-    Transform t = new Transform( new WaveletPacketTransform( wavelet ) );
-
-    System.out.print( "Performing: " + noOfSteps
-        + " forward and reverse transforms ..." );
-    for( long s = 0; s < noOfSteps; s++ )
-      arrTimeRound = t.reverse( t.forward( arrTimeRound ) );
-    System.out.println( "done!" );
-
-    assertArray( arrTime, arrTimeRound, delta );
-
-    double timeErrorAbs = 0.;
-    for( int c = 0; c < arrTimeRound.length; c++ )
-      timeErrorAbs += Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
-    System.out.println( "Absolute error: " + timeErrorAbs );
-
-    double timeErrorRel = 0.;
-    for( int c = 0; c < arrTimeRound.length; c++ )
-      timeErrorRel +=
-          Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] ) * 100. / arrTime[ c ] );
-
-    System.out.println( "Relative error [%]: " + timeErrorRel );
-
-  } // testWaveletPacketTransformRounding  
-
-  /**
-   * Test method for {@link math.jwave.Transform#forward(double[])}.
-   */
-  @Test public void testForwardDoubleArray( ) {
-
-    System.out.println( "" );
-    System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 1-D method " + "using Haar1 Wavelet" );
-
-    double delta = 1.e-12;
-
-    double[ ] arrTime = { 1., 1., 1., 1. };
-
-    showTime( arrTime );
-
-    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-    // Transform t = new Transform( new FastWaveletTransform( new Haar1Orthogonal( ) ) );
-    // Transform t = new Transform( new FastWaveletTransform( new Daubechies20( ) ) );
-
-    double[ ] arrHilb = t.forward( arrTime );
-
-    showHilb( arrHilb );
-
-    double[ ] expected = { 2., 0., 0., 0. }; // orthonormal Hilbert space
-    // double[ ] expected = { 4., 0., 0., 0. }; // orthogonal Hilbert space for Haar1Orthogonal
-    assertArray( expected, arrHilb, delta );
-
-    System.out.println( "" );
-    System.out.println( "Testing the Fast Wavelet Transform "
-        + "forward 1-D method " + "using Haar1 Wavelet " + "and a long array" );
-
-    delta = 1.e-12;
-
-    double[ ] arrTime2 = { // array of length 64
-        1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
-
-    showTime( arrTime2 );
-
-    t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-    arrHilb = t.forward( arrTime2 );
-
-    showHilb( arrHilb );
-
-    double[ ] expected2 = { // array of length 64
-        8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. }; // orthonormal Hilbert space
-    assertArray( expected2, arrHilb, delta );
-
-    System.out.println( "" );
-    System.out
-        .println( "Testing the Fast Wavelet Transform " + "forward 1-D method "
-            + "using Haar1 Wavelet " + "and a random array" );
-
-    delta = 1.e-12;
-
-    double[ ] arrTime3 = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
-
-    showTime( arrTime3 );
-
-    t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-    arrHilb = t.forward( arrTime3 );
-
-    showHilb( arrHilb );
-
-    double[ ] expected3 =
-        { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2,
-            -0.7778174593052021, -0.7778174593052025, 0.7778174593052025,
-            0.7778174593052023 }; // orthonormal Hilbert space
-
-    assertArray( expected3, arrHilb, delta );
-
-  } // testForwardDoubleArray
-
-  /**
-   * Test method for {@link math.jwave.Transform#reverse(double[])}.
-   */
-  @Test public void testReverseDoubleArray( ) {
-
-    System.out.println( "" );
-    System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using Haar1 Wavelet" );
-
-    double delta = 1e-12;
-
-    double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal Hilbert space
-    // double[ ] arrHilb = { 4., 0., 0., 0. }; // orthogonal Hilbert space for Haar1Orthogonal
-
-    showHilb( arrHilb );
-
-    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-    double[ ] arrTime = t.reverse( arrHilb );
-
-    showTime( arrTime );
-
-    double[ ] expected = { 1., 1., 1., 1. };
-    assertArray( expected, arrTime, delta );
-
-    System.out.println( "" );
-    System.out.println( "Testing the Fast Wavelet Transform "
-        + "reverse 1-D method " + "using Haar1 Wavelet" );
-
-    delta = 1e-12;
-
-    double[ ] arrHilb2 = {  // array of length 64
-        8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. }; // orthonormal Hilbert space
-
-    showHilb( arrHilb2 );
-
-    t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-    arrTime = t.reverse( arrHilb2 );
-
-    showTime( arrTime );
-
-    double[ ] expected2 = {  // array of length 64
-        1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-            1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.
-
-        };
-    assertArray( expected2, arrTime, delta );
-
-    System.out.println( "" );
-    System.out
-        .println( "Testing the Fast Wavelet Transform " + "reverse 1-D method "
-            + "using Haar1 Wavelet " + "and a random array" );
-
-    delta = 1e-12;
-
-    double[ ] arrHilb3 =
-        { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2,
-            -0.7778174593052021, -0.7778174593052025, 0.7778174593052025,
-            0.7778174593052023 }; // orthonormal Hilbert space
-
-    showHilb( arrHilb3 );
-
-    t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-    arrTime = t.reverse( arrHilb3 );
-
-    showTime( arrTime );
-
-    double[ ] expected3 = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
-
-    assertArray( expected3, arrTime, delta );
-
-  } // testReverseDoubleArray
-
-  /**
    * Test some real values over all wavelets.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -493,7 +242,7 @@ public class TransformTest {
 
       double[ ] arrReco = fwt.reverse( arrHilb );
 
-      showTime( arrReco );
+      // showTime( arrReco );
 
       double[ ] arrRecoExpected = arrTime;
 
@@ -938,7 +687,7 @@ public class TransformTest {
   /**
    * Test method for {@link math.jwave.Transform#forward(Complex[])}.
    */
-  @Test public void testForwardComplexArray( ) {
+  @Test public void testComplex( ) {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
@@ -953,7 +702,7 @@ public class TransformTest {
     for( int i = 0; i < arrTimeLength; i++ )
       arrTime[ i ] = new Complex( 1., 1. );
 
-    showTime( arrTime );
+    // showTime( arrTime );
 
     Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
     // Transform t = new Transform( new FastWaveletTransform( new Haar1Orthogonal( ) ) );
@@ -961,7 +710,7 @@ public class TransformTest {
 
     Complex[ ] arrHilb = t.forward( arrTime );
 
-    showHilb( arrHilb );
+    // showHilb( arrHilb );
 
     Complex[ ] expected = new Complex[ arrTimeLength ];
 
@@ -972,36 +721,24 @@ public class TransformTest {
 
     assertArray( expected, arrHilb, delta );
 
-  } // testForwardComplexArray
-
-  /**
-   * Test method for {@link math.jwave.Transform#reverse(Complex[])}.
-   */
-  @Test public void testReverseComplexArray( ) {
-
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
         + "reverse 1-D method " + "using Haar1 Wavelet" );
 
-    double delta = 1e-12;
-
-    int arrTimeLength = 8;
-
-    Complex[ ] arrHilb = new Complex[ arrTimeLength ];
+    arrHilb = new Complex[ arrTimeLength ];
 
     for( int i = 0; i < arrTimeLength; i++ )
       arrHilb[ i ] = new Complex( 0., 0. ); // { 0., 0., 0., .. }
 
     arrHilb[ 0 ].setReal( 4. );  // { 4., 0., 0., .. }
 
-    showHilb( arrHilb );
+    // showHilb( arrHilb );
 
-    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-    Complex[ ] arrTime = t.reverse( arrHilb );
+    arrTime = t.reverse( arrHilb );
 
-    showTime( arrTime );
+    // showTime( arrTime );
 
-    Complex[ ] expected = new Complex[ arrTimeLength ];
+    expected = new Complex[ arrTimeLength ];
 
     for( int i = 0; i < arrTimeLength; i++ )
       expected[ i ] = new Complex( 1., 1. );
@@ -1012,12 +749,12 @@ public class TransformTest {
     System.out.println( "Testing the Fast Wavelet Transform "
         + "reverse 1-D method " + "using Haar1 Wavelet" );
 
-  } // testReverseComplexArray
+  } // testComplex
 
   /**
    * Test method for {@link math.jwave.Transform#forward(double[][])}.
    */
-  @Test public void testForwardDoubleArrayArray( ) {
+  @Test public void testMatrix( ) {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
@@ -1029,53 +766,37 @@ public class TransformTest {
         { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
             { 1., 1., 1., 1. } };
 
-    showTime( matrixTime );
+    // showTime( matrixTime );
 
     Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
     double[ ][ ] matrixHilb = t.forward( matrixTime );
 
-    showHilb( matrixHilb );
+    // showHilb( matrixHilb );
 
     double[ ][ ] expected =
         { { 4., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
             { 0., 0., 0., 0. } };
     assertMatrix( expected, matrixHilb, delta );
 
-  } // testForwardDoubleArrayArray
-
-  /**
-   * Test method for {@link math.jwave.Transform#reverse(double[][])}.
-   */
-  @Test public void testReverseDoubleArrayArray( ) {
-
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
         + "reverse 2-D method " + "using Haar1 Wavelet" );
 
-    double delta = 1.e-12;
+    double[ ][ ] matrixReco = t.reverse( matrixHilb );
 
-    double[ ][ ] matrixHilb =
-        { { 4., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-            { 0., 0., 0., 0. } };
+    // showTime( matrixReco );
 
-    showHilb( matrixHilb );
-
-    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-    double[ ][ ] matrixTime = t.reverse( matrixHilb );
-
-    showTime( matrixTime );
-
-    double[ ][ ] expected =
+    double[ ][ ] expectedReco =
         { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
             { 1., 1., 1., 1. } };
-    assertMatrix( expected, matrixTime, delta );
+    assertMatrix( expectedReco, matrixReco, delta );
 
-  }
+  } // testMatrix
 
   /**
    * Test method for {@link math.jwave.Transform#forward(double[][][])}.
    */
-  @Test public void testForwardDoubleArrayArrayArray( ) {
+  @Test public void testSpace( ) {
 
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
@@ -1094,12 +815,12 @@ public class TransformTest {
             { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
                 { 1., 1., 1., 1. } } };
 
-    showTime( spaceTime );
+    // showTime( spaceTime );
 
     Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
     double[ ][ ][ ] spaceHilb = t.forward( spaceTime );
 
-    showHilb( spaceHilb );
+    // showHilb( spaceHilb );
 
     double[ ][ ][ ] expected =
         {
@@ -1113,38 +834,15 @@ public class TransformTest {
                 { 0., 0., 0., 0. } } };
     assertSpace( expected, spaceHilb, delta );
 
-  } // testForwardDoubleArrayArrayArray
-
-  /**
-   * Test method for {@link math.jwave.Transform#reverse(double[][][])}.
-   */
-  @Test public void testReverseDoubleArrayArrayArray( ) {
-
     System.out.println( "" );
     System.out.println( "Testing the Fast Wavelet Transform "
         + "reverse 3-D method " + "using Haar1 Wavelet" );
 
-    double delta = 1.e-12;
+    double[ ][ ][ ] spaceReco = t.reverse( spaceHilb );
 
-    double[ ][ ][ ] spaceHilb =
-        {
-            { { 8., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                { 0., 0., 0., 0. } },
-            { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                { 0., 0., 0., 0. } },
-            { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                { 0., 0., 0., 0. } },
-            { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
-                { 0., 0., 0., 0. } } };
+    // showTime( spaceReco );
 
-    showHilb( spaceHilb );
-
-    Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
-    double[ ][ ][ ] spaceTime = t.reverse( spaceHilb );
-
-    showTime( spaceTime );
-
-    double[ ][ ][ ] expected =
+    double[ ][ ][ ] expectedReco =
         {
             { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
                 { 1., 1., 1., 1. } },
@@ -1155,9 +853,106 @@ public class TransformTest {
             { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
                 { 1., 1., 1., 1. } } };
 
-    assertSpace( expected, spaceTime, delta );
+    assertSpace( expectedReco, spaceReco, delta );
 
-  } // testReverseDoubleArrayArrayArray
+  } // testSpace
+
+  //
+  // Following methods are internal helpers for the JUnit methods
+  //
+
+  /**
+   * Test method to check the rounding error of several forward and reverse
+   * transforms using the Fast Wavelet Transform algorithm and any given Wavelet
+   * object as input.
+   * 
+   * @date 10.02.2010 10:28:00
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   */
+  public void testFastWaveletTransformRounding( double[ ] arr, Wavelet wavelet,
+      double delta ) {
+
+    long noOfSteps = 1000;
+    double[ ] arrTime = arr;
+
+    double[ ] arrTimeRound = new double[ arrTime.length ];
+    for( int c = 0; c < arrTime.length; c++ )
+      arrTimeRound[ c ] = arrTime[ c ];
+
+    Transform t = new Transform( new FastWaveletTransform( wavelet ) );
+
+    System.out.println( "testRounding FWT " + wavelet.getName( ) + " - "
+        + noOfSteps + " transforms => rounding error: " + delta );
+
+    System.out.print( "Performing: " + noOfSteps
+        + " forward and reverse transforms ..." );
+    for( long s = 0; s < noOfSteps; s++ )
+      arrTimeRound = t.reverse( t.forward( arrTimeRound ) );
+    System.out.println( "done!" );
+
+    assertArray( arrTime, arrTimeRound, delta );
+
+    double timeErrorAbs = 0.;
+    for( int c = 0; c < arrTimeRound.length; c++ )
+      timeErrorAbs += Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
+    System.out.println( "Absolute error: " + timeErrorAbs );
+
+    double timeErrorRel = 0.;
+    for( int c = 0; c < arrTimeRound.length; c++ )
+      timeErrorRel +=
+          Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] ) * 100. / arrTime[ c ] );
+
+    System.out.println( "Relative error [%]: " + timeErrorRel );
+
+  } // testFastWaveletTransformRounding
+
+  /**
+   * Test method to check the rounding error of several forward and reverse
+   * transforms using the Wavelet Packet Transform algorithm and any given
+   * Wavelet object as input.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 16:00:57
+   * @param arr
+   * @param wavelet
+   * @param delta
+   */
+  public void testWaveletPacketTransformRounding( double[ ] arr,
+      Wavelet wavelet, double delta ) {
+
+    long noOfSteps = 256;
+    double[ ] arrTime = arr;
+
+    double[ ] arrTimeRound = new double[ arrTime.length ];
+    for( int c = 0; c < arrTime.length; c++ )
+      arrTimeRound[ c ] = arrTime[ c ];
+
+    System.out.println( "testRounding WPT " + wavelet.getName( ) + " - "
+        + noOfSteps + " transforms => rounding error: " + delta );
+
+    Transform t = new Transform( new WaveletPacketTransform( wavelet ) );
+
+    System.out.print( "Performing: " + noOfSteps
+        + " forward and reverse transforms ..." );
+    for( long s = 0; s < noOfSteps; s++ )
+      arrTimeRound = t.reverse( t.forward( arrTimeRound ) );
+    System.out.println( "done!" );
+
+    assertArray( arrTime, arrTimeRound, delta );
+
+    double timeErrorAbs = 0.;
+    for( int c = 0; c < arrTimeRound.length; c++ )
+      timeErrorAbs += Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
+    System.out.println( "Absolute error: " + timeErrorAbs );
+
+    double timeErrorRel = 0.;
+    for( int c = 0; c < arrTimeRound.length; c++ )
+      timeErrorRel +=
+          Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] ) * 100. / arrTime[ c ] );
+
+    System.out.println( "Relative error [%]: " + timeErrorRel );
+
+  } // testWaveletPacketTransformRounding  
 
   public void
       assertArray( Complex[ ] expected, Complex[ ] actual, double delta ) {
