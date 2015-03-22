@@ -70,6 +70,17 @@ public abstract class BasicTransform {
   } // getName
 
   /**
+   * Returns the stored Wavelet object or null pointer.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.03.2015 18:26:44
+   * @return object of type Wavelet of null pointer
+   * @throws JWaveFailure
+   *           if Wavelet object is not available
+   */
+  public abstract Wavelet getWavelet( ) throws JWaveFailure;
+
+  /**
    * Performs the forward transform from time domain to frequency or Hilbert
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
@@ -99,6 +110,48 @@ public abstract class BasicTransform {
   public abstract double[ ] reverse( double[ ] arrFreq ) throws JWaveException;
 
   /**
+   * Performs the forward transform from time domain to Hilbert domain of a
+   * given level depending on the used transform algorithm by inheritance.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 11:33:11
+   * @param arrTime
+   * @param level
+   *          the level of Hilbert space; energy & detail coefficients
+   * @return array keeping Hilbert space of requested level
+   * @throws JWaveException
+   *           if given array is not of type 2^p | p € N or given level does not
+   *           match the possibilities of given array.
+   */
+  public double[ ] forward( double[ ] arrTime, int level )
+      throws JWaveException {
+
+    throw new JWaveError( "method is not implemented for this transform type!" );
+
+  } // forward
+
+  /**
+   * Performs the reverse transform from Hilbert domain of a given level to time
+   * domain depending on the used transform algorithm by inheritance.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 11:34:27
+   * @param arrFreq
+   * @param level
+   *          the level of Hilbert space; energy & detail coefficients
+   * @return array keeping Hilbert space of requested level
+   * @throws JWaveException
+   *           if given array is not of type 2^p | p € N or given level does not
+   *           match the possibilities of given array.
+   */
+  public double[ ] reverse( double[ ] arrFreq, int level )
+      throws JWaveException {
+
+    throw new JWaveError( "method is not implemented for this transform type!" );
+
+  } // reverse
+
+  /**
    * Generates from a 2-D decomposition a 1-D time series.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -111,22 +164,50 @@ public abstract class BasicTransform {
    */
   public double[ ][ ] decompose( double[ ] arrTime ) throws JWaveException {
 
-    throw new JWaveError( "method is not working for this transform type!" );
+    throw new JWaveError( "method is not implemented for this transform type!" );
 
   } // decompose
 
+  /**
+   * Generates from a 1-D signal a 2-D output, where the second dimension are
+   * the levels of the wavelet transform. The first level should keep the
+   * original coefficients. All following levels should keep each step of the
+   * decomposition of the Fast Wavelet Transform. However, each level of the
+   * this decomposition matrix is having the full set, full energy and full
+   * details, that are needed to do a full reconstruction. So one can select a
+   * level filter it and then do reconstruction only from this single line! BY
+   * THIS METHOD, THE _HIGHEST_ LEVEL IS _ALWAYS_ TAKEN FOR RECONSTRUCTION!
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 17.08.2014 10:07:19
+   * @param matDeComp
+   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
+   *          of N=2^p
+   * @return a 1-D time domain signal
+   */
   public double[ ] recompose( double[ ][ ] matDeComp ) throws JWaveException {
+
+    // Each level of the matrix is having the full set (full energy + details)
+    // of decomposition. Therefore, each level can be used to do a full reconstruction,
+    int level = matDeComp.length - 1; // selected highest level in general.
+    double[ ] arrTime = null;
+    try {
+      arrTime = recompose( matDeComp, level );
+    } catch( JWaveFailure e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+
+    return arrTime;
+
+  } // recompose
+
+  public double[ ] recompose( double[ ][ ] matDeComp, int level )
+      throws JWaveException {
 
     throw new JWaveError( "method is not working for this transform type!" );
 
   } // recompose
-  
-  public double[ ] recomposeFromLevel( double[ ][ ] matDeComp, int level ) throws JWaveException {
-
-    throw new JWaveError( "method is not working for this transform type!" );
-
-  } // recomposeFromLevel
-
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
@@ -450,16 +531,5 @@ public abstract class BasicTransform {
     return spcTime;
 
   } // reverse
-
-  /**
-   * Returns the stored Wavelet object or null pointer.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 14.03.2015 18:26:44
-   * @return object of type Wavelet of null pointer
-   * @throws JWaveFailure
-   *           if Wavelet object is not available
-   */
-  public abstract Wavelet getWavelet( ) throws JWaveFailure;
 
 } // BasicTransform

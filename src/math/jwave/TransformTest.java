@@ -816,6 +816,179 @@ public class TransformTest {
   } // testReverseDoubleArray
 
   /**
+   * JUnit tests for the stepping methods to certain levels of Hilbert space.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 11:47:49
+   */
+  @Test public void testForwardSteppingDoubleArray( ) {
+
+    // run this part for any wavelet that is available in JWave!
+
+    double delta = 1.e-8;
+
+    int noOfWavelets = 20;
+
+    Wavelet[ ] arrOfWaveletObjects = new Wavelet[ noOfWavelets ];
+
+    arrOfWaveletObjects[ 0 ] = new Haar1( );
+    arrOfWaveletObjects[ 1 ] = new Daubechies4( );
+    arrOfWaveletObjects[ 2 ] = new Daubechies6( );
+    arrOfWaveletObjects[ 3 ] = new Daubechies8( );
+    arrOfWaveletObjects[ 4 ] = new Daubechies10( );
+    arrOfWaveletObjects[ 5 ] = new Daubechies12( );
+    arrOfWaveletObjects[ 6 ] = new Daubechies14( );
+    arrOfWaveletObjects[ 7 ] = new Daubechies16( );
+    arrOfWaveletObjects[ 8 ] = new Daubechies18( );
+    arrOfWaveletObjects[ 9 ] = new Daubechies20( );
+    arrOfWaveletObjects[ 10 ] = new Coiflet3( );
+    arrOfWaveletObjects[ 11 ] = new Coiflet5( );
+    arrOfWaveletObjects[ 12 ] = new Symlet4( );
+    arrOfWaveletObjects[ 13 ] = new Symlet8( );
+    arrOfWaveletObjects[ 14 ] = new Symlet12( );
+    arrOfWaveletObjects[ 15 ] = new Symlet16( );
+    arrOfWaveletObjects[ 16 ] = new Symlet20( );
+    arrOfWaveletObjects[ 17 ] = new BiOrthogonal13( );
+    arrOfWaveletObjects[ 18 ] = new BiOrthogonal39( );
+    arrOfWaveletObjects[ 19 ] = new BiOrthogonal68( );
+
+    for( int w = 0; w < noOfWavelets; w++ ) {
+
+      Wavelet wavelet = arrOfWaveletObjects[ w ];
+
+      System.out.println( "" );
+      System.out.println( "Testing the Fast Wavelet Transform "
+          + "stepping forward and reverser 1-D methods " + "using "
+          + wavelet.getName( ) + " and small array" );
+
+      double[ ] arrTime = { 1., 1., 1., 1. };
+      double sqrt2 = Math.sqrt( 2. );
+      double[ ][ ] expected =
+          { { 1., 1., 1., 1., }, { sqrt2, sqrt2, 0., 0. }, { 2., 0., 0., 0. } }; // orthonormal Hilbert space
+
+      Transform t = new Transform( new FastWaveletTransform( wavelet ) );
+
+      double[ ] arrHilbLevel0 = t.forward( arrTime, 0 );
+      double[ ] arrHilbLevel1 = t.forward( arrTime, 1 );
+      double[ ] arrHilbLevel2 = t.forward( arrTime, 2 );
+
+      assertArray( expected[ 0 ], arrHilbLevel0, delta );
+      assertArray( expected[ 1 ], arrHilbLevel1, delta );
+      assertArray( expected[ 2 ], arrHilbLevel2, delta );
+
+      double[ ] arrTimeFromLevel0 = t.reverse( arrHilbLevel0, 0 );
+      double[ ] arrTimeFromLevel1 = t.reverse( arrHilbLevel1, 1 );
+      double[ ] arrTimeFromLevel2 = t.reverse( arrHilbLevel2, 2 );
+
+      assertArray( arrTime, arrTimeFromLevel0, delta );
+      assertArray( arrTime, arrTimeFromLevel1, delta );
+      assertArray( arrTime, arrTimeFromLevel2, delta );
+
+      System.out.println( "Testing the Fast Wavelet Transform "
+          + "decompose, recompose, and recomposeFromLevel 1-D methods "
+          + "using " + wavelet.getName( ) + " and long array" );
+
+      double[ ] arrTime64 = { // array of length 64
+          1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
+
+      double d1sqrt2 = 1 * sqrt2; // symbolic one times square root of 2
+      double d2sqrt2 = 2. * d1sqrt2; // 2 times square root of two
+      double d4sqrt2 = 2. * d2sqrt2; // 4 times square root of two
+
+      double[ ][ ] expected64 =
+          {
+              { // array of length 64
+              1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                  1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                  1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                  1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+                  1., 1., 1. },
+
+              { d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2, d1sqrt2,
+                  d1sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0. },
+
+              { 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2., 2.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0. },
+
+              { d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2, d2sqrt2,
+                  d2sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0. },
+
+              { 4., 4., 4., 4., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0. },
+
+              { d4sqrt2, d4sqrt2, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0. },
+
+              { 8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+                  0., 0., 0. },
+
+          }; // orthonormal Hilbert space
+
+      // test reconstruction from a certain level of decomposition
+      double[ ] arrHilb64Level0 = t.forward( arrTime64, 0 );
+      assertArray( expected64[ 0 ], arrHilb64Level0, delta );
+      double[ ] arrTime64FromLevel0 = t.reverse( arrHilb64Level0, 0 );
+      assertArray( arrTime64, arrTime64FromLevel0, delta );
+      
+      double[ ] arrHilb64Level1 = t.forward( arrTime64, 1 );
+      assertArray( expected64[ 1 ], arrHilb64Level1, delta );
+      double[ ] arrTime64FromLevel1 = t.reverse( arrHilb64Level1, 1 );
+      assertArray( arrTime64, arrTime64FromLevel1, delta );
+      
+      double[ ] arrHilb64Level2 = t.forward( arrTime64, 2 );
+      assertArray( expected64[ 2 ], arrHilb64Level2, delta );
+      double[ ] arrTime64FromLevel2 = t.reverse( arrHilb64Level2, 2 );
+      assertArray( arrTime64, arrTime64FromLevel2, delta );
+      
+      double[ ] arrHilb64Level3 = t.forward( arrTime64, 3 );
+      assertArray( expected64[ 3 ], arrHilb64Level3, delta );
+      double[ ] arrTime64FromLevel3 = t.reverse( arrHilb64Level3, 3 );
+      assertArray( arrTime64, arrTime64FromLevel3, delta );
+      
+      double[ ] arrHilb64Level4 = t.forward( arrTime64, 4 );
+      assertArray( expected64[ 4 ], arrHilb64Level4, delta );
+      double[ ] arrTime64FromLevel4 = t.reverse( arrHilb64Level4, 4 );
+      assertArray( arrTime64, arrTime64FromLevel4, delta );
+      
+      double[ ] arrHilb64Level5 = t.forward( arrTime64, 5 );
+      assertArray( expected64[ 5 ], arrHilb64Level5, delta );
+      double[ ] arrTime64FromLevel5 = t.reverse( arrHilb64Level5, 5 );
+      assertArray( arrTime64, arrTime64FromLevel5, delta );
+      
+      double[ ] arrHilb64Level6 = t.forward( arrTime64, 6 );
+      assertArray( expected64[ 6 ], arrHilb64Level6, delta );
+      double[ ] arrTime64FromLevel6 = t.reverse( arrHilb64Level6, 6 );
+      assertArray( arrTime64, arrTime64FromLevel6, delta );
+            
+    } // w
+
+  } // testForwardSteppingDoubleArray
+
+  /**
    * Test method for {@link math.jwave.Transform#decompose(double[])}.
    */
   @Test public void testDecomposeDoubleArray( ) {
@@ -876,13 +1049,13 @@ public class TransformTest {
       assertArray( arrTime, arrTimeReComp, delta );
 
       // test reconstruction from a certain level of decomposition
-      double[ ] arrTimeReCompLevel0 = t.recomposeFromLevel( matDeComp, 0 );
+      double[ ] arrTimeReCompLevel0 = t.recompose( matDeComp, 0 );
       assertArray( arrTime, arrTimeReCompLevel0, delta );
 
-      double[ ] arrTimeReCompLevel1 = t.recomposeFromLevel( matDeComp, 0 );
+      double[ ] arrTimeReCompLevel1 = t.recompose( matDeComp, 0 );
       assertArray( arrTime, arrTimeReCompLevel1, delta );
 
-      double[ ] arrTimeReCompLevel2 = t.recomposeFromLevel( matDeComp, 0 );
+      double[ ] arrTimeReCompLevel2 = t.recompose( matDeComp, 0 );
       assertArray( arrTime, arrTimeReCompLevel2, delta );
 
       System.out.println( "Testing the Fast Wavelet Transform "
@@ -958,25 +1131,25 @@ public class TransformTest {
       assertArray( arrTime64, arrTimeReComp64, delta );
 
       // test reconstruction from a certain level of decomposition
-      double[ ] arrTimeReComp64Level0 = t.recomposeFromLevel( matDeComp64, 0 );
+      double[ ] arrTimeReComp64Level0 = t.recompose( matDeComp64, 0 );
       assertArray( arrTime64, arrTimeReComp64Level0, delta );
 
-      double[ ] arrTimeReComp64Level1 = t.recomposeFromLevel( matDeComp64, 1 );
+      double[ ] arrTimeReComp64Level1 = t.recompose( matDeComp64, 1 );
       assertArray( arrTime64, arrTimeReComp64Level1, delta );
 
-      double[ ] arrTimeReComp64Level2 = t.recomposeFromLevel( matDeComp64, 2 );
+      double[ ] arrTimeReComp64Level2 = t.recompose( matDeComp64, 2 );
       assertArray( arrTime64, arrTimeReComp64Level2, delta );
 
-      double[ ] arrTimeReComp64Level3 = t.recomposeFromLevel( matDeComp64, 3 );
+      double[ ] arrTimeReComp64Level3 = t.recompose( matDeComp64, 3 );
       assertArray( arrTime64, arrTimeReComp64Level3, delta );
 
-      double[ ] arrTimeReComp64Level4 = t.recomposeFromLevel( matDeComp64, 4 );
+      double[ ] arrTimeReComp64Level4 = t.recompose( matDeComp64, 4 );
       assertArray( arrTime64, arrTimeReComp64Level4, delta );
 
-      double[ ] arrTimeReComp64Level5 = t.recomposeFromLevel( matDeComp64, 5 );
+      double[ ] arrTimeReComp64Level5 = t.recompose( matDeComp64, 5 );
       assertArray( arrTime64, arrTimeReComp64Level5, delta );
 
-      double[ ] arrTimeReComp64Level6 = t.recomposeFromLevel( matDeComp64, 6 );
+      double[ ] arrTimeReComp64Level6 = t.recompose( matDeComp64, 6 );
       assertArray( arrTime64, arrTimeReComp64Level6, delta );
 
     } // w

@@ -110,6 +110,52 @@ public final class Transform {
   } // reverse
 
   /**
+   * Performs a forward transform to a certain level of Hilbert space.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 11:53:05
+   * @param arrTime
+   *          array of length 2^p | p € N .. 2, 4, 8, 16, 32, 64, ...
+   * @param level
+   *          a certain level that matches the array
+   * @return Hilbert space of certain level
+   */
+  public final double[ ] forward( double[ ] arrTime, int level ) {
+    double[ ] arrHilb = null;
+    try {
+      arrHilb = _basicTransform.forward( arrTime, level );
+    } catch( JWaveException e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+    return arrHilb;
+  } // forward
+
+  /**
+   * Performs a reverse transform for a Hilbert space of certain level; level
+   * has to match the supported coefficients in the array!
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 22.03.2015 11:54:59
+   * @param arrHilb
+   *          Hilbert space by an array of length 2^p | p € N .. 2, 4, 8, 16,
+   *          32, 64, ...
+   * @param level
+   *          the certain level the supported hilbert space
+   * @return time domain for a certain level of Hilbert space
+   */
+  public final double[ ] reverse( double[ ] arrHilb, int level ) {
+    double[ ] arrTime = null;
+    try {
+      arrTime = _basicTransform.reverse( arrHilb, level );
+    } catch( JWaveException e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+    return arrTime;
+  } // reverse
+
+  /**
    * Performs the forward transform from time domain to frequency or Hilbert
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
@@ -277,29 +323,26 @@ public final class Transform {
     } // try
     return arrTime;
   } // recompose
-  
+
   /**
    * Recompose signal from a certain level of decomposition.
-   *
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 22.03.2015 10:08:52 
-   *
+   * @date 22.03.2015 10:08:52
    * @param matDeComp
    * @param level
    * @return
    */
-  public final double[ ] recomposeFromLevel( double[ ][ ] matDeComp, int level ) {
+  public final double[ ] recompose( double[ ][ ] matDeComp, int level ) {
     double[ ] arrTime = null;
     try {
-      arrTime = _basicTransform.recomposeFromLevel( matDeComp, level );
+      arrTime = _basicTransform.recompose( matDeComp, level );
     } catch( JWaveException e ) {
       e.showMessage( );
       e.printStackTrace( );
     } // try
     return arrTime;
   } // recompose
-  
-  
 
   /**
    * Return the used object of type BasicTransform.
