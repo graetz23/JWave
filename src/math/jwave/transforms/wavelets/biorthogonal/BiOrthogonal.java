@@ -47,12 +47,19 @@ public class BiOrthogonal extends Wavelet {
     _scalingReCon = new double[ _motherWavelength ];
     _waveletReCon = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ ) {
+      //      if( i % 2 == 0 ) {
+      //        _scalingReCon[ i ] = _waveletDeCom[ ( _motherWavelength - 1 ) - i ];
+      //        _waveletReCon[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+      //      } else {
+      //        _scalingReCon[ i ] = -_waveletDeCom[ ( _motherWavelength - 1 ) - i ];
+      //        _waveletReCon[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+      //      } // if
       if( i % 2 == 0 ) {
-        _scalingReCon[ i ] = _waveletDeCom[ ( _motherWavelength - 1 ) - i ];
-        _waveletReCon[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+        _scalingReCon[ i ] = -_waveletDeCom[ i ];
+        _waveletReCon[ i ] = -_scalingDeCom[ i ];
       } else {
-        _scalingReCon[ i ] = -_waveletDeCom[ ( _motherWavelength - 1 ) - i ];
-        _waveletReCon[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+        _scalingReCon[ i ] = _waveletDeCom[ i ];
+        _waveletReCon[ i ] = _scalingDeCom[ i ];
       } // if
     } // i
   }// _buildBiOrthonormalSpace
