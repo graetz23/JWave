@@ -23,8 +23,6 @@
  */
 package math.jwave.transforms.wavelets.biorthogonal;
 
-import math.jwave.transforms.wavelets.Wavelet;
-
 /**
  * BiOrthogonal Wavelet of type 2.8 - Two vanishing moments in wavelet function
  * and eight vanishing moments in scaling function.
@@ -32,7 +30,7 @@ import math.jwave.transforms.wavelets.Wavelet;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.02.2014 16:37:35
  */
-public class BiOrthogonal28 extends Wavelet {
+public class BiOrthogonal28 extends BiOrthogonal {
 
   /**
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage

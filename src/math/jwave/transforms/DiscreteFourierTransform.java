@@ -26,8 +26,6 @@ package math.jwave.transforms;
 import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
-import math.jwave.tools.MathToolKit;
-import math.jwave.transforms.wavelets.Wavelet;
 
 /**
  * The Discrete Fourier Transform (DFT) is - as the name says - the discrete
@@ -41,7 +39,7 @@ import math.jwave.transforms.wavelets.Wavelet;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 /**
- * TODO Comment me please!
+ * Discrete Fast Fourier Transform (dFFT)
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 14.03.2015 18:30:35
@@ -74,10 +72,12 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override public double[ ] forward( double[ ] arrTime ) throws JWaveException {
 
-    if( !MathToolKit.isBinary( arrTime.length ) )
-      throw new JWaveFailure(
-          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    if( !isBinary( arrTime.length ) )
+      throw new JWaveFailure( "DiscreteFourierTransform#forward - "
+          + "given array length is not 2^p | p € N "
+          + "... = 1, 2, 4, 8, 16, 32, .. "
+          + "please use the Ancient Egyptian "
+          + "Decomposition for any other array length!" );
 
     int m = arrTime.length;
     double[ ] arrFreq = new double[ m ]; // result
@@ -113,6 +113,7 @@ public class DiscreteFourierTransform extends BasicTransform {
     } // i
 
     return arrFreq;
+
   } // forward
 
   /**
@@ -129,10 +130,12 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override public double[ ] reverse( double[ ] arrFreq ) throws JWaveException {
 
-    if( !MathToolKit.isBinary( arrFreq.length ) )
-      throw new JWaveFailure(
-          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    if( !isBinary( arrFreq.length ) )
+      throw new JWaveFailure( "DiscreteFourierTransform#reverse - "
+          + "given array length is not 2^p | p € N "
+          + "... = 1, 2, 4, 8, 16, 32, .. "
+          + "please use the Ancient Egyptian "
+          + "Decomposition for any other array length!" );
 
     int m = arrFreq.length;
     double[ ] arrTime = new double[ m ]; // result
@@ -165,6 +168,7 @@ public class DiscreteFourierTransform extends BasicTransform {
     } // i
 
     return arrTime;
+
   } // reverse
 
   /**
@@ -254,16 +258,5 @@ public class DiscreteFourierTransform extends BasicTransform {
 
     return arrTime;
   } // reverse
-
-  /*
-   * Returns null pointer while DFT has sine or cosine as wavelet.
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 14.03.2015 18:30:38 (non-Javadoc)
-   * @see math.jwave.transforms.BasicTransform#getWavelet()
-   */
-  public Wavelet getWavelet( ) throws JWaveFailure {
-    throw new JWaveFailure(
-        "DiscreteFourierTransfomr::getWavelet - not available" );
-  } // getWavelet
 
 } // class

@@ -79,7 +79,10 @@ public abstract class BasicTransform {
    * @throws JWaveFailure
    *           if Wavelet object is not available
    */
-  public abstract Wavelet getWavelet( ) throws JWaveFailure;
+  public Wavelet getWavelet( ) throws JWaveFailure {
+    throw new JWaveFailure(
+        "BasicTransform#getWavelet - not available" );
+  } // getWavelet
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert

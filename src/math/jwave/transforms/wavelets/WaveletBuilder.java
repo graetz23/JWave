@@ -475,8 +475,8 @@ public class WaveletBuilder {
     listWavelets.add( WaveletBuilder.create( "Symlet 19" ) );
     listWavelets.add( WaveletBuilder.create( "Symlet 20" ) );
     listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/1" ) );
-    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/3" ) ); // not passing JUnit due to lifting scheme
-    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/5" ) ); // not passing JUnit due to lifting scheme
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/3" ) ); // not passing JUnit due to lifting scheme
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/5" ) ); // not passing JUnit due to lifting scheme
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/2" ) ); // not passing JUnit due to lifting scheme
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/4" ) ); // not passing JUnit due to lifting scheme
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/6" ) ); // not passing JUnit due to lifting scheme

@@ -242,7 +242,9 @@ public class TransformTest {
 
       double[ ] arrReco = fwt.reverse( arrHilb );
 
-      // showTime( arrReco );
+      showTime( arrTime );
+      showHilb( arrHilb );
+      showTime( arrReco );
 
       double[ ] arrRecoExpected = arrTime;
 
