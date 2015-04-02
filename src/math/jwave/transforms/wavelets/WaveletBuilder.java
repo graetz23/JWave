@@ -408,7 +408,7 @@ public class WaveletBuilder {
    * @date 14.03.2015 14:22:22
    * @param wavelet
    *          an object of type Wavelet
-   * @return identifier string of givn Wavelet
+   * @return identifier string of a given Wavelet object
    */
   static public String identify( Wavelet wavelet ) {
 
@@ -475,8 +475,8 @@ public class WaveletBuilder {
     listWavelets.add( WaveletBuilder.create( "Symlet 19" ) );
     listWavelets.add( WaveletBuilder.create( "Symlet 20" ) );
     listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/1" ) );
-    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/3" ) ); // not passing JUnit due to lifting scheme
-    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/5" ) ); // not passing JUnit due to lifting scheme
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/3" ) );
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/5" ) );
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/2" ) ); // not passing JUnit due to lifting scheme
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/4" ) ); // not passing JUnit due to lifting scheme
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/6" ) ); // not passing JUnit due to lifting scheme
@@ -499,4 +499,5 @@ public class WaveletBuilder {
     return arrWavelets;
 
   } // create2arr
+  
 } // class

@@ -24,6 +24,9 @@
 package math.jwave;
 
 import static org.junit.Assert.*;
+
+import java.util.Random;
+
 import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
@@ -38,6 +41,7 @@ import math.jwave.transforms.wavelets.legendre.Legendre1;
 import math.jwave.transforms.wavelets.legendre.Legendre2;
 import math.jwave.transforms.wavelets.legendre.Legendre3;
 import math.jwave.transforms.wavelets.other.DiscreteMayer;
+
 import org.junit.Test;
 
 /**
@@ -223,6 +227,7 @@ public class TransformTest {
   @Test public void testExample( ) {
 
     double delta = 1.e-6; // due to a lot of wavelets with different precisions
+
     Wavelet[ ] arrOfWaveletObjects = WaveletBuilder.create2arr( ); // over 50 wavelets :-p
     int noOfWavelets = arrOfWaveletObjects.length;
 
@@ -246,9 +251,16 @@ public class TransformTest {
       showHilb( arrHilb );
       showTime( arrReco );
 
-      double[ ] arrRecoExpected = arrTime;
+      assertArray( arrTime, arrReco, delta );
 
-      assertArray( arrRecoExpected, arrReco, delta );
+      int arrLengthRnd = 1024 * 1024; // do long random number array
+      double[ ] arrTimeRnd = new double[ arrLengthRnd ];
+      Random randomGenerator = new Random( );
+      for( int i = 0; i < arrLengthRnd; i++ )
+        arrTimeRnd[ i ] = randomGenerator.nextDouble( );
+      double[ ] arrHilbRnd = fwt.forward( arrTimeRnd );
+      double[ ] arrRecoRnd = fwt.reverse( arrHilbRnd );
+      assertArray( arrTimeRnd, arrRecoRnd, delta );
 
     } // w 
 
