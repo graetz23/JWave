@@ -477,15 +477,15 @@ public class WaveletBuilder {
     listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/1" ) );
     listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/3" ) );
     listWavelets.add( WaveletBuilder.create( "BiOrthogonal 1/5" ) );
-    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/2" ) ); // not passing JUnit due to lifting scheme
+    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/2" ) ); // not passing JUnit due to shifting one position
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/4" ) ); // not passing JUnit due to lifting scheme
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/6" ) ); // not passing JUnit due to lifting scheme
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 2/8" ) ); // not passing JUnit due to lifting scheme
-    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/1" ) ); // not passing JUnit due to lifting scheme
-    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/3" ) ); // not passing JUnit due to lifting scheme
-    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/5" ) ); // not passing JUnit due to lifting scheme
-    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/7" ) ); // not passing JUnit due to lifting scheme
-    // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/9" ) ); // not passing JUnit due to lifting scheme
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/1" ) );
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/3" ) );
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/5" ) );
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/7" ) );
+    listWavelets.add( WaveletBuilder.create( "BiOrthogonal 3/9" ) );
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 4/4" ) ); // not passing JUnit due to lifting scheme
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 5/5" ) ); // not passing JUnit due to lifting scheme
     // listWavelets.add( WaveletBuilder.create( "BiOrthogonal 6/8" ) ); // not passing JUnit due to lifting scheme

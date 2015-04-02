@@ -75,9 +75,36 @@ public class BiOrthogonal55 extends BiOrthogonal {
     _waveletDeCom[ 10 ] = -0.013456709459118716;
     _waveletDeCom[ 11 ] = 0.;
 
+    _scalingReCon = new double[ _motherWavelength ];
+    _scalingReCon[ 0 ] = 0.013456709459118716;
+    _scalingReCon[ 1 ] = -0.002694966880111507;
+    _scalingReCon[ 2 ] = -0.13670658466432914;
+    _scalingReCon[ 3 ] = -0.09350469740093886;
+    _scalingReCon[ 4 ] = 0.47680326579848425;
+    _scalingReCon[ 5 ] = 0.8995061097486484;
+    _scalingReCon[ 6 ] = 0.47680326579848425;
+    _scalingReCon[ 7 ] = -0.09350469740093886;
+    _scalingReCon[ 8 ] = -0.13670658466432914;
+    _scalingReCon[ 9 ] = -0.002694966880111507;
+    _scalingReCon[ 10 ] = 0.013456709459118716;
+    _scalingReCon[ 11 ] = 0.;
+
+    _waveletReCon = new double[ _motherWavelength ];
+    _waveletReCon[ 0 ] = 0.;
+    _waveletReCon[ 1 ] = 0.;
+    _waveletReCon[ 2 ] = 0.03968708834740544;
+    _waveletReCon[ 3 ] = -0.007948108637240322;
+    _waveletReCon[ 4 ] = -0.05446378846823691;
+    _waveletReCon[ 5 ] = -0.34560528195603346;
+    _waveletReCon[ 6 ] = 0.7366601814282105;
+    _waveletReCon[ 7 ] = -0.34560528195603346;
+    _waveletReCon[ 8 ] = -0.05446378846823691;
+    _waveletReCon[ 9 ] = -0.007948108637240322;
+    _waveletReCon[ 10 ] = 0.03968708834740544;
+    _waveletReCon[ 11 ] = 0.;
+
     // build all other coefficients from low & high pass decomposition
-    _buildBiOrthonormalSpace( );
+    // _buildBiOrthonormalSpace( );
 
   } // BiOrthogonal55
-
 } // BiOrthogonal55

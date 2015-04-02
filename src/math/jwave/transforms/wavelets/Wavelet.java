@@ -267,7 +267,7 @@ public abstract class Wavelet {
 
     double[ ] arrTime = new double[ arrHilbLength ];
     for( int i = 0; i < arrTime.length; i++ )
-      arrTime[ i ] = 0.;
+      arrTime[ i ] = 0.; // set to zero before sum up
 
     int h = arrTime.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
     for( int i = 0; i < h; i++ ) {

@@ -63,8 +63,24 @@ public class BiOrthogonal22 extends BiOrthogonal {
     _waveletDeCom[ 4 ] = 0.;
     _waveletDeCom[ 5 ] = 0.;
 
+    _scalingReCon = new double[ _motherWavelength ];
+    _scalingReCon[ 0 ] = 0.;
+    _scalingReCon[ 1 ] = 0.3535533905932738;
+    _scalingReCon[ 2 ] = 0.7071067811865476;
+    _scalingReCon[ 3 ] = 0.3535533905932738;
+    _scalingReCon[ 4 ] = 0.;
+    _scalingReCon[ 5 ] = 0.;
+
+    _waveletReCon = new double[ _motherWavelength ];
+    _waveletReCon[ 0 ] = 0.;
+    _waveletReCon[ 1 ] = 0.1767766952966369;
+    _waveletReCon[ 2 ] = 0.3535533905932738;
+    _waveletReCon[ 3 ] = -1.0606601717798214;
+    _waveletReCon[ 4 ] = 0.3535533905932738;
+    _waveletReCon[ 5 ] = 0.1767766952966369;
+
     // build all other coefficients from low & high pass decomposition
-    _buildBiOrthonormalSpace( );
+    //_buildBiOrthonormalSpace( );
 
   } // BiOrthogonal22
 
