@@ -27,6 +27,8 @@ import static org.junit.Assert.*;
 
 import java.util.Random;
 
+import math.jwave.compressions.Compressor;
+import math.jwave.compressions.CompressorMagnitude;
 import math.jwave.datatypes.Complex;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
@@ -871,6 +873,49 @@ public class TransformTest {
 
   } // testSpace
 
+  /**
+   * Test the Compressor classes by giving an example for data compression with
+   * wavelets.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.05.2015 18:26:03
+   */
+  @Test public void testCompression( ) {
+
+    double delta = 1.e-6; // due to a lot of wavelets with different precisions
+    
+    Compressor compressor = new CompressorMagnitude( 1.0 );
+
+    Wavelet[ ] arrOfWaveletObjects = WaveletBuilder.create2arr( ); // over 50 wavelets :-p
+    int noOfWavelets = arrOfWaveletObjects.length;
+
+    // go for Fast Wavelet Transforms
+    for( int w = 0; w < noOfWavelets; w++ ) {
+
+      Wavelet wavelet = arrOfWaveletObjects[ w ];
+
+      System.out
+          .println( "Testing example with FWT using " + wavelet.getName( ) );
+
+      Transform fwt = new Transform( new FastWaveletTransform( wavelet ) );
+
+      double[ ] arrTime = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1, 1.2, -0.3, -1.4, -2.5, -1.6, -0.7, 0.6, 1.5 };
+
+      double[ ] arrHilb = fwt.forward( arrTime );
+      
+      double[ ] arrComp = compressor.compress( arrHilb );
+
+      double[ ] arrReco = fwt.reverse( arrComp );
+
+      showTime( arrTime );
+      showHilb( arrHilb );
+      showHilb( arrComp );
+      showTime( arrReco );
+
+    } // w 
+    
+  } // testCompression
+
   //
   // Following methods are internal helpers for the JUnit methods
   //
@@ -966,7 +1011,7 @@ public class TransformTest {
 
     System.out.println( "Relative error [%]: " + timeErrorRel );
 
-  } // testWaveletPacketTransformRounding  
+  } // testWaveletPacketTransformRounding
 
   public void
       assertArray( Complex[ ] expected, Complex[ ] actual, double delta ) {

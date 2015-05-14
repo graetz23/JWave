@@ -35,14 +35,6 @@ import math.jwave.exceptions.JWaveException;
 public class CompressorMagnitude extends Compressor {
 
   /**
-   * Member variable for remembering the calculated magnitude.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 21.02.2014 00:02:52
-   */
-  protected double _magnitude;
-
-  /**
    * Threshold is set to one, which should always guarantee a rather good
    * compression result.
    * 
@@ -52,7 +44,6 @@ public class CompressorMagnitude extends Compressor {
   public CompressorMagnitude( ) {
 
     _magnitude = 0.;
-
     _threshold = 1.;
 
   } // CompressorMagnitude
@@ -66,7 +57,7 @@ public class CompressorMagnitude extends Compressor {
    *          has to be positive value starting at 0 - 0 means no compression.
    * @throws JWaveException
    */
-  public CompressorMagnitude( double threshold ) throws JWaveException {
+  public CompressorMagnitude( double threshold ) {
 
     super( threshold );
 

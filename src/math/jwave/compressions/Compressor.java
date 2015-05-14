@@ -44,20 +44,41 @@ public abstract class Compressor {
   protected double _threshold = 1.;
 
   /**
+   * The calculated magnitude by algorithm of derived class.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.05.2015 18:36:17
+   */
+  protected double _magnitude = 0.;
+
+  /**
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 20.02.2014 23:41:35
    */
   public Compressor( ) {
 
+    _magnitude = 0.;
     _threshold = 1.;
 
   } // Compressor
 
-  public Compressor( double threshold ) throws JWaveException {
+  public Compressor( double threshold ) {
 
-    if( threshold <= 0. )
-      throw new JWaveFailure(
-          "Compressor - given threshold should be larger than zero!" );
+    _magnitude = 0.;
+
+    try {
+
+      if( threshold <= 0. )
+        throw new JWaveFailure(
+            "Compressor - given threshold should be larger than zero!" );
+    } catch( JWaveException e ) {
+
+      e.showMessage( );
+      System.out
+          .println( "Compressor - setting threshold to default value: " + 1. );
+      threshold = 1.;
+
+    }
 
     _threshold = threshold;
 
@@ -149,6 +170,32 @@ public abstract class Compressor {
   } // compress
 
   /**
+   * Getter for _threshold member.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.05.2015 18:38:33
+   * @return value of threshold member
+   */
+  public double getThreshold( ) {
+
+    return _threshold;
+
+  } // getThreshold
+
+  /**
+   * Getter for calculated _magnitude member.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.05.2015 18:39:32
+   * @return value of magnitude member
+   */
+  public double getMagnitude( ) {
+
+    return _magnitude;
+
+  } // getMagnitude
+
+  /**
    * Interface for arrays for driving the different compression methods.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -156,7 +203,7 @@ public abstract class Compressor {
    * @param arrHilb
    * @return
    */
-  abstract protected double[ ] compress( double[ ] arrHilb );
+  abstract public double[ ] compress( double[ ] arrHilb );
 
   /**
    * Interface for matrices for driving the different compression methods.
@@ -166,7 +213,7 @@ public abstract class Compressor {
    * @param matHilb
    * @return
    */
-  abstract protected double[ ][ ] compress( double[ ][ ] matHilb );
+  abstract public double[ ][ ] compress( double[ ][ ] matHilb );
 
   /**
    * Interface for spaces for driving the different compression methods.
@@ -176,6 +223,6 @@ public abstract class Compressor {
    * @param spcHilb
    * @return
    */
-  abstract protected double[ ][ ][ ] compress( double[ ][ ][ ] spcHilb );
+  abstract public double[ ][ ][ ] compress( double[ ][ ][ ] spcHilb );
 
 } // Compressor

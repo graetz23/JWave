@@ -38,8 +38,6 @@ public class CompressorPeaksAverage extends Compressor {
 
   protected double _peakMaximum;
 
-  protected double _peakAverage;
-
   /**
    * Compression by average of peak min & max.
    * 
@@ -50,7 +48,7 @@ public class CompressorPeaksAverage extends Compressor {
 
     _peakMinimum = 0.;
     _peakMaximum = 0.;
-    _peakAverage = 0.;
+    _magnitude = 0.;
 
   } // CompressorPeaksAverage
 
@@ -62,12 +60,13 @@ public class CompressorPeaksAverage extends Compressor {
    * @param threshold
    * @throws JWaveException
    */
-  public CompressorPeaksAverage( double threshold ) throws JWaveException {
+  public CompressorPeaksAverage( double threshold ) {
+    
     super( threshold );
 
     _peakMinimum = 0.;
     _peakMaximum = 0.;
-    _peakAverage = 0.;
+    _magnitude = 0.;
 
   } // CompressorPeaksAverage
 
@@ -77,7 +76,7 @@ public class CompressorPeaksAverage extends Compressor {
    * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see math.jwave.compressions.Compressor#compress(double[])
    */
-  @Override protected double[ ] compress( double[ ] arrHilb ) {
+  @Override public double[ ] compress( double[ ] arrHilb ) {
 
     for( double val : arrHilb ) {
 
@@ -91,9 +90,9 @@ public class CompressorPeaksAverage extends Compressor {
 
     } // loop over all entries
 
-    _peakAverage = .5 * ( _peakMaximum - _peakMinimum );
+    _magnitude = .5 * ( _peakMaximum - _peakMinimum );
 
-    return compress( arrHilb, _peakAverage );
+    return compress( arrHilb, _magnitude );
 
   } // compress
 
@@ -103,7 +102,7 @@ public class CompressorPeaksAverage extends Compressor {
    * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see math.jwave.compressions.Compressor#compress(double[][])
    */
-  @Override protected double[ ][ ] compress( double[ ][ ] matHilb ) {
+  @Override public double[ ][ ] compress( double[ ][ ] matHilb ) {
 
     int matHilbNoOfRows = matHilb.length;
     int matHilbNoOfCols = matHilb[ 0 ].length;
@@ -122,9 +121,9 @@ public class CompressorPeaksAverage extends Compressor {
       } // j
     } // i - loop over all entries
 
-    _peakAverage = .5 * ( _peakMaximum - _peakMinimum );
+    _magnitude = .5 * ( _peakMaximum - _peakMinimum );
 
-    return compress( matHilb, _peakAverage );
+    return compress( matHilb, _magnitude );
 
   } // compress
 
@@ -134,7 +133,7 @@ public class CompressorPeaksAverage extends Compressor {
    * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see math.jwave.compressions.Compressor#compress(double[][][])
    */
-  @Override protected double[ ][ ][ ] compress( double[ ][ ][ ] spcHilb ) {
+  @Override public double[ ][ ][ ] compress( double[ ][ ][ ] spcHilb ) {
 
     int matHilbNoOfRows = spcHilb.length;
     int matHilbNoOfCols = spcHilb[ 0 ].length;
@@ -156,9 +155,9 @@ public class CompressorPeaksAverage extends Compressor {
       } // j
     } // i - loop over all entries
 
-    _peakAverage = .5 * ( _peakMaximum - _peakMinimum );
+    _magnitude = .5 * ( _peakMaximum - _peakMinimum );
 
-    return compress( spcHilb, _peakAverage );
+    return compress( spcHilb, _magnitude );
 
   } // compress
 
