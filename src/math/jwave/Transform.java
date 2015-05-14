@@ -458,7 +458,27 @@ public final class Transform {
    * @return identifier of object of type Basic Transform
    */
   public final BasicTransform getBasicTransform( ) {
-    return _basicTransform;
+
+    BasicTransform basicTransform = null;
+
+    try {
+
+      if( _basicTransform == null )
+        throw new JWaveFailure( "Transform - BasicTransform object is null!" );
+
+      if( !( _basicTransform instanceof BasicTransform ) )
+        throw new JWaveFailure( "Transform - getBasicTransform - "
+            + "member is not of type BasicTransform!" );
+
+      basicTransform = _basicTransform;
+
+    } catch( JWaveException e ) {
+      e.showMessage( );
+      e.printStackTrace( );
+    } // try
+
+    return basicTransform;
+
   } // getBasicTransform
 
   /**
