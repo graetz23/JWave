@@ -79,24 +79,18 @@ public class CompressorMagnitude extends Compressor {
    * @date 20.02.2014 23:56:09 (non-Javadoc)
    * @see math.jwave.compressions.Compressor#compress(double[])
    */
-  @Override protected double[ ] compress( double[ ] arrHilb ) {
+  @Override public double[ ] compress( double[ ] arrHilb ) {
 
     _magnitude = 0.;
 
-    int arrHilbSize = arrHilb.length;
+    int arrHilbLength = arrHilb.length;
 
-    double[ ] arrComp = new double[ arrHilbSize ];
-
-    for( int i = 0; i < arrHilbSize; i++ )
+    for( int i = 0; i < arrHilbLength; i++ )
       _magnitude += Math.abs( arrHilb[ i ] );
 
-    for( int i = 0; i < arrHilbSize; i++ )
-      if( Math.abs( arrHilb[ i ] ) >= _magnitude * _threshold )
-        arrComp[ i ] = arrHilb[ i ];
-      else
-        arrComp[ i ] = 0.;
+    _magnitude /= (double)arrHilbLength;
 
-    return arrComp;
+    return compress( arrHilb, _magnitude ); // generates new array
 
   } // compress
 
@@ -105,27 +99,20 @@ public class CompressorMagnitude extends Compressor {
    * @date 20.02.2014 23:56:09 (non-Javadoc)
    * @see math.jwave.compressions.Compressor#compress(double[][])
    */
-  @Override protected double[ ][ ] compress( double[ ][ ] matHilb ) {
+  @Override public double[ ][ ] compress( double[ ][ ] matHilb ) {
 
     _magnitude = 0.;
 
     int matHilbNoOfRows = matHilb.length;
     int matHilbNoOfCols = matHilb[ 0 ].length;
 
-    double[ ][ ] matComp = new double[ matHilbNoOfRows ][ matHilbNoOfCols ];
-
     for( int i = 0; i < matHilbNoOfRows; i++ )
       for( int j = 0; j < matHilbNoOfCols; j++ )
         _magnitude += Math.abs( matHilb[ i ][ j ] );
 
-    for( int i = 0; i < matHilbNoOfRows; i++ )
-      for( int j = 0; j < matHilbNoOfCols; j++ )
-        if( Math.abs( matHilb[ i ][ j ] ) >= _magnitude * _threshold )
-          matComp[ i ][ j ] = matHilb[ i ][ j ];
-        else
-          matComp[ i ][ j ] = 0.;
+    _magnitude /= (double)matHilbNoOfRows * (double)matHilbNoOfCols;
 
-    return matComp;
+    return compress( matHilb, _magnitude );
 
   } // compress
 
@@ -134,7 +121,7 @@ public class CompressorMagnitude extends Compressor {
    * @date 20.02.2014 23:56:09 (non-Javadoc)
    * @see math.jwave.compressions.Compressor#compress(double[][][])
    */
-  @Override protected double[ ][ ][ ] compress( double[ ][ ][ ] spcHilb ) {
+  @Override public double[ ][ ][ ] compress( double[ ][ ][ ] spcHilb ) {
 
     _magnitude = 0.;
 
@@ -142,23 +129,16 @@ public class CompressorMagnitude extends Compressor {
     int matHilbNoOfCols = spcHilb[ 0 ].length;
     int matHilbNoOfLvls = spcHilb[ 0 ][ 0 ].length;
 
-    double[ ][ ][ ] spcComp =
-        new double[ matHilbNoOfRows ][ matHilbNoOfCols ][ matHilbNoOfLvls ];
-
     for( int i = 0; i < matHilbNoOfRows; i++ )
       for( int j = 0; j < matHilbNoOfCols; j++ )
         for( int k = 0; k < matHilbNoOfLvls; k++ )
           _magnitude += Math.abs( spcHilb[ i ][ j ][ k ] );
 
-    for( int i = 0; i < matHilbNoOfRows; i++ )
-      for( int j = 0; j < matHilbNoOfCols; j++ )
-        for( int k = 0; k < matHilbNoOfLvls; k++ )
-          if( Math.abs( spcHilb[ i ][ j ][ k ] ) >= _magnitude * _threshold )
-            spcComp[ i ][ j ][ k ] = spcHilb[ i ][ j ][ k ];
-          else
-            spcComp[ i ][ j ][ k ] = 0.;
+    _magnitude /=
+        (double)matHilbNoOfRows * (double)matHilbNoOfCols
+            * (double)matHilbNoOfLvls;
 
-    return spcComp;
+    return compress( spcHilb, _magnitude );
 
   } // compress
 

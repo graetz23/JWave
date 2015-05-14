@@ -55,12 +55,98 @@ public abstract class Compressor {
 
   public Compressor( double threshold ) throws JWaveException {
 
-    if( threshold < 0. )
-      throw new JWaveFailure( "given threshold is negative" );
+    if( threshold <= 0. )
+      throw new JWaveFailure(
+          "Compressor - given threshold should be larger than zero!" );
 
     _threshold = threshold;
 
   } // Compressor
+
+  /**
+   * Compresses by comparing the magnitude value by the set compression factor,
+   * the threshold, and the sets all lower values to zero.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.05.2015 18:06:52
+   * @param arr
+   * @param magnitude
+   * @return
+   */
+  protected double[ ] compress( double[ ] arr, double magnitude ) {
+
+    int arrLength = arr.length;
+
+    double[ ] arrComp = new double[ arrLength ];
+
+    for( int i = 0; i < arrLength; i++ )
+      if( Math.abs( arr[ i ] ) >= magnitude * _threshold )
+        arrComp[ i ] = arr[ i ];
+      else
+        arrComp[ i ] = 0.; // compression be setting to zero
+
+    return arrComp;
+
+  } // compress
+
+  /**
+   * Compresses by comparing the magnitude value by the set compression factor,
+   * the threshold, and the sets all lower values to zero.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.05.2015 18:17:31
+   * @param mat
+   * @param magnitude
+   * @return
+   */
+  protected double[ ][ ] compress( double[ ][ ] mat, double magnitude ) {
+
+    int matHilbNoOfRows = mat.length;
+    int matHilbNoOfCols = mat[ 0 ].length;
+
+    double[ ][ ] matComp = new double[ matHilbNoOfRows ][ matHilbNoOfCols ];
+
+    for( int i = 0; i < matHilbNoOfRows; i++ )
+      for( int j = 0; j < matHilbNoOfCols; j++ )
+        if( Math.abs( mat[ i ][ j ] ) >= magnitude * _threshold )
+          matComp[ i ][ j ] = mat[ i ][ j ];
+        else
+          matComp[ i ][ j ] = 0.;
+
+    return matComp;
+
+  } // compress
+
+  /**
+   * Compresses by comparing the magnitude value by the set compression factor,
+   * the threshold, and the sets all lower values to zero.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 14.05.2015 18:18:44
+   * @param spc
+   * @param magnitude
+   * @return
+   */
+  protected double[ ][ ][ ] compress( double[ ][ ][ ] spc, double magnitude ) {
+
+    int matHilbNoOfRows = spc.length;
+    int matHilbNoOfCols = spc[ 0 ].length;
+    int matHilbNoOfLvls = spc[ 0 ][ 0 ].length;
+
+    double[ ][ ][ ] spcComp =
+        new double[ matHilbNoOfRows ][ matHilbNoOfCols ][ matHilbNoOfLvls ];
+
+    for( int i = 0; i < matHilbNoOfRows; i++ )
+      for( int j = 0; j < matHilbNoOfCols; j++ )
+        for( int k = 0; k < matHilbNoOfLvls; k++ )
+          if( Math.abs( spc[ i ][ j ][ k ] ) >= magnitude * _threshold )
+            spcComp[ i ][ j ][ k ] = spc[ i ][ j ][ k ];
+          else
+            spcComp[ i ][ j ][ k ] = 0.;
+
+    return spcComp;
+
+  } // compress
 
   /**
    * Interface for arrays for driving the different compression methods.
