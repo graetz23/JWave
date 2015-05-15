@@ -31,18 +31,18 @@ public class TransformBuilder {
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 14:35:12
-   * @param name
+   * @param transformName
    *          identifier as stored in Transform object
    * @param wavelet
    * @return a matching object of type Transform
    */
-  static public Transform create( String name, Wavelet wavelet ) {
+  static public Transform create( String transformName, Wavelet wavelet ) {
 
     BasicTransform basicTransform = null;
 
     try {
 
-      switch( name ){
+      switch( transformName ){
 
         case "Discrete Fourier Transform":
           basicTransform = new DiscreteFourierTransform( );
@@ -64,10 +64,10 @@ public class TransformBuilder {
       } // switch
 
     } catch( JWaveException e ) {
-    
+
       e.showMessage( );
       e.printStackTrace( );
-    
+
     } // try
 
     return new Transform( basicTransform );
@@ -81,14 +81,14 @@ public class TransformBuilder {
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 14:37:30
-   * @param name
+   * @param transformName
    *          identifier as stored in Transform object
    * @param waveletName
    * @return identifier as stored in Wavelet object
    */
-  static public Transform create( String name, String waveletName ) {
- 
-    return create( name, WaveletBuilder.create( waveletName ) );
+  static public Transform create( String transformName, String waveletName ) {
+
+    return create( transformName, WaveletBuilder.create( waveletName ) );
 
   } // create
 

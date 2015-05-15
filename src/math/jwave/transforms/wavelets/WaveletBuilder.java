@@ -91,17 +91,17 @@ public class WaveletBuilder {
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 14:19:09
-   * @param name
+   * @param waveletName
    *          identifier as stored in Wavelet object
    * @return a matching object of type Wavelet
    */
-  static public Wavelet create( String name ) {
+  static public Wavelet create( String waveletName ) {
 
     Wavelet wavelet = null;
 
     try {
 
-      switch( name ){
+      switch( waveletName ){
 
         case "Haar":
           wavelet = new Haar1( );
