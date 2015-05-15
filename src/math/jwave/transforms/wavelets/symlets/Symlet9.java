@@ -34,8 +34,8 @@ import math.jwave.transforms.wavelets.Wavelet;
 public class Symlet9 extends Wavelet {
 
   /**
-   * TODO Comment me please! * Already orthonormal coefficients taken from Filip
-   * Wasilewski's webpage http://wavelets.pybytes.com/wavelet/sym9/ Thanks!
+   * Already orthonormal coefficients taken from Filip Wasilewski's webpage
+   * http://wavelets.pybytes.com/wavelet/sym9/ Thanks!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 17.08.2014 14:31:46

@@ -61,7 +61,7 @@ public class CompressorPeaksAverage extends Compressor {
    * @throws JWaveException
    */
   public CompressorPeaksAverage( double threshold ) {
-    
+
     super( threshold );
 
     _peakMinimum = 0.;
@@ -70,8 +70,10 @@ public class CompressorPeaksAverage extends Compressor {
 
   } // CompressorPeaksAverage
 
-  /*
-   * TODO Comment me please!
+  /**
+   * Calculating the average by maximal distance between minimal and maximal
+   * absolute value.
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see math.jwave.compressions.Compressor#compress(double[])
@@ -96,8 +98,10 @@ public class CompressorPeaksAverage extends Compressor {
 
   } // compress
 
-  /*
-   * TODO Comment me please!
+  /**
+   * Calculating the average by maximal distance between minimal and maximal
+   * absolute value.
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see math.jwave.compressions.Compressor#compress(double[][])
@@ -127,8 +131,10 @@ public class CompressorPeaksAverage extends Compressor {
 
   } // compress
 
-  /*
-   * TODO Comment me please!
+  /**
+   * Calculating the average by maximal distance between minimal and maximal
+   * absolute value.
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see math.jwave.compressions.Compressor#compress(double[][][])

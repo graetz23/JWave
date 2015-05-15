@@ -64,8 +64,9 @@ public class BiOrthogonal extends Wavelet {
     } // i
   }// _buildBiOrthonormalSpace
 
-  /*
-   * TODO Comment me please!
+  /**
+   * Wavelet forward transform algorithm adapted to biorthogonal wavelets.
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 28.03.2015 18:44:24 (non-Javadoc)
    * @see math.jwave.transforms.wavelets.Wavelet#forward(double[], int)
@@ -96,8 +97,9 @@ public class BiOrthogonal extends Wavelet {
 
   } // forward
 
-  /*
-   * TODO Comment me please!
+  /**
+   * Wavelet reverse transform algorithm adapted to biorthogonal wavelets.
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 28.03.2015 18:44:24 (non-Javadoc)
    * @see math.jwave.transforms.wavelets.Wavelet#reverse(double[], int)
