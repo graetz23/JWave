@@ -13,7 +13,7 @@ import math.jwave.datatypes.lines.LineFull;
 import math.jwave.exceptions.JWaveException;
 
 /**
- * a block that uses a full array for storage of Line objects.
+ * A block that uses a full array for storage of Line objects.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.05.2015 14:45:52
@@ -27,7 +27,7 @@ public class BlockFull extends Block {
   protected Line[ ] _arrLines;
 
   /**
-   * TODO Comment me please!
+   * Constructor setting members for and allocating memory!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 14:45:52

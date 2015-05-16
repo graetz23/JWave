@@ -21,65 +21,76 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package math.jwave.datatypes.lines;
+package math.jwave.datatypes.spaces;
 
+import math.jwave.datatypes.blocks.Block;
+import math.jwave.datatypes.blocks.BlockFull;
+import math.jwave.datatypes.lines.Line;
+import math.jwave.datatypes.lines.LineFull;
 import math.jwave.exceptions.JWaveException;
 
 /**
- * A line of Data; 1-D organized by (0) .. (noOfRows), using a double array for
- * storage of data.
+ * A space that uses a full array for storage of Block objects.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.05.2015 15:05:28
+ * @date 16.05.2015 15:57:35
  */
-public class LineFull extends Line {
+public class SpaceFull extends Space {
 
   /**
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 15:24:50
+   * @date 16.05.2015 16:00:11
    */
-  protected double[ ] _arr;
+  protected Block[ ] _arrBlocks;
 
   /**
    * Constructor setting members for and allocating memory!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 15:05:28
-   * @param noOfRows
+   * @date 16.05.2015 15:57:35
+   * @param i
+   *          from 0 to noOfRows-1
+   * @param j
+   *          from 0 to noOfCols-1
+   * @param k
+   *          from 0 to noOfLvls-1
    */
-  public LineFull( int noOfRows ) {
+  public SpaceFull( int noOfRows, int noOfCols, int noOfLvls ) {
 
-    super( noOfRows );
+    super( noOfRows, noOfCols, noOfLvls );
 
-    _arr = new double[ noOfRows ];
+    _arrBlocks = new Block[ _noOfLvls ];
+    for( int k = 0; k < _noOfLvls; k++ )
+      _arrBlocks[ k ] = new BlockFull( noOfRows, noOfCols );
 
-  } // LineFull
+  } // SpaceFull
 
   /*
    * Getter!
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 15:18:14 (non-Javadoc)
-   * @see math.jwave.datatypes.lines.Line#get(int)
+   * @date 16.05.2015 15:57:35 (non-Javadoc)
+   * @see math.jwave.datatypes.spaces.Space#get(int, int, int)
    */
-  @Override public double get( int i ) throws JWaveException {
+  @Override public double get( int i, int j, int k ) throws JWaveException {
 
-    check( i );
+    check( i, j, k );
 
-    return _arr[ i ];
+    return _arrBlocks[ k ].get( i, j );
 
-  } // get 
+  } // get
 
   /*
    * Setter!
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 15:18:26 (non-Javadoc)
-   * @see math.jwave.datatypes.lines.Line#set(int, double)
+   * @date 16.05.2015 15:57:35 (non-Javadoc)
+   * @see math.jwave.datatypes.spaces.Space#set(int, int, int, double)
    */
-  @Override public void set( int i, double val ) throws JWaveException {
+  @Override public void set( int i, int j, int k, double value )
+      throws JWaveException {
 
-    check( i );
+    check( i, j, k );
 
-    _arr[ i ] = val;
+    _arrBlocks[ k ].set( i, j, value );
 
   } // set
 

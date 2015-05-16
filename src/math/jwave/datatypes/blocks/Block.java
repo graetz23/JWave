@@ -119,7 +119,7 @@ public abstract class Block {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 15:33:14
    * @param i
-   *          from 0 to noOfCols-1
+   *          from 0 to noOfRows-1
    * @param j
    *          from 0 to noOfCols-1
    * @throws JWaveException
@@ -137,7 +137,7 @@ public abstract class Block {
       throw new JWaveFailure( "Block - i is greater than noOfRows: "
           + _noOfRows );
 
-    check( j ); // for check j, while i is in every Line object stored.
+    check( j ); // for checking j, while i is in every Line object stored.
 
   } // check
 
