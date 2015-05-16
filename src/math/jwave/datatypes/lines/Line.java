@@ -63,27 +63,26 @@ public abstract class Line {
   } // getNoOfRows
 
   /**
-   * Check the given input of position and throws a failure (exception) if
-   * position is not valid.
+   * Check the given input of i as position in number of rows, otherwise throw a
+   * failure (exception) if i as position is not valid.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 15:13:18
-   * @param pos
+   * @param i
    *          from 0 to noOfRows-1
    * @throws JWaveException
-   *           if pos is out of bounds
+   *           if i is out of bounds
    */
-  protected void check( int pos ) throws JWaveException {
+  protected void check( int i ) throws JWaveException {
 
-    if( pos < 0 )
-      throw new JWaveFailure( "Line - pos is smaller than zero" );
+    if( i < 0 )
+      throw new JWaveFailure( "Line - i is smaller than zero" );
 
-    if( pos == _noOfRows )
-      throw new JWaveFailure( "Line - pos is equal to noOfRows: " + _noOfRows );
+    if( i == _noOfRows )
+      throw new JWaveFailure( "Line - i is equal to noOfRows: " + _noOfRows );
 
-    if( pos > _noOfRows )
-      throw new JWaveFailure( "Line - pos is greater than noOfRows: "
-          + _noOfRows );
+    if( i > _noOfRows )
+      throw new JWaveFailure( "Line - i is greater than noOfRows: " + _noOfRows );
 
   } // check
 
@@ -96,22 +95,22 @@ public abstract class Line {
    *          from 0 to noOfRows-1 as range of input
    * @return the stored double value
    * @throws JWaveException
-   *           if pos is out of bounds
+   *           if i is out of bounds
    */
-  public abstract double get( int pos ) throws JWaveException;
+  public abstract double get( int i ) throws JWaveException;
 
   /**
    * Setter to store values.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 15:16:42
-   * @param pos
+   * @param i
    *          from 0 to noOfRows-1 as range of input
    * @param val
    *          the value to be stored in Line object.
    * @throws JWaveException
-   *           if pos out of bounds
+   *           if i out of bounds
    */
-  public abstract void set( int pos, double val ) throws JWaveException;
+  public abstract void set( int i, double val ) throws JWaveException;
 
 } // class

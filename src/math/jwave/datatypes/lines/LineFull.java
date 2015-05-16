@@ -34,16 +34,21 @@ import math.jwave.exceptions.JWaveException;
  */
 public class LineFull extends Line {
 
+  /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.05.2015 15:24:50
+   */
   protected double[ ] _arr;
 
   /**
-   * TODO Comment me please!
+   * uses a double array to store data; full memory occupation.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 15:05:28
    * @param noOfRows
    */
   public LineFull( int noOfRows ) {
+
     super( noOfRows );
 
     _arr = new double[ noOfRows ];
@@ -56,11 +61,11 @@ public class LineFull extends Line {
    * @date 16.05.2015 15:18:14 (non-Javadoc)
    * @see math.jwave.datatypes.lines.Line#get(int)
    */
-  @Override public double get( int pos ) throws JWaveException {
+  @Override public double get( int i ) throws JWaveException {
 
-    check( pos );
+    check( i );
 
-    return _arr[ pos ];
+    return _arr[ i ];
 
   } // get 
 
@@ -70,11 +75,11 @@ public class LineFull extends Line {
    * @date 16.05.2015 15:18:26 (non-Javadoc)
    * @see math.jwave.datatypes.lines.Line#set(int, double)
    */
-  @Override public void set( int pos, double val ) throws JWaveException {
+  @Override public void set( int i, double val ) throws JWaveException {
 
-    check( pos );
+    check( i );
 
-    _arr[ pos ] = val;
+    _arr[ i ] = val;
 
   } // set
 
