@@ -23,9 +23,8 @@
  */
 package math.jwave.datatypes.blocks;
 
-import static org.junit.Assert.*;
-import math.jwave.datatypes.lines.Line;
-import math.jwave.datatypes.lines.LineFull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import math.jwave.exceptions.JWaveException;
 
 import org.junit.Test;
@@ -40,12 +39,12 @@ public class BlockFullTest {
   private int _noOfCols = 1000; // adjust runtime of test
 
   /**
-   * generate a block for tests keeping already values.
+   * generate a block for tests keeping already data: i + j!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:21:33
-   * @param noOfRows
-   * @param noOfCols
+   * @param noOfRows 0 ..
+   * @param noOfCols 0 ..
    * @return
    * @throws JWaveException
    */

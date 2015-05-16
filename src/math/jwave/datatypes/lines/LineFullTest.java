@@ -37,11 +37,11 @@ public class LineFullTest {
   private int _noOfRows = 10000; // adjust runtime of test
 
   /**
-   * generate object for tests.
+   * Generate a Line object already set with data: i!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:09:13
-   * @param noOfRows
+   * @param noOfRows 0 ..
    * @return
    * @throws JWaveException
    */
