@@ -23,6 +23,7 @@
  */
 package math.jwave.datatypes.lines;
 
+import math.jwave.datatypes.Super;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 
@@ -32,7 +33,7 @@ import math.jwave.exceptions.JWaveFailure;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.05.2015 15:00:01
  */
-public abstract class Line {
+public abstract class Line extends Super {
 
   /**
    * @author Christian Scheiblich (cscheiblich@gmail.com)

@@ -23,6 +23,7 @@
  */
 package math.jwave.datatypes.blocks;
 
+import math.jwave.datatypes.Super;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 
@@ -34,7 +35,7 @@ import math.jwave.exceptions.JWaveFailure;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.05.2015 14:39:22
  */
-public abstract class Block {
+public abstract class Block extends Super {
 
   /**
    * The number of rows of this Block.
