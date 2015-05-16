@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package math.jwave.datatypes.blocks;
+package math.jwave.datatypes.spaces;
 
 import java.util.HashMap;
 
-import math.jwave.datatypes.lines.Line;
-import math.jwave.datatypes.lines.LineHash;
+import math.jwave.datatypes.blocks.Block;
+import math.jwave.datatypes.blocks.BlockHash;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 
@@ -34,82 +34,87 @@ import math.jwave.exceptions.JWaveFailure;
  * Uses HashMap generic for sparse data representations.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.05.2015 16:41:53
+ * @date 16.05.2015 16:52:40
  */
-public class BlockHash extends Block {
+public class SpaceHash extends Space {
 
   /**
-   * Storing LineHash objects in a HashMap for sparse representation.
+   * Storing BlockHash objects in a HashMap for sparse representation.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 16:43:03
+   * @date 16.05.2015 16:55:22
    */
-  HashMap< Integer, Line > _hashMapLines;
+  HashMap< Integer, Block > _hashMapBlocks;
 
   /**
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 16:41:53
+   * @date 16.05.2015 16:52:40
    * @param noOfRows
+   *          0 ..
    * @param noOfCols
+   *          0 ..
+   * @param noOfLvls
+   *          0 ..
    */
-  public BlockHash( int noOfRows, int noOfCols ) {
-    super( noOfRows, noOfCols );
+  public SpaceHash( int noOfRows, int noOfCols, int noOfLvls ) {
+    super( noOfRows, noOfCols, noOfLvls );
 
-    _hashMapLines = new HashMap< Integer, Line >( );
+    _hashMapBlocks = new HashMap< Integer, Block >( );
 
   }
 
   /*
    * Getter!
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 16:41:53 (non-Javadoc)
-   * @see math.jwave.datatypes.blocks.Block#get(int, int)
+   * @date 16.05.2015 16:52:40 (non-Javadoc)
+   * @see math.jwave.datatypes.spaces.Space#get(int, int, int)
    */
-  @Override public double get( int i, int j ) throws JWaveException {
+  @Override public double get( int i, int j, int k ) throws JWaveException {
+    
+    check( i, j, k );
 
-    check( i, j );
-
-    Line line = null;
+    Block block = null;
     double value = 0.;
 
-    if( _hashMapLines.containsKey( j ) ) {
+    if( _hashMapBlocks.containsKey( k ) ) {
 
-      line = _hashMapLines.get( j );
+      block = _hashMapBlocks.get( k );
 
-      value = line.get( i );
+      value = block.get( i, j );
 
     } else
       throw new JWaveFailure( "Line - no value stored for requested i: " + i );
 
     return value;
-
+    
   } // get
 
   /*
-   * TODO Comment me please!
+   * Setter!
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 16:41:53 (non-Javadoc)
-   * @see math.jwave.datatypes.blocks.Block#set(int, int, double)
+   * @date 16.05.2015 16:52:40 (non-Javadoc)
+   * @see math.jwave.datatypes.spaces.Space#set(int, int, int, double)
    */
-  @Override public void set( int i, int j, double value ) throws JWaveException {
+  @Override public void set( int i, int j, int k, double value )
+      throws JWaveException {
 
-    check( i, j );
+    check( i, j, k );
 
-    Line line = null;
+    Block block = null;
 
-    if( _hashMapLines.containsKey( j ) ) {
+    if( _hashMapBlocks.containsKey( k ) ) {
 
-      line = _hashMapLines.get( j );
-      line.set( i, value );
+      block = _hashMapBlocks.get( k );
+      block.set( i, j, value );
 
     } else {
 
-      line = new LineHash( _noOfRows );
-      line.set( i, value );
-      _hashMapLines.put( j, line );
+      block = new BlockHash( _noOfRows, _noOfCols );
+      block.set( i, j, value );
+      _hashMapBlocks.put( k, block );
 
     } // if
 
   } // set
 
-} // class
+}
