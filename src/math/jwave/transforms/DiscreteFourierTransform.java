@@ -171,6 +171,32 @@ public class DiscreteFourierTransform extends BasicTransform {
 
   } // reverse
 
+  /*
+   * ATTENTION - yet no level implemented; it is ognored!
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.05.2015 21:18:34 (non-Javadoc)
+   * @see math.jwave.transforms.BasicTransform#forward(double[], int)
+   */
+  @Override public double[ ] forward( double[ ] arrTime, int level )
+      throws JWaveException {
+
+    return forward( arrTime );
+
+  } // forward
+
+  /*
+   * ATTENTION - yet no level implemented; it is ognored!
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.05.2015 21:18:34 (non-Javadoc)
+   * @see math.jwave.transforms.BasicTransform#reverse(double[], int)
+   */
+  @Override public double[ ] reverse( double[ ] arrFreq, int level )
+      throws JWaveException {
+
+    return reverse( arrFreq );
+
+  } // reverse
+
   /**
    * The 1-D forward version of the Discrete Fourier Transform (DFT); The input
    * array arrTime is organized by a class called Complex keeping real and
