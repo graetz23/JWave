@@ -32,12 +32,12 @@ import org.junit.Test;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.05.2015 16:06:38
  */
-public class LineFullTest {
+public class LineTest {
 
-  private int _noOfRows = 10000; // adjust runtime of test
+  private int _noOfRows = 100000; // adjust runtime of test
 
   /**
-   * Generate a Line object already set with data: i!
+   * Generate a LineFull object already set with data: i!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:09:13
@@ -55,6 +55,27 @@ public class LineFullTest {
     return line;
 
   } // genLineFullObject
+  
+  /**
+   * Generate a LineHash object already set with data: i!
+   *
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.05.2015 16:39:06 
+   *
+   * @param noOfRows
+   * @return
+   * @throws JWaveException
+   */
+  private Line genLineHashObject( int noOfRows ) throws JWaveException {
+    
+    Line line = new LineHash( noOfRows );
+
+    for( int i = 0; i < line.getNoOfRows( ); i++ )
+      line.set( i, (double)i );
+
+    return line;
+
+  } // genLineHashObject
 
   /**
    * Test method for {@link math.jwave.datatypes.lines.LineFull#get(int)}.
@@ -64,6 +85,11 @@ public class LineFullTest {
     try {
 
       Line line = genLineFullObject( _noOfRows );
+
+      for( int i = 0; i < line.getNoOfRows( ); i++ )
+        assertEquals( (double)i, line.get( i ), 0. );
+
+      line = genLineHashObject( _noOfRows );
 
       for( int i = 0; i < line.getNoOfRows( ); i++ )
         assertEquals( (double)i, line.get( i ), 0. );
@@ -84,6 +110,14 @@ public class LineFullTest {
     try {
 
       Line line = genLineFullObject( _noOfRows );
+
+      for( int i = 0; i < line.getNoOfRows( ); i++ )
+        line.set( i, (double)( i + 1 ) );
+
+      for( int i = 0; i < line.getNoOfRows( ); i++ )
+        assertEquals( (double)( i + 1 ), line.get( i ), 0. );
+
+      line = genLineHashObject( _noOfRows );
 
       for( int i = 0; i < line.getNoOfRows( ); i++ )
         line.set( i, (double)( i + 1 ) );
