@@ -25,8 +25,6 @@ package math.jwave.datatypes.spaces;
 
 import math.jwave.datatypes.blocks.Block;
 import math.jwave.datatypes.blocks.BlockFull;
-import math.jwave.datatypes.lines.Line;
-import math.jwave.datatypes.lines.LineFull;
 import math.jwave.exceptions.JWaveException;
 
 /**

@@ -882,8 +882,6 @@ public class TransformTest {
    */
   @Test public void testCompression( ) {
 
-    double delta = 1.e-6; // due to a lot of wavelets with different precisions
-    
     Compressor compressor = new CompressorMagnitude( 1.0 );
 
     Wavelet[ ] arrOfWaveletObjects = WaveletBuilder.create2arr( ); // over 50 wavelets :-p
