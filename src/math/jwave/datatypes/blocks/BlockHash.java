@@ -23,64 +23,93 @@
  */
 package math.jwave.datatypes.blocks;
 
+import java.util.HashMap;
+
 import math.jwave.datatypes.lines.Line;
-import math.jwave.datatypes.lines.LineFull;
+import math.jwave.datatypes.lines.LineHash;
 import math.jwave.exceptions.JWaveException;
+import math.jwave.exceptions.JWaveFailure;
 
 /**
- * A block that uses a full array for storage of Line objects.
+ * Uses HashMap generic for sparse data representations.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.05.2015 14:45:52
+ * @date 16.05.2015 16:41:53
  */
-public class BlockFull extends Block {
+public class BlockHash extends Block {
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 15:26:11
-   */
-  protected Line[ ] _arrLines;
-
-  /**
-   * Constructor setting members for and allocating memory!
+   * Storing Line objects in a HashMap for sparse representation
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 14:45:52
+   * @date 16.05.2015 16:43:03
+   */
+  HashMap< Integer, Line > _hashMapLines;
+
+  /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.05.2015 16:41:53
    * @param noOfRows
    * @param noOfCols
    */
-  public BlockFull( int noOfRows, int noOfCols ) {
+  public BlockHash( int noOfRows, int noOfCols ) {
+    super( noOfRows, noOfCols );
 
-    super( noOfRows, noOfCols ); // store does exclusively
+    _hashMapLines = new HashMap< Integer, Line >( );
 
-    _arrLines = new Line[ _noOfCols ];
-    for( int j = 0; j < _noOfCols; j++ )
-      _arrLines[ j ] = new LineFull( noOfRows );
-
-  } // BlockFull
+  }
 
   /*
    * Getter!
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 15:34:59 (non-Javadoc)
+   * @date 16.05.2015 16:41:53 (non-Javadoc)
    * @see math.jwave.datatypes.blocks.Block#get(int, int)
    */
   @Override public double get( int i, int j ) throws JWaveException {
 
-    // check( j );
     check( i, j );
 
-    return _arrLines[ j ].get( i ); // checks i again
+    Line line = null;
+    double value = 0.;
+
+    if( _hashMapLines.containsKey( j ) ) {
+
+      line = _hashMapLines.get( j );
+
+      value = line.get( i );
+
+    } else
+      throw new JWaveFailure( "Line - no value stored for requested i: " + i );
+
+    return value;
 
   } // get
 
+  /*
+   * TODO Comment me please!
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.05.2015 16:41:53 (non-Javadoc)
+   * @see math.jwave.datatypes.blocks.Block#set(int, int, double)
+   */
   @Override public void set( int i, int j, double value ) throws JWaveException {
 
-    // check( j );
     check( i, j );
 
-    _arrLines[ j ].set( i, value ); // checks i again
+    Line line = null;
+
+    if( _hashMapLines.containsKey( j ) ) {
+
+      line = _hashMapLines.get( j );
+      line.set( i, value );
+
+    } else {
+
+      line = new LineHash( _noOfRows );
+      line.set( i, value );
+      _hashMapLines.put( j, line );
+      
+    } // if
 
   } // set
 
-}
+} // class

@@ -33,7 +33,7 @@ import org.junit.Test;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 16.05.2015 16:15:47
  */
-public class BlockFullTest {
+public class BlockTest {
 
   private int _noOfRows = 1000; // adjust runtime of test
   private int _noOfCols = 1000; // adjust runtime of test
@@ -60,6 +60,30 @@ public class BlockFullTest {
     return block;
 
   } // genBlockFullObject
+  
+  /**
+   * Generate a BlockHash object already set with data: i + j!
+   *
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.05.2015 16:49:33 
+   *
+   * @param noOfRows
+   * @param noOfCols
+   * @return
+   * @throws JWaveException
+   */
+  private Block genBlockHashObject( int noOfRows, int noOfCols )
+      throws JWaveException {
+
+    Block block = new BlockHash( noOfRows, noOfCols );
+
+    for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int j = 0; j < block.getNoOfCols( ); j++ )
+        block.set( i, j, (double)( i + j ) );
+
+    return block;
+
+  } // genBlockHashObject
 
   /**
    * Test method for {@link math.jwave.datatypes.blocks.BlockFull#get(int, int)}
@@ -70,6 +94,12 @@ public class BlockFullTest {
     try {
 
       Block block = genBlockFullObject( _noOfRows, _noOfCols );
+
+      for( int i = 0; i < block.getNoOfRows( ); i++ )
+        for( int j = 0; j < block.getNoOfCols( ); j++ )
+          assertEquals( (double)( i + j ), block.get( i, j ), 0. );
+
+      block = genBlockHashObject( _noOfRows, _noOfCols );
 
       for( int i = 0; i < block.getNoOfRows( ); i++ )
         for( int j = 0; j < block.getNoOfCols( ); j++ )
@@ -100,6 +130,16 @@ public class BlockFullTest {
         for( int j = 0; j < block.getNoOfCols( ); j++ )
           assertEquals( (double)( i + j + 1 ), block.get( i, j ), 0. );
 
+      block = genBlockHashObject( _noOfRows, _noOfCols );
+
+      for( int i = 0; i < block.getNoOfRows( ); i++ )
+        for( int j = 0; j < block.getNoOfCols( ); j++ )
+          block.set( i, j, (double)( i + j + 1 ) );
+
+      for( int i = 0; i < block.getNoOfRows( ); i++ )
+        for( int j = 0; j < block.getNoOfCols( ); j++ )
+          assertEquals( (double)( i + j + 1 ), block.get( i, j ), 0. );
+      
     } catch( JWaveException e ) {
       fail( "caught exception" );
       e.printStackTrace( );
