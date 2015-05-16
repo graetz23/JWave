@@ -21,52 +21,60 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package math.jwave.datatypes.lines;
+package math.jwave.datatypes.blocks;
 
 import static org.junit.Assert.*;
+import math.jwave.datatypes.lines.Line;
+import math.jwave.datatypes.lines.LineFull;
 import math.jwave.exceptions.JWaveException;
 
 import org.junit.Test;
 
 /**
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.05.2015 16:06:38
+ * @date 16.05.2015 16:15:47
  */
-public class LineFullTest {
+public class BlockFullTest {
 
-  private int _noOfRows = 10000; // adjust runtime of test
+  private int _noOfRows = 1000; // adjust runtime of test
+  private int _noOfCols = 1000; // adjust runtime of test
 
   /**
-   * generate object for tests.
+   * generate a block for tests keeping already values.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 16:09:13
+   * @date 16.05.2015 16:21:33
    * @param noOfRows
+   * @param noOfCols
    * @return
    * @throws JWaveException
    */
-  private Line genLineFullObject( int noOfRows ) throws JWaveException {
+  private Block genBlockFullObject( int noOfRows, int noOfCols )
+      throws JWaveException {
 
-    Line line = new LineFull( noOfRows );
+    Block block = new BlockFull( noOfRows, noOfCols );
 
-    for( int i = 0; i < line.getNoOfRows( ); i++ )
-      line.set( i, (double)i );
+    for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int j = 0; j < block.getNoOfCols( ); j++ )
+        block.set( i, j, (double)( i + j ) );
 
-    return line;
+    return block;
 
-  } // genLineFullObject
+  } // genBlockFullObject
 
   /**
-   * Test method for {@link math.jwave.datatypes.lines.LineFull#get(int)}.
+   * Test method for {@link math.jwave.datatypes.blocks.BlockFull#get(int, int)}
+   * .
    */
   @Test public void testGet( ) {
 
     try {
 
-      Line line = genLineFullObject( _noOfRows );
+      Block block = genBlockFullObject( _noOfRows, _noOfCols );
 
-      for( int i = 0; i < line.getNoOfRows( ); i++ )
-        assertEquals( (double)i, line.get( i ), 0. );
+      for( int i = 0; i < block.getNoOfRows( ); i++ )
+        for( int j = 0; j < block.getNoOfCols( ); j++ )
+          assertEquals( (double)( i + j ), block.get( i, j ), 0. );
 
     } catch( JWaveException e ) {
       fail( "caught exception" );
@@ -77,19 +85,21 @@ public class LineFullTest {
 
   /**
    * Test method for
-   * {@link math.jwave.datatypes.lines.LineFull#set(int, double)}.
+   * {@link math.jwave.datatypes.blocks.BlockFull#set(int, int, double)}.
    */
   @Test public void testSet( ) {
 
     try {
 
-      Line line = genLineFullObject( _noOfRows );
+      Block block = genBlockFullObject( _noOfRows, _noOfCols );
 
-      for( int i = 0; i < line.getNoOfRows( ); i++ )
-        line.set( i, (double)( i + 1 ) );
+      for( int i = 0; i < block.getNoOfRows( ); i++ )
+        for( int j = 0; j < block.getNoOfCols( ); j++ )
+          block.set( i, j, (double)( i + j + 1 ) );
 
-      for( int i = 0; i < line.getNoOfRows( ); i++ )
-        assertEquals( (double)( i + 1 ), line.get( i ), 0. );
+      for( int i = 0; i < block.getNoOfRows( ); i++ )
+        for( int j = 0; j < block.getNoOfCols( ); j++ )
+          assertEquals( (double)( i + j + 1 ), block.get( i, j ), 0. );
 
     } catch( JWaveException e ) {
       fail( "caught exception" );
