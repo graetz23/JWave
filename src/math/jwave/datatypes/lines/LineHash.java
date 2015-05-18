@@ -38,9 +38,9 @@ public class LineHash extends Line {
 
   /**
    * Simple hash mapping for sparse data.
-   *
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 16:31:41 
+   * @date 16.05.2015 16:31:41
    */
   HashMap< Integer, Double > _hashMap;
 
@@ -52,9 +52,42 @@ public class LineHash extends Line {
   public LineHash( int noOfRows ) {
 
     super( noOfRows );
-    _hashMap = new HashMap< Integer, Double >( );
 
   } // LineHash
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 18:11:28 (non-Javadoc)
+   * @see math.jwave.datatypes.lines.Line#isAllocated()
+   */
+  @Override public boolean isAllocated( ) {
+    boolean isAllocated = true;
+    if( _hashMap == null )
+      isAllocated = false;
+    return isAllocated;
+  } // isAllocated
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 18:12:03 (non-Javadoc)
+   * @see math.jwave.datatypes.lines.Line#alloc()
+   */
+  @Override public void alloc( ) throws JWaveException {
+
+    _hashMap = new HashMap< Integer, Double >( );
+
+  } // alloc
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 18:12:13 (non-Javadoc)
+   * @see math.jwave.datatypes.lines.Line#erase()
+   */
+  @Override public void erase( ) throws JWaveException {
+
+    _hashMap = null;
+
+  } // erase
 
   /*
    * Getter!
@@ -65,16 +98,16 @@ public class LineHash extends Line {
   @Override public double get( int i ) throws JWaveException {
 
     check( i );
-    
+
     double value = 0.;
-    
+
     if( _hashMap.containsKey( i ) )
       value = _hashMap.get( i );
-    else 
+    else
       throw new JWaveFailure( "Line - no value stored for requested i: " + i );
-    
+
     return value;
-    
+
   } // get
 
   /*
@@ -86,9 +119,9 @@ public class LineHash extends Line {
   @Override public void set( int i, double value ) throws JWaveException {
 
     check( i );
-    
+
     _hashMap.put( i, value );
-    
+
   } // set
 
 } // class

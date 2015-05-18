@@ -42,16 +42,43 @@ public abstract class Line extends Super {
   protected int _noOfRows;
 
   /**
+   * The position where the line start from as a sub set in the context of
+   * SuperLine. For example a SuperLine Objects defines 0 .. 10 and by three
+   * Line objects this results in - e.g. - 0 .. 3 and 4 .. 7 and 8 .. 9. the off
+   * sets of theses Line objects are: 0, 4, and 8.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 17:44:48
+   */
+  protected int _offSetRow;
+
+  /**
    * Create a Line object by a certain number of rows.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 15:03:33
    * @param noOfRows
+   *          the size or length of this Line object
    */
   public Line( int noOfRows ) {
-
     _noOfRows = noOfRows;
+  } // Line
 
+  /**
+   * Create a Line object by an off set and the number of rows. Set the off set
+   * of row starting for this line; e.g. _offSetRow + _noOfRows =>
+   * next_offSetRow of next_lineObject!
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 17:54:29
+   * @param offSetRow
+   *          the global off set of this Line object in a SuperLine object
+   * @param noOfRows
+   *          the size or length of this Line object
+   */
+  public Line( int offSetRow, int noOfRows ) {
+    _offSetRow = offSetRow;
+    _noOfRows = noOfRows;
   } // Line
 
   /**
@@ -62,6 +89,30 @@ public abstract class Line extends Super {
   public int getNoOfRows( ) {
     return _noOfRows;
   } // getNoOfRows
+
+  /**
+   * Getter for the global off set of this Line object in a SuperLine object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 17:52:00
+   * @return the global off set of this Line object in a SuperLine object
+   */
+  public int getOffSetRow( ) {
+    return _offSetRow;
+  } // getOffSetRow
+
+  /**
+   * Set the off set of row starting for this line; e.g. _offSetRow + _noOfRows
+   * => next_offSetRow of next_lineObject!
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 17:51:02
+   * @param offSetRows
+   *          the global off set of this Line object in a SuperLine object
+   */
+  protected void setOffSetRow( int offSetRow ) { // set to protected due to miss usage
+    _offSetRow = offSetRow;
+  } // setOffSetRow
 
   /**
    * Check the given input of i as position in number of rows, otherwise throw a
@@ -86,6 +137,37 @@ public abstract class Line extends Super {
       throw new JWaveFailure( "Line - i is greater than noOfRows: " + _noOfRows );
 
   } // check
+
+  /**
+   * If memory is allocated then return true else return false.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 18:03:55
+   * @return true if memory is allocated
+   */
+  public abstract boolean isAllocated( );
+
+  /**
+   * This method allocate internally the necessary storage of the Line object.
+   * However, there can be different strategies in data storage for each Line
+   * object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 17:59:24
+   * @throws JWaveException
+   *           if memory is already occupied or if memory cannot be allocated
+   */
+  public abstract void alloc( ) throws JWaveException;
+
+  /**
+   * This method simply drops the internal storage and places a null pointer..
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 18:01:56
+   * @throws JWaveException
+   *           if internal memory is already erased
+   */
+  public abstract void erase( ) throws JWaveException;
 
   /**
    * Getter for the stored values.

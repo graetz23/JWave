@@ -23,7 +23,8 @@
  */
 package math.jwave.datatypes.lines;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import math.jwave.exceptions.JWaveException;
 
 import org.junit.Test;
@@ -41,7 +42,8 @@ public class LineTest {
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:09:13
-   * @param noOfRows 0 ..
+   * @param noOfRows
+   *          0 ..
    * @return
    * @throws JWaveException
    */
@@ -49,26 +51,31 @@ public class LineTest {
 
     Line line = new LineFull( noOfRows );
 
+    if( !line.isAllocated( ) )
+      line.alloc( ); // double[ ] array
+
     for( int i = 0; i < line.getNoOfRows( ); i++ )
       line.set( i, (double)i );
 
     return line;
 
   } // genLineFullObject
-  
+
   /**
    * Generate a LineHash object already set with data: i!
-   *
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 16:39:06 
-   *
+   * @date 16.05.2015 16:39:06
    * @param noOfRows
    * @return
    * @throws JWaveException
    */
   private Line genLineHashObject( int noOfRows ) throws JWaveException {
-    
+
     Line line = new LineHash( noOfRows );
+
+    if( !line.isAllocated( ) )
+      line.alloc( ); // HashMap< Integer, Double >
 
     for( int i = 0; i < line.getNoOfRows( ); i++ )
       line.set( i, (double)i );

@@ -51,9 +51,47 @@ public class LineFull extends Line {
 
     super( noOfRows );
 
-    _arr = new double[ noOfRows ];
+  } // LineFull
+
+  public LineFull( int offSetRow, int noOfRows ) {
+
+    super( offSetRow, noOfRows );
 
   } // LineFull
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 18:07:07 (non-Javadoc)
+   * @see math.jwave.datatypes.lines.Line#isAllocated()
+   */
+  @Override public boolean isAllocated( ) {
+    boolean isAllocated = true;
+    if( _arr == null )
+      isAllocated = false;
+    return isAllocated;
+  } // isAllocated
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 18:07:14 (non-Javadoc)
+   * @see math.jwave.datatypes.lines.Line#alloc()
+   */
+  @Override public void alloc( ) throws JWaveException {
+
+    _arr = new double[ _noOfRows ];
+
+  } // alloc
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 18:07:21 (non-Javadoc)
+   * @see math.jwave.datatypes.lines.Line#erase()
+   */
+  @Override public void erase( ) throws JWaveException {
+
+    _arr = null;
+
+  } // erase
 
   /*
    * Getter!
