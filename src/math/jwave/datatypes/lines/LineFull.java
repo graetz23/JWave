@@ -24,7 +24,7 @@
 package math.jwave.datatypes.lines;
 
 import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailure;
+import math.jwave.exceptions.JWaveFailureNotAllocated;
 
 /**
  * A line of Data; 1-D organized by (0) .. (noOfRows), using a double array for
@@ -100,7 +100,7 @@ public class LineFull extends Line {
   @Override public double get( int i ) throws JWaveException {
 
     if( !isAllocated( ) )
-      throw new JWaveFailure( "LineFull - no memory allocated!" );
+      throw new JWaveFailureNotAllocated( "LineFull - no memory allocated!" );
 
     check( i );
 
@@ -117,7 +117,7 @@ public class LineFull extends Line {
   @Override public void set( int i, double val ) throws JWaveException {
 
     if( !isAllocated( ) )
-      throw new JWaveFailure( "LineFull - no memory allocated!" );
+      throw new JWaveFailureNotAllocated( "LineFull - no memory allocated!" );
 
     check( i );
 

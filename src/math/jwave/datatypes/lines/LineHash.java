@@ -26,7 +26,8 @@ package math.jwave.datatypes.lines;
 import java.util.HashMap;
 
 import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailure;
+import math.jwave.exceptions.JWaveFailureNotAllocated;
+import math.jwave.exceptions.JWaveFailureNotFound;
 
 /**
  * Uses HashMap generic for sparse data representations.
@@ -101,7 +102,7 @@ public class LineHash extends Line {
   @Override public double get( int i ) throws JWaveException {
 
     if( !isAllocated( ) )
-      throw new JWaveFailure( "LineHash - no memory allocated!" );
+      throw new JWaveFailureNotAllocated( "LineHash - no memory allocated!" );
 
     check( i );
 
@@ -110,7 +111,7 @@ public class LineHash extends Line {
     if( _hashMap.containsKey( i ) )
       value = _hashMap.get( i );
     else
-      throw new JWaveFailure( "Line - no value stored for requested i: " + i );
+      throw new JWaveFailureNotFound( "Line - no value stored for requested i: " + i );
 
     return value;
 
@@ -125,7 +126,7 @@ public class LineHash extends Line {
   @Override public void set( int i, double value ) throws JWaveException {
 
     if( !isAllocated( ) )
-      throw new JWaveFailure( "LineHash - no memory allocated!" );
+      throw new JWaveFailureNotAllocated( "LineHash - no memory allocated!" );
 
     check( i );
 
