@@ -46,6 +46,18 @@ public class LineHash extends Line {
   HashMap< Integer, Double > _hashMap;
 
   /**
+   * Pass nothing, use this a a place holder.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 20:41:15
+   */
+  public LineHash( ) {
+    super( );
+  } // LineHash
+
+  /**
+   * Pass the number of rows - global line?!
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:30:00
    * @param noOfRows
@@ -54,9 +66,51 @@ public class LineHash extends Line {
     super( noOfRows );
   } // LineHash
 
+  /**
+   * Pass an of set to the line and a number of rows.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 20:40:38
+   * @param offSetRow
+   * @param noOfRows
+   */
   public LineHash( int offSetRow, int noOfRows ) {
     super( offSetRow, noOfRows );
   } // LineHash
+
+  /*
+   * Get a full copy of this Line object!
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 21:02:37 (non-Javadoc)
+   * @see math.jwave.datatypes.lines.Line#copy()
+   */
+  @Override public Line copy( ) {
+
+    int offSetRow = getOffSetRow( );
+    int noOfRows = getNoOfRows( );
+
+    Line line = new LineHash( offSetRow, noOfRows );
+
+    try {
+      if( isAllocated( ) ) {
+        line.alloc( );
+        for( int i = 0; i < noOfRows; i++ ) {
+          try {
+            line.set( i, get( i ) );
+          } catch( JWaveFailureNotFound notFound ) {
+            // do nothing, no value stored
+          } catch( JWaveException e ) {
+            e.printStackTrace( );
+          } // try - never ever
+        } // i      
+      } // isAllocated
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    } // try - never ever
+
+    return line;
+
+  } // copy
 
   /*
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -101,17 +155,17 @@ public class LineHash extends Line {
    */
   @Override public double get( int i ) throws JWaveException {
 
-    if( !isAllocated( ) )
-      throw new JWaveFailureNotAllocated( "LineHash - no memory allocated!" );
+    checkMemory( );
 
-    check( i );
+    checkIndex( i );
 
     double value = 0.;
 
     if( _hashMap.containsKey( i ) )
       value = _hashMap.get( i );
     else
-      throw new JWaveFailureNotFound( "Line - no value stored for requested i: " + i );
+      throw new JWaveFailureNotFound(
+          "Line - no value stored for requested i: " + i );
 
     return value;
 
@@ -125,10 +179,9 @@ public class LineHash extends Line {
    */
   @Override public void set( int i, double value ) throws JWaveException {
 
-    if( !isAllocated( ) )
-      throw new JWaveFailureNotAllocated( "LineHash - no memory allocated!" );
+    checkMemory( );
 
-    check( i );
+    checkIndex( i );
 
     _hashMap.put( i, value );
 

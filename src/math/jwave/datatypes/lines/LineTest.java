@@ -137,6 +137,6 @@ public class LineTest {
       e.printStackTrace( );
     } // try 
 
-  }
+  } // test
 
-}
+} // JUnit

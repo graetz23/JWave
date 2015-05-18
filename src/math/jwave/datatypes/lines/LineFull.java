@@ -42,7 +42,17 @@ public class LineFull extends Line {
   protected double[ ] _arr;
 
   /**
-   * Constructor setting members for and allocating memory!
+   * Pass nothing, use this a a place holder.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 20:40:08
+   */
+  public LineFull( ) {
+    super( );
+  } // LineFull
+
+  /**
+   * Pass the number of rows - global line?!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 15:05:28
@@ -52,9 +62,44 @@ public class LineFull extends Line {
     super( noOfRows );
   } // LineFull
 
+  /**
+   * Pass an of set to the line and a number of rows.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 20:38:38
+   * @param offSetRow
+   * @param noOfRows
+   */
   public LineFull( int offSetRow, int noOfRows ) {
     super( offSetRow, noOfRows );
   } // LineFull
+
+  /*
+   * Get a full copy of this Line object!
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 21:01:23 (non-Javadoc)
+   * @see math.jwave.datatypes.lines.Line#copy()
+   */
+  @Override public Line copy( ) {
+
+    int offSetRow = getOffSetRow( );
+    int noOfRows = getNoOfRows( );
+
+    Line line = new LineFull( offSetRow, noOfRows );
+
+    try {
+      if( isAllocated( ) ) {
+        line.alloc( );
+        for( int i = 0; i < noOfRows; i++ )
+          line.set( i, get( i ) );
+      } // isAllocated
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    } // try - never ever
+
+    return line;
+
+  } // copy
 
   /*
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -74,7 +119,7 @@ public class LineFull extends Line {
    * @see math.jwave.datatypes.lines.Line#alloc()
    */
   @Override public void alloc( ) throws JWaveException {
-    
+
     if( !isAllocated( ) )
       _arr = new double[ _noOfRows ];
 
@@ -99,10 +144,9 @@ public class LineFull extends Line {
    */
   @Override public double get( int i ) throws JWaveException {
 
-    if( !isAllocated( ) )
-      throw new JWaveFailureNotAllocated( "LineFull - no memory allocated!" );
+    checkMemory( );
 
-    check( i );
+    checkIndex( i );
 
     return _arr[ i ];
 
@@ -116,10 +160,9 @@ public class LineFull extends Line {
    */
   @Override public void set( int i, double val ) throws JWaveException {
 
-    if( !isAllocated( ) )
-      throw new JWaveFailureNotAllocated( "LineFull - no memory allocated!" );
+    checkMemory( );
 
-    check( i );
+    checkIndex( i );
 
     _arr[ i ] = val;
 

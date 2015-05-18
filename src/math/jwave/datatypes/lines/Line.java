@@ -25,7 +25,8 @@ package math.jwave.datatypes.lines;
 
 import math.jwave.datatypes.Super;
 import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailure;
+import math.jwave.exceptions.JWaveFailureNotAllocated;
+import math.jwave.exceptions.JWaveFailureNotValid;
 
 /**
  * A line of Data; 1-D organized by (0) .. (noOfRows).
@@ -51,6 +52,17 @@ public abstract class Line extends Super {
    * @date 18.05.2015 17:44:48
    */
   protected int _offSetRow;
+
+  /**
+   * Create an object of a sub type; e.g. as pattern.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 20:27:57
+   */
+  public Line( ) {
+    _offSetRow = 0; // the block itself is global
+    _noOfRows = 0;
+  } // Line
 
   /**
    * Create a Line object by a certain number of rows.
@@ -91,6 +103,17 @@ public abstract class Line extends Super {
     return _noOfRows;
   } // getNoOfRows
 
+  public void setNoOfRows( int noOfRows ) throws JWaveException {
+
+    if( isAllocated( ) )
+      throw new JWaveFailureNotValid( "Line - "
+          + "setting new number of rows is not valid "
+          + "while memory is already allocated" );
+
+    _noOfRows = noOfRows;
+
+  } // setNoOfRows
+
   /**
    * Getter for the global off set of this Line object in a SuperLine object.
    * 
@@ -126,18 +149,45 @@ public abstract class Line extends Super {
    * @throws JWaveException
    *           if i is out of bounds
    */
-  protected void check( int i ) throws JWaveException {
+  protected void checkIndex( int i ) throws JWaveException {
 
     if( i < 0 )
-      throw new JWaveFailure( "Line - i is smaller than zero" );
+      throw new JWaveFailureNotValid( "Line - i is smaller than zero" );
 
     if( i == _noOfRows )
-      throw new JWaveFailure( "Line - i is equal to noOfRows: " + _noOfRows );
+      throw new JWaveFailureNotValid( "Line - i is equal to noOfRows: "
+          + _noOfRows );
 
     if( i > _noOfRows )
-      throw new JWaveFailure( "Line - i is greater than noOfRows: " + _noOfRows );
+      throw new JWaveFailureNotValid( "Line - i is greater than noOfRows: "
+          + _noOfRows );
 
-  } // check
+  } // checkIndex
+
+  /**
+   * Checks whether memory is allocated for this Line object or not. If not a
+   * "not allocated" failure is thrown.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 20:36:45
+   * @throws JWaveException
+   *           if no memory is allocated
+   */
+  protected void checkMemory( ) throws JWaveException {
+
+    if( !isAllocated( ) )
+      throw new JWaveFailureNotAllocated( "LineFull - no memory allocated!" );
+
+  } // checkMemory( )
+
+  /**
+   * Returns a copy of the block - if allocated with all data!
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 20:56:50
+   * @return copy of itself, if allocated with all data stored
+   */
+  public abstract Line copy( );
 
   /**
    * If memory is allocated then return true else return false.
