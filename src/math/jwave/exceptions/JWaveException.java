@@ -24,28 +24,26 @@
 package math.jwave.exceptions;
 
 /**
- * Class to be generally thrown in this package to mark an exception
+ * General exception class of the JWave package.
  * 
  * @date 16.10.2008 07:30:20
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public class JWaveException extends Throwable {
-  
+
   /**
-   * Generated serial version ID for this exception
-   * 
    * @date 27.05.2009 06:58:27
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
   private static final long serialVersionUID = -4165486739091019056L;
-  
+
   /**
-   * Member var for the stored exception message
+   * Member string for the stored exception message.
    */
   protected String _message; // exception message
-  
+
   /**
-   * Constructor for storing a handed exception message
+   * Constructor for storing a handed exception message.
    * 
    * @date 27.05.2009 06:51:57
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -53,16 +51,16 @@ public class JWaveException extends Throwable {
    *          this message should tell exactly what went wrong
    */
   public JWaveException( String message ) {
-	_message = "JWave"; // overwrite
-	_message += ": "; // separator
-	_message += "Exception"; // Exception type
-	_message += ": "; // separator
-	_message += message; // add message
-	_message += "\n"; // break line
+    _message = "JWave "; // overwrite
+    _message += "- "; // separator
+    _message += "Exception"; // Exception type
+    _message += "- "; // separator
+    _message += message; // add message
+    _message += "\n"; // break line
   } // TransformException
-  
+
   /**
-   * Copy constructor; use this for a quick fix of sub types
+   * Copy constructor; use this for a quick fix of sub types.
    * 
    * @date 29.07.2009 07:03:45
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -72,21 +70,20 @@ public class JWaveException extends Throwable {
   public JWaveException( Exception e ) {
     _message = e.getMessage( );
   } // TransformException
-  
+
   /**
-   * Returns the stored exception message as a string
+   * Returns the stored exception message as a string.
    * 
    * @date 27.05.2009 06:52:46
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @return exception message that should tell exactly what went wrong
    */
-  @Override
-  public String getMessage( ) {
+  @Override public String getMessage( ) {
     return _message;
   } // getMessage
-  
+
   /**
-   * Displays the stored exception message at console out
+   * Displays the stored exception message at console out.
    * 
    * @date 27.05.2009 06:53:23
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -94,9 +91,9 @@ public class JWaveException extends Throwable {
   public void showMessage( ) {
     System.out.println( _message );
   } // showMessage
-  
+
   /**
-   * Nuke the run and print stack trace
+   * Nuke the run and print stack trace.
    * 
    * @date 02.07.2009 05:07:42
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -120,5 +117,5 @@ public class JWaveException extends Throwable {
     this.showMessage( );
     this.printStackTrace( );
   } // nuke
-  
+
 } // class
