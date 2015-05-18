@@ -61,6 +61,7 @@ public abstract class Line extends Super {
    *          the size or length of this Line object
    */
   public Line( int noOfRows ) {
+    _offSetRow = 0; // the block itself is global
     _noOfRows = noOfRows;
   } // Line
 
@@ -148,9 +149,9 @@ public abstract class Line extends Super {
   public abstract boolean isAllocated( );
 
   /**
-   * This method allocate internally the necessary storage of the Line object.
-   * However, there can be different strategies in data storage for each Line
-   * object.
+   * This method allocates the memory of the Line object internally, but only if
+   * no memory is allocated yet. However, there can be different strategies in
+   * data storage for each Line object.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 18.05.2015 17:59:24

@@ -50,9 +50,11 @@ public class LineHash extends Line {
    * @param noOfRows
    */
   public LineHash( int noOfRows ) {
-
     super( noOfRows );
+  } // LineHash
 
+  public LineHash( int offSetRow, int noOfRows ) {
+    super( offSetRow, noOfRows );
   } // LineHash
 
   /*
@@ -74,7 +76,8 @@ public class LineHash extends Line {
    */
   @Override public void alloc( ) throws JWaveException {
 
-    _hashMap = new HashMap< Integer, Double >( );
+    if( !isAllocated( ) )
+      _hashMap = new HashMap< Integer, Double >( );
 
   } // alloc
 
@@ -97,6 +100,9 @@ public class LineHash extends Line {
    */
   @Override public double get( int i ) throws JWaveException {
 
+    if( !isAllocated( ) )
+      throw new JWaveFailure( "LineHash - no memory allocated!" );
+
     check( i );
 
     double value = 0.;
@@ -117,6 +123,9 @@ public class LineHash extends Line {
    * @see math.jwave.datatypes.lines.Line#set(int, double)
    */
   @Override public void set( int i, double value ) throws JWaveException {
+
+    if( !isAllocated( ) )
+      throw new JWaveFailure( "LineHash - no memory allocated!" );
 
     check( i );
 
