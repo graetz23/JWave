@@ -24,7 +24,6 @@
 package math.jwave.datatypes.lines;
 
 import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailureNotAllocated;
 
 /**
  * A line of Data; 1-D organized by (0) .. (noOfRows), using a double array for
@@ -49,6 +48,20 @@ public class LineFull extends Line {
    */
   public LineFull( ) {
     super( );
+  } // LineFull
+
+  /**
+   * Copy constructor that takes over - if available - the values of another
+   * type of block.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 20.05.2015 07:26:25
+   * @param line
+   *          an object of type Line
+   */
+  public LineFull( Line line ) {
+    super( line );
+    // TODO implement memory passing by (instance of)
   } // LineFull
 
   /**

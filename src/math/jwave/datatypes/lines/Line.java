@@ -65,6 +65,19 @@ public abstract class Line extends Super {
   } // Line
 
   /**
+   * Copy constructor - attention in base class there are only boundaries passed
+   * to the new object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 20.05.2015 07:23:56
+   * @param line
+   */
+  public Line( Line line ) {
+    _offSetRow = line._noOfRows;
+    _noOfRows = line._offSetRow;
+  } // Line
+
+  /**
    * Create a Line object by a certain number of rows.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)

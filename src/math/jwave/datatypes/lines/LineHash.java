@@ -26,7 +26,6 @@ package math.jwave.datatypes.lines;
 import java.util.HashMap;
 
 import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailureNotAllocated;
 import math.jwave.exceptions.JWaveFailureNotFound;
 
 /**
@@ -54,6 +53,21 @@ public class LineHash extends Line {
   public LineHash( ) {
     super( );
   } // LineHash
+
+  /**
+   * Copy constructor that takes over - if available - the values of another
+   * type of block.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 20.05.2015 07:28:18 
+   * @param line
+   *          an object of type Line
+   */
+  public LineHash( Line line ) {
+    super( line );
+    // TODO implement memory passing by (instance of)
+  } // LineHash
+
 
   /**
    * Pass the number of rows - global line?!
