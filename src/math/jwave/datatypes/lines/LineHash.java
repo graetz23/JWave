@@ -59,15 +59,24 @@ public class LineHash extends Line {
    * type of block.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 20.05.2015 07:28:18 
+   * @date 20.05.2015 07:28:18
    * @param line
    *          an object of type Line
    */
   public LineHash( Line line ) {
-    super( line );
-    // TODO implement memory passing by (instance of)
-  } // LineHash
 
+    super( line ); // takes of no of Rows and off set
+
+    try {
+      for( int i = 0; i < line._noOfRows; i++ )
+        set( i, line.get( i ) );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    } // try
+
+    // TODO improve constructor memory passing by (instance of)
+
+  } // LineHash
 
   /**
    * Pass the number of rows - global line?!

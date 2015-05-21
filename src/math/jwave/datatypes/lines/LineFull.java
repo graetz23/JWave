@@ -60,8 +60,18 @@ public class LineFull extends Line {
    *          an object of type Line
    */
   public LineFull( Line line ) {
-    super( line );
-    // TODO implement memory passing by (instance of)
+
+    super( line ); // takes of no of Rows and off set
+
+    try {
+      for( int i = 0; i < line._noOfRows; i++ )
+        set( i, line.get( i ) );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    } // try
+
+    // TODO improve constructor memory passing by (instance of); e.g. LineHash
+
   } // LineFull
 
   /**
