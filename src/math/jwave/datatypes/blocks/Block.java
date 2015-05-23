@@ -54,6 +54,52 @@ public abstract class Block extends Super {
   protected int _noOfCols;
 
   /**
+   * The row position where the block starts from as a sub set in the context of
+   * SuperBlock; check _offSetRow in class Line for more details.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 23.05.2015 19:50:40
+   */
+  protected int _offSetRow;
+
+  /**
+   * The column position where the block starts from as a sub set in the context
+   * of SuperBlock; check _offSetRow in class Line for more details.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 23.05.2015 19:52:19
+   */
+  protected int _offSetCol;
+
+  /**
+   * Create an object of a sub type; e.g. as pattern.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 23.05.2015 19:53:18
+   */
+  public Block( ) {
+    _offSetRow = 0;
+    _offSetCol = 0;
+    _noOfRows = 0;
+    _noOfCols = 0;
+  } // Block
+
+  /**
+   * Copy constructor - attention in base class there are only boundaries passed
+   * to the new object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 23.05.2015 19:54:16
+   * @param block
+   */
+  public Block( Block block ) {
+    _offSetRow = block._offSetRow;
+    _offSetCol = block._offSetCol;
+    _noOfRows = block._offSetRow;
+    _noOfCols = block._noOfCols;
+  } // Block
+
+  /**
    * super, super, super, ..
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -69,6 +115,13 @@ public abstract class Block extends Super {
     _noOfRows = noOfRows;
     _noOfCols = noOfCols;
 
+  } // Block
+
+  public Block( int offSetRow, int offSetCol, int noOfRows, int noOfCols ) {
+    _offSetRow = offSetRow;
+    _offSetCol = offSetCol;
+    _noOfRows = offSetRow;
+    _noOfCols = noOfCols;
   } // Block
 
   /**
