@@ -25,7 +25,6 @@ package math.jwave.datatypes.lines;
 
 import math.jwave.datatypes.Super;
 import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailureNotAllocated;
 import math.jwave.exceptions.JWaveFailureNotValid;
 
 /**
@@ -176,31 +175,6 @@ public abstract class Line extends Super {
           + _noOfRows );
 
   } // checkIndex
-
-  /**
-   * Checks whether memory is allocated for this Line object or not. If not a
-   * "not allocated" failure is thrown.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 18.05.2015 20:36:45
-   * @throws JWaveException
-   *           if no memory is allocated
-   */
-  protected void checkMemory( ) throws JWaveException {
-
-    if( !isAllocated( ) )
-      throw new JWaveFailureNotAllocated( "LineFull - no memory allocated!" );
-
-  } // checkMemory( )
-
-  /**
-   * Returns a copy of the block - if allocated with all data!
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 18.05.2015 20:56:50
-   * @return copy of itself, if allocated with all data stored
-   */
-  public abstract Line copy( );
 
   /**
    * Getter for the stored values.

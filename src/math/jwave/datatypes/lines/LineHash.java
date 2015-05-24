@@ -68,8 +68,12 @@ public class LineHash extends Line {
     super( line ); // takes the number of rows and the off set value
 
     try {
+
+      alloc( );
+
       for( int i = 0; i < line._noOfRows; i++ )
         set( i, line.get( i ) );
+
     } catch( JWaveException e ) {
       e.printStackTrace( );
     } // try

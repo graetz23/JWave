@@ -24,6 +24,7 @@
 package math.jwave.datatypes;
 
 import math.jwave.exceptions.JWaveException;
+import math.jwave.exceptions.JWaveFailureNotAllocated;
 
 /**
  * Instead using Java's Object class as super type, a named Super typed is used
@@ -40,6 +41,32 @@ public abstract class Super {
    */
   public Super( ) {
   } // Super
+
+  /**
+   * Checks whether memory is allocated for this Line object or not. If not a
+   * "not allocated" failure is thrown.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 20:36:45
+   * @throws JWaveException
+   *           if no memory is allocated
+   */
+  protected void checkMemory( ) throws JWaveException {
+
+    if( !isAllocated( ) )
+      throw new JWaveFailureNotAllocated(
+          "Super#checkMemory - no memory allocated for this object!" );
+
+  } // checkMemory( )
+
+  /**
+   * Returns a copy of the object - if allocated, with all data!
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 18.05.2015 20:56:50
+   * @return copy of itself, if allocated with all data stored
+   */
+  public abstract Super copy( );
 
   /**
    * If memory is allocated then return true else return false.

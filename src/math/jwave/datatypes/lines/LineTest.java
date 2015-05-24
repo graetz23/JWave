@@ -102,8 +102,8 @@ public class LineTest {
         assertEquals( (double)i, line.get( i ), 0. );
 
     } catch( JWaveException e ) {
-      fail( "caught exception" );
       e.printStackTrace( );
+      fail( "caught exception" );
     } // try 
 
   }
@@ -133,8 +133,8 @@ public class LineTest {
         assertEquals( (double)( i + 1 ), line.get( i ), 0. );
 
     } catch( JWaveException e ) {
-      fail( "caught exception" );
       e.printStackTrace( );
+      fail( "caught exception" );
     } // try 
 
   } // test

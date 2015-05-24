@@ -118,8 +118,8 @@ public class SpaceTest {
             assertEquals( (double)( i + j + k ), space.get( i, j, k ), 0. );
 
     } catch( JWaveException e ) {
-      fail( "caught exception" );
       e.printStackTrace( );
+      fail( "caught exception" );
     } // try 
 
   }
@@ -157,8 +157,8 @@ public class SpaceTest {
             assertEquals( (double)( i + j + k + 1 ), space.get( i, j, k ), 0. );
 
     } catch( JWaveException e ) {
-      fail( "caught exception" );
       e.printStackTrace( );
+      fail( "caught exception" );
     } // try 
 
   }

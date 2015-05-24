@@ -119,6 +119,16 @@ public class SpaceHash extends Space {
 
   /*
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:14:34 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#copy()
+   */
+  @Override public Space copy( ) {
+    // TODO Auto-generated method stub
+    return null;
+  } // copy
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 24.05.2015 15:03:28 (non-Javadoc)
    * @see math.jwave.datatypes.Super#isAllocated()
    */

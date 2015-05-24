@@ -44,7 +44,7 @@ public class BlockHash extends Block {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:43:03
    */
-  HashMap< Integer, Line > _hashMapLines;
+  HashMap< Integer, Line > _hashMapLines = null;
 
   /**
    * Create an object of a sub type; e.g. as pattern.
@@ -66,9 +66,19 @@ public class BlockHash extends Block {
    *          object of type block; e.g. BlockFull
    */
   public BlockHash( Block block ) {
-    super( block );
 
-    // TODO copy values form Block object
+    super( block ); // takes the off sets and the dimension
+
+    try {
+      alloc( );
+      for( int i = 0; i < _noOfRows; i++ )
+        for( int j = 0; j < _noOfCols; j++ )
+          set( i, j, block.get( i, j ) );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    } // try
+
+    // TODO optimize this constructor by instanceof
 
   } // BlockHash
 
@@ -80,9 +90,6 @@ public class BlockHash extends Block {
    */
   public BlockHash( int noOfRows, int noOfCols ) {
     super( noOfRows, noOfCols );
-
-    _hashMapLines = new HashMap< Integer, Line >( );
-
   } // BlockHash
 
   /**
@@ -101,12 +108,51 @@ public class BlockHash extends Block {
    *          the number of columns of the block
    */
   public BlockHash( int offSetRow, int offSetCol, int noOfRows, int noOfCols ) {
-
     super( offSetRow, offSetCol, noOfRows, noOfCols );
-
-    _hashMapLines = new HashMap< Integer, Line >( );
-
   } // BlockHash
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:13:30 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#copy()
+   */
+  @Override public Block copy( ) {
+    return new BlockHash( this );
+  } // copy
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:02:40 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#isAllocated()
+   */
+  @Override public boolean isAllocated( ) {
+    boolean isAllocated = true;
+    if( _hashMapLines == null )
+      isAllocated = false;
+    return isAllocated;
+  } // isAllocated
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:02:40 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#alloc()
+   */
+  @Override public void alloc( ) throws JWaveException {
+    if( _hashMapLines != null )
+      throw new JWaveFailure( "BlockHash#alloc - already allocated!" );
+    _hashMapLines = new HashMap< Integer, Line >( );
+  } // alloc
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:02:40 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#erase()
+   */
+  @Override public void erase( ) throws JWaveException {
+    if( _hashMapLines != null )
+      _hashMapLines.clear( );
+    _hashMapLines = null;
+  } // erase
 
   /*
    * Getter!
@@ -115,6 +161,8 @@ public class BlockHash extends Block {
    * @see math.jwave.datatypes.blocks.Block#get(int, int)
    */
   @Override public double get( int i, int j ) throws JWaveException {
+
+    checkMemory( );
 
     check( i, j );
 
@@ -135,12 +183,14 @@ public class BlockHash extends Block {
   } // get
 
   /*
-   * TODO Comment me please!
+   * Setter!
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:41:53 (non-Javadoc)
    * @see math.jwave.datatypes.blocks.Block#set(int, int, double)
    */
   @Override public void set( int i, int j, double value ) throws JWaveException {
+
+    checkMemory( );
 
     check( i, j );
 
@@ -154,40 +204,12 @@ public class BlockHash extends Block {
     } else {
 
       line = new LineHash( _noOfRows );
+      line.alloc( );
       line.set( i, value );
       _hashMapLines.put( j, line );
 
     } // if
 
   } // set
-
-  /*
-   * TODO Comment me please!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:02:40 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#isAllocated()
-   */
-  @Override public boolean isAllocated( ) {
-    // TODO Auto-generated method stub
-    return false;
-  } // isAllocated
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:02:40 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#alloc()
-   */
-  @Override public void alloc( ) throws JWaveException {
-    // TODO Auto-generated method stub
-  } // alloc
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:02:40 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#erase()
-   */
-  @Override public void erase( ) throws JWaveException {
-    // TODO Auto-generated method stub
-  } // erase
 
 } // class

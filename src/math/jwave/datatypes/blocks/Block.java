@@ -100,7 +100,8 @@ public abstract class Block extends Super {
   } // Block
 
   /**
-   * super, super, super, ..
+   * Taking the block object as a single global object by setting both off sets
+   * to zero.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 15:21:17
@@ -111,10 +112,10 @@ public abstract class Block extends Super {
    *          the no of columns or the number of Line objects.
    */
   public Block( int noOfRows, int noOfCols ) {
-
+    _offSetRow = 0;
+    _offSetCol = 0;
     _noOfRows = noOfRows;
     _noOfCols = noOfCols;
-
   } // Block
 
   /**

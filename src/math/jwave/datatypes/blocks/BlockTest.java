@@ -43,8 +43,10 @@ public class BlockTest {
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:21:33
-   * @param noOfRows 0 ..
-   * @param noOfCols 0 ..
+   * @param noOfRows
+   *          0 ..
+   * @param noOfCols
+   *          0 ..
    * @return
    * @throws JWaveException
    */
@@ -53,6 +55,8 @@ public class BlockTest {
 
     Block block = new BlockFull( noOfRows, noOfCols );
 
+    block.alloc( );
+
     for( int i = 0; i < block.getNoOfRows( ); i++ )
       for( int j = 0; j < block.getNoOfCols( ); j++ )
         block.set( i, j, (double)( i + j ) );
@@ -60,13 +64,12 @@ public class BlockTest {
     return block;
 
   } // genBlockFullObject
-  
+
   /**
    * Generate a BlockHash object already set with data: i + j!
-   *
+   * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 16:49:33 
-   *
+   * @date 16.05.2015 16:49:33
    * @param noOfRows
    * @param noOfCols
    * @return
@@ -76,6 +79,8 @@ public class BlockTest {
       throws JWaveException {
 
     Block block = new BlockHash( noOfRows, noOfCols );
+
+    block.alloc( );
 
     for( int i = 0; i < block.getNoOfRows( ); i++ )
       for( int j = 0; j < block.getNoOfCols( ); j++ )
@@ -106,8 +111,8 @@ public class BlockTest {
           assertEquals( (double)( i + j ), block.get( i, j ), 0. );
 
     } catch( JWaveException e ) {
-      fail( "caught exception" );
       e.printStackTrace( );
+      fail( "caught exception" );
     } // try 
 
   }
@@ -139,10 +144,10 @@ public class BlockTest {
       for( int i = 0; i < block.getNoOfRows( ); i++ )
         for( int j = 0; j < block.getNoOfCols( ); j++ )
           assertEquals( (double)( i + j + 1 ), block.get( i, j ), 0. );
-      
+
     } catch( JWaveException e ) {
-      fail( "caught exception" );
       e.printStackTrace( );
+      fail( "caught exception" );
     } // try 
 
   }

@@ -23,8 +23,6 @@
  */
 package math.jwave.datatypes.blocks;
 
-import java.util.HashMap;
-
 import math.jwave.datatypes.lines.Line;
 import math.jwave.datatypes.lines.LineFull;
 import math.jwave.exceptions.JWaveException;
@@ -41,7 +39,7 @@ public class BlockFull extends Block {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 15:26:11
    */
-  protected Line[ ] _arrLines;
+  protected Line[ ] _arrLines = null;
 
   /**
    * Create an object of a sub type; e.g. as pattern.
@@ -63,9 +61,19 @@ public class BlockFull extends Block {
    *          object of type block; e.g. BlockHash
    */
   public BlockFull( Block block ) {
-    super( block );
 
-    // TODO copy values form Block object
+    super( block ); // takes the off sets and the dimension
+
+    try {
+      alloc( );
+      for( int i = 0; i < _noOfRows; i++ )
+        for( int j = 0; j < _noOfCols; j++ )
+          set( i, j, block.get( i, j ) );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    } // try
+
+    // TODO optimize this constructor by instanceof
 
   } // BlockFull
 
@@ -78,13 +86,7 @@ public class BlockFull extends Block {
    * @param noOfCols
    */
   public BlockFull( int noOfRows, int noOfCols ) {
-
     super( noOfRows, noOfCols ); // store does exclusively
-
-    _arrLines = new Line[ _noOfCols ];
-    for( int j = 0; j < _noOfCols; j++ )
-      _arrLines[ j ] = new LineFull( noOfRows );
-
   } // BlockFull
 
   /**
@@ -103,34 +105,17 @@ public class BlockFull extends Block {
    *          the number of columns of the block
    */
   public BlockFull( int offSetRow, int offSetCol, int noOfRows, int noOfCols ) {
-
     super( offSetRow, offSetCol, noOfRows, noOfCols );
-
   } // BlockFull
 
   /*
-   * Getter!
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 15:34:59 (non-Javadoc)
-   * @see math.jwave.datatypes.blocks.Block#get(int, int)
+   * @date 24.05.2015 15:12:35 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#copy()
    */
-  @Override public double get( int i, int j ) throws JWaveException {
-
-    // check( j );
-    check( i, j );
-
-    return _arrLines[ j ].get( i ); // checks i again
-
-  } // get
-
-  @Override public void set( int i, int j, double value ) throws JWaveException {
-
-    // check( j );
-    check( i, j );
-
-    _arrLines[ j ].set( i, value ); // checks i again
-
-  } // set
+  @Override public Block copy( ) {
+    return new BlockFull( this );
+  } // copy
 
   /*
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -138,8 +123,10 @@ public class BlockFull extends Block {
    * @see math.jwave.datatypes.Super#isAllocated()
    */
   @Override public boolean isAllocated( ) {
-    // TODO Auto-generated method stub
-    return false;
+    boolean isAllocated = true;
+    if( _arrLines == null )
+      isAllocated = false;
+    return isAllocated;
   } // isAllocated
 
   /*
@@ -148,7 +135,14 @@ public class BlockFull extends Block {
    * @see math.jwave.datatypes.Super#alloc()
    */
   @Override public void alloc( ) throws JWaveException {
-    // TODO Auto-generated method stub
+    if( !isAllocated( ) ) {
+      _arrLines = new Line[ _noOfCols ];
+      for( int j = 0; j < _noOfCols; j++ ) {
+        Line line = new LineFull( _noOfRows );
+        line.alloc( );
+        _arrLines[ j ] = line;
+      } // for
+    } // if
   } // alloc
 
   /*
@@ -157,7 +151,38 @@ public class BlockFull extends Block {
    * @see math.jwave.datatypes.Super#erase()
    */
   @Override public void erase( ) throws JWaveException {
-    // TODO Auto-generated method stub
+    if( _arrLines != null ) {
+      for( int j = 0; j < _noOfCols; j++ )
+        if( _arrLines[ j ] != null )
+          _arrLines[ j ] = null;
+      _arrLines = null;
+    } // if
   } // erase
+
+  /*
+   * Getter!
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 16.05.2015 15:34:59 (non-Javadoc)
+   * @see math.jwave.datatypes.blocks.Block#get(int, int)
+   */
+  @Override public double get( int i, int j ) throws JWaveException {
+    checkMemory( );
+    // check( j );
+    check( i, j );
+    return _arrLines[ j ].get( i ); // checks i again
+  } // get
+
+  /*
+   * Setter!
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:24:39 (non-Javadoc)
+   * @see math.jwave.datatypes.blocks.Block#set(int, int, double)
+   */
+  @Override public void set( int i, int j, double value ) throws JWaveException {
+    checkMemory( );
+    // check( j );
+    check( i, j );
+    _arrLines[ j ].set( i, value ); // checks i again
+  } // set
 
 } // class
