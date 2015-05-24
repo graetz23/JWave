@@ -203,37 +203,6 @@ public abstract class Line extends Super {
   public abstract Line copy( );
 
   /**
-   * If memory is allocated then return true else return false.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 18.05.2015 18:03:55
-   * @return true if memory is allocated
-   */
-  public abstract boolean isAllocated( );
-
-  /**
-   * This method allocates the memory of the Line object internally, but only if
-   * no memory is allocated yet. However, there can be different strategies in
-   * data storage for each Line object.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 18.05.2015 17:59:24
-   * @throws JWaveException
-   *           if memory is already occupied or if memory cannot be allocated
-   */
-  public abstract void alloc( ) throws JWaveException;
-
-  /**
-   * This method simply drops the internal storage and places a null pointer..
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 18.05.2015 18:01:56
-   * @throws JWaveException
-   *           if internal memory is already erased
-   */
-  public abstract void erase( ) throws JWaveException;
-
-  /**
    * Getter for the stored values.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)

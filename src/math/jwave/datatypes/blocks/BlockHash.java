@@ -161,4 +161,33 @@ public class BlockHash extends Block {
 
   } // set
 
+  /*
+   * TODO Comment me please!
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:02:40 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#isAllocated()
+   */
+  @Override public boolean isAllocated( ) {
+    // TODO Auto-generated method stub
+    return false;
+  } // isAllocated
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:02:40 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#alloc()
+   */
+  @Override public void alloc( ) throws JWaveException {
+    // TODO Auto-generated method stub
+  } // alloc
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:02:40 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#erase()
+   */
+  @Override public void erase( ) throws JWaveException {
+    // TODO Auto-generated method stub
+  } // erase
+
 } // class
