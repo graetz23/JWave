@@ -159,6 +159,24 @@ public abstract class Block extends Super {
   } // getNoOfCols
 
   /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:31:31
+   * @return the off set of the row
+   */
+  public int getOffSetRow( ) {
+    return _offSetRow;
+  } // getOffSetRow
+
+  /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:31:54
+   * @return the off set of the column
+   */
+  public int getOffSetCol( ) {
+    return _offSetCol;
+  } // getOffSetCol
+
+  /**
    * Check the given input of j is in bound of the number of columns, otherwise
    * throw a failure (exception) if j is not valid.
    * 

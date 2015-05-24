@@ -203,7 +203,7 @@ public class BlockHash extends Block {
 
     } else {
 
-      line = new LineHash( _noOfRows );
+      line = new LineHash( _offSetRow, _noOfRows );
       line.alloc( );
       line.set( i, value );
       _hashMapLines.put( j, line );

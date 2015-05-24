@@ -138,7 +138,7 @@ public class BlockFull extends Block {
     if( !isAllocated( ) ) {
       _arrLines = new Line[ _noOfCols ];
       for( int j = 0; j < _noOfCols; j++ ) {
-        Line line = new LineFull( _noOfRows );
+        Line line = new LineFull( _offSetRow, _noOfRows );
         line.alloc( );
         _arrLines[ j ] = line;
       } // for
@@ -153,8 +153,11 @@ public class BlockFull extends Block {
   @Override public void erase( ) throws JWaveException {
     if( _arrLines != null ) {
       for( int j = 0; j < _noOfCols; j++ )
-        if( _arrLines[ j ] != null )
+        if( _arrLines[ j ] != null ) {
+          Line line = _arrLines[ j ];
+          line.erase( );
           _arrLines[ j ] = null;
+        } // for
       _arrLines = null;
     } // if
   } // erase
