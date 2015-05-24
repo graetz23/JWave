@@ -44,7 +44,41 @@ public class SpaceHash extends Space {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:55:22
    */
-  HashMap< Integer, Block > _hashMapBlocks;
+  HashMap< Integer, Block > _hashMapBlocks = null;
+
+  /**
+   * A space object with no input; e.g. as a pattern.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 19:05:01
+   */
+  public SpaceHash( ) {
+    super( );
+  } // SpaceHash
+
+  /**
+   * Copy constructor for generating the same space (cube) object again.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 19:06:25
+   * @param space
+   */
+  public SpaceHash( Space space ) {
+    super( space );
+
+    try {
+      alloc( );
+      for( int i = 0; i < _noOfRows; i++ )
+        for( int j = 0; j < _noOfCols; j++ )
+          for( int k = 0; k < _noOfLvls; k++ )
+            set( i, j, k, space.get( i, j, k ) );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    } // try
+
+    // TODO implement more efficient by using instanceof
+
+  } // SpaceHash
 
   /**
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -58,10 +92,72 @@ public class SpaceHash extends Space {
    */
   public SpaceHash( int noOfRows, int noOfCols, int noOfLvls ) {
     super( noOfRows, noOfCols, noOfLvls );
+  } // SpaceHash
 
-    _hashMapBlocks = new HashMap< Integer, Block >( );
+  /**
+   * Configure a space (a cube) as a part of a super space.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 19:07:05
+   * @param offSetRow
+   *          the starting position for the row of the space
+   * @param offSetCol
+   *          the starting position for the column of the space
+   * @param offSetLvl
+   *          the starting position for the level (height) of the space
+   * @param noOfRows
+   *          the number of rows
+   * @param noOfCols
+   *          the number of columns
+   * @param noOfLvls
+   *          the number of levels (height)
+   */
+  public SpaceHash( int offSetRow, int offSetCol, int offSetLvl, int noOfRows,
+      int noOfCols, int noOfLvls ) {
+    super( offSetRow, offSetCol, offSetLvl, noOfRows, noOfCols, noOfLvls );
+  } // SpaceHash
 
-  }
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:14:34 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#copy()
+   */
+  @Override public Space copy( ) {
+    return new SpaceHash( this );
+  } // copy
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:03:28 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#isAllocated()
+   */
+  @Override public boolean isAllocated( ) {
+    boolean isAllocated = true;
+    if( _hashMapBlocks == null )
+      isAllocated = false;
+    return isAllocated;
+  } // isAllocated
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:03:28 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#alloc()
+   */
+  @Override public void alloc( ) throws JWaveException {
+    if( !isAllocated( ) )
+      _hashMapBlocks = new HashMap< Integer, Block >( );
+  } // alloc
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:03:28 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#erase()
+   */
+  @Override public void erase( ) throws JWaveException {
+    if( _hashMapBlocks != null )
+      _hashMapBlocks.clear( );
+    _hashMapBlocks = null;
+  } // erase
 
   /*
    * Getter!
@@ -70,6 +166,8 @@ public class SpaceHash extends Space {
    * @see math.jwave.datatypes.spaces.Space#get(int, int, int)
    */
   @Override public double get( int i, int j, int k ) throws JWaveException {
+
+    checkMemory( );
 
     check( i, j, k );
 
@@ -98,6 +196,8 @@ public class SpaceHash extends Space {
   @Override public void set( int i, int j, int k, double value )
       throws JWaveException {
 
+    checkMemory( );
+
     check( i, j, k );
 
     Block block = null;
@@ -109,50 +209,13 @@ public class SpaceHash extends Space {
 
     } else {
 
-      block = new BlockHash( _noOfRows, _noOfCols );
+      block = new BlockHash( _offSetRow, _offSetCol, _noOfRows, _noOfCols );
+      block.alloc( );
       block.set( i, j, value );
       _hashMapBlocks.put( k, block );
 
     } // if
 
   } // set
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:14:34 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#copy()
-   */
-  @Override public Space copy( ) {
-    // TODO Auto-generated method stub
-    return null;
-  } // copy
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:03:28 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#isAllocated()
-   */
-  @Override public boolean isAllocated( ) {
-    // TODO Auto-generated method stub
-    return false;
-  } // isAllocated
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:03:28 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#alloc()
-   */
-  @Override public void alloc( ) throws JWaveException {
-    // TODO Auto-generated method stub
-  } // alloc
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:03:28 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#erase()
-   */
-  @Override public void erase( ) throws JWaveException {
-    // TODO Auto-generated method stub
-  } // erase
 
 } // class

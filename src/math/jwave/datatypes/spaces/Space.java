@@ -55,14 +55,102 @@ public abstract class Space extends Super {
 
   /**
    * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:23:47
+   */
+  protected int _offSetRow;
+
+  /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:23:49
+   */
+  protected int _offSetCol;
+
+  /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:23:51
+   */
+  protected int _offSetLvl;
+
+  /**
+   * Create an object of a sub type; e.g. as pattern.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:28:20
+   */
+  public Space( ) {
+    _offSetRow = 0;
+    _offSetCol = 0;
+    _offSetLvl = 0;
+    _noOfRows = 0;
+    _noOfCols = 0;
+    _noOfLvls = 0;
+  } // Space
+
+  /**
+   * Copy constructor passes the off sets and the dimesion of the passed space
+   * object.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:29:35
+   * @param space
+   *          object of type space
+   */
+  public Space( Space space ) {
+    _offSetRow = space._offSetRow;
+    _offSetCol = space._offSetCol;
+    _offSetLvl = space._offSetLvl;
+    _noOfRows = space._noOfRows;
+    _noOfCols = space._noOfCols;
+    _noOfLvls = space._noOfLvls;
+  } // Space
+
+  /**
+   * Use this space as a single space that has all its off set at zero.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 14:47:21
+   * @param noOfRows
+   *          the number of rows
+   * @param noOfCols
+   *          the number of columns
+   * @param noOfLvls
+   *          the number of levels (height)
    */
   public Space( int noOfRows, int noOfCols, int noOfLvls ) {
-
+    _offSetRow = 0;
+    _offSetCol = 0;
+    _offSetLvl = 0;
     _noOfRows = noOfRows;
     _noOfCols = noOfCols;
     _noOfLvls = noOfLvls;
+  } // Space
 
+  /**
+   * Configure a space (a cube) as a part of a super space.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:25:13
+   * @param offSetRow
+   *          the starting position for the row of the space
+   * @param offSetCol
+   *          the starting position for the column of the space
+   * @param offSetLvl
+   *          the starting position for the level (height) of the space
+   * @param noOfRows
+   *          the number of rows
+   * @param noOfCols
+   *          the number of columns
+   * @param noOfLvls
+   *          the number of levels (height)
+   */
+  public Space( int offSetRow, int offSetCol, int offSetLvl, int noOfRows,
+      int noOfCols, int noOfLvls ) {
+    _offSetRow = offSetRow;
+    _offSetCol = offSetCol;
+    _offSetLvl = offSetLvl;
+    _noOfRows = noOfRows;
+    _noOfCols = noOfCols;
+    _noOfLvls = noOfLvls;
   } // Space
 
   /**
@@ -91,6 +179,33 @@ public abstract class Space extends Super {
   public int getNoOfLvls( ) {
     return _noOfLvls;
   } // getNoOfLvls
+
+  /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:32:13
+   * @return the off set of the row
+   */
+  public int getOffSetRow( ) {
+    return _offSetRow;
+  } // getOffSetRow
+
+  /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:32:23
+   * @return the off set of the column
+   */
+  public int getOffSetCol( ) {
+    return _offSetCol;
+  } // getOffSetCol
+
+  /**
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:32:39
+   * @return the off set of the level (height)
+   */
+  public int getOffSetLvl( ) {
+    return _offSetLvl;
+  } // getOffSetLvl
 
   /**
    * Check the given input of i as position in number of levels, otherwise throw

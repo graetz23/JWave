@@ -109,15 +109,12 @@ public class LineFull extends Line {
    */
   @Override public Line copy( ) {
 
-    int offSetRow = getOffSetRow( );
-    int noOfRows = getNoOfRows( );
-
-    Line line = new LineFull( offSetRow, noOfRows );
+    Line line = new LineFull( _offSetRow, _noOfRows );
 
     try {
       if( isAllocated( ) ) {
         line.alloc( );
-        for( int i = 0; i < noOfRows; i++ )
+        for( int i = 0; i < line.getNoOfRows( ); i++ )
           line.set( i, get( i ) );
       } // isAllocated
     } catch( JWaveException e ) {
@@ -146,10 +143,8 @@ public class LineFull extends Line {
    * @see math.jwave.datatypes.lines.Line#alloc()
    */
   @Override public void alloc( ) throws JWaveException {
-
     if( !isAllocated( ) )
       _arr = new double[ _noOfRows ];
-
   } // alloc
 
   /*
@@ -158,9 +153,7 @@ public class LineFull extends Line {
    * @see math.jwave.datatypes.lines.Line#erase()
    */
   @Override public void erase( ) throws JWaveException {
-
     _arr = null;
-
   } // erase
 
   /*
@@ -170,13 +163,10 @@ public class LineFull extends Line {
    * @see math.jwave.datatypes.lines.Line#get(int)
    */
   @Override public double get( int i ) throws JWaveException {
-
     checkMemory( );
-
     checkIndex( i );
-
-    return _arr[ i ];
-
+    double value = _arr[ i ];
+    return value;
   } // get 
 
   /*
@@ -185,14 +175,10 @@ public class LineFull extends Line {
    * @date 16.05.2015 15:18:26 (non-Javadoc)
    * @see math.jwave.datatypes.lines.Line#set(int, double)
    */
-  @Override public void set( int i, double val ) throws JWaveException {
-
+  @Override public void set( int i, double value ) throws JWaveException {
     checkMemory( );
-
     checkIndex( i );
-
-    _arr[ i ] = val;
-
+    _arr[ i ] = value;
   } // set
 
 } // class

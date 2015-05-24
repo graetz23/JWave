@@ -138,9 +138,8 @@ public class BlockHash extends Block {
    * @see math.jwave.datatypes.Super#alloc()
    */
   @Override public void alloc( ) throws JWaveException {
-    if( _hashMapLines != null )
-      throw new JWaveFailure( "BlockHash#alloc - already allocated!" );
-    _hashMapLines = new HashMap< Integer, Line >( );
+    if( !isAllocated( ) )
+      _hashMapLines = new HashMap< Integer, Line >( );
   } // alloc
 
   /*

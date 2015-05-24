@@ -39,7 +39,41 @@ public class SpaceFull extends Space {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:00:11
    */
-  protected Block[ ] _arrBlocks;
+  protected Block[ ] _arrBlocks = null;
+
+  /**
+   * A space object with no input; e.g. as a pattern.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:51:54
+   */
+  public SpaceFull( ) {
+    super( );
+  } // SpaceFull
+
+  /**
+   * Copy constructor for generating the same space (cube) object again.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:53:30
+   * @param space
+   */
+  public SpaceFull( Space space ) {
+    super( space );
+
+    try {
+      alloc( );
+      for( int i = 0; i < _noOfRows; i++ )
+        for( int j = 0; j < _noOfCols; j++ )
+          for( int k = 0; k < _noOfLvls; k++ )
+            set( i, j, k, space.get( i, j, k ) );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    } // try
+
+    // TODO implement more efficient by using instanceof
+
+  } // Space
 
   /**
    * Constructor setting members for and allocating memory!
@@ -54,14 +88,87 @@ public class SpaceFull extends Space {
    *          from 0 to noOfLvls-1
    */
   public SpaceFull( int noOfRows, int noOfCols, int noOfLvls ) {
-
     super( noOfRows, noOfCols, noOfLvls );
-
-    _arrBlocks = new Block[ _noOfLvls ];
-    for( int k = 0; k < _noOfLvls; k++ )
-      _arrBlocks[ k ] = new BlockFull( noOfRows, noOfCols );
-
   } // SpaceFull
+
+  /**
+   * Configure a space (a cube) as a part of a super space.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:50:59
+   * @param offSetRow
+   *          the starting position for the row of the space
+   * @param offSetCol
+   *          the starting position for the column of the space
+   * @param offSetLvl
+   *          the starting position for the level (height) of the space
+   * @param noOfRows
+   *          the number of rows
+   * @param noOfCols
+   *          the number of columns
+   * @param noOfLvls
+   *          the number of levels (height)
+   */
+  public SpaceFull( int offSetRow, int offSetCol, int offSetLvl, int noOfRows,
+      int noOfCols, int noOfLvls ) {
+    super( offSetRow, offSetCol, offSetLvl, noOfRows, noOfCols, noOfLvls );
+  } // SpaceFull
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:14:11 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#copy()
+   */
+  @Override public Space copy( ) {
+    return new SpaceFull( this );
+  } // copy
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:04:11 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#isAllocated()
+   */
+  @Override public boolean isAllocated( ) {
+    boolean isAllocated = true;
+    if( _arrBlocks == null )
+      isAllocated = false;
+    return isAllocated;
+  } // isAllocated
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:04:11 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#alloc()
+   */
+  @Override public void alloc( ) throws JWaveException {
+    if( !isAllocated( ) ) {
+      _arrBlocks = new Block[ _noOfLvls ];
+      for( int k = 0; k < _noOfLvls; k++ ) {
+        Block block =
+            new BlockFull( _offSetRow, _offSetCol, _noOfRows, _noOfCols );
+        block.alloc( );
+        _arrBlocks[ k ] = block;
+      } // for
+    }
+  } // alloc
+
+  /*
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 15:04:11 (non-Javadoc)
+   * @see math.jwave.datatypes.Super#erase()
+   */
+  @Override public void erase( ) throws JWaveException {
+    if( _arrBlocks != null ) {
+      for( int k = 0; k < _noOfLvls; k++ ) {
+        if( _arrBlocks[ k ] != null ) {
+          Block block = _arrBlocks[ k ];
+          block.erase( );
+          _arrBlocks[ k ] = null;
+        } // if
+      } // for
+      _arrBlocks = null;
+    } // if
+  } // erase
 
   /*
    * Getter!
@@ -70,11 +177,11 @@ public class SpaceFull extends Space {
    * @see math.jwave.datatypes.spaces.Space#get(int, int, int)
    */
   @Override public double get( int i, int j, int k ) throws JWaveException {
-
+    checkMemory( );
     check( i, j, k );
-
-    return _arrBlocks[ k ].get( i, j );
-
+    Block block = _arrBlocks[ k ];
+    double value = block.get( i, j );
+    return value;
   } // get
 
   /*
@@ -85,49 +192,10 @@ public class SpaceFull extends Space {
    */
   @Override public void set( int i, int j, int k, double value )
       throws JWaveException {
-
+    checkMemory( );
     check( i, j, k );
-
-    _arrBlocks[ k ].set( i, j, value );
-
+    Block block = _arrBlocks[ k ];
+    block.set( i, j, value );
   } // set
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:14:11 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#copy()
-   */
-  @Override public Space copy( ) {
-    // TODO Auto-generated method stub
-    return null;
-  } // copy
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:04:11 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#isAllocated()
-   */
-  @Override public boolean isAllocated( ) {
-    // TODO Auto-generated method stub
-    return false;
-  } // isAllocated
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:04:11 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#alloc()
-   */
-  @Override public void alloc( ) throws JWaveException {
-    // TODO Auto-generated method stub
-  } // alloc
-
-  /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 24.05.2015 15:04:11 (non-Javadoc)
-   * @see math.jwave.datatypes.Super#erase()
-   */
-  @Override public void erase( ) throws JWaveException {
-    // TODO Auto-generated method stub
-  } // erase
 
 } // class

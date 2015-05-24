@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 import math.jwave.datatypes.lines.Line;
 import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailure;
+import math.jwave.exceptions.JWaveFailureNotValid;
 
 /**
  * SuperLine consists of several Line objects of different sizes.
@@ -82,14 +82,23 @@ public class SuperLine {
 
   } // add
 
-  public Line get( int i ) throws JWaveException {
+  /**
+   * Return Line object at position p; 0 .. N-1
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:16:27
+   * @param p
+   * @return
+   * @throws JWaveException
+   */
+  public Line get( int p ) throws JWaveException {
 
     Line line = null;
 
-    if( i < 0 || i >= getNoOfLines( ) )
-      throw new JWaveFailure( "SuperLine#get - i is out of bound!" );
+    if( p < 0 || p >= getNoOfLines( ) )
+      throw new JWaveFailureNotValid( "SuperLine#get - position p is out of bound!" );
 
-    line = (Line)_listOfLines.get( i );
+    line = (Line)_listOfLines.get( p );
 
     return line;
 

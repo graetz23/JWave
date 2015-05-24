@@ -47,12 +47,21 @@ public class SuperLineController {
     // TODO Auto-generated constructor stub
   }
 
+  /**
+   * Strategy to create a SuperLine object filled with Line objects.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 18:18:46
+   * @param pattern
+   * @param noOfLineObj
+   * @param noOfEntries
+   * @return
+   * @throws JWaveException
+   */
   public static SuperLine
       create( Line pattern, int noOfLineObj, int noOfEntries )
           throws JWaveException {
-    
-    
-    
+
     int lineType = -1;
     if( pattern instanceof LineFull )
       lineType = 1; // LineFull
@@ -69,4 +78,5 @@ public class SuperLineController {
     return superLine;
 
   } // create
+  
 } // class

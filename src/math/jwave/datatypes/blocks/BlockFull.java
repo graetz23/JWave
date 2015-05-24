@@ -172,7 +172,9 @@ public class BlockFull extends Block {
     checkMemory( );
     // check( j );
     check( i, j );
-    return _arrLines[ j ].get( i ); // checks i again
+    Line line = _arrLines[ j ];
+    double value = line.get( i );
+    return value; // checks i again
   } // get
 
   /*
@@ -185,7 +187,8 @@ public class BlockFull extends Block {
     checkMemory( );
     // check( j );
     check( i, j );
-    _arrLines[ j ].set( i, value ); // checks i again
+    Line line = _arrLines[ j ];
+    line.set( i, value ); // checks i again
   } // set
 
 } // class

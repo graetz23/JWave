@@ -57,7 +57,7 @@ public class SpaceTest {
       throws JWaveException {
 
     Space space = new SpaceFull( noOfRows, noOfCols, noOfLvls );
-
+    space.alloc( );
     for( int i = 0; i < space.getNoOfRows( ); i++ )
       for( int j = 0; j < space.getNoOfCols( ); j++ )
         for( int k = 0; k < space.getNoOfLvls( ); k++ )
@@ -85,7 +85,7 @@ public class SpaceTest {
       throws JWaveException {
 
     Space space = new SpaceHash( noOfRows, noOfCols, noOfLvls );
-
+    space.alloc( );
     for( int i = 0; i < space.getNoOfRows( ); i++ )
       for( int j = 0; j < space.getNoOfCols( ); j++ )
         for( int k = 0; k < space.getNoOfLvls( ); k++ )
@@ -122,7 +122,7 @@ public class SpaceTest {
       fail( "caught exception" );
     } // try 
 
-  }
+  } // testGet
 
   /**
    * Test method for
@@ -161,6 +161,6 @@ public class SpaceTest {
       fail( "caught exception" );
     } // try 
 
-  }
+  } // testSet
 
-}
+} // class
