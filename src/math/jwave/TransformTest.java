@@ -29,7 +29,7 @@ import java.util.Random;
 
 import math.jwave.compressions.Compressor;
 import math.jwave.compressions.CompressorMagnitude;
-import math.jwave.datatypes.Complex;
+import math.jwave.datatypes.natives.Complex;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.tools.MathToolKit;
 import math.jwave.transforms.DiscreteFourierTransform;

@@ -27,7 +27,7 @@
  */
 package math.jwave;
 
-import math.jwave.datatypes.Complex;
+import math.jwave.datatypes.natives.Complex;
 import math.jwave.exceptions.JWaveException;
 import math.jwave.exceptions.JWaveFailure;
 import math.jwave.transforms.BasicTransform;
