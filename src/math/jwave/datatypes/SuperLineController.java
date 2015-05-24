@@ -23,76 +23,50 @@
  */
 package math.jwave.datatypes;
 
-import java.util.ArrayList;
-
 import math.jwave.datatypes.lines.Line;
+import math.jwave.datatypes.lines.LineFull;
+import math.jwave.datatypes.lines.LineHash;
 import math.jwave.exceptions.JWaveException;
-import math.jwave.exceptions.JWaveFailure;
+import math.jwave.exceptions.JWaveFailureNotKnown;
 
 /**
- * SuperLine consists of several Line objects of different sizes.
+ * Builds a SuperLine object filled up with Line objects of selected sub type.
+ * However, the SuperLine forms the global object thats data is sub divided into
+ * smaller parts represented by the Line objects.
  * 
  * @author Christian Scheiblich (cscheiblich@gmail.com)
- * @date 16.05.2015 19:30:28
+ * @date 18.05.2015 20:05:02
  */
-public class SuperLine {
-
-  /**
-   * However, who knows how many blocks are delivered!
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 18.05.2015 20:02:59
-   */
-  ArrayList< Super > _listOfLines;
+public class SuperLineController {
 
   /**
    * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 19:30:28
+   * @date 18.05.2015 20:05:02
    */
-  public SuperLine( ) {
+  public SuperLineController( ) {
+    // TODO Auto-generated constructor stub
+  }
 
-    _listOfLines = new ArrayList< Super >( );
+  public static SuperLine
+      create( Line pattern, int noOfLineObj, int noOfEntries )
+          throws JWaveException {
+    
+    
+    
+    int lineType = -1;
+    if( pattern instanceof LineFull )
+      lineType = 1; // LineFull
+    else if( pattern instanceof LineHash )
+      lineType = 2; // LineFull      
+    else
+      throw new JWaveFailureNotKnown(
+          "SuperLineController - type of Line object not known!" );
 
-  } // SuperLine
+    Line line = null; // keep cool ~8>
 
-  /**
-   * Returns the number of stored Line objects.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 19:36:13
-   * @return number of Line objects
-   */
-  public int getNoOfLines( ) {
+    SuperLine superLine = null;
 
-    return _listOfLines.size( );
+    return superLine;
 
-  } // getNoOfLines
-
-  /**
-   * Add a Line object to list
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   * @date 16.05.2015 19:36:54
-   * @param line
-   *          object of type Line
-   */
-  public void add( Line line ) {
-
-    _listOfLines.add( line );
-
-  } // add
-
-  public Line get( int i ) throws JWaveException {
-
-    Line line = null;
-
-    if( i < 0 || i >= getNoOfLines( ) )
-      throw new JWaveFailure( "SuperLine#get - i is out of bound!" );
-
-    line = (Line)_listOfLines.get( i );
-
-    return line;
-
-  } // get
-
+  } // create
 } // class

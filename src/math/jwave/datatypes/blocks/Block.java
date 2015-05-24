@@ -117,6 +117,21 @@ public abstract class Block extends Super {
 
   } // Block
 
+  /**
+   * Passing information that takes the block as a part of a global structure;
+   * e.g. a SuperBlock.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 14:03:45
+   * @param offSetRow
+   *          the global off set of rows of the block
+   * @param offSetCol
+   *          the global off set of columns of the block
+   * @param noOfRows
+   *          the number of rows of the block
+   * @param noOfCols
+   *          the number of columns of the block
+   */
   public Block( int offSetRow, int offSetCol, int noOfRows, int noOfCols ) {
     _offSetRow = offSetRow;
     _offSetCol = offSetCol;

@@ -23,6 +23,8 @@
  */
 package math.jwave.datatypes.blocks;
 
+import java.util.HashMap;
+
 import math.jwave.datatypes.lines.Line;
 import math.jwave.datatypes.lines.LineFull;
 import math.jwave.exceptions.JWaveException;
@@ -42,6 +44,32 @@ public class BlockFull extends Block {
   protected Line[ ] _arrLines;
 
   /**
+   * Create an object of a sub type; e.g. as pattern.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 13:57:28
+   */
+  public BlockFull( ) {
+    super( );
+  } // BlockFull
+
+  /**
+   * Copy constructor that takes over - if available - the values of another
+   * type of block.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 14:01:22
+   * @param block
+   *          object of type block; e.g. BlockHash
+   */
+  public BlockFull( Block block ) {
+    super( block );
+
+    // TODO copy values form Block object
+
+  } // BlockFull
+
+  /**
    * Constructor setting members for and allocating memory!
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
@@ -56,6 +84,27 @@ public class BlockFull extends Block {
     _arrLines = new Line[ _noOfCols ];
     for( int j = 0; j < _noOfCols; j++ )
       _arrLines[ j ] = new LineFull( noOfRows );
+
+  } // BlockFull
+
+  /**
+   * Passing information that takes the block as a part of a global structure;
+   * e.g. a SuperBlock.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 14:05:55
+   * @param offSetRow
+   *          the global off set of rows of the block
+   * @param offSetCol
+   *          the global off set of columns of the block
+   * @param noOfRows
+   *          the number of rows of the block
+   * @param noOfCols
+   *          the number of columns of the block
+   */
+  public BlockFull( int offSetRow, int offSetCol, int noOfRows, int noOfCols ) {
+
+    super( offSetRow, offSetCol, noOfRows, noOfCols );
 
   } // BlockFull
 

@@ -47,6 +47,32 @@ public class BlockHash extends Block {
   HashMap< Integer, Line > _hashMapLines;
 
   /**
+   * Create an object of a sub type; e.g. as pattern.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 13:58:16
+   */
+  public BlockHash( ) {
+    super( );
+  } // BlockHash
+
+  /**
+   * Copy constructor that takes over - if available - the values of another
+   * type of block.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 13:59:49
+   * @param block
+   *          object of type block; e.g. BlockFull
+   */
+  public BlockHash( Block block ) {
+    super( block );
+
+    // TODO copy values form Block object
+
+  } // BlockHash
+
+  /**
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.05.2015 16:41:53
    * @param noOfRows
@@ -57,7 +83,30 @@ public class BlockHash extends Block {
 
     _hashMapLines = new HashMap< Integer, Line >( );
 
-  }
+  } // BlockHash
+
+  /**
+   * Passing information that takes the block as a part of a global structure;
+   * e.g. a SuperBlock.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 24.05.2015 14:03:36
+   * @param offSetRow
+   *          the global off set of rows of the block
+   * @param offSetCol
+   *          the global off set of columns of the block
+   * @param noOfRows
+   *          the number of rows of the block
+   * @param noOfCols
+   *          the number of columns of the block
+   */
+  public BlockHash( int offSetRow, int offSetCol, int noOfRows, int noOfCols ) {
+
+    super( offSetRow, offSetCol, noOfRows, noOfCols );
+
+    _hashMapLines = new HashMap< Integer, Line >( );
+
+  } // BlockHash
 
   /*
    * Getter!

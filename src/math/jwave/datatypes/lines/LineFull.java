@@ -52,7 +52,7 @@ public class LineFull extends Line {
 
   /**
    * Copy constructor that takes over - if available - the values of another
-   * type of block.
+   * type of Line object.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 20.05.2015 07:26:25
@@ -61,7 +61,7 @@ public class LineFull extends Line {
    */
   public LineFull( Line line ) {
 
-    super( line ); // takes of no of Rows and off set
+    super( line ); // takes the number of rows and the off set value
 
     try {
       for( int i = 0; i < line._noOfRows; i++ )
