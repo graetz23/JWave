@@ -136,7 +136,7 @@ public abstract class Block extends Super {
   public Block( int offSetRow, int offSetCol, int noOfRows, int noOfCols ) {
     _offSetRow = offSetRow;
     _offSetCol = offSetCol;
-    _noOfRows = offSetRow;
+    _noOfRows = noOfRows;
     _noOfCols = noOfCols;
   } // Block
 
