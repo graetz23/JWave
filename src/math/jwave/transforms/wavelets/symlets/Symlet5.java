@@ -42,7 +42,7 @@ public class Symlet5 extends Wavelet {
    */
   public Symlet5( ) {
 
-    _name = "Symlet 4"; // name of the wavelet
+    _name = "Symlet 5"; // name of the wavelet
 
     _transformWavelength = 2; // minimal wavelength of input signal
 
