@@ -20,6 +20,7 @@
   <target name="init">
     <tstamp/>
     <mkdir dir="${build}"/>
+    <mkdir dir="${dist}"/>
   </target>
 
   <target name="compile" depends="init"
@@ -31,7 +32,6 @@
 
   <target name="dist" depends="compile"
         description="generate the distribution">
-    <mkdir dir="${dist}"/>
     <jar jarfile="${dist}/JWave.jar" basedir="${build}"/>
     <!-- jar jarfile="${dist}/JWave-${DSTAMP}.jar" basedir="${build}"/ -->
    
