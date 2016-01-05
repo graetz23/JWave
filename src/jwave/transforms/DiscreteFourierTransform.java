@@ -74,7 +74,7 @@ public class DiscreteFourierTransform extends BasicTransform {
 
     if( !isBinary( arrTime.length ) )
       throw new JWaveFailure( "DiscreteFourierTransform#forward - "
-          + "given array length is not 2^p | p € N "
+          + "given array length is not 2^p | p E N "
           + "... = 1, 2, 4, 8, 16, 32, .. "
           + "please use the Ancient Egyptian "
           + "Decomposition for any other array length!" );
@@ -132,7 +132,7 @@ public class DiscreteFourierTransform extends BasicTransform {
 
     if( !isBinary( arrFreq.length ) )
       throw new JWaveFailure( "DiscreteFourierTransform#reverse - "
-          + "given array length is not 2^p | p € N "
+          + "given array length is not 2^p | p E N "
           + "... = 1, 2, 4, 8, 16, 32, .. "
           + "please use the Ancient Egyptian "
           + "Decomposition for any other array length!" );

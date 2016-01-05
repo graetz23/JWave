@@ -41,7 +41,7 @@ public class JWave {
   /**
    * Main method for doing little test runs for different transform types and
    * different wavelets without JUnit. Type in the name of the transform and the
-   * name of the wavelet. The result is an array of length 16 (2^p | p € N) is
+   * name of the wavelet. The result is an array of length 16 (2^p | p E N) is
    * transformed in four hierarchical steps (16/2=8 .. 8/2=4 .. 4/2=2 .. 2/1=1)
    * and reduced by 1/sqrt(2.). The result is an array in Hilbert space keeping
    * only one coefficient, the energy of value 4. (low pass), in the first

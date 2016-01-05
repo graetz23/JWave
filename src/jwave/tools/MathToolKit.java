@@ -238,7 +238,7 @@ public class MathToolKit {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 19:38:39
    * @param samplingRate
-   *          should be great than 2 and likely to be of 2^p | p € N
+   *          should be great than 2 and likely to be of 2^p | p E N
    * @param noOfOscillations
    *          should be of natural numbers except zero
    * @return sampled array keeping a number of sine waves
@@ -272,7 +272,7 @@ public class MathToolKit {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 19:41:16
    * @param samplingRate
-   *          should be great than 2 and likely to be of 2^p | p € N
+   *          should be great than 2 and likely to be of 2^p | p E N
    * @param noOfOscillations
    *          should be of natural numbers except zero
    * @return sampled array keeping a number of cosine waves

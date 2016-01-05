@@ -115,7 +115,7 @@ public final class Transform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 11:53:05
    * @param arrTime
-   *          array of length 2^p | p € N .. 2, 4, 8, 16, 32, 64, ...
+   *          array of length 2^p | p E N .. 2, 4, 8, 16, 32, 64, ...
    * @param level
    *          a certain level that matches the array
    * @return Hilbert space of certain level
@@ -138,7 +138,7 @@ public final class Transform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 11:54:59
    * @param arrHilb
-   *          Hilbert space by an array of length 2^p | p € N .. 2, 4, 8, 16,
+   *          Hilbert space by an array of length 2^p | p E N .. 2, 4, 8, 16,
    *          32, 64, ...
    * @param level
    *          the certain level the supported hilbert space

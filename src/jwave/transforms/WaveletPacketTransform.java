@@ -58,7 +58,7 @@ public class WaveletPacketTransform extends WaveletTransform {
   /**
    * Performs a 1-D forward transform from time domain to Hilbert domain using
    * one kind of a Wavelet Packet Transform (WPT) algorithm for a given array of
-   * dimension (length) 2^p | p€N; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
+   * dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
    * However, the algorithms stops for a supported level that has be in the
    * range 0, .., p of the dimension of the input array; 0 is the time series
    * itself and p is the maximal number of possible levels.
@@ -66,7 +66,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 12:35:15
    * @throws JWaveException
-   *           if givven array is not of length 2^p | p€N or the given level is
+   *           if givven array is not of length 2^p | pEN or the given level is
    *           out of range for the supported Hilbert space (array).
    * @see jwave.transforms.BasicTransform#forward(double[], int)
    */
@@ -75,7 +75,7 @@ public class WaveletPacketTransform extends WaveletTransform {
 
     if( !isBinary( arrTime.length ) )
       throw new JWaveFailure(
-          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
+          "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     int noOfLevels = calcExponent( arrTime.length );
@@ -126,7 +126,7 @@ public class WaveletPacketTransform extends WaveletTransform {
   /**
    * Performs a 1-D reverse transform from Hilbert domain to time domain using
    * one kind of a Wavelet Packet Transform (WPT) algorithm for a given array of
-   * dimension (length) 2^p | p€N; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
+   * dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
    * However, the algorithms starts for at a supported level that has be in the
    * range 0, .., p of the dimension of the input array; 0 is the time series
    * itself and p is the maximal number of possible levels. The coefficients of
@@ -143,7 +143,7 @@ public class WaveletPacketTransform extends WaveletTransform {
 
     if( !isBinary( arrHilb.length ) )
       throw new JWaveFailure(
-          "given array length is not 2^p | p € N ... = 1, 2, 4, 8, 16, 32, .. "
+          "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
               + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     int noOfLevels = calcExponent( arrHilb.length );

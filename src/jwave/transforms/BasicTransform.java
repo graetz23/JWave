@@ -123,7 +123,7 @@ public abstract class BasicTransform {
    *          the level of Hilbert space; energy & detail coefficients
    * @return array keeping Hilbert space of requested level
    * @throws JWaveException
-   *           if given array is not of type 2^p | p € N or given level does not
+   *           if given array is not of type 2^p | p E N or given level does not
    *           match the possibilities of given array.
    */
   public double[ ] forward( double[ ] arrTime, int level )
@@ -145,7 +145,7 @@ public abstract class BasicTransform {
    *          the level of Hilbert space; energy & detail coefficients
    * @return array keeping Hilbert space of requested level
    * @throws JWaveException
-   *           if given array is not of type 2^p | p € N or given level does not
+   *           if given array is not of type 2^p | p E N or given level does not
    *           match the possibilities of given array.
    */
   public double[ ] reverse( double[ ] arrFreq, int level )
@@ -188,7 +188,7 @@ public abstract class BasicTransform {
    * @date 17.08.2014 10:07:19
    * @param matDeComp
    *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
-   *          of M=2^p | p€N
+   *          of M=2^p | pEN
    * @return a 1-D time domain signal
    */
   public double[ ] recompose( double[ ][ ] matDeComp ) throws JWaveException {
@@ -221,7 +221,7 @@ public abstract class BasicTransform {
    * @date 22.03.2015 15:12:19
    * @param matDeComp
    *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
-   *          of M=2^p | p€N
+   *          of M=2^p | pEN
    * @param level
    *          the level that should be used for reconstruction
    * @return the reconstructed time series of a selected level
@@ -333,7 +333,7 @@ public abstract class BasicTransform {
    * @param matTime
    * @return
    * @throws JWaveException
-   *           if matrix id not of matching dimension like 2^p | p€N
+   *           if matrix id not of matching dimension like 2^p | pEN
    */
   public double[ ][ ] forward( double[ ][ ] matTime ) throws JWaveException {
 
@@ -682,8 +682,8 @@ public abstract class BasicTransform {
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 13:35:50
    * @param number
-   *          any integer that fulfills 2^p | p€N
-   * @return p as number = 2^p | p€N
+   *          any integer that fulfills 2^p | pEN
+   * @return p as number = 2^p | pEN
    * @throws JWaveException
    *           if given number is not a binary number
    */
@@ -692,7 +692,7 @@ public abstract class BasicTransform {
     if( !isBinary( number ) )
       throw new JWaveFailure( "BasicTransform#calcExponent - "
           + "given number is not binary: "
-          + "2^p | p€N .. = 1, 2, 4, 8, 16, 32, .. " );
+          + "2^p | pEN .. = 1, 2, 4, 8, 16, 32, .. " );
 
     return (int)( MathToolKit.getExponent( (int)( number ) ) ); // use MathToolKit or implement
 
