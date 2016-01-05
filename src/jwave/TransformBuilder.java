@@ -27,7 +27,8 @@ public class TransformBuilder {
 
   /**
    * Create a Transform object by a given string and a given Wavelet object.
-   * Look into each Transform for matching string identifier.
+   * Look into each Transform for matching string identifier. By the way the
+   * method requires Java 7, due to the switch statement on a string. *rofl*
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 14:35:12

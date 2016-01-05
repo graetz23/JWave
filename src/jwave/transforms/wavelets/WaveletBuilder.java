@@ -87,7 +87,8 @@ public class WaveletBuilder {
 
   /**
    * Create a Wavelet object by string. Look into each Wavelet for matching
-   * string identifier.
+   * string identifier. By the way the method requires Java 7, due to the
+   * switch statement with at String. *rofl*
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 14:19:09
@@ -425,7 +426,7 @@ public class WaveletBuilder {
    */
   static public Wavelet[ ] create2arr( ) {
 
-    ArrayList< Wavelet > listWavelets = new ArrayList<>( );
+    ArrayList< Wavelet > listWavelets = new ArrayList< Wavelet >( );
 
     listWavelets.add( WaveletBuilder.create( "Haar" ) );
     listWavelets.add( WaveletBuilder.create( "Daubechies 2" ) );
