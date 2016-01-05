@@ -13,7 +13,7 @@
   <property name="dist"  location="dist"/>
   <property name="junit" location="/usr/share/java/junit4.jar"/>
 
-  <path id="junit.class.path">
+  <path id="junit.classpath">
     <pathelement location="${junit}"/>
   </path>
 
@@ -23,22 +23,22 @@
   </target>
 
   <target name="compile" depends="init"
-        description="compile the source" >
-    <javac srcdir="${src}" destdir="${build}">
-      <classpath refid="junit.class.path" />
+        description="compile the source">
+    <javac srcdir="${src}" destdir="${build}" includeantruntime="false">
+      <classpath refid="junit.classpath"/>
     </javac>
   </target>
 
   <target name="dist" depends="compile"
-        description="generate the distribution" >
-    <mkdir dir="${dist}/lib"/>
+        description="generate the distribution">
+    <mkdir dir="${dist}"/>
     <jar jarfile="${dist}/JWave.jar" basedir="${build}"/>
     <!-- jar jarfile="${dist}/JWave-${DSTAMP}.jar" basedir="${build}"/ -->
    
   </target>
 
   <target name="clean"
-        description="clean up" >
+        description="clean up">
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
   </target>
