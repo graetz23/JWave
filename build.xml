@@ -8,10 +8,12 @@
     biorthognal wavelets in Java; http://en.wikipedia.org/wiki/Wavelet
   </description>
   
+  <!-- change the location attribute below to your path -->
+  <property name="junit" location="/usr/share/java/junit4.jar"/>
+
   <property name="src" location="src"/>
   <property name="build" location="build"/>
   <property name="dist"  location="dist"/>
-  <property name="junit" location="/usr/share/java/junit4.jar"/>
 
   <path id="junit.classpath">
     <pathelement location="${junit}"/>
@@ -42,5 +44,9 @@
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
   </target>
+  
+  <!-- <target name="run">
+    <java jar="${dist}/${ant.project.name}.jar" fork="true"/>
+  </target> -->
 
 </project>
