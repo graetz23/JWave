@@ -1,4 +1,4 @@
-<!-- JWave Copyright (c) 2008-2015 Christian Scheiblich (cscheiblich@gmail.com) -->
+<!-- JWave Copyright (c) 2008-2016 Christian Scheiblich (cscheiblich@gmail.com) -->
 <project name="JWave" default="dist" basedir=".">
 
   <description>
@@ -32,8 +32,8 @@
   <target name="dist" depends="compile"
         description="generate the distribution" >
     <mkdir dir="${dist}/lib"/>
-    <!-- jar jarfile="${dist}/JWave.jar" basedir="${build}"/ -->
-    <jar jarfile="${dist}/JWave-${DSTAMP}.jar" basedir="${build}"/>
+    <jar jarfile="${dist}/JWave.jar" basedir="${build}"/>
+    <!-- jar jarfile="${dist}/JWave-${DSTAMP}.jar" basedir="${build}"/ -->
    
   </target>
 
