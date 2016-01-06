@@ -45,6 +45,10 @@
     <delete dir="${dist}"/>
   </target>
   
+  <target name="test"
+        description="run unit tests">
+  </target>
+  
   <!-- <target name="run">
     <java jar="${dist}/${ant.project.name}.jar" fork="true"/>
   </target> -->
