@@ -1,6 +1,6 @@
 JWave - Open source Java implementation of orthogonal and bi-orthogonal wavelets
 ===================================
-[![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/nightscape/scave)
+[![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave)
 
 README
 ------
