@@ -42,9 +42,17 @@ THE SOFTWARE.
 
 CHANGELOG
 ---------
-JWave is in version 160106:
+JWave is in version 160107:
 
-20160106 version 160106 :
+version 160107 :
+
+- added junit test for compressing a sine signal:
+ - sine signal of 1024 * 1024 samples by 1024 oscillations
+ - calculating the compression rate in percent; e.g. 99.70703125 % by Daubechies 20 wavelet
+ - calculating the absolute maximal differences; e.g. 3.086649707542688E-4 by Daubechies 20 wavelet
+- added method for calculating compression rate to class Compressor
+
+version 160106 :
 
 - added build.xml for using ant
  - set in build.xml your path JUnit4, e.g. /usr/share/java/junit.jar
@@ -64,3 +72,4 @@ JWave is in version 160106:
 - added README.md
 - added LICENSE.md
 - updated Copyright to the years 2008-2016
+- fixed bug in JWave.java for calling console example with Haar wavelet

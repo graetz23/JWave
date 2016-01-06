@@ -170,6 +170,33 @@ public abstract class Compressor {
   } // compress
 
   /**
+   * Calculate the compression rate for a given array; means the percentage of
+   * the number of zeros kept by the array.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 06.01.2016 23:47:06
+   * @param arr
+   *          the input of array keeping values and zeros
+   * @return the compression rate as a percentage: [0 .. 100] %
+   */
+  public double calcCompressionRate( double[ ] arr ) {
+
+    double compressionRate = 0.;
+    int noOfZeros = 0;
+    int length = arr.length;
+    for( int i = 0; i < length; i++ ) {
+      if( arr[ i ] == 0. )
+        noOfZeros++;
+    } // i
+    if( noOfZeros != 0 )
+      compressionRate = (double)noOfZeros / (double)length * 100.;
+    else
+      compressionRate = (double)noOfZeros;
+    return compressionRate;
+
+  } // calcCompressionRate
+
+  /**
    * Getter for _threshold member.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
