@@ -55,6 +55,9 @@ JWave is in version 1.00 20160105:
   - java -cp ./dist/JWave.jar jwave.JWave Fast Wavelet Transform Daubechies 20
   - java -cp /usr/share/java/junit4.jar:./dist/JWave.jar org.junit.runner.JUnitCore jwave.TransformTest
   - do not forget to change /usr/share/java/junit4.jar to yours
+- added automatic build using travis-ci.com
+ - ! https://travis-ci.org/cscheiblich/JWave
+ - have a look at ./.travis.yml
 - added README.md
 - added LICENSE.md
 - updated Copyright to the years 2008-2016
