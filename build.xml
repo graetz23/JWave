@@ -26,39 +26,28 @@
     <mkdir dir="${dist}"/>
   </target>
 
-  <target name="compile" depends="init"
-        description="compile the source">
+  <target name="compile" depends="init" description="compile the source">
     <javac srcdir="${src}" destdir="${build}" includeantruntime="false">
       <classpath refid="junit.classpath"/>
     </javac>
   </target>
 
-  <target name="dist" depends="compile"
-        description="generate the distribution">
+  <target name="dist" depends="compile" description="generates distribution">
     <jar jarfile="${dist}/JWave.jar" basedir="${build}"/>
     <!-- jar jarfile="${dist}/JWave-${DSTAMP}.jar" basedir="${build}"/ -->
-   
   </target>
 
-  <target name="clean"
-        description="clean up">
+  <target name="clean" description="clean up">
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
   </target>
   
-  <!-- target name="test"
-        description="run unit tests">
-    <tstamp/>
-    <mkdir dir="${build}"/>
-    <mkdir dir="${dist}"/>
-    <javac srcdir="${src}" destdir="${build}" includeantruntime="false">
-      <classpath refid="junit.classpath"/>
-    </javac>
-    <jar jarfile="${dist}/JWave.jar" basedir="${build}"/>  
-  </target -->
+  <target name="test" description="run unit tests">
+    <!-- implement to run the JUnit test automatically -->
+  </target>
   
-  <!-- target name="run">
-    <java jar="${dist}/${ant.project.name}.jar" fork="true"/>
-  </target -->
+  <target name="run">
+    <!-- java jar="${dist}/${ant.project.name}.jar" fork="true"/ -->
+  </target>
 
 </project>
