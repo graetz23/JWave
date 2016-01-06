@@ -1,22 +1,24 @@
-<!-- JWave Copyright (c) 2008-2016 Christian Scheiblich (cscheiblich@gmail.com) -->
+<!-- JWave Copyright 2008-2016 Christian Scheiblich (cscheiblich@gmail.com) -->
 <project name="JWave" default="dist" basedir=".">
 
   <description>
-    A Discrete Fourier Transform (DFT), a Fast Wavelet Transform (FWT), and a
-    Wavelet Packet Transform (WPT) algorithm in 1-D, 2-D, and 3-D using normalized
-    orthogonal (orthonormal) Haar, Coiflet, Daubechie, Legendre and normalized 
-    biorthognal wavelets in Java; http://en.wikipedia.org/wiki/Wavelet
+    ant build file for JWave; https://github.com/cscheiblich/JWave
   </description>
   
   <!-- change the location attribute below to your path -->
   <property name="junit" location="/usr/share/java/junit4.jar"/>
-
+  
   <property name="src" location="src"/>
   <property name="dist" location="dist"/>
   <property name="test" location="test"/>
   <property name="build" location="build"/>
+  <property name="jwave" location="${dist}/${ant.project.name}.jar"/>
 
-  <path id="junit.classpath">
+  <path id="classpath.jwave">
+    <pathelement location="${jwave}"/>
+  </path>
+
+  <path id="classpath.junit">
     <pathelement location="${junit}"/>
   </path>
 
@@ -28,7 +30,7 @@
 
   <target name="compile" depends="init" description="compile the source">
     <javac srcdir="${src}" destdir="${build}" includeantruntime="false">
-      <classpath refid="junit.classpath"/>
+      <classpath refid="classpath.junit"/>
     </javac>
   </target>
 
@@ -42,12 +44,19 @@
     <delete dir="${dist}"/>
   </target>
   
-  <target name="test" description="run unit tests">
-    <!-- implement to run the JUnit test automatically -->
+  <target name="test" depends="dist" description="run junit tests">
+    <junit haltonfailure="true" showoutput="true" printsummary="true">
+      <classpath refid="classpath.jwave"/>
+      <classpath refid="classpath.junit"/>
+      <test name="jwave.TransformTest"/>
+    </junit>
   </target>
   
-  <target name="run">
-    <!-- java jar="${dist}/${ant.project.name}.jar" fork="true"/ -->
+  <target name="run" depends="dist" description="run console example">
+    <java fork="true" failonerror="yes" classname="jwave.JWave">
+      <classpath refid="classpath.jwave"/>
+      <arg line="Fast Wavelet Transform Daubechies 20"/>
+    </java>
   </target>
 
 </project>

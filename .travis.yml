@@ -3,4 +3,4 @@ language: java
 jdk:
    - oraclejdk7
    - openjdk7
-script: ant
+script: ant test
