@@ -46,7 +46,7 @@
     <delete dir="${dist}"/>
   </target>
   
-  <target name="test"
+  <!-- target name="test"
         description="run unit tests">
     <tstamp/>
     <mkdir dir="${build}"/>
@@ -55,10 +55,10 @@
       <classpath refid="junit.classpath"/>
     </javac>
     <jar jarfile="${dist}/JWave.jar" basedir="${build}"/>  
-</target>
+  </target -->
   
-  <!-- <target name="run">
+  <!-- target name="run">
     <java jar="${dist}/${ant.project.name}.jar" fork="true"/>
-  </target> -->
+  </target -->
 
 </project>
