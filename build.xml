@@ -12,8 +12,9 @@
   <property name="junit" location="/usr/share/java/junit4.jar"/>
 
   <property name="src" location="src"/>
+  <property name="dist" location="dist"/>
+  <property name="test" location="test"/>
   <property name="build" location="build"/>
-  <property name="dist"  location="dist"/>
 
   <path id="junit.classpath">
     <pathelement location="${junit}"/>
@@ -47,7 +48,14 @@
   
   <target name="test"
         description="run unit tests">
-  </target>
+    <tstamp/>
+    <mkdir dir="${build}"/>
+    <mkdir dir="${dist}"/>
+    <javac srcdir="${src}" destdir="${build}" includeantruntime="false">
+      <classpath refid="junit.classpath"/>
+    </javac>
+    <jar jarfile="${dist}/JWave.jar" basedir="${build}"/>  
+</target>
   
   <!-- <target name="run">
     <java jar="${dist}/${ant.project.name}.jar" fork="true"/>
