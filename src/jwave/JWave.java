@@ -77,7 +77,11 @@ public class JWave {
       return;
     } // if args
 
-    String waveletIdentifier = args[ 3 ] + " " + args[ 4 ]; // raw n dirty but working
+    String waveletIdentifier = "";
+    if( args.length > 4 )
+      waveletIdentifier = args[ 3 ] + " " + args[ 4 ]; // raw n dirty but working
+    else
+      waveletIdentifier = args[ 3 ]; // if "Haar" is used
     String transformIdentifier = args[ 0 ] + " " + args[ 1 ] + " " + args[ 2 ]; // raw n dirty but working
 
     Transform transform =
