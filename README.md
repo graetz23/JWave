@@ -42,19 +42,22 @@ THE SOFTWARE.
 
 CHANGELOG
 ---------
-JWave is in version 1.00 20160105:
+JWave is in version 160106:
 
-20160105 version 1.00 :
+20160106 version 160106 :
 
 - added build.xml for using ant
  - set in build.xml your path JUnit4, e.g. /usr/share/java/junit.jar
  - ! to have the build done:
   - ant
   - should work easy peasy
- - ! to have a test run on your system:
+ - ! for a quick console example:
+  - ant run
+ - ! for running the junit tests
+  - ant test
+ - ! to have a run or test on your system:
   - java -cp ./dist/JWave.jar jwave.JWave Fast Wavelet Transform Daubechies 20
   - java -cp /usr/share/java/junit4.jar:./dist/JWave.jar org.junit.runner.JUnitCore jwave.TransformTest
-  - do not forget to change /usr/share/java/junit4.jar to yours
 - added automatic build using travis-ci.com
  - ! https://travis-ci.org/cscheiblich/JWave
  - have a look at ./.travis.yml
