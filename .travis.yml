@@ -5,8 +5,8 @@ jdk:
    - openjdk7
 os:
   - linux
-  - osx
-matrix:
-  allow_failures:
-    - os: osx
+#  - osx
+#matrix:
+#  allow_failures:
+#    - os: osx
 script: ant test
