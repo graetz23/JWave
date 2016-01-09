@@ -48,8 +48,9 @@ CHANGELOG
 version 160109 :
 - moved the JUnit tests to an own source directory
  - updated the build.xml file
- - automatically run all files with regex **/*Test* in build directory
-- updated the README file 
+ - automatically run all files with regex \*\*/\*Test\* in build directory
+- updated the build.xml - allowing for OS specific builds now
+ - set JUnit path OS dependent; MAC, WIN, or GNU/Linux and Unix
 
 version 160107 :
 - added junit test for compressing a sine signal:
