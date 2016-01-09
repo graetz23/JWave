@@ -3,18 +3,51 @@
 
   <description>
     ant build file for JWave; https://github.com/cscheiblich/JWave
+    TODO: set your OS dependent path to JUnit JAR file
   </description>
-  
-  <!-- change the location attribute below to your path -->
-  <property name="junit" location="/usr/share/java/junit4.jar"/>
-  
+ 
+  <!-- setting directories and files --> 
   <property name="src" location="src"/>
   <property name="test" location="test"/>
   <property name="dist" location="dist"/>
   <property name="build" location="build"/>
-  
   <property name="jwave" location="${dist}/${ant.project.name}.jar"/>
 
+  <!-- check for OS -->
+  <condition property="isMac">
+    <os family="mac" />
+  </condition>
+
+  <condition property="isWin">
+    <os family="windows" />
+  </condition>
+
+  <condition property="isUnix">
+    <os family="unix" />
+  </condition>
+
+  <!-- operating system specific targets -->
+  <target name="doMac" if="isMac">
+    <echo message="OS is a Mac target" />
+    <!-- set the path to a MAC or Unix OS below -->
+    <property name="junit" location="IS NOT SET - SET IT!"/>  
+    <echo message="JUnit path: ${junit}" />
+  </target>
+
+  <target name="doWin" if="isWin">
+    <echo message="OS is a Windows target" />
+    <!-- set the path to a Windows OS below -->
+    <property name="junit" location="C:\Portable\eclipse\plugins\org.junit_4.11.0.v201303080030/junit.jar"/>
+    <echo message="JUnit path: ${junit}" />
+  </target>
+
+  <target name="doUnix" if="isUnix">
+    <echo message="OS is a Unix target" />
+    <!-- set the path to a GNU/Linux or Unix OS below -->
+    <property name="junit" location="/usr/share/java/junit4.jar"/>  
+    <echo message="JUnit path: ${junit}" />
+  </target>
+   
   <path id="classpath.junit">
     <pathelement location="${junit}"/>
   </path>
@@ -31,8 +64,12 @@
     <pathelement location="${build}"/>
   </path>
 
-  <target name="init">
+  <target name="init" depends="doMac, doWin, doUnix">
     <tstamp/>
+    <echo message="OS Name is:         ${os.name}" />
+    <echo message="OS Architecture is: ${os.arch}" />
+    <echo message="OS Version is:      ${os.version}" />
+    <echo message="JUnit path: ${junit}" />
     <mkdir dir="${build}"/>
     <mkdir dir="${dist}"/>
   </target>
