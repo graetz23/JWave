@@ -4,6 +4,7 @@
   <description>
     ant build file for JWave; https://github.com/cscheiblich/JWave
     TODO: Set your OS dependent path to the JUnit4 JAR file below!
+  	For Windows OS also set the path to org.hamcrest.core JAR file!
   </description>
  
   <!-- setting static directories and files --> 
@@ -30,7 +31,9 @@
   <target name="doMac" if="isMac">
     <echo message="OS is a Mac target" />
     <!-- set the path to a MAC or Unix OS below -->
-    <property name="junit" location="IS NOT SET - SET IT!"/>  
+    <property name="junit" location="IS NOT SET - SET IT!"/>
+  	<!-- hamcrest NOT USED - DO NOOT SET -->
+  	<property name="hamcr" location=""/>
     <echo message="JUnit path: ${junit}" />
   </target>
 
@@ -38,7 +41,9 @@
   <target name="doWin" if="isWin">
     <echo message="OS is a Windows target" />
     <!-- set the path to a Windows OS below -->
-    <property name="junit" location="C:\Portable\eclipse\plugins\org.junit_4.11.0.v201303080030/junit.jar"/>
+    <!-- property name="junit" location="C:\Portable\eclipse\plugins\org.junit_4.11.0.v201303080030\junit.jar"/-->
+    <property name="junit" location="C:/Portable/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+  	<property name="hamcr" location="C:/Portable/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
     <echo message="JUnit path: ${junit}" />
   </target>
 
@@ -46,7 +51,9 @@
   <target name="doUnix" if="isUnix">
     <echo message="OS is a Unix target" />
     <!-- set the path to a GNU/Linux or Unix OS below -->
-    <property name="junit" location="/usr/share/java/junit4.jar"/>  
+    <property name="junit" location="/usr/share/java/junit4.jar"/>
+  	<!-- hamcrest NOT USED - DO NOOT SET -->
+  	<property name="hamcr" location=""/>
     <echo message="JUnit path: ${junit}" />
   </target>
    
@@ -56,7 +63,10 @@
     <path id="classpath.junit">
       <pathelement location="${junit}"/>
     </path>
-    <path id="classpath.jwave">
+    <path id="classpath.hamcr">
+      <pathelement location="${hamcr}"/>
+    </path>
+  	<path id="classpath.jwave">
       <pathelement location="${jwave}"/>
     </path>
     <path id="classpath.tests">
@@ -71,6 +81,7 @@
     <echo message="OS Arch. is:   ${os.arch}" />
     <echo message="OS Vers. is:   ${os.version}" />
     <echo message="JUnit path:    ${junit}" />
+    <echo message="hamcrest path: ${hamcr}" />
   </target>
 
   <!-- compile all available Java classes -->
@@ -102,8 +113,8 @@
     </javac>
     <junit haltonfailure="true" showoutput="true" printsummary="true">
       <classpath refid="classpath.junit"/>
+      <classpath refid="classpath.hamcr"/>
       <classpath refid="classpath.jwave"/>
-      <classpath refid="classpath.tests"/>
       <classpath refid="classpath.build"/>
       <formatter type="plain"/>
       <batchtest fork="yes" todir="${build}">

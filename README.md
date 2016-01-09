@@ -51,6 +51,7 @@ version 160109 :
  - automatically run all files with regex \*\*/\*Test\* in build directory
 - updated the build.xml - allowing for OS specific builds now
  - set JUnit path OS dependent; MAC, WIN, or GNU/Linux and Unix
+ - additionally set for WIN OS org.hamcrest.core JAR
 
 version 160107 :
 - added junit test for compressing a sine signal:
