@@ -3,4 +3,10 @@ language: java
 jdk:
    - oraclejdk7
    - openjdk7
+os:
+  - linux
+  - osx
+matrix:
+  allow_failures:
+    - os: osx
 script: ant test
