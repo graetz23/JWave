@@ -9,17 +9,26 @@
   <property name="junit" location="/usr/share/java/junit4.jar"/>
   
   <property name="src" location="src"/>
-  <property name="dist" location="dist"/>
   <property name="test" location="test"/>
+  <property name="dist" location="dist"/>
   <property name="build" location="build"/>
+  
   <property name="jwave" location="${dist}/${ant.project.name}.jar"/>
+
+  <path id="classpath.junit">
+    <pathelement location="${junit}"/>
+  </path>
 
   <path id="classpath.jwave">
     <pathelement location="${jwave}"/>
   </path>
 
-  <path id="classpath.junit">
-    <pathelement location="${junit}"/>
+  <path id="classpath.tests">
+    <pathelement location="${test}"/>
+  </path>
+
+  <path id="classpath.build">
+    <pathelement location="${build}"/>
   </path>
 
   <target name="init">
@@ -39,19 +48,6 @@
     <!-- jar jarfile="${dist}/JWave-${DSTAMP}.jar" basedir="${build}"/ -->
   </target>
 
-  <target name="clean" description="clean up">
-    <delete dir="${build}"/>
-    <delete dir="${dist}"/>
-  </target>
-  
-  <target name="test" depends="dist" description="run junit tests">
-    <junit haltonfailure="true" showoutput="true" printsummary="true">
-      <classpath refid="classpath.jwave"/>
-      <classpath refid="classpath.junit"/>
-      <test name="jwave.TransformTest"/>
-    </junit>
-  </target>
-  
   <target name="run" depends="dist" description="run console example">
     <java fork="true" failonerror="yes" classname="jwave.JWave">
       <classpath refid="classpath.jwave"/>
@@ -59,4 +55,31 @@
     </java>
   </target>
 
+  <target name="test" depends="dist" description="build n run JUnit tests">
+    <javac srcdir="${test}" destdir="${build}" includeantruntime="false">
+      <classpath refid="classpath.junit"/>
+      <classpath refid="classpath.jwave"/>
+    </javac>
+    <junit haltonfailure="true" showoutput="true" printsummary="true">
+      <classpath refid="classpath.junit"/>
+      <classpath refid="classpath.jwave"/>
+      <classpath refid="classpath.tests"/>
+      <classpath refid="classpath.build"/>
+      <!-- test name="jwave.GeneralTest"/ -->
+      <formatter type="plain"/>
+      <!-- formatter type="xml"/ -->
+      <!-- run recursively all classes that have "Test" in their class name -->
+      <batchtest fork="yes" todir="${build}">
+        <fileset dir="${build}">
+          <include name="**/*Test.class"/>
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+  
+  <target name="clean" description="clean up - delete classes, jar, and dirs">
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+  
 </project>

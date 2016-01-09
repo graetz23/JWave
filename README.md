@@ -4,17 +4,15 @@ JWave - Open source Java implementation of orthogonal and bi-orthogonal wavelets
 
 README
 ------
-Java implementation of a discrete fourier transform (DFT) algorithm, a fast wavelet transform (FWT) algorithm, and a wavelet packet transform (WPT) algorithm all in 1-D, 2-D, and 3-D. The wavelet transform algorithms are using normalized orthogonal (orthonormal) Haar, Coiflet, Daubechies, Symlets, and Legendre wavelets but also non orthogonal BiOrthogonal wavelets of different types. The implementation of JWave is based on several Design Patterns and - hopefully - appears user-friendly.
+Java implementation of a Discrete Fourier Transform (DFT) algorithm, a Fast Wavelet Transform (FWT) algorithm, and a Wavelet Packet Transform (WPT) algorithm, available in 1-D, 2-D, and 3-D. The wavelet transform algorithms are using normalized orthogonal (orthonormal) wavelets like Haar, Coiflet, Daubechies, Symlets, Legendre, and even some Bi-Orthogonal. The implementation of JWave is based on several Design Patterns and - hopefully - appears user-friendly.
 
 GETTING STARTED
 ---------------
-
-First of all have a look at the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo) page: How JWave is used, or why the result is looking like it does, and especially where the hell you can find an iterative method!? Thanks. :-)
+First of all have a look at the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo) page: How JWave is used, or why the result is looking like it does, and especially where the hack you can find an iterative (stepping) method!? However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on: Please use the AncientEgyptianDecomposition class for odd sampling (most frequently asked question)! Thanks. :-)
 
 CONTACT
 -------
-
-if there are still doubts, try mailing me, otherwise have fun.
+If there are doubts, try mailing me, otherwise have fun with JWave.
 
 LICENSE
 -------
@@ -40,12 +38,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+VERSION
+-------
+JWave is in version 160109:
+
 CHANGELOG
 ---------
-JWave is in version 160107:
+
+version 160109 :
+- moved the JUnit tests to an own source directory
+ - updated the build.xml file
+ - automatically run all files with regex **/*Test* in build directory
+- updated the README file 
 
 version 160107 :
-
 - added junit test for compressing a sine signal:
  - sine signal of 1024 * 1024 samples by 1024 oscillations
  - calculating the compression rate in percent; e.g. 99.70703125 % by Daubechies 20 wavelet
@@ -53,7 +59,6 @@ version 160107 :
 - added method for calculating compression rate to class Compressor
 
 version 160106 :
-
 - added build.xml for using ant
  - set in build.xml your path JUnit4, e.g. /usr/share/java/junit.jar
  - ! to have the build done:
