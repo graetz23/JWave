@@ -55,7 +55,7 @@
     </java>
   </target>
 
-  <target name="test" depends="dist" description="build n run JUnit tests">
+  <target name="test" depends="dist" description="build and run JUnit tests">
     <javac srcdir="${test}" destdir="${build}" includeantruntime="false">
       <classpath refid="classpath.junit"/>
       <classpath refid="classpath.jwave"/>
@@ -65,10 +65,7 @@
       <classpath refid="classpath.jwave"/>
       <classpath refid="classpath.tests"/>
       <classpath refid="classpath.build"/>
-      <!-- test name="jwave.GeneralTest"/ -->
       <formatter type="plain"/>
-      <!-- formatter type="xml"/ -->
-      <!-- run recursively all classes that have "Test" in their class name -->
       <batchtest fork="yes" todir="${build}">
         <fileset dir="${build}">
           <include name="**/*Test.class"/>
@@ -77,9 +74,8 @@
     </junit>
   </target>
   
-  <target name="clean" description="clean up - delete classes, jar, and dirs">
+  <target name="clean" description="clean up - delete build directory">
     <delete dir="${build}"/>
-    <delete dir="${dist}"/>
   </target>
   
 </project>
