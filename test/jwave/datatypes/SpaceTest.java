@@ -21,10 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes.spaces;
+package jwave.datatypes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import jwave.datatypes.spaces.Space;
+import jwave.datatypes.spaces.SpaceFull;
+import jwave.datatypes.spaces.SpaceHash;
 import jwave.exceptions.JWaveException;
 
 import org.junit.Test;

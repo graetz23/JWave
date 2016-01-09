@@ -21,10 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes.lines;
+package jwave.datatypes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import jwave.datatypes.lines.Line;
+import jwave.datatypes.lines.LineFull;
+import jwave.datatypes.lines.LineHash;
 import jwave.exceptions.JWaveException;
 
 import org.junit.Test;
