@@ -26,8 +26,10 @@ package jwave.datatypes;
 import java.util.ArrayList;
 
 import jwave.datatypes.lines.Line;
+import jwave.datatypes.lines.LineFull;
 import jwave.exceptions.JWaveException;
 import jwave.exceptions.JWaveFailureNotValid;
+import jwave.tools.MathToolKit;
 
 /**
  * SuperLine consists of several Line objects of different sizes.
@@ -36,6 +38,16 @@ import jwave.exceptions.JWaveFailureNotValid;
  * @date 16.05.2015 19:30:28
  */
 public class SuperLine {
+
+  /**
+   * maximal size of a line object,
+   */
+  private int _maxLineSize;
+
+  /**
+   * no of entries in the Line object.
+   */
+  private int _noOfRows;
 
   /**
    * However, who knows how many blocks are delivered!
@@ -51,9 +63,86 @@ public class SuperLine {
    */
   public SuperLine( ) {
 
+    _noOfRows = 0;
+    _maxLineSize = 1;
     _listOfLines = new ArrayList< Super >( );
 
   } // SuperLine
+
+  /**
+   * Set a SuperLine object by the noOfRows or noOfEntries.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 12.01.2016 23:35:12
+   * @param noOfRows
+   *          the number of entries
+   */
+  public SuperLine( int noOfRows ) {
+
+    _noOfRows = noOfRows;
+    _maxLineSize = 1;
+    _listOfLines = new ArrayList< Super >( );
+
+  } // SuperLine
+
+  /**
+   * Set the SuperLine object by the noOfRows and the maximal block size.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 12.01.2016 23:36:23
+   * @param noOfRows
+   *          the number of entries
+   * @param maxBlockSize
+   *          the maximal block size, should be << number of entries
+   */
+  public SuperLine( int noOfRows, int maxBlockSize ) {
+
+    _noOfRows = noOfRows;
+    _maxLineSize = maxBlockSize;
+    _listOfLines = new ArrayList< Super >( );
+
+  } // SuperLine
+
+  /**
+   * Set up a configured an empty SuperLine object by allocating empty Block
+   * objects.
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @throws JWaveException
+   *           is thrown while parameters are calcualted wrong
+   * @date 12.01.2016 23:38:50
+   */
+  public void init( ) throws JWaveException {
+
+    int noOfLineObjects = (int)( _noOfRows / _maxLineSize ); // 29 / 8  = 3
+
+    int leftEntries = _noOfRows % _maxLineSize; // 29 % 8 = 5
+
+    if( leftEntries + _maxLineSize * noOfLineObjects != _noOfRows )
+      throw new JWaveFailureNotValid(
+          "calculated splitting to Block objects is not valid" );
+
+    for( int i = 0; i < noOfLineObjects; i++ )
+      add( new LineFull( i * _maxLineSize, _maxLineSize ) );
+
+    int[ ] arrBinaries = MathToolKit.decompose( leftEntries );
+    for( int i = 0; i < arrBinaries.length; i++ )
+      arrBinaries[ i ] = (int)MathToolKit.scalb( 1., arrBinaries[ i ] );
+
+    for( int a = 0; a < arrBinaries.length; a++ )
+      System.out.println( "arrbBinaries[ " + a + " ] = " + arrBinaries[ a ] );
+
+    int offset = noOfLineObjects * _maxLineSize;
+    for( int i = 0; i < arrBinaries.length; i++ ) {
+      if( i == 0 )
+        add( new LineFull( offset, arrBinaries[ i ] ) );
+      else {
+        offset += arrBinaries[ i - 1 ];
+        add( new LineFull( offset, arrBinaries[ i ] ) );
+      }
+    }
+
+  } // init
 
   /**
    * Returns the number of stored Line objects.
@@ -96,12 +185,26 @@ public class SuperLine {
     Line line = null;
 
     if( p < 0 || p >= getNoOfLines( ) )
-      throw new JWaveFailureNotValid( "SuperLine#get - position p is out of bound!" );
+      throw new JWaveFailureNotValid(
+          "SuperLine#get - position p is out of bound!" );
 
     line = (Line)_listOfLines.get( p );
 
     return line;
 
   } // get
+
+  /**
+   * Return the set number of rows
+   * 
+   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @date 12.01.2016 23:34:12
+   * @return
+   */
+  public int getNoOfRows( ) {
+
+    return _noOfRows;
+
+  } // getNoOfRows
 
 } // class
