@@ -1,21 +1,26 @@
-[![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) on travis-ci.com
 JWave - Open source Java implementation of orthogonal and bi-orthogonal wavelets
 ===================================
 
+[![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) on travis-ci.com
+
 README
 ------
+
 Java implementation of a Discrete Fourier Transform (DFT) algorithm, a Fast Wavelet Transform (FWT) algorithm, and a Wavelet Packet Transform (WPT) algorithm, available in 1-D, 2-D, and 3-D. The wavelet transform algorithms are using normalized orthogonal (orthonormal) wavelets like Haar, Coiflet, Daubechies, Symlets, Legendre, and even some Bi-Orthogonal. The implementation of JWave is based on several Design Patterns and - hopefully - appears user-friendly.
 
 GETTING STARTED
 ---------------
+
 First of all have a look at the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo) page: How JWave is used, or why the result is looking like it does, and especially where the hack you can find an iterative (stepping) method!? However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on: Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! Thanks. :-)
 
 CONTACT
 -------
+
 If there are doubts, try mailing me, otherwise have fun with JWave.
 
 LICENSE
 -------
+
 JWave is distributed under the MIT License (MIT); this file is part of.
 
 Copyright (c) 2008-2016 Christian Scheiblich (cscheiblich@gmail.com)
@@ -40,10 +45,11 @@ THE SOFTWARE.
 
 VERSION
 -------
+
 JWave is in version 160109:
 
-CHANGELOG
----------
+CHANGE LOG
+----------
 
 version 160109 :
 - moved the JUnit tests to an own source directory
