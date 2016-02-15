@@ -109,7 +109,7 @@ public class SuperLine {
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @throws JWaveException
-   *           is thrown while parameters are calcualted wrong
+   *           is throwsn while parameters are calcualted wrong
    * @date 12.01.2016 23:38:50
    */
   public void init( ) throws JWaveException {
