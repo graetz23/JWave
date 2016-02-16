@@ -46,10 +46,17 @@ THE SOFTWARE.
 VERSION
 -------
 
-JWave is in version 160109:
+JWave is in version 160109.
 
 CHANGE LOG
 ----------
+
+version 1602xx :
+- added a new type of wavelet transform algorithm: Shifting Wavelet Transform.
+ - the algorithm shifts a wavelet by smallest length of 2 over the input array,
+ - NOT YET - then by the double of 4, 8, 16, .., p-1, p.
+ - the reverse transform takes the largest wavelength of p and shifts,
+ - NOT YET - then by half of p-1, .., 16, 8, 4, 2.
 
 version 160109 :
 - moved the JUnit tests to an own source directory
