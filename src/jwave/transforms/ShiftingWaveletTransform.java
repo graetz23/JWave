@@ -47,46 +47,36 @@ public class ShiftingWaveletTransform extends WaveletTransform {
 
     // first try a one step implementation
     int steps = length / 2;
-    int odd = length % 2; // if odd == 1 => steps * 2 + odd else steps * 2
+
+    int div = 2;
+    int odd = length % div; // if odd == 1 => steps * 2 + odd else steps * 2
 
     double[ ] arrHilb = new double[ length ];
 
-    // doing smallest wavelength of 2 by no of steps
-    double[ ] arrTime2 = new double[ 2 ];
-    double[ ] arrHilb2 = null;
+    while( div < length ) {
 
-    for( int s = 0; s < steps; s++ ) {
+      int splits = length / div; // cuts the digits == round down to full
 
-      arrTime2[ 0 ] = arrTime[ s * 2 ];
-      arrTime2[ 1 ] = arrTime[ s * 2 + 1 ];
+      // doing smallest wavelength of div by no of steps
 
-      arrHilb2 = _wavelet.forward( arrTime2, 2 );
+      for( int s = 0; s < splits; s++ ) {
 
-      arrHilb[ s * 2 ] = arrHilb2[ 0 ];
-      arrHilb[ s * 2 + 1 ] = arrHilb2[ 1 ];
+        double[ ] arrTimeTmp = new double[ div ];
+        double[ ] arrHilbTmp = null;
 
-    } // s
-    
-    
-    //    for( int currentLength = 1; currentLength <= 1; currentLength++ ) {
-    //
-    //      // doing smallest wavelength of 2 by no of steps
-    //      double[ ] arrTime2 = new double[ currentLength * 2 ]; // 2, 4, 8
-    //      double[ ] arrHilb2 = null;
-    //
-    //      for( int s = 0; s < steps; s++ ) {
-    //
-    //        for( int t = 0; t < currentLength * 2; t++ )
-    //          arrTime2[ t ] = arrTime[ s * currentLength + t ];
-    //
-    //        arrHilb2 = _wavelet.forward( arrTime2, 2 );
-    //
-    //        for( int t = 0; t < currentLength * 2; t++ )
-    //          arrHilb[ s * currentLength + t ] = arrHilb2[ t ];
-    //
-    //      } // s
-    //
-    //    } // l
+        for( int p = 0; p < div; p++ )
+          arrTimeTmp[ p ] = arrTime[ s * div + p ];
+
+        arrHilbTmp = _wavelet.forward( arrTimeTmp, div );
+
+        for( int q = 0; q < div; q++ )
+          arrHilb[ s * 2 + q ] = arrHilbTmp[ q ];
+
+      } // s
+
+      div *= 2;
+
+    } // while
 
     if( odd == 1 )
       arrHilb[ length - 1 ] = arrTime[ length - 1 ];
@@ -103,32 +93,49 @@ public class ShiftingWaveletTransform extends WaveletTransform {
    * @see jwave.transforms.BasicTransform#reverse(double[])
    */
   @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
+
     // TODO start with largest possible wavelength of p and shift along input array, then with p-1, .., then with 2.
     int length = arrHilb.length;
 
     // first try a one step implementation
-    int steps = length / 2;
-    int odd = length % 2; // if odd == 1 => steps * 2 + odd else steps * 2
+    int transformWavelength = _wavelet.getTransformWavelength( ); // normally 2
+    int h = transformWavelength;
+
+    int level = calcExponent( length );
+    int steps = calcExponent( length );
+    for( int l = level; l < steps; l++ )
+      h = h << 1; // begin reverse transform at certain - matching - level of Hilbert space
+
+    int div = 2;
+    int odd = length % div; // if odd == 1 => steps * 2 + odd else steps * 2
 
     double[ ] arrTime = new double[ length ];
 
-    // doing smallest wavelength of 2 by no of steps
-    double[ ] arrHilb2 = new double[ 2 ];
-    double[ ] arrTime2 = null;
+    while( div < length ) {
 
-    for( int s = 0; s < steps; s++ ) {
+      int splits = length / div; // cuts the digits == round down to full
 
-      arrHilb2[ 0 ] = arrHilb[ s * 2 ];
-      arrHilb2[ 1 ] = arrHilb[ s * 2 + 1 ];
+      // doing smallest wavelength of div by no of steps
 
-      arrTime2 = _wavelet.forward( arrHilb2, 2 );
+      for( int s = 0; s < splits; s++ ) {
 
-      arrTime[ s * 2 ] = arrTime2[ 0 ];
-      arrTime[ s * 2 + 1 ] = arrTime2[ 1 ];
+        double[ ] arrHilbTmp = new double[ div ];
+        double[ ] arrTimeTmp = null;
 
-    } // s
-    
-    
+        for( int p = 0; p < div; p++ )
+          arrHilbTmp[ p ] = arrHilb[ s * div + p ];
+
+        arrTimeTmp = _wavelet.reverse( arrHilbTmp, div );
+
+        for( int q = 0; q < div; q++ )
+          arrTime[ s * 2 + q ] = arrTimeTmp[ q ];
+
+      } // s
+
+      div *= 2;
+
+    } // while
+
     if( odd == 1 )
       arrTime[ length - 1 ] = arrHilb[ length - 1 ];
 
