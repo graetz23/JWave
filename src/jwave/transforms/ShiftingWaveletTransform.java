@@ -42,18 +42,16 @@ public class ShiftingWaveletTransform extends WaveletTransform {
    */
   @Override public double[ ] forward( double[ ] arrTime ) throws JWaveException {
 
-    // TODO start with smallest wavelength of 2 and shift along input array, then with 4, then with p-1, then with p.
     int length = arrTime.length;
-
-    // first try a one step implementation
-    int steps = length / 2;
 
     int div = 2;
     int odd = length % div; // if odd == 1 => steps * 2 + odd else steps * 2
 
     double[ ] arrHilb = new double[ length ];
+    for( int i = 0; i < length; i++ )
+      arrHilb[ i ] = arrTime[ i ];
 
-    while( div < length ) {
+    while( div <= length ) {
 
       int splits = length / div; // cuts the digits == round down to full
 
@@ -61,16 +59,16 @@ public class ShiftingWaveletTransform extends WaveletTransform {
 
       for( int s = 0; s < splits; s++ ) {
 
-        double[ ] arrTimeTmp = new double[ div ];
-        double[ ] arrHilbTmp = null;
+        double[ ] arrDiv = new double[ div ];
+        double[ ] arrRes = null;
 
         for( int p = 0; p < div; p++ )
-          arrTimeTmp[ p ] = arrTime[ s * div + p ];
+          arrDiv[ p ] = arrHilb[ s * div + p ];
 
-        arrHilbTmp = _wavelet.forward( arrTimeTmp, div );
+        arrRes = _wavelet.forward( arrDiv, div );
 
         for( int q = 0; q < div; q++ )
-          arrHilb[ s * 2 + q ] = arrHilbTmp[ q ];
+          arrHilb[ s * div + q ] = arrRes[ q ];
 
       } // s
 
@@ -94,24 +92,23 @@ public class ShiftingWaveletTransform extends WaveletTransform {
    */
   @Override public double[ ] reverse( double[ ] arrHilb ) throws JWaveException {
 
-    // TODO start with largest possible wavelength of p and shift along input array, then with p-1, .., then with 2.
     int length = arrHilb.length;
 
-    // first try a one step implementation
-    int transformWavelength = _wavelet.getTransformWavelength( ); // normally 2
-    int h = transformWavelength;
-
-    int level = calcExponent( length );
-    int steps = calcExponent( length );
-    for( int l = level; l < steps; l++ )
-      h = h << 1; // begin reverse transform at certain - matching - level of Hilbert space
-
-    int div = 2;
+    int div = 0;
+    if( length % 2 == 0 )
+      div = length;
+    else {
+      div = length / 2; // 2 = 4.5 => 4
+      div *= 2; // 4 * 2 = 8
+    }
+    
     int odd = length % div; // if odd == 1 => steps * 2 + odd else steps * 2
 
     double[ ] arrTime = new double[ length ];
+    for( int i = 0; i < length; i++ )
+      arrTime[ i ] = arrHilb[ i ];
 
-    while( div < length ) {
+    while( div >= 2 ) {
 
       int splits = length / div; // cuts the digits == round down to full
 
@@ -119,20 +116,20 @@ public class ShiftingWaveletTransform extends WaveletTransform {
 
       for( int s = 0; s < splits; s++ ) {
 
-        double[ ] arrHilbTmp = new double[ div ];
-        double[ ] arrTimeTmp = null;
+        double[ ] arrDiv = new double[ div ];
+        double[ ] arrRes = null;
 
         for( int p = 0; p < div; p++ )
-          arrHilbTmp[ p ] = arrHilb[ s * div + p ];
+          arrDiv[ p ] = arrTime[ s * div + p ];
 
-        arrTimeTmp = _wavelet.reverse( arrHilbTmp, div );
+        arrRes = _wavelet.reverse( arrDiv, div );
 
         for( int q = 0; q < div; q++ )
-          arrTime[ s * 2 + q ] = arrTimeTmp[ q ];
+          arrTime[ s * div + q ] = arrRes[ q ];
 
       } // s
 
-      div *= 2;
+      div /= 2;
 
     } // while
 

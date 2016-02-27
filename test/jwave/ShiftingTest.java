@@ -55,18 +55,18 @@ public class ShiftingTest extends Base {
         new Transform( new ShiftingWaveletTransform( new Haar1( ) ) );
 
     double[ ] arrHilbOdd =
-        { 2.121, -0.707, 4.950, -0.707, 7.778, -0.707, 10.607, -0.707, 9.000 };
+        { 2.828, 4.243, 8.485, 9.899, -1.414, -1.414, -1.414, -1.414, 9.000 };
 
-    double[ ] arrTimeOdd = shiftingTransform.forward( arrHilbOdd );
+    double[ ] arrTimeOdd = shiftingTransform.reverse( arrHilbOdd );
 
     showTime( arrTimeOdd );
 
     double[ ] arrHilbEven =
-      { 2.121, -0.707, 4.950, -0.707, 7.778, -0.707, 10.607, -0.707 };
+        { 2.828, 4.243, 8.485, 9.899, -1.414, -1.414, -1.414, -1.414 };
 
-  double[ ] arrTimeEven = shiftingTransform.forward( arrHilbEven );
+    double[ ] arrTimeEven = shiftingTransform.reverse( arrHilbEven );
 
-  showTime( arrTimeEven );
+    showTime( arrTimeEven );
 
   }
 
