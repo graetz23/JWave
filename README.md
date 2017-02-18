@@ -23,7 +23,7 @@ LICENSE
 
 JWave is distributed under the MIT License (MIT); this file is part of.
 
-Copyright (c) 2008-2016 Christian Scheiblich (cscheiblich@gmail.com)
+Copyright (c) 2008-2017 Christian Scheiblich (cscheiblich@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -91,5 +91,5 @@ version 160106 :
  - have a look at ./.travis.yml
 - added README.md
 - added LICENSE.md
-- updated Copyright to the years 2008-2016
+- updated Copyright to the years 2008-2017
 - fixed bug in JWave.java for calling console example with Haar wavelet
