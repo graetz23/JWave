@@ -1,4 +1,4 @@
-<!-- JWave Copyright 2008-2017 Christian Scheiblich (cscheiblich@gmail.com) -->
+<!-- JWave Copyright 2008-2018 Christian Scheiblich (cscheiblich@gmail.com) -->
 <project name="JWave" default="dist" basedir=".">
 
   <description>
