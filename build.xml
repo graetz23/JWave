@@ -1,4 +1,10 @@
-<!-- JWave Copyright 2008-2018 Christian Scheiblich (cscheiblich@gmail.com) -->
+<!-- 
+  JWave is distributed under the MIT License (MIT); this file is part of.
+
+  Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+  
+  see LICENSE.md
+-->
 <project name="JWave" default="dist" basedir=".">
 
   <description>
@@ -32,8 +38,8 @@
     <echo message="OS is a Mac target" />
     <!-- set the path to a MAC or Unix OS below -->
     <property name="junit" location="IS NOT SET - SET IT!"/>
-  	<!-- hamcrest NOT USED - DO NOOT SET -->
-  	<property name="hamcr" location=""/>
+    <!-- hamcrest NOT USED - DO NOOT SET -->
+    <property name="hamcr" location=""/>
     <echo message="JUnit path: ${junit}" />
   </target>
 
@@ -51,9 +57,13 @@
   <target name="doUnix" if="isUnix">
     <echo message="OS is a Unix target" />
     <!-- set the path to a GNU/Linux or Unix OS below -->
-    <property name="junit" location="/usr/share/java/junit4.jar"/>
-  	<!-- hamcrest NOT USED - DO NOOT SET -->
-  	<property name="hamcr" location=""/>
+  	<!-- on regular driven GNU/Linux OS the following should hold -->
+    <!-- <property name="junit" location="/usr/share/java/junit4.jar"/> -->
+  	<!-- for travis-ci.org, we change to while being in java directory -->
+    <!-- <property name="junit" location="./junit4.jar"/> -->
+    <property name="junit" location="./junit.jar"/>
+    <!-- hamcrest NOT USED - DO NOT SET -->
+    <property name="hamcr" location=""/>
     <echo message="JUnit path: ${junit}" />
   </target>
    

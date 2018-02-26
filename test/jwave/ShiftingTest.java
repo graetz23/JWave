@@ -8,7 +8,6 @@
  */
 package jwave;
 
-import static org.junit.Assert.*;
 import jwave.transforms.ShiftingWaveletTransform;
 import jwave.transforms.wavelets.haar.Haar1;
 

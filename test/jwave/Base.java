@@ -10,8 +10,9 @@
  */
 package jwave;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import jwave.datatypes.natives.Complex;
+
 
 /**
  * Base class for the JUnit tests of JWave - mainly console out methods for
