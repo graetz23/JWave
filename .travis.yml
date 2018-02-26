@@ -17,6 +17,7 @@ jdk:
 os:
   - linux
 #  - osx
+
 #matrix:
 #  allow_failures:
 #    - os: osx
@@ -24,6 +25,6 @@ os:
 #before_install:
 #  - cd java
 
-install: ant deps
+#install: ant deps
 
 script: ant test
