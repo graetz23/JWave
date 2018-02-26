@@ -61,7 +61,7 @@
     <!-- <property name="junit" location="/usr/share/java/junit4.jar"/> -->
   	<!-- for travis-ci.org, we change to while being in java directory -->
     <!-- <property name="junit" location="./junit4.jar"/> -->
-    <property name="junit" location="./junit.jar"/>
+    <property name="junit" location="./lib/junit4.jar"/>
     <!-- hamcrest NOT USED - DO NOT SET -->
     <property name="hamcr" location=""/>
     <echo message="JUnit path: ${junit}" />
