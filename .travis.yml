@@ -21,7 +21,9 @@ os:
 #  allow_failures:
 #    - os: osx
 
-before_install:
-  - cd java
+#before_install:
+#  - cd java
+
+install: ant deps
 
 script: ant test
