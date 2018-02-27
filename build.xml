@@ -63,7 +63,7 @@
     <!-- <property name="junit" location="./junit4.jar"/> -->
     <property name="junit" location="./lib/junit4.jar"/>
     <!-- hamcrest NOT USED - DO NOT SET -->
-    <property name="hamcr" location=""/>
+    <property name="hamcr" location="./lib/hamcrest-all.jar"/>
     <echo message="JUnit path: ${junit}" />
   </target>
    
