@@ -12,7 +12,7 @@ sudo: false
 language: java
 
 jdk:
-   - oraclejdk7
+#   - oraclejdk7
    - openjdk7
 os:
   - linux
