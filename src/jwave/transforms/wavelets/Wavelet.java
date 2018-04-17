@@ -109,9 +109,9 @@ public abstract class Wavelet {
     _waveletDeCom = new double[ _motherWavelength ];
     for( int i = 0; i < _motherWavelength; i++ )
       if( i % 2 == 0 )
-        _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
-      else
         _waveletDeCom[ i ] = -_scalingDeCom[ ( _motherWavelength - 1 ) - i ];
+      else
+        _waveletDeCom[ i ] = _scalingDeCom[ ( _motherWavelength - 1 ) - i ];
     // Copy to reconstruction filters due to orthogonality (orthonormality)!
     _scalingReCon = new double[ _motherWavelength ];
     _waveletReCon = new double[ _motherWavelength ];
