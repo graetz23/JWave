@@ -32,6 +32,8 @@ import jwave.transforms.wavelets.Wavelet;
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
 public class Haar1Orthogonal extends Wavelet {
+  
+  private static double _energyCorrectionFactor = .5;
 
   /**
    * Constructor setting up the orthogonal Haar scaling coefficients and
@@ -187,7 +189,8 @@ public class Haar1Orthogonal extends Wavelet {
         // to be reduced by half for each step because of vectorial length of each base vector
         // of the orthogonal system is of sqrt( 2. ).
         arrTime[ k ] +=
-            .5 * ( ( arrHilb[ i ] * _scalingReCon[ j ] ) + ( arrHilb[ i + h ] * _waveletReCon[ j ] ) );
+            _energyCorrectionFactor * 
+            ( ( arrHilb[ i ] * _scalingReCon[ j ] ) + ( arrHilb[ i + h ] * _waveletReCon[ j ] ) );
 
       } // Reconstruction from patterns of: { scaling coefficients | wavelet coefficients }
 
