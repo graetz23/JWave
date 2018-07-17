@@ -33,6 +33,9 @@ import jwave.transforms.wavelets.Wavelet;
  */
 public class Haar1Orthogonal extends Wavelet {
   
+  /**
+   * energy correction factor of the (overwritten) reverse transform
+   */
   private static double _energyCorrectionFactor = .5;
 
   /**
@@ -72,7 +75,10 @@ public class Haar1Orthogonal extends Wavelet {
     // by 1.414213 (sqrt(2)). However, one has to correct this change of "energy" in
     // the reverse transform method by multiplying the factor 1/2.
     //
-    // (see http://en.wikipedia.org/wiki/Euclidean_norm  for the euclidean norm)
+    // The factor is used by the private member variable _energyCorrectionFactor and
+    // that changes the (overwritten) reverse transform; see methods of this class.
+    //
+    // For the discussed euclidean norm; see http://en.wikipedia.org/wiki/Euclidean_norm
     //
     // The main disadvantage using an "orthogonal" wavelets is that the generated wavelet
     // sub spaces of different levels can not be combined anymore easily, due to their
