@@ -1,6 +1,8 @@
 /**
- * Testing the stepping methods which allow to stop at a certain level of
- * decomposition.
+ * Testing the stepping methods which allow to stop the transform algorithm
+ * at a certain level of composition. The tests loop over all available
+ * wavelets, taken from a generated array, and apply those to the Wavelet Packet
+ * and the Fast Wavelet Transform for one dimensional arrays as input.
  *
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  * @date 09.01.2016 08:06:20 
@@ -27,7 +29,7 @@ public class SteppingTest extends Base {
 
   /**
    * Testing the stepping methods which allow to stop at a certain level of
-   * decomposition.
+   * composition.
    * 
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 11:47:49
@@ -40,7 +42,7 @@ public class SteppingTest extends Base {
     Wavelet[ ] arrOfWaveletObjects = WaveletBuilder.create2arr( ); // over 50 wavelets :-p
     int noOfWavelets = arrOfWaveletObjects.length;
 
-    // go for Fast Wavelet Transforms
+    // go for the Wavelet Transforms
     for( int w = 0; w < noOfWavelets; w++ ) {
 
       Wavelet wavelet = arrOfWaveletObjects[ w ];
@@ -74,7 +76,7 @@ public class SteppingTest extends Base {
       assertArray( arrTime, arrTimeFromLevel2, delta );
 
       System.out.println( "Testing the Fast Wavelet Transform "
-          + "decompose, recompose, and recomposeFromLevel 1-D methods "
+          + "decompose and recompose for all steps / levels "
           + "using " + wavelet.getName( ) + " and long array" );
 
       double[ ] arrTime64 = { // array of length 64
@@ -181,8 +183,8 @@ public class SteppingTest extends Base {
       Wavelet wavelet = arrOfWaveletObjects[ w ];
 
       System.out.println( "" );
-      System.out.println( "Testing the Fast Wavelet Transform "
-          + "stepping forward and reverser 1-D methods " + "using "
+      System.out.println( "Testing the Wavelet Packet Transform "
+          + "stepping forward and reverse 1-D methods " + "using "
           + wavelet.getName( ) + " and small array" );
 
       double[ ] arrTime = { 1., 1., 1., 1. };
@@ -208,8 +210,8 @@ public class SteppingTest extends Base {
       assertArray( arrTime, arrTimeFromLevel1, delta );
       assertArray( arrTime, arrTimeFromLevel2, delta );
 
-      System.out.println( "Testing the Fast Wavelet Transform "
-          + "decompose, recompose, and recomposeFromLevel 1-D methods "
+      System.out.println( "Testing the Wavelet Packet Transform "
+          + "decompose and recompose for all steps / levels "
           + "using " + wavelet.getName( ) + " and long array" );
 
       double[ ] arrTime64 = { // array of length 64
