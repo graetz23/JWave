@@ -28,4 +28,4 @@ os:
 
 #install: ant deps
 
-script: ant test
+script: ant
