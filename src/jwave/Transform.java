@@ -1,8 +1,8 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
- * 
+ * Copyright (c) 2008-2020 Christian Scheiblich (cscheiblich@gmail.com)
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -36,7 +36,7 @@ import jwave.transforms.wavelets.Wavelet;
 /**
  * Base class for transforms like DiscreteFourierTransform, FastBasicTransform,
  * and WaveletPacketTransform.
- * 
+ *
  * @date 19.05.2009 09:43:40
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
@@ -50,7 +50,7 @@ public final class Transform {
   /**
    * Constructor; needs some object like DiscreteFourierTransform,
    * FastBasicTransform, WaveletPacketTransfom, ...
-   * 
+   *
    * @date 19.05.2009 09:50:24
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param transform
@@ -71,7 +71,7 @@ public final class Transform {
 
   /**
    * Performs the forward transform of the specified BasicWave object.
-   * 
+   *
    * @date 10.02.2010 09:41:01
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrTime
@@ -91,7 +91,7 @@ public final class Transform {
 
   /**
    * Performs the reverse transform of the specified BasicWave object.
-   * 
+   *
    * @date 10.02.2010 09:42:18
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrHilb
@@ -111,7 +111,7 @@ public final class Transform {
 
   /**
    * Performs a forward transform to a certain level of Hilbert space.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 11:53:05
    * @param arrTime
@@ -134,7 +134,7 @@ public final class Transform {
   /**
    * Performs a reverse transform for a Hilbert space of certain level; level
    * has to match the supported coefficients in the array!
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 11:54:59
    * @param arrHilb
@@ -159,7 +159,7 @@ public final class Transform {
    * Performs the forward transform from time domain to frequency or Hilbert
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
-   * 
+   *
    * @date 23.11.2010 19:19:24
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrTime
@@ -181,7 +181,7 @@ public final class Transform {
    * Performs the reverse transform from frequency or Hilbert domain to time
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
-   * 
+   *
    * @date 23.11.2010 19:19:33
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrFreq
@@ -201,7 +201,7 @@ public final class Transform {
 
   /**
    * Performs the 2-D forward transform of the specified BasicWave object.
-   * 
+   *
    * @date 10.02.2010 10:58:54
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matrixTime
@@ -221,7 +221,7 @@ public final class Transform {
 
   /**
    * Performs the 2-D reverse transform of the specified BasicWave object.
-   * 
+   *
    * @date 10.02.2010 10:59:32
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matrixFreq
@@ -242,7 +242,7 @@ public final class Transform {
 
   /**
    * Performs the 2-D forward transform of the specified BasicWave object.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 14:40:54
    * @param matrixTime
@@ -267,7 +267,7 @@ public final class Transform {
 
   /**
    * Performs the 2-D reverse transform of the specified BasicWave object.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 14:42:12
    * @param matrixFreq
@@ -293,7 +293,7 @@ public final class Transform {
 
   /**
    * Performs the 3-D forward transform of the specified BasicWave object.
-   * 
+   *
    * @date 10.07.2010 18:15:22
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matrixTime
@@ -313,7 +313,7 @@ public final class Transform {
 
   /**
    * Performs the 3-D reverse transform of the specified BasicWave object.
-   * 
+   *
    * @date 10.07.2010 18:15:33
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param matrixFreq
@@ -334,7 +334,7 @@ public final class Transform {
 
   /**
    * Performs the 3-D forward transform of the specified BasicWave object.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 14:45:46
    * @param spaceTime
@@ -361,7 +361,7 @@ public final class Transform {
 
   /**
    * Performs the 3-D reverse transform of the specified BasicWave object.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 14:46:09
    * @param spaceHilb
@@ -390,7 +390,7 @@ public final class Transform {
   /**
    * Generates from a 1D signal a 2D output, where the second dimension are the
    * levels of the wavelet transform.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 17.08.2014 10:07:19
    * @param arrTime
@@ -411,7 +411,7 @@ public final class Transform {
 
   /**
    * Generates from a 2-D decomposition a 1-D time series.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 17.08.2014 10:07:19
    * @param matDeComp
@@ -432,7 +432,7 @@ public final class Transform {
 
   /**
    * Recompose signal from a certain level of decomposition.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 22.03.2015 10:08:52
    * @param matDeComp
@@ -452,7 +452,7 @@ public final class Transform {
 
   /**
    * Return the used object of type BasicTransform.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 18:19:13
    * @return identifier of object of type Basic Transform
@@ -483,7 +483,7 @@ public final class Transform {
 
   /**
    * Returns the used Wavelet object or null pointer.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 14.03.2015 18:58:50
    * @return object of type Wavelet

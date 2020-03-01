@@ -1,8 +1,8 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
- * 
+ * Copyright (c) 2008-2020 Christian Scheiblich (cscheiblich@gmail.com)
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -32,7 +32,7 @@ import jwave.transforms.wavelets.WaveletBuilder;
  * type and a wavelet by their names. However, this should only make a quick n
  * dirty test available by skipping the JUnit framework. JWave is supported as a
  * library and foreseen to be used like this.
- * 
+ *
  * @date 23.02.2010 14:26:47
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
@@ -53,7 +53,7 @@ public class JWave {
    * currently supported in Hilbert space. Anyway, this little example already
    * reveals the application power of wavelets. that can be used for any kind of
    * data!
-   * 
+   *
    * @date 23.02.2010 14:26:47
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param args

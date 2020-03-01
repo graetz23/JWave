@@ -1,8 +1,8 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
- * 
+ * Copyright (c) 2008-2020 Christian Scheiblich (cscheiblich@gmail.com)
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -29,7 +29,7 @@ import java.util.Arrays;
  * Basic class for one wavelet keeping coefficients of the wavelet function, the
  * scaling function, the base wavelength, the forward transform method, and the
  * reverse transform method.
- * 
+ *
  * @date 10.02.2010 08:54:48
  * @author Christian Scheiblich (cscheiblich@gmail.com)
  */
@@ -76,7 +76,7 @@ public abstract class Wavelet {
 
   /**
    * Constructor; predefine members to default values or null!
-   * 
+   *
    * @date 15.02.2014 22:16:27
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    */
@@ -97,7 +97,7 @@ public abstract class Wavelet {
    * for the wavelet (high pass) of reconstruction. This method should be called
    * in the constructor of an orthonormal filter directly after defining the
    * orthonormal coefficients of the scaling (low pass) for decomposition!
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 13:19:27
    */
@@ -144,7 +144,7 @@ public abstract class Wavelet {
 
   /**
    * Returns the wavelength of the so called mother wavelet or scaling function.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:06:12
    * @return the minimal wavelength for the mother wavelet
@@ -156,7 +156,7 @@ public abstract class Wavelet {
   /**
    * Returns the minimal necessary wavelength for a signal that can be
    * transformed by this wavelet.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:08:43
    * @return integer representing minimal wavelength of the input signal that
@@ -169,7 +169,7 @@ public abstract class Wavelet {
   /**
    * Returns a copy of the scaling (low pass filter) coefficients of
    * decomposition.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2010 22:11:42
    * @return array of length of the mother wavelet wavelength keeping the
@@ -177,12 +177,12 @@ public abstract class Wavelet {
    */
   public final double[ ] getScalingDeComposition( ) {
     return Arrays.copyOf( _scalingDeCom, _scalingDeCom.length );
-  } // getScalingDeComposition  
+  } // getScalingDeComposition
 
   /**
    * Returns a copy of the wavelet (high pass filter) coefficients of
    * decomposition.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 15.02.2014 22:11:25
    * @return array of length of the mother wavelet wavelength keeping the
@@ -195,7 +195,7 @@ public abstract class Wavelet {
   /**
    * Returns a copy of the scaling (low pass filter) coefficients of
    * reconstruction.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 10:35:11
    * @return array of length of the mother wavelet wavelength keeping the
@@ -208,7 +208,7 @@ public abstract class Wavelet {
   /**
    * Returns a copy of the wavelet (high pass filter) coefficients of
    * reconstruction.
-   * 
+   *
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @date 16.02.2014 10:35:09
    * @return array of length of the mother wavelet wavelength keeping the
@@ -223,7 +223,7 @@ public abstract class Wavelet {
    * Hilbert domain and returns a new array of the same size keeping
    * coefficients of Hilbert domain and should be of length 2 to the power of p
    * -- length = 2^p where p is a positive integer.
-   * 
+   *
    * @date 10.02.2010 08:18:02
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrTime
@@ -253,7 +253,7 @@ public abstract class Wavelet {
 
       } // Sorting each step in patterns of: { scaling coefficients | wavelet coefficients }
 
-    } // h = 2^(p-1) | p = { 1, 2, .., N } .. shrinks in each step by half wavelength 
+    } // h = 2^(p-1) | p = { 1, 2, .., N } .. shrinks in each step by half wavelength
 
     return arrHilb;
 
@@ -264,7 +264,7 @@ public abstract class Wavelet {
    * time domain and returns a new array of the same size keeping coefficients
    * of time domain and should be of length 2 to the power of p -- length = 2^p
    * where p is a positive integer.
-   * 
+   *
    * @date 10.02.2010 08:19:24
    * @author Christian Scheiblich (cscheiblich@gmail.com)
    * @param arrHilb
@@ -296,7 +296,7 @@ public abstract class Wavelet {
 
       } // Reconstruction from patterns of: { scaling coefficients | wavelet coefficients }
 
-    } // h = 2^(p-1) | p = { 1, 2, .., N } .. shrink in each step by half wavelength 
+    } // h = 2^(p-1) | p = { 1, 2, .., N } .. shrink in each step by half wavelength
 
     return arrTime;
 
