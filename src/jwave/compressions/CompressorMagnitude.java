@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import jwave.exceptions.JWaveException;
  * Compression algorithm is adding up all magnitudes of an array, a matrix, or a
  * space and dividing this absolute value by the number of given data samples.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 20.02.2014 23:56:09
  */
 public class CompressorMagnitude extends Compressor {
@@ -38,7 +38,7 @@ public class CompressorMagnitude extends Compressor {
    * Threshold is set to one, which should always guarantee a rather good
    * compression result.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 20.02.2014 23:56:09
    */
   public CompressorMagnitude( ) {
@@ -51,7 +51,7 @@ public class CompressorMagnitude extends Compressor {
   /**
    * Threshold is set a chosen; value 0 means no compression.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 20.02.2014 23:56:09
    * @param threshold
    *          has to be positive value starting at 0 - 0 means no compression.
@@ -66,7 +66,7 @@ public class CompressorMagnitude extends Compressor {
   } // CompressorMagnitude
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 20.02.2014 23:56:09 (non-Javadoc)
    * @see jwave.compressions.Compressor#compress(double[])
    */
@@ -86,7 +86,7 @@ public class CompressorMagnitude extends Compressor {
   } // compress
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 20.02.2014 23:56:09 (non-Javadoc)
    * @see jwave.compressions.Compressor#compress(double[][])
    */
@@ -108,7 +108,7 @@ public class CompressorMagnitude extends Compressor {
   } // compress
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 20.02.2014 23:56:09 (non-Javadoc)
    * @see jwave.compressions.Compressor#compress(double[][][])
    */

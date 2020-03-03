@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ import jwave.transforms.wavelets.Wavelet;
 /**
  * Cohen Daubechies Feauveau (CDF) 9/7 Wavelet
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 17.08.2014 13:52:41
  */
 public class CDF97 extends Wavelet {
@@ -37,7 +37,7 @@ public class CDF97 extends Wavelet {
    * Cohen Daubechies Feauveau (CDF) 9/7 Wavelet. THIS WAVELET IS NOT WORKING -
    * DUE TO ODD NUMBER COEFFICIENTS!!!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 17.08.2014 13:52:41
    */
   public CDF97( ) {

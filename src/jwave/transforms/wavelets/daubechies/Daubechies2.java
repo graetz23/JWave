@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import jwave.transforms.wavelets.Wavelet;
  * normed, due to ||*||2 - euclidean norm.
  * 
  * @date 10.02.2010 15:42:45
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class Daubechies2 extends Wavelet {
 
@@ -39,7 +39,7 @@ public class Daubechies2 extends Wavelet {
    * scales; normed, due to ||*||2 - euclidean norm.
    * 
    * @date 10.02.2010 15:42:45
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public Daubechies2( ) {
 

@@ -1,8 +1,8 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
- * 
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -35,22 +35,22 @@ import jwave.transforms.wavelets.Wavelet;
  * Wavelet Transform (FWT), Fast Wavelet Packet Transform (WPT), or Discrete
  * Wavelet Transform (DWT). Naming of this class due to en.wikipedia.org; to
  * write Fourier series in terms of the 'basic waves' of function: e^(2*pi*i*w).
- * 
+ *
  * @date 08.02.2010 11:11:59
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public abstract class BasicTransform {
 
   /**
    * String identifier of the current Transform object.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 14:25:56
    */
   protected String _name;
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 19.02.2014 18:38:21
    */
   public BasicTransform( ) {
@@ -61,8 +61,8 @@ public abstract class BasicTransform {
 
   /**
    * Returns String identifier of current type of BasicTransform Object.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 18:13:34
    * @return identifier as String
    */
@@ -72,8 +72,8 @@ public abstract class BasicTransform {
 
   /**
    * Returns the stored Wavelet object or null pointer.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 18:26:44
    * @return object of type Wavelet of null pointer
    * @throws JWaveFailure
@@ -88,9 +88,9 @@ public abstract class BasicTransform {
    * Performs the forward transform from time domain to frequency or Hilbert
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
-   * 
+   *
    * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert space
@@ -102,9 +102,9 @@ public abstract class BasicTransform {
    * Performs the reverse transform from frequency or Hilbert domain to time
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
-   * 
+   *
    * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of time series of 1-D frequency or Hilbert space
@@ -115,8 +115,8 @@ public abstract class BasicTransform {
   /**
    * Performs the forward transform from time domain to Hilbert domain of a
    * given level depending on the used transform algorithm by inheritance.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 11:33:11
    * @param arrTime
    * @param level
@@ -137,8 +137,8 @@ public abstract class BasicTransform {
   /**
    * Performs the reverse transform from Hilbert domain of a given level to time
    * domain depending on the used transform algorithm by inheritance.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 11:34:27
    * @param arrFreq
    * @param level
@@ -158,8 +158,8 @@ public abstract class BasicTransform {
 
   /**
    * Generates from a 2-D decomposition a 1-D time series.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 17.08.2014 10:07:19
    * @param matDeComp
    *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
@@ -183,8 +183,8 @@ public abstract class BasicTransform {
    * details, that are needed to do a full reconstruction. So one can select a
    * level filter it and then do reconstruction only from this single line! BY
    * THIS METHOD, THE _HIGHEST_ LEVEL IS _ALWAYS_ TAKEN FOR RECONSTRUCTION!
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 17.08.2014 10:07:19
    * @param matDeComp
    *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
@@ -216,8 +216,8 @@ public abstract class BasicTransform {
    * this decomposition matrix is having the full set, full energy and full
    * details, that are needed to do a full reconstruction. So one can select a
    * level filter it and then do reconstruction only from this single line!
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 15:12:19
    * @param matDeComp
    *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
@@ -246,10 +246,9 @@ public abstract class BasicTransform {
    * Performs the forward transform from time domain to frequency or Hilbert
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
-   * 
+   *
    * @date 16.02.2014 14:42:57
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   *         (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
@@ -277,7 +276,7 @@ public abstract class BasicTransform {
       int k = i * 2;
       arrHilb[ i ] = new Complex( arrHilbBulk[ k ], arrHilbBulk[ k + 1 ] );
 
-    } // k = 2 * i shrink to i 
+    } // k = 2 * i shrink to i
 
     return arrHilb;
 
@@ -287,10 +286,9 @@ public abstract class BasicTransform {
    * Performs the reverse transform from frequency or Hilbert domain to time
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
-   * 
+   *
    * @date 16.02.2014 14:42:57
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
-   *         (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
@@ -317,7 +315,7 @@ public abstract class BasicTransform {
       int k = i * 2;
       arrTime[ i ] = new Complex( arrTimeBulk[ k ], arrTimeBulk[ k + 1 ] );
 
-    } // k = 2 * i shrink to i 
+    } // k = 2 * i shrink to i
 
     return arrTime;
 
@@ -327,8 +325,8 @@ public abstract class BasicTransform {
    * Performs the 2-D forward transform from time domain to frequency or Hilbert
    * domain for a given matrix depending on the used transform algorithm by
    * inheritance.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 12:47:01
    * @param matTime
    * @return
@@ -348,9 +346,9 @@ public abstract class BasicTransform {
    * domain of a certain level for a given matrix depending on the used
    * transform algorithm by inheritance. The supported level has to match the
    * possible dimensions of the given matrix.
-   * 
+   *
    * @date 10.02.2010 11:00:29
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param matTime
    *          coefficients of 2-D time domain
    * @param lvlM
@@ -404,8 +402,8 @@ public abstract class BasicTransform {
    * Performs the 2-D reverse transform from frequency or Hilbert or time domain
    * to time domain for a given matrix depending on the used transform algorithm
    * by inheritance.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 10.02.2010 11:01:38
    * @param matFreq
    * @return
@@ -423,9 +421,9 @@ public abstract class BasicTransform {
    * Performs the 2-D reverse transform from frequency or Hilbert or time domain
    * to time domain of a certain level for a given matrix depending on the used
    * transform algorithm by inheritance.
-   * 
+   *
    * @date 22.03.2015 12:49:16
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param matFreq
    *          coefficients of 2-D frequency or Hilbert domain
    * @param lvlM
@@ -450,7 +448,7 @@ public abstract class BasicTransform {
       for( int i = 0; i < noOfRows; i++ )
         arrFreq[ i ] = matFreq[ i ][ j ];
 
-      double[ ] arrTime = reverse( arrFreq, lvlM ); // AED 
+      double[ ] arrTime = reverse( arrFreq, lvlM ); // AED
 
       for( int i = 0; i < noOfRows; i++ )
         matTime[ i ][ j ] = arrTime[ i ];
@@ -464,7 +462,7 @@ public abstract class BasicTransform {
       for( int j = 0; j < noOfCols; j++ )
         arrFreq[ j ] = matTime[ i ][ j ];
 
-      double[ ] arrTime = reverse( arrFreq, lvlN ); // AED 
+      double[ ] arrTime = reverse( arrFreq, lvlN ); // AED
 
       for( int j = 0; j < noOfCols; j++ )
         matTime[ i ][ j ] = arrTime[ j ];
@@ -479,8 +477,8 @@ public abstract class BasicTransform {
    * Performs the 3-D forward transform from time domain to frequency or Hilbert
    * domain for a given space (3-D) depending on the used transform algorithm by
    * inheritance.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 10.07.2010 18:08:17
    * @param spcTime
    * @return
@@ -500,8 +498,8 @@ public abstract class BasicTransform {
    * Performs the 3-D forward transform from time domain to frequency or Hilbert
    * domain of a certain level for a given space (3-D) depending on the used
    * transform algorithm by inheritance.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 12:58:34
    * @param spcTime
    *          coefficients of 3-D time domain domain
@@ -529,7 +527,7 @@ public abstract class BasicTransform {
 
         } // high
 
-      } // cols      
+      } // cols
 
       double[ ][ ] matHilb = forward( matTime, lvlP, lvlQ ); // 2-D forward
 
@@ -543,7 +541,7 @@ public abstract class BasicTransform {
 
       } // cols
 
-    } // rows  
+    } // rows
 
     for( int j = 0; j < noOfCols; j++ ) {
 
@@ -571,8 +569,8 @@ public abstract class BasicTransform {
    * Performs the 3-D reverse transform from frequency or Hilbert domain to time
    * domain for a given space (3-D) depending on the used transform algorithm by
    * inheritance.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 10.07.2010 18:09:54
    * @param spcHilb
    * @return
@@ -593,8 +591,8 @@ public abstract class BasicTransform {
    * certain level to time domain for a given space (3-D) depending on the used
    * transform algorithm by inheritance. The supported coefficients have to
    * match the level of Hilbert space.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 13:01:47
    * @param spcHilb
    *          coefficients of 3-D frequency or Hilbert domain
@@ -622,7 +620,7 @@ public abstract class BasicTransform {
 
         } // high
 
-      } // cols      
+      } // cols
 
       double[ ][ ] matTime = reverse( matHilb, lvlP, lvlQ ); // 2-D reverse
 
@@ -636,7 +634,7 @@ public abstract class BasicTransform {
 
       } // cols
 
-    } // rows  
+    } // rows
 
     for( int j = 0; j < noOfCols; j++ ) {
 
@@ -663,8 +661,8 @@ public abstract class BasicTransform {
   /**
    * Returns true if given integer is of type binary (2, 4, 8, 16, ..) else the
    * method returns false.
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 13:31:39
    * @param number
    *          an integer of type 2, 4, 8, 16, 32, 64, ...
@@ -678,8 +676,8 @@ public abstract class BasicTransform {
 
   /**
    * Return the exponent of a binary a number
-   * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   *
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 13:35:50
    * @param number
    *          any integer that fulfills 2^p | pEN

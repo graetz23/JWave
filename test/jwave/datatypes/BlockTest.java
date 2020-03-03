@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import jwave.exceptions.JWaveException;
 import org.junit.Test;
 
 /**
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 16:15:47
  */
 public class BlockTest {
@@ -44,7 +44,7 @@ public class BlockTest {
   /**
    * generate a block for tests keeping already data: i + j!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:21:33
    * @param noOfRows
    *          0 ..
@@ -71,7 +71,7 @@ public class BlockTest {
   /**
    * Generate a BlockHash object already set with data: i + j!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:49:33
    * @param noOfRows
    * @param noOfCols

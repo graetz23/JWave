@@ -1,7 +1,7 @@
 /**
  * Create Wavelet objects ...
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 14.03.2015 13:50:30 
  *
  * WaveletBuilder.java
@@ -80,7 +80,7 @@ import jwave.transforms.wavelets.symlets.Symlet9;
 /**
  * Class for creating and identifying Wavelet object.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 14.03.2015 13:50:30
  */
 public class WaveletBuilder {
@@ -90,7 +90,7 @@ public class WaveletBuilder {
    * string identifier. By the way the method requires Java 7, due to the
    * switch statement with at String. *rofl*
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 14:19:09
    * @param waveletName
    *          identifier as stored in Wavelet object
@@ -405,7 +405,7 @@ public class WaveletBuilder {
   /**
    * Returns the identifier string of a given Wavelet object.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 14:22:22
    * @param wavelet
    *          an object of type Wavelet
@@ -420,7 +420,7 @@ public class WaveletBuilder {
   /**
    * Create an array keeping all - available - wavelet objects.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 15:39:15
    * @return an array keeping all Wavelet objects
    */

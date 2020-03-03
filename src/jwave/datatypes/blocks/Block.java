@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ import jwave.exceptions.JWaveFailure;
  * is strictly using the Line objects, due to having here the possibility to
  * implement different strategies on values storage.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 14:39:22
  */
 public abstract class Block extends Super {
@@ -40,7 +40,7 @@ public abstract class Block extends Super {
   /**
    * The number of rows of this Block.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 14:41:23
    */
   protected int _noOfRows;
@@ -48,7 +48,7 @@ public abstract class Block extends Super {
   /**
    * The number of columns of this Block.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 14:41:42
    */
   protected int _noOfCols;
@@ -57,7 +57,7 @@ public abstract class Block extends Super {
    * The row position where the block starts from as a sub set in the context of
    * SuperBlock; check _offSetRow in class Line for more details.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 23.05.2015 19:50:40
    */
   protected int _offSetRow;
@@ -66,7 +66,7 @@ public abstract class Block extends Super {
    * The column position where the block starts from as a sub set in the context
    * of SuperBlock; check _offSetRow in class Line for more details.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 23.05.2015 19:52:19
    */
   protected int _offSetCol;
@@ -74,7 +74,7 @@ public abstract class Block extends Super {
   /**
    * Create an object of a sub type; e.g. as pattern.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 23.05.2015 19:53:18
    */
   public Block( ) {
@@ -88,7 +88,7 @@ public abstract class Block extends Super {
    * Copy constructor - attention in base class there are only boundaries passed
    * to the new object.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 23.05.2015 19:54:16
    * @param block
    */
@@ -103,7 +103,7 @@ public abstract class Block extends Super {
    * Taking the block object as a single global object by setting both off sets
    * to zero.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:21:17
    * @param noOfRows
    *          stores the noOfRows exclusively, even if each Line object stores
@@ -122,7 +122,7 @@ public abstract class Block extends Super {
    * Passing information that takes the block as a part of a global structure;
    * e.g. a SuperBlock.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 14:03:45
    * @param offSetRow
    *          the global off set of rows of the block
@@ -141,7 +141,7 @@ public abstract class Block extends Super {
   } // Block
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 14:43:41
    * @return the _noOfRows
    */
@@ -150,7 +150,7 @@ public abstract class Block extends Super {
   } // getNoOfRows
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 14:43:41
    * @return the _noOfCols
    */
@@ -159,7 +159,7 @@ public abstract class Block extends Super {
   } // getNoOfCols
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:31:31
    * @return the off set of the row
    */
@@ -168,7 +168,7 @@ public abstract class Block extends Super {
   } // getOffSetRow
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:31:54
    * @return the off set of the column
    */
@@ -180,7 +180,7 @@ public abstract class Block extends Super {
    * Check the given input of j is in bound of the number of columns, otherwise
    * throw a failure (exception) if j is not valid.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:37:57
    * @param j
    *          from 0 to noOfCols-1
@@ -204,7 +204,7 @@ public abstract class Block extends Super {
    * Check the given input of (i,j) and throws a failure (exception) if position
    * is not valid.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:33:14
    * @param i
    *          from 0 to noOfRows-1
@@ -232,7 +232,7 @@ public abstract class Block extends Super {
   /**
    * Getter for a stored value of type double.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:23:22
    * @param i
    *          position in rows of the block
@@ -247,7 +247,7 @@ public abstract class Block extends Super {
   /**
    * Setter for a stored value of type double!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:42:53
    * @param i
    *          position in rows of the block

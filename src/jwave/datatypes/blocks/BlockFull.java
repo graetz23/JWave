@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,13 +30,13 @@ import jwave.exceptions.JWaveException;
 /**
  * A block that uses a full array for storage of Line objects.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 14:45:52
  */
 public class BlockFull extends Block {
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:26:11
    */
   protected Line[ ] _arrLines = null;
@@ -44,7 +44,7 @@ public class BlockFull extends Block {
   /**
    * Create an object of a sub type; e.g. as pattern.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 13:57:28
    */
   public BlockFull( ) {
@@ -55,7 +55,7 @@ public class BlockFull extends Block {
    * Copy constructor that takes over - if available - the values of another
    * type of block.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 14:01:22
    * @param block
    *          object of type block; e.g. BlockHash
@@ -80,7 +80,7 @@ public class BlockFull extends Block {
   /**
    * Constructor setting members for and allocating memory!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 14:45:52
    * @param noOfRows
    * @param noOfCols
@@ -93,7 +93,7 @@ public class BlockFull extends Block {
    * Passing information that takes the block as a part of a global structure;
    * e.g. a SuperBlock.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 14:05:55
    * @param offSetRow
    *          the global off set of rows of the block
@@ -109,7 +109,7 @@ public class BlockFull extends Block {
   } // BlockFull
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:12:35 (non-Javadoc)
    * @see jwave.datatypes.Super#copy()
    */
@@ -118,7 +118,7 @@ public class BlockFull extends Block {
   } // copy
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:01:42 (non-Javadoc)
    * @see jwave.datatypes.Super#isAllocated()
    */
@@ -130,7 +130,7 @@ public class BlockFull extends Block {
   } // isAllocated
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:01:42 (non-Javadoc)
    * @see jwave.datatypes.Super#alloc()
    */
@@ -146,7 +146,7 @@ public class BlockFull extends Block {
   } // alloc
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:01:42 (non-Javadoc)
    * @see jwave.datatypes.Super#erase()
    */
@@ -164,7 +164,7 @@ public class BlockFull extends Block {
 
   /*
    * Getter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:34:59 (non-Javadoc)
    * @see jwave.datatypes.blocks.Block#get(int, int)
    */
@@ -179,7 +179,7 @@ public class BlockFull extends Block {
 
   /*
    * Setter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:24:39 (non-Javadoc)
    * @see jwave.datatypes.blocks.Block#set(int, int, double)
    */

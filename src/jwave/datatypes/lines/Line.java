@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,13 +30,13 @@ import jwave.exceptions.JWaveFailureNotValid;
 /**
  * A line of Data; 1-D organized by (0) .. (noOfRows).
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 15:00:01
  */
 public abstract class Line extends Super {
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:02:58
    */
   protected int _noOfRows;
@@ -47,7 +47,7 @@ public abstract class Line extends Super {
    * Line objects this results in - e.g. - 0 .. 3 and 4 .. 7 and 8 .. 9. the off
    * sets of theses Line objects are: 0, 4, and 8.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 17:44:48
    */
   protected int _offSetRow;
@@ -55,7 +55,7 @@ public abstract class Line extends Super {
   /**
    * Create an object of a sub type; e.g. as pattern.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 20:27:57
    */
   public Line( ) {
@@ -67,7 +67,7 @@ public abstract class Line extends Super {
    * Copy constructor - attention in base class there are only boundaries passed
    * to the new object.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 20.05.2015 07:23:56
    * @param line
    */
@@ -79,7 +79,7 @@ public abstract class Line extends Super {
   /**
    * Create a Line object by a certain number of rows.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:03:33
    * @param noOfRows
    *          the size or length of this Line object
@@ -94,7 +94,7 @@ public abstract class Line extends Super {
    * of row starting for this line; e.g. _offSetRow + _noOfRows =>
    * next_offSetRow of next_lineObject!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 17:54:29
    * @param offSetRow
    *          the global off set of this Line object in a SuperLine object
@@ -107,7 +107,7 @@ public abstract class Line extends Super {
   } // Line
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:06:52
    * @return the _noOfRows
    */
@@ -129,7 +129,7 @@ public abstract class Line extends Super {
   /**
    * Getter for the global off set of this Line object in a SuperLine object.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 17:52:00
    * @return the global off set of this Line object in a SuperLine object
    */
@@ -141,7 +141,7 @@ public abstract class Line extends Super {
    * Set the off set of row starting for this line; e.g. _offSetRow + _noOfRows
    * => next_offSetRow of next_lineObject!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 17:51:02
    * @param offSetRows
    *          the global off set of this Line object in a SuperLine object
@@ -154,7 +154,7 @@ public abstract class Line extends Super {
    * Check the given input of i as position in number of rows, otherwise throw a
    * failure (exception) if i as position is not valid.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:13:18
    * @param i
    *          from 0 to noOfRows-1
@@ -179,7 +179,7 @@ public abstract class Line extends Super {
   /**
    * Getter for the stored values.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:10:04
    * @param pos
    *          from 0 to noOfRows-1 as range of input
@@ -192,7 +192,7 @@ public abstract class Line extends Super {
   /**
    * Setter to store values.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:16:42
    * @param i
    *          from 0 to noOfRows-1 as range of input

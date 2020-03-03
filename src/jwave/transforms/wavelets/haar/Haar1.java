@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import jwave.transforms.wavelets.Wavelet;
  * Alfred Haar's orthonormal wavelet transform.
  * 
  * @date 08.02.2010 12:46:34
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class Haar1 extends Wavelet {
 
@@ -39,7 +39,7 @@ public class Haar1 extends Wavelet {
    * orthogonal version in class Haar1Orthogonal for more details.
    * 
    * @date 08.02.2010 12:46:34
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public Haar1( ) {
 
@@ -73,7 +73,7 @@ public class Haar1 extends Wavelet {
    * The forward wavelet transform using the Alfred Haar's wavelet.
    * 
    * @date 10.02.2010 08:26:06
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @see jwave.transforms.wavelets.Wavelet#forward(double[])
    */
 
@@ -83,7 +83,7 @@ public class Haar1 extends Wavelet {
    * power of p -- length = 2^p where p is a positive integer.
    * 
    * @date 10.02.2010 08:26:06
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @see jwave.transforms.wavelets.Wavelet#reverse(double[])
    */
 

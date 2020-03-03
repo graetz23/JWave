@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ import jwave.exceptions.JWaveException;
 import jwave.exceptions.JWaveFailure;
 
 /**
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 15.02.2014 21:05:33
  */
 public abstract class WaveletTransform extends BasicTransform {
@@ -36,7 +36,7 @@ public abstract class WaveletTransform extends BasicTransform {
   /**
    * The used wavelet for transforming
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2014 21:05:33
    */
   protected Wavelet _wavelet;
@@ -44,7 +44,7 @@ public abstract class WaveletTransform extends BasicTransform {
   /**
    * Constructor checks whether the given object is all right.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2014 21:05:33
    * @param wavelet
    *          object of type Wavelet
@@ -55,7 +55,7 @@ public abstract class WaveletTransform extends BasicTransform {
 
   /*
    * Returns the stored Wavelet object.
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 18:27:05 (non-Javadoc)
    * @see jwave.transforms.BasicTransform#getWavelet()
    */
@@ -69,7 +69,7 @@ public abstract class WaveletTransform extends BasicTransform {
    * (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
    * 
    * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @throws JWaveException
    *           if given array is not of length 2^p | pEN
    * @see jwave.transforms.BasicTransform#forward(double[])
@@ -93,7 +93,7 @@ public abstract class WaveletTransform extends BasicTransform {
    * (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
    * 
    * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @throws JWaveException
    *           if given array is not of length 2^p | pEN
    * @see jwave.transforms.BasicTransform#reverse(double[])
@@ -123,7 +123,7 @@ public abstract class WaveletTransform extends BasicTransform {
    * are keeping the next higher Hilbert spaces, so the next step in wavelet
    * filtering.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 14:28:49
    * @param arrTime
    *          coefficients of time domain
@@ -159,7 +159,7 @@ public abstract class WaveletTransform extends BasicTransform {
    * same way and compare results after reverse transform, this is the best
    * input for it.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 14:29:01
    * @see jwave.transforms.BasicTransform#recompose(double[][], int)
    * @param matDeComp

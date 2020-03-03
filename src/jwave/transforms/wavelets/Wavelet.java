@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2020 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ import java.util.Arrays;
  * reverse transform method.
  *
  * @date 10.02.2010 08:54:48
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public abstract class Wavelet {
 
@@ -78,7 +78,7 @@ public abstract class Wavelet {
    * Constructor; predefine members to default values or null!
    *
    * @date 15.02.2014 22:16:27
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public Wavelet( ) {
     _name = null;
@@ -98,7 +98,7 @@ public abstract class Wavelet {
    * in the constructor of an orthonormal filter directly after defining the
    * orthonormal coefficients of the scaling (low pass) for decomposition!
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.02.2014 13:19:27
    */
   protected void _buildOrthonormalSpace( ) {
@@ -123,7 +123,7 @@ public abstract class Wavelet {
 
   /**
    * Returns a String keeping the name of the current Wavelet.
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 17.08.2014 11:02:31
    * @return String keeping the name of the wavelet
    */
@@ -145,7 +145,7 @@ public abstract class Wavelet {
   /**
    * Returns the wavelength of the so called mother wavelet or scaling function.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2014 22:06:12
    * @return the minimal wavelength for the mother wavelet
    */
@@ -157,7 +157,7 @@ public abstract class Wavelet {
    * Returns the minimal necessary wavelength for a signal that can be
    * transformed by this wavelet.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2014 22:08:43
    * @return integer representing minimal wavelength of the input signal that
    *         should be transformed by this wavelet.
@@ -170,7 +170,7 @@ public abstract class Wavelet {
    * Returns a copy of the scaling (low pass filter) coefficients of
    * decomposition.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2010 22:11:42
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition low pass filter coefficients
@@ -183,7 +183,7 @@ public abstract class Wavelet {
    * Returns a copy of the wavelet (high pass filter) coefficients of
    * decomposition.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2014 22:11:25
    * @return array of length of the mother wavelet wavelength keeping the
    *         decomposition high pass filter coefficients
@@ -196,7 +196,7 @@ public abstract class Wavelet {
    * Returns a copy of the scaling (low pass filter) coefficients of
    * reconstruction.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.02.2014 10:35:11
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction low pass filter coefficients
@@ -209,7 +209,7 @@ public abstract class Wavelet {
    * Returns a copy of the wavelet (high pass filter) coefficients of
    * reconstruction.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.02.2014 10:35:09
    * @return array of length of the mother wavelet wavelength keeping the
    *         reconstruction high pass filter coefficients
@@ -225,7 +225,7 @@ public abstract class Wavelet {
    * -- length = 2^p where p is a positive integer.
    *
    * @date 10.02.2010 08:18:02
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrTime
    *          array keeping time domain coefficients
    * @param arrTimeLength
@@ -266,7 +266,7 @@ public abstract class Wavelet {
    * where p is a positive integer.
    *
    * @date 10.02.2010 08:19:24
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrHilb
    *          array keeping frequency domain coefficients
    * @param arrHilbLength

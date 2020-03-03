@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2020 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ import jwave.transforms.wavelets.WaveletBuilder;
  * library and foreseen to be used like this.
  *
  * @date 23.02.2010 14:26:47
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class JWave {
 
@@ -55,7 +55,7 @@ public class JWave {
    * data!
    *
    * @date 23.02.2010 14:26:47
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param args
    *          [transformType] [waveletType]
    */

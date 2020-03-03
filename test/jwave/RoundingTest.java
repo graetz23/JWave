@@ -2,7 +2,7 @@
  * Testing the growing of rounding errors by forward and reverse transforming
  * around a thousand times.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 07:49:21 
  *
  * RoundingTest.java
@@ -25,7 +25,7 @@ import org.junit.Test;
  * Testing the growing of rounding errors by forward and reverse transforming
  * around a thousand times.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 07:49:21
  */
 public class RoundingTest extends Base {
@@ -116,7 +116,7 @@ public class RoundingTest extends Base {
    * object as input.
    * 
    * @date 22.03.2015 16:00:57
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   private void testRoundingFWT( double[ ] arr,
       Wavelet wavelet, double delta ) {
@@ -160,7 +160,7 @@ public class RoundingTest extends Base {
    * transforms using the Wavelet Packet Transform algorithm and any given
    * Wavelet object as input.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 16:00:57
    * @param arr
    * @param wavelet

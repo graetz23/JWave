@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import jwave.exceptions.JWaveException;
 import org.junit.Test;
 
 /**
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 16:06:38
  */
 public class LineTest {
@@ -43,7 +43,7 @@ public class LineTest {
   /**
    * Generate a LineFull object already set with data: i!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:09:13
    * @param noOfRows
    *          0 ..
@@ -67,7 +67,7 @@ public class LineTest {
   /**
    * Generate a LineHash object already set with data: i!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:39:06
    * @param noOfRows
    * @return

@@ -2,7 +2,7 @@
  * Shifting Wavelet Transform shifts a wavelet of smallest wavelength over the
  * input array, then by the double wavelength, .., and so on.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 15.02.2016 23:12:55 
  *
  * ShiftingWaveletTransform.java
@@ -18,7 +18,7 @@ import jwave.transforms.wavelets.Wavelet;
  * Shifting Wavelet Transform shifts a wavelet of smallest wavelength over the
  * input array, then by the double wavelength, .., and so on.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 15.02.2016 23:12:55
  */
 public class ShiftingWaveletTransform extends WaveletTransform {
@@ -26,7 +26,7 @@ public class ShiftingWaveletTransform extends WaveletTransform {
   /**
    * Constructor taking Wavelet object for performing the transform.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2016 23:12:55
    */
   public ShiftingWaveletTransform( Wavelet wavelet ) {
@@ -36,7 +36,7 @@ public class ShiftingWaveletTransform extends WaveletTransform {
   /**
    * Forward method that uses strictly the abilities of an orthogonal transform.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2016 23:12:55 (non-Javadoc)
    * @see jwave.transforms.BasicTransform#forward(double[])
    */
@@ -86,7 +86,7 @@ public class ShiftingWaveletTransform extends WaveletTransform {
   /**
    * Reverse method that uses strictly the abilities of an orthogonal transform.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2016 23:12:55 (non-Javadoc)
    * @see jwave.transforms.BasicTransform#reverse(double[])
    */

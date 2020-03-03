@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,12 +36,12 @@ import jwave.exceptions.JWaveFailure;
  * series.
  * 
  * @date 25.03.2010 19:56:29
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 /**
  * Discrete Fast Fourier Transform (dFFT)
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 14.03.2015 18:30:35
  */
 public class DiscreteFourierTransform extends BasicTransform {
@@ -50,7 +50,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * Constructor; does nothing
    * 
    * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public DiscreteFourierTransform( ) {
 
@@ -66,7 +66,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * output arrFreq is organized by the same scheme.
    * 
    * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @throws JWaveException
    * @see jwave.transforms.BasicTransform#forward(double[])
    */
@@ -124,7 +124,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * output arrTime is organized by the same scheme.
    * 
    * @date 25.03.2010 19:56:29
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @throws JWaveException
    * @see jwave.transforms.BasicTransform#reverse(double[])
    */
@@ -173,7 +173,7 @@ public class DiscreteFourierTransform extends BasicTransform {
 
   /*
    * ATTENTION - yet no level implemented; it is ognored!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 21:18:34 (non-Javadoc)
    * @see jwave.transforms.BasicTransform#forward(double[], int)
    */
@@ -186,7 +186,7 @@ public class DiscreteFourierTransform extends BasicTransform {
 
   /*
    * ATTENTION - yet no level implemented; it is ognored!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 21:18:34 (non-Javadoc)
    * @see jwave.transforms.BasicTransform#reverse(double[], int)
    */
@@ -204,7 +204,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * same scheme.
    * 
    * @date 23.11.2010 18:57:34
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrTime
    *          array of type Complex keeping coefficients of complex numbers
    * @return array of type Complex keeping the discrete fourier transform
@@ -250,7 +250,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * same scheme.
    * 
    * @date 23.11.2010 19:02:12
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrFreq
    *          array of type Complex keeping the discrete fourier transform
    *          coefficients

@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ package jwave.datatypes.natives;
  * objects containing each requested result.
  * 
  * @date 19.11.2010 13:20:48
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class Complex {
 
@@ -47,7 +47,7 @@ public class Complex {
    * Standard constructor.
    * 
    * @date 19.11.2010 13:38:56
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public Complex( ) {
     _r = 0.;
@@ -58,7 +58,7 @@ public class Complex {
    * Copy constructor.
    * 
    * @date 19.11.2010 13:22:54
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param c
    *          complex number
    */
@@ -71,7 +71,7 @@ public class Complex {
    * Constructor taking real and imaginary number.
    * 
    * @date 19.11.2010 13:21:48
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param r
    *          real number
    * @param j
@@ -87,7 +87,7 @@ public class Complex {
    * the complex into a file.
    * 
    * @date 19.11.2010 13:23:13
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   @Override public String toString( ) {
     StringBuffer sb = new StringBuffer( ).append( _r );
@@ -102,7 +102,7 @@ public class Complex {
    * Return the real number.
    * 
    * @date 19.11.2010 13:23:34
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @return real number of this complex number
    */
   public double getReal( ) {
@@ -113,7 +113,7 @@ public class Complex {
    * Return the imaginary number.
    * 
    * @date 19.11.2010 13:23:51
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @return imaginary number of this complex number
    */
   public double getImag( ) {
@@ -124,7 +124,7 @@ public class Complex {
    * Set the real number.
    * 
    * @date 23.11.2010 18:44:52
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param r
    *          the real number
    */
@@ -136,7 +136,7 @@ public class Complex {
    * Set the imaginary number.
    * 
    * @date 23.11.2010 18:45:16
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param j
    *          the imaginary number
    */
@@ -148,7 +148,7 @@ public class Complex {
    * Add to real number.
    * 
    * @date 23.11.2010 18:49:57
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param r
    *          the real number
    */
@@ -160,7 +160,7 @@ public class Complex {
    * Add to imaginary number.
    * 
    * @date 23.11.2010 18:50:23
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param j
    *          the imaginary number
    */
@@ -172,7 +172,7 @@ public class Complex {
    * multiply scalar to real number.
    * 
    * @date 23.11.2010 18:53:27
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param s
    *          scalar
    */
@@ -184,7 +184,7 @@ public class Complex {
    * multiply scalar to imaginary number.
    * 
    * @date 23.11.2010 18:54:48
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param s
    *          scalar
    */
@@ -196,7 +196,7 @@ public class Complex {
    * Calculate the magnitude of the complex number.
    * 
    * @date 19.11.2010 13:24:28
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @return magnitude of this complex number
    */
   public double getMag( ) {
@@ -207,7 +207,7 @@ public class Complex {
    * Calculates the angle phi of a complex number.
    * 
    * @date 19.11.2010 13:24:48
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @return angle of this complex number
    */
   public double getPhi( ) {
@@ -229,7 +229,7 @@ public class Complex {
    * Returns the stored values as new double array: [ real, imag ].
    * 
    * @date 19.11.2010 13:25:38
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @return returns stored values as array [ real, imag ]
    */
   public double[ ] toArr( ) {
@@ -252,7 +252,7 @@ public class Complex {
    * Add another complex number to this one and return.
    * 
    * @date 19.11.2010 13:25:55
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param c
    *          complex number
    * @return new object of Complex keeping the result
@@ -265,7 +265,7 @@ public class Complex {
    * Subtract another complex number from this one.
    * 
    * @date 19.11.2010 13:27:05
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param c
    *          complex number
    * @return new object of Complex keeping the result
@@ -278,7 +278,7 @@ public class Complex {
    * Multiply this complex number times another one.
    * 
    * @date 19.11.2010 13:27:36
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param c
    *          complex number
    * @return new object of Complex keeping the result
@@ -291,7 +291,7 @@ public class Complex {
    * Multiply this complex number times a scalar.
    * 
    * @date 19.11.2010 13:28:03
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param s
    *          scalar
    * @return new object of Complex keeping the result
@@ -370,7 +370,7 @@ public class Complex {
    * Print this complex number to console.
    * 
    * @date 19.11.2010 13:31:16
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public void show( ) {
     if( _j < 0 )
@@ -383,7 +383,7 @@ public class Complex {
    * Print this complex number to console with an identifier before.
    * 
    * @date 19.11.2010 13:31:32
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param ident
    *          string to label this complex number
    */
@@ -399,7 +399,7 @@ public class Complex {
    * Print magnitude to console out.
    * 
    * @date 19.11.2010 13:32:15
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public void showMag( ) {
     System.out.println( getMag( ) );
@@ -409,7 +409,7 @@ public class Complex {
    * Print angle to console out.
    * 
    * @date 19.11.2010 13:32:33
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public void showPhi( ) {
     System.out.println( getPhi( ) );

@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,13 +30,13 @@ import jwave.transforms.wavelets.Wavelet;
  * Signal Decomposition: The Wavelet Representation", IEEE PAMI, v. 11, no. 7,
  * 674-693, Table 1
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 15.02.2014 23:19:07
  */
 @Deprecated public class Battle23 extends Wavelet {
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 15.02.2014 23:23:23
    */
   public Battle23( ) {

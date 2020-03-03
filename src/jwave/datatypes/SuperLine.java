@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ import jwave.tools.MathToolKit;
 /**
  * SuperLine consists of several Line objects of different sizes.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 19:30:28
  */
 public class SuperLine {
@@ -52,13 +52,13 @@ public class SuperLine {
   /**
    * However, who knows how many blocks are delivered!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 20:02:59
    */
   ArrayList< Super > _listOfLines;
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 19:30:28
    */
   public SuperLine( ) {
@@ -72,7 +72,7 @@ public class SuperLine {
   /**
    * Set a SuperLine object by the noOfRows or noOfEntries.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 12.01.2016 23:35:12
    * @param noOfRows
    *          the number of entries
@@ -88,7 +88,7 @@ public class SuperLine {
   /**
    * Set the SuperLine object by the noOfRows and the maximal block size.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 12.01.2016 23:36:23
    * @param noOfRows
    *          the number of entries
@@ -107,7 +107,7 @@ public class SuperLine {
    * Set up a configured an empty SuperLine object by allocating empty Block
    * objects.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @throws JWaveException
    *           is throwsn while parameters are calcualted wrong
    * @date 12.01.2016 23:38:50
@@ -147,7 +147,7 @@ public class SuperLine {
   /**
    * Returns the number of stored Line objects.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 19:36:13
    * @return number of Line objects
    */
@@ -160,7 +160,7 @@ public class SuperLine {
   /**
    * Add a Line object to list
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 19:36:54
    * @param line
    *          object of type Line
@@ -174,7 +174,7 @@ public class SuperLine {
   /**
    * Return Line object at position p; 0 .. N-1
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:16:27
    * @param p
    * @return
@@ -197,7 +197,7 @@ public class SuperLine {
   /**
    * Return the set number of rows
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 12.01.2016 23:34:12
    * @return
    */

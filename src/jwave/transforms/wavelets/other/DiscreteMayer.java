@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import jwave.transforms.wavelets.Wavelet;
  * Discrete Mayer (FIR approximation) filter: symmetric, orthogonal
  * (orthonormal), biorthogonal.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.02.2014 13:58:12
  */
 public class DiscreteMayer extends Wavelet {
@@ -38,7 +38,7 @@ public class DiscreteMayer extends Wavelet {
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
    * http://wavelets.pybytes.com/wavelet/dmey/ Thanks!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.02.2014 13:58:12
    */
   public DiscreteMayer( ) {

@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,43 +30,43 @@ import jwave.exceptions.JWaveFailure;
 /**
  * A space of Data; 3-D organized by (0,0,0) .. (noOfRows,noOfCols,noOfBlocks).
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 14:47:21
  */
 public abstract class Space extends Super {
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:46:06
    */
   protected int _noOfRows;
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:46:07
    */
   protected int _noOfCols;
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:46:08
    */
   protected int _noOfLvls;
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:23:47
    */
   protected int _offSetRow;
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:23:49
    */
   protected int _offSetCol;
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:23:51
    */
   protected int _offSetLvl;
@@ -74,7 +74,7 @@ public abstract class Space extends Super {
   /**
    * Create an object of a sub type; e.g. as pattern.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:28:20
    */
   public Space( ) {
@@ -90,7 +90,7 @@ public abstract class Space extends Super {
    * Copy constructor passes the off sets and the dimesion of the passed space
    * object.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:29:35
    * @param space
    *          object of type space
@@ -107,7 +107,7 @@ public abstract class Space extends Super {
   /**
    * Use this space as a single space that has all its off set at zero.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 14:47:21
    * @param noOfRows
    *          the number of rows
@@ -128,7 +128,7 @@ public abstract class Space extends Super {
   /**
    * Configure a space (a cube) as a part of a super space.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:25:13
    * @param offSetRow
    *          the starting position for the row of the space
@@ -154,7 +154,7 @@ public abstract class Space extends Super {
   } // Space
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:47:27
    * @return the _noOfRows
    */
@@ -163,7 +163,7 @@ public abstract class Space extends Super {
   } // getNoOfRows
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:47:27
    * @return the _noOfCols
    */
@@ -172,7 +172,7 @@ public abstract class Space extends Super {
   } // getNoOfCols
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:47:27
    * @return the _noOfLvls
    */
@@ -181,7 +181,7 @@ public abstract class Space extends Super {
   } // getNoOfLvls
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:32:13
    * @return the off set of the row
    */
@@ -190,7 +190,7 @@ public abstract class Space extends Super {
   } // getOffSetRow
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:32:23
    * @return the off set of the column
    */
@@ -199,7 +199,7 @@ public abstract class Space extends Super {
   } // getOffSetCol
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:32:39
    * @return the off set of the level (height)
    */
@@ -211,7 +211,7 @@ public abstract class Space extends Super {
    * Check the given input of i as position in number of levels, otherwise throw
    * a failure (exception) if i as position is not valid.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:49:28
    * @param k
    *          from 0 to noOfLvls-1
@@ -236,7 +236,7 @@ public abstract class Space extends Super {
    * Check the given input of (j,k) and throws a failure (exception) if position
    * is not valid.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:52:00
    * @param j
    *          from 0 to noOfCols-1
@@ -265,7 +265,7 @@ public abstract class Space extends Super {
    * Check the given input of (i,j,k) and throws a failure (exception) if
    * position is not valid.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:54:08
    * @param i
    *          from 0 to noOfRows-1
@@ -295,7 +295,7 @@ public abstract class Space extends Super {
   /**
    * Getter!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:55:57
    * @param i
    *          from 0 to noOfRows-1
@@ -312,7 +312,7 @@ public abstract class Space extends Super {
   /**
    * Setter!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:56:24
    * @param i
    *          from 0 to noOfRows-1

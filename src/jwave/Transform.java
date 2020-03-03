@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2020 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 23.05.2008 17:42:23
  *
  */
@@ -38,7 +38,7 @@ import jwave.transforms.wavelets.Wavelet;
  * and WaveletPacketTransform.
  *
  * @date 19.05.2009 09:43:40
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public final class Transform {
 
@@ -52,7 +52,7 @@ public final class Transform {
    * FastBasicTransform, WaveletPacketTransfom, ...
    *
    * @date 19.05.2009 09:50:24
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param transform
    *          Transform object
    */
@@ -73,7 +73,7 @@ public final class Transform {
    * Performs the forward transform of the specified BasicWave object.
    *
    * @date 10.02.2010 09:41:01
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrTime
    *          coefficients of time domain
    * @return coefficients of frequency or Hilbert domain
@@ -93,7 +93,7 @@ public final class Transform {
    * Performs the reverse transform of the specified BasicWave object.
    *
    * @date 10.02.2010 09:42:18
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrHilb
    *          coefficients of frequency or Hilbert domain
    * @return coefficients of time domain
@@ -112,7 +112,7 @@ public final class Transform {
   /**
    * Performs a forward transform to a certain level of Hilbert space.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 11:53:05
    * @param arrTime
    *          array of length 2^p | p E N .. 2, 4, 8, 16, 32, 64, ...
@@ -135,7 +135,7 @@ public final class Transform {
    * Performs a reverse transform for a Hilbert space of certain level; level
    * has to match the supported coefficients in the array!
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 11:54:59
    * @param arrHilb
    *          Hilbert space by an array of length 2^p | p E N .. 2, 4, 8, 16,
@@ -161,7 +161,7 @@ public final class Transform {
    * inheritance.
    *
    * @date 23.11.2010 19:19:24
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
@@ -183,7 +183,7 @@ public final class Transform {
    * inheritance.
    *
    * @date 23.11.2010 19:19:33
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
@@ -203,7 +203,7 @@ public final class Transform {
    * Performs the 2-D forward transform of the specified BasicWave object.
    *
    * @date 10.02.2010 10:58:54
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param matrixTime
    *          coefficients of 2-D time domain; internal M(i),N(j)
    * @return coefficients of 2-D frequency or Hilbert domain
@@ -223,7 +223,7 @@ public final class Transform {
    * Performs the 2-D reverse transform of the specified BasicWave object.
    *
    * @date 10.02.2010 10:59:32
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param matrixFreq
    *          coefficients of 2-D frequency or Hilbert domain; internal
    *          M(i),N(j)
@@ -243,7 +243,7 @@ public final class Transform {
   /**
    * Performs the 2-D forward transform of the specified BasicWave object.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 14:40:54
    * @param matrixTime
    *          coefficients of 2-D time domain; internal M(i),N(j)
@@ -268,7 +268,7 @@ public final class Transform {
   /**
    * Performs the 2-D reverse transform of the specified BasicWave object.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 14:42:12
    * @param matrixFreq
    *          coefficients of 2-D frequency or Hilbert domain; internal
@@ -295,7 +295,7 @@ public final class Transform {
    * Performs the 3-D forward transform of the specified BasicWave object.
    *
    * @date 10.07.2010 18:15:22
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param matrixTime
    *          coefficients of 2-D time domain; internal M(i),N(j),O(k)
    * @return coefficients of 2-D frequency or Hilbert domain
@@ -315,7 +315,7 @@ public final class Transform {
    * Performs the 3-D reverse transform of the specified BasicWave object.
    *
    * @date 10.07.2010 18:15:33
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param matrixFreq
    *          coefficients of 2-D frequency or Hilbert domain; internal
    *          M(i),N(j),O(k)
@@ -335,7 +335,7 @@ public final class Transform {
   /**
    * Performs the 3-D forward transform of the specified BasicWave object.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 14:45:46
    * @param spaceTime
    *          coefficients of 2-D time domain; internal M(i),N(j),O(k)
@@ -362,7 +362,7 @@ public final class Transform {
   /**
    * Performs the 3-D reverse transform of the specified BasicWave object.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 14:46:09
    * @param spaceHilb
    *          coefficients of 2-D frequency or Hilbert domain; internal
@@ -391,7 +391,7 @@ public final class Transform {
    * Generates from a 1D signal a 2D output, where the second dimension are the
    * levels of the wavelet transform.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 17.08.2014 10:07:19
    * @param arrTime
    *          coefficients of time domain
@@ -412,7 +412,7 @@ public final class Transform {
   /**
    * Generates from a 2-D decomposition a 1-D time series.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 17.08.2014 10:07:19
    * @param matDeComp
    *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
@@ -433,7 +433,7 @@ public final class Transform {
   /**
    * Recompose signal from a certain level of decomposition.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 10:08:52
    * @param matDeComp
    * @param level
@@ -453,7 +453,7 @@ public final class Transform {
   /**
    * Return the used object of type BasicTransform.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 18:19:13
    * @return identifier of object of type Basic Transform
    */
@@ -484,7 +484,7 @@ public final class Transform {
   /**
    * Returns the used Wavelet object or null pointer.
    *
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 18:58:50
    * @return object of type Wavelet
    * @throws JWaveFailure

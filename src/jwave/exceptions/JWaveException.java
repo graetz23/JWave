@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,13 +27,13 @@ package jwave.exceptions;
  * General exception class of the JWave package.
  * 
  * @date 16.10.2008 07:30:20
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class JWaveException extends Throwable {
 
   /**
    * @date 27.05.2009 06:58:27
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   private static final long serialVersionUID = -4165486739091019056L;
 
@@ -46,7 +46,7 @@ public class JWaveException extends Throwable {
    * Constructor for storing a handed exception message.
    * 
    * @date 27.05.2009 06:51:57
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param message
    *          this message should tell exactly what went wrong
    */
@@ -63,7 +63,7 @@ public class JWaveException extends Throwable {
    * Copy constructor; use this for a quick fix of sub types.
    * 
    * @date 29.07.2009 07:03:45
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param e
    *          an object of this class
    */
@@ -75,7 +75,7 @@ public class JWaveException extends Throwable {
    * Returns the stored exception message as a string.
    * 
    * @date 27.05.2009 06:52:46
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @return exception message that should tell exactly what went wrong
    */
   @Override public String getMessage( ) {
@@ -86,7 +86,7 @@ public class JWaveException extends Throwable {
    * Displays the stored exception message at console out.
    * 
    * @date 27.05.2009 06:53:23
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public void showMessage( ) {
     System.out.println( _message );
@@ -96,7 +96,7 @@ public class JWaveException extends Throwable {
    * Nuke the run and print stack trace.
    * 
    * @date 02.07.2009 05:07:42
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public void nuke( ) {
     System.out.println( "" );

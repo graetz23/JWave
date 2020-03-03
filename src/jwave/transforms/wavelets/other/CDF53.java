@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import jwave.transforms.wavelets.Wavelet;
  * DUE TO ODD NUMBER COEFFICIENTS!!!
  * 
  * @date 17.08.2014 08:41:55
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class CDF53 extends Wavelet {
 
@@ -38,7 +38,7 @@ public class CDF53 extends Wavelet {
    * THIS WAVELET IS NOT WORKING - DUE TO ODD NUMBER COEFFICIENTS!!!
    * 
    * @date 17.08.2014 08:41:55
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   @Deprecated public CDF53( ) {
 

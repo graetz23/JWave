@@ -1,7 +1,7 @@
 /**
  * Create Transform objects ...
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 14.03.2015 14:25:21 
  *
  * TransformBuilder.java
@@ -20,7 +20,7 @@ import jwave.transforms.wavelets.WaveletBuilder;
 /**
  * Class for creating and identifying Transform object.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 14.03.2015 14:25:21
  */
 public class TransformBuilder {
@@ -30,7 +30,7 @@ public class TransformBuilder {
    * Look into each Transform for matching string identifier. By the way the
    * method requires Java 7, due to the switch statement on a string. *rofl*
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 14:35:12
    * @param transformName
    *          identifier as stored in Transform object
@@ -80,7 +80,7 @@ public class TransformBuilder {
    * Wavelet object. Look into each Transform and Wavelet for matching string
    * identifier.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 14:37:30
    * @param transformName
    *          identifier as stored in Transform object
@@ -96,7 +96,7 @@ public class TransformBuilder {
   /**
    * Returns the identifier string of a given Transform object.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 14:34:20
    * @param transform
    *          string identifier of the given Transform object

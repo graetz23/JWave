@@ -1,7 +1,7 @@
 /**
  * Test a 1-D array keeping some real values over all wavelets.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 08:08:57 
  *
  * GeneralTest.java
@@ -22,7 +22,7 @@ import org.junit.Test;
 /**
  * Test a 1-D array keeping some real values over all wavelets.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 08:08:57
  */
 public class GeneralTest extends Base {
@@ -30,7 +30,7 @@ public class GeneralTest extends Base {
   /**
    * Test a 1-D array keeping some real values over all wavelets.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 16:13:25
    */
   @Test public void testExample( ) {
@@ -76,7 +76,7 @@ public class GeneralTest extends Base {
   /**
    * JUnit for Discrete Fourier Transform
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 17:03:44
    * @throws JWaveFailure
    */

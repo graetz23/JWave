@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import jwave.transforms.wavelets.Wavelet;
  * due to ||*||2 - euclidean norm.
  * 
  * @date 03.06.2010 22:04:35
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class Legendre3 extends Wavelet {
 
@@ -39,7 +39,7 @@ public class Legendre3 extends Wavelet {
    * scales; normed, due to ||*||2 - euclidean norm.
    * 
    * @date 03.06.2010 22:04:36
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public Legendre3( ) {
 

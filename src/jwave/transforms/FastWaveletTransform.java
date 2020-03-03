@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ import jwave.exceptions.JWaveFailure;
  * Fast Wavelet Transform (FWD) in 1-D using a specific Wavelet.
  * 
  * @date 10.02.2010 08:10:42
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class FastWaveletTransform extends WaveletTransform {
 
@@ -42,7 +42,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * Constructor receiving a Wavelet object and setting identifier of transform.
    * 
    * @date 10.02.2010 08:10:42
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param wavelet
    *          object of type Wavelet
    */
@@ -61,7 +61,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * range 0, .., p of the dimension of the input array; 0 is the time series
    * itself and p is the maximal number of possible levels.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 11:58:37
    * @throws JWaveException
    *           if given array is not of length 2^p | pEN or given level does not
@@ -109,7 +109,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * itself and p is the maximal number of possible levels. The coefficients of
    * the input array have to match to the supported level.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 12:00:10
    * @throws JWaveException
    *           if given array is not of length 2^p | pEN or given level does not

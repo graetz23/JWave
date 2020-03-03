@@ -2,7 +2,7 @@
  * Testing decompose method for creating from 1-D input a 2-D output keeping all
  * possible stable levels of decomposition.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 07:59:56 
  *
  * DecomposeTest.java
@@ -19,7 +19,7 @@ import org.junit.Test;
  * Testing decompose method for creating from 1-D input a 2-D output keeping all
  * possible stable levels of decomposition.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 07:59:56
  */
 public class DecomposeTest extends Base {

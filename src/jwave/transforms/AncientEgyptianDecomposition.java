@@ -1,8 +1,8 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
- * 
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -40,9 +40,9 @@ import jwave.tools.MathToolKit;
  * array or signal is untouched an the coefficient is actually the wavelet
  * coefficient of wavelet space of level 0. For an "orthonormal" wavelet this
  * holds. See: http://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication
- * 
+ *
  * @date 14.08.2010 10:43:28
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class AncientEgyptianDecomposition extends BasicTransform {
 
@@ -62,9 +62,9 @@ public class AncientEgyptianDecomposition extends BasicTransform {
 
   /**
    * Constructor taking the
-   * 
+   *
    * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public AncientEgyptianDecomposition( BasicTransform basicTransform ) {
 
@@ -88,9 +88,9 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * arrays while applying the ancient Egyptian decomposition. Each sub array is
    * transformed by the selected basic transform and the resulting wavelet
    * coefficients are copied back to their original discrete positions.
-   * 
+   *
    * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @throws JWaveException
    * @see jwave.transforms.BasicTransform#forward(double[])
    */
@@ -135,9 +135,9 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * reverse transformed by the selected basic transform and the resulting
    * coefficients of time domain are copied back to their original discrete
    * positions.
-   * 
+   *
    * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @throws JWaveException
    * @see jwave.transforms.BasicTransform#reverse(double[])
    */

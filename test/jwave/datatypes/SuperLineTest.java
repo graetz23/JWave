@@ -1,7 +1,7 @@
 /**
  * Testing SuperLineObjects
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 12.01.2016 23:56:32 
  *
  * SuperLineTest.java
@@ -17,7 +17,7 @@ import org.junit.Test;
 /**
  * Testing SuperLine objects
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 12.01.2016 23:56:32
  */
 public class SuperLineTest {

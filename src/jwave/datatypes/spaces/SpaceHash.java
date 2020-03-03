@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import jwave.exceptions.JWaveFailure;
 /**
  * Uses HashMap generic for sparse data representations.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 16:52:40
  */
 public class SpaceHash extends Space {
@@ -41,7 +41,7 @@ public class SpaceHash extends Space {
   /**
    * Storing BlockHash objects in a HashMap for sparse representation.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:55:22
    */
   HashMap< Integer, Block > _hashMapBlocks = null;
@@ -49,7 +49,7 @@ public class SpaceHash extends Space {
   /**
    * A space object with no input; e.g. as a pattern.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 19:05:01
    */
   public SpaceHash( ) {
@@ -59,7 +59,7 @@ public class SpaceHash extends Space {
   /**
    * Copy constructor for generating the same space (cube) object again.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 19:06:25
    * @param space
    */
@@ -81,7 +81,7 @@ public class SpaceHash extends Space {
   } // SpaceHash
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:52:40
    * @param noOfRows
    *          0 ..
@@ -97,7 +97,7 @@ public class SpaceHash extends Space {
   /**
    * Configure a space (a cube) as a part of a super space.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 19:07:05
    * @param offSetRow
    *          the starting position for the row of the space
@@ -118,7 +118,7 @@ public class SpaceHash extends Space {
   } // SpaceHash
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:14:34 (non-Javadoc)
    * @see jwave.datatypes.Super#copy()
    */
@@ -127,7 +127,7 @@ public class SpaceHash extends Space {
   } // copy
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:03:28 (non-Javadoc)
    * @see jwave.datatypes.Super#isAllocated()
    */
@@ -139,7 +139,7 @@ public class SpaceHash extends Space {
   } // isAllocated
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:03:28 (non-Javadoc)
    * @see jwave.datatypes.Super#alloc()
    */
@@ -149,7 +149,7 @@ public class SpaceHash extends Space {
   } // alloc
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:03:28 (non-Javadoc)
    * @see jwave.datatypes.Super#erase()
    */
@@ -161,7 +161,7 @@ public class SpaceHash extends Space {
 
   /*
    * Getter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:52:40 (non-Javadoc)
    * @see jwave.datatypes.spaces.Space#get(int, int, int)
    */
@@ -189,7 +189,7 @@ public class SpaceHash extends Space {
 
   /*
    * Setter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:52:40 (non-Javadoc)
    * @see jwave.datatypes.spaces.Space#set(int, int, int, double)
    */

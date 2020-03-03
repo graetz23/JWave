@@ -3,7 +3,7 @@
  * arrays, matrices, and spaces. Also asserting methods for arrays, matrices,
  * and spaces.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 07:36:28 
  *
  * Base.java
@@ -19,7 +19,7 @@ import jwave.datatypes.natives.Complex;
  * arrays, matrices, and spaces. Also asserting methods for arrays, matrices,
  * and spaces.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 07:36:28
  */
 public class Base {
@@ -29,7 +29,7 @@ public class Base {
    * arrays, matrices, and spaces. Also asserting methods for arrays, matrices,
    * and spaces.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 07:36:28
    */
   protected Base( ) {
@@ -38,7 +38,7 @@ public class Base {
   /**
    * assert an array of Complex types.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:19:07
    * @param expected
    * @param actual
@@ -70,7 +70,7 @@ public class Base {
   /**
    * assert an array of doubles.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:19:28
    * @param expected
    * @param actual
@@ -85,7 +85,7 @@ public class Base {
   /**
    * assert a matrix of doubles.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:19:44
    * @param expected
    * @param actual
@@ -101,7 +101,7 @@ public class Base {
   /**
    * assert a space of doubles.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:20:12
    * @param expected
    * @param actual
@@ -118,7 +118,7 @@ public class Base {
   /**
    * show double in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:20:32
    * @param value
    */
@@ -129,7 +129,7 @@ public class Base {
   /**
    * show an array in time domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:21:03
    * @param arrTime
    */
@@ -145,7 +145,7 @@ public class Base {
   /**
    * show an array in frequency domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:22:09
    * @param arrFreq
    */
@@ -161,7 +161,7 @@ public class Base {
   /**
    * show an array in hilbert domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:22:22
    * @param arrHilb
    */
@@ -177,7 +177,7 @@ public class Base {
   /**
    * show an array of type Complex in time domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:22:35
    * @param arrTime
    */
@@ -191,7 +191,7 @@ public class Base {
   /**
    * show an array of type Complex in frequency domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:22:58
    * @param arrFreq
    */
@@ -205,7 +205,7 @@ public class Base {
   /**
    * show a matrix in time domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:23:14
    * @param matrixTime
    */
@@ -224,7 +224,7 @@ public class Base {
   /**
    * show a matrix in frequency domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:23:29
    * @param matrixFreq
    */
@@ -243,7 +243,7 @@ public class Base {
   /**
    * show a matrix in hilbert domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:24:04
    * @param matrixHilb
    */
@@ -262,7 +262,7 @@ public class Base {
   /**
    * show a space in time domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:24:18
    * @param spaceTime
    */
@@ -284,7 +284,7 @@ public class Base {
   /**
    * show a space in frequency domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:24:34
    * @param spaceFreq
    */
@@ -306,7 +306,7 @@ public class Base {
   /**
    * show a space in hilbert domain in a certain format.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:24:47
    * @param spaceTime
    */

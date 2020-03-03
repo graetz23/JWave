@@ -2,7 +2,7 @@
  * Base class for BiOrthogonal wavelet keeping construction
  * and different forward and reverse methods.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 28.03.2015 18:42:08 
  *
  * BiOrthogonal.java
@@ -14,7 +14,7 @@ import jwave.transforms.wavelets.Wavelet;
 /**
  * Base class for BiOrthogonal wavelets.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 28.03.2015 18:42:08
  */
 public class BiOrthogonal extends Wavelet {
@@ -22,7 +22,7 @@ public class BiOrthogonal extends Wavelet {
   /**
    * no jobs done here ..
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 28.03.2015 18:42:08
    */
   public BiOrthogonal( ) {
@@ -37,7 +37,7 @@ public class BiOrthogonal extends Wavelet {
    * (biorthonormal) filter directly after defining the orthonormal coefficients
    * of the scaling (low pass) and wavelet (high pass) for decomposition!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.02.2014 17:04:44
    */
   protected void _buildBiOrthonormalSpace( ) {
@@ -67,7 +67,7 @@ public class BiOrthogonal extends Wavelet {
   /**
    * Wavelet forward transform algorithm adapted to biorthogonal wavelets.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 28.03.2015 18:44:24 (non-Javadoc)
    * @see jwave.transforms.wavelets.Wavelet#forward(double[], int)
    */
@@ -100,7 +100,7 @@ public class BiOrthogonal extends Wavelet {
   /**
    * Wavelet reverse transform algorithm adapted to biorthogonal wavelets.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 28.03.2015 18:44:24 (non-Javadoc)
    * @see jwave.transforms.wavelets.Wavelet#reverse(double[], int)
    */

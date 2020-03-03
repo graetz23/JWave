@@ -1,7 +1,7 @@
 /**
  * JUnit test cases for data compression using wavelets.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 07:29:24 
  *
  * CompressorTest.java
@@ -20,7 +20,7 @@ import org.junit.Test;
 /**
  * JUnit test cases for data compression using wavelets.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 07:29:24
  */
 public class CompressorTest extends Base {
@@ -29,7 +29,7 @@ public class CompressorTest extends Base {
    * Test the Compressor classes by giving an example for a strong data
    * compression with several wavelets for a sampled (generated) sine signal.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 06.01.2016 23:34:05
    */
   @Test public void testCompressionSine( ) {
@@ -89,7 +89,7 @@ public class CompressorTest extends Base {
    * Test the Compressor classes by giving an example for data compression with
    * wavelets.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.05.2015 18:26:03
    */
   @Test public void testCompressionSteps( ) {

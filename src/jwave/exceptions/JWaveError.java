@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ package jwave.exceptions;
  * Marking errors for this package; failures that are not recoverable
  * 
  * @date 19.05.2009 09:28:17
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class JWaveError extends JWaveException {
   
@@ -35,7 +35,7 @@ public class JWaveError extends JWaveException {
    * Generated serial ID for this error
    * 
    * @date 19.05.2009 09:29:04
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   private static final long serialVersionUID = -2757378141408012245L;
   
@@ -43,7 +43,7 @@ public class JWaveError extends JWaveException {
    * constructor taking an error message
    * 
    * @date 19.05.2009 09:28:17
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @param message
    *          stored message for this error
    */

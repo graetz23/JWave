@@ -4,7 +4,7 @@
  * wavelets, taken from a generated array, and apply those to the Wavelet Packet
  * and the Fast Wavelet Transform for one dimensional arrays as input.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 08:06:20 
  *
  * SteppingTest.java
@@ -22,7 +22,7 @@ import org.junit.Test;
  * Testing the stepping methods which allow to stop at a certain level of
  * decomposition.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 08:06:20
  */
 public class SteppingTest extends Base {
@@ -31,7 +31,7 @@ public class SteppingTest extends Base {
    * Testing the stepping methods which allow to stop at a certain level of
    * composition.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 11:47:49
    */
   @Test public void testStepping( ) {

@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import jwave.exceptions.JWaveException;
 import org.junit.Test;
 
 /**
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 16:22:33
  */
 public class SpaceTest {
@@ -45,7 +45,7 @@ public class SpaceTest {
   /**
    * Generates a SpaceFull object already keeping with data: i + j + k!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:24:42
    * @param noOfRows
    *          0 ..
@@ -73,7 +73,7 @@ public class SpaceTest {
   /**
    * Generates a SpaceHash object already keeping with data: i + j + k!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:59:08
    * @param noOfRows
    *          0 ..

@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@ package jwave.tools;
 import jwave.exceptions.*;
 
 /**
- * @author Christian Scheiblich (cscheiblich@gmail.com) date Feb 11, 2013
+ * @author Christian (graetz23@gmail.com) date Feb 11, 2013
  *         1:42:37 PM
  */
 public class MathToolKit {
@@ -34,7 +34,7 @@ public class MathToolKit {
   /**
    * Some how useless ~8>
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com) date Feb 11, 2013
+   * @author Christian (graetz23@gmail.com) date Feb 11, 2013
    *         1:42:37 PM
    */
   public MathToolKit( ) {
@@ -48,7 +48,7 @@ public class MathToolKit {
    * However, odd numbers always 2^0 = 1 as the last entry. Also see:
    * http://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com) date Feb 11, 2013
+   * @author Christian (graetz23@gmail.com) date Feb 11, 2013
    *         1:50:42 PM
    * @param number
    * @return
@@ -144,7 +144,7 @@ public class MathToolKit {
    * of two. E.g. 42 = 2^5 + 2^3 + 2^1 = 32 + 8 + 2. Also see:
    * http://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com) date Feb 11, 2013
+   * @author Christian (graetz23@gmail.com) date Feb 11, 2013
    *         1:55:54 PM
    * @param ancientEgyptianMultipliers
    *          an integer array keeping the ancient Egyptian multipliers
@@ -175,7 +175,7 @@ public class MathToolKit {
    * Checks if given number is of type 2^p = 1, 2, 4, 8, 18, 32, 64, .., 1024,
    * ..
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com) 10.02.2014 20:18:26
+   * @author Christian (graetz23@gmail.com) 10.02.2014 20:18:26
    * @param number
    *          any positive integer
    * @return true if is 2^p else false
@@ -199,7 +199,7 @@ public class MathToolKit {
    * Replaced Math.getExponent due to google's Android OS is not supporting it
    * in Math library.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com) date Feb 11, 2013
+   * @author Christian (graetz23@gmail.com) date Feb 11, 2013
    *         1:47:05 PM
    * @author sashi
    * @date 19.04.2011 15:43:16
@@ -218,7 +218,7 @@ public class MathToolKit {
    * Replaced Math.scalb due to google's Android OS is not supporting it in Math
    * library.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com) date Feb 11, 2013
+   * @author Christian (graetz23@gmail.com) date Feb 11, 2013
    *         1:46:33 PM
    * @param f
    * @param scaleFactor
@@ -235,7 +235,7 @@ public class MathToolKit {
   /**
    * Returns a sampled array of sine waves for given number of oscillations.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 19:38:39
    * @param samplingRate
    *          should be great than 2 and likely to be of 2^p | p E N
@@ -269,7 +269,7 @@ public class MathToolKit {
   /**
    * Returns a sampled array of cosine waves for given number of oscillations.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 19:41:16
    * @param samplingRate
    *          should be great than 2 and likely to be of 2^p | p E N

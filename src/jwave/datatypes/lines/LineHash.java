@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ import jwave.exceptions.JWaveFailureNotFound;
 /**
  * Uses HashMap generic for sparse data representations.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 16:30:00
  */
 public class LineHash extends Line {
@@ -39,7 +39,7 @@ public class LineHash extends Line {
   /**
    * Simple hash mapping for sparse data.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:31:41
    */
   HashMap< Integer, Double > _hashMap;
@@ -47,7 +47,7 @@ public class LineHash extends Line {
   /**
    * Pass nothing, use this a a place holder.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 20:41:15
    */
   public LineHash( ) {
@@ -58,7 +58,7 @@ public class LineHash extends Line {
    * Copy constructor that takes over - if available - the values of another
    * type of Line object.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 20.05.2015 07:28:18
    * @param line
    *          an object of type Line
@@ -85,7 +85,7 @@ public class LineHash extends Line {
   /**
    * Pass the number of rows - global line?!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:30:00
    * @param noOfRows
    */
@@ -96,7 +96,7 @@ public class LineHash extends Line {
   /**
    * Pass an of set to the line and a number of rows.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 20:40:38
    * @param offSetRow
    * @param noOfRows
@@ -107,7 +107,7 @@ public class LineHash extends Line {
 
   /*
    * Get a full copy of this Line object!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 21:02:37 (non-Javadoc)
    * @see jwave.datatypes.lines.Line#copy()
    */
@@ -140,7 +140,7 @@ public class LineHash extends Line {
   } // copy
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 18:11:28 (non-Javadoc)
    * @see jwave.datatypes.lines.Line#isAllocated()
    */
@@ -152,7 +152,7 @@ public class LineHash extends Line {
   } // isAllocated
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 18:12:03 (non-Javadoc)
    * @see jwave.datatypes.lines.Line#alloc()
    */
@@ -164,7 +164,7 @@ public class LineHash extends Line {
   } // alloc
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 18.05.2015 18:12:13 (non-Javadoc)
    * @see jwave.datatypes.lines.Line#erase()
    */
@@ -176,7 +176,7 @@ public class LineHash extends Line {
 
   /*
    * Getter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:30:00 (non-Javadoc)
    * @see jwave.datatypes.lines.Line#get(int)
    */
@@ -200,7 +200,7 @@ public class LineHash extends Line {
 
   /*
    * Setter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:30:00 (non-Javadoc)
    * @see jwave.datatypes.lines.Line#set(int, double)
    */

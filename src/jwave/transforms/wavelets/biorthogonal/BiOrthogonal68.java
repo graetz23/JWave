@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ package jwave.transforms.wavelets.biorthogonal;
  * BiOrthogonal Wavelet of type 6.8 - Six vanishing moments in wavelet function
  * and eight vanishing moments in scaling function.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.02.2014 11:42:09
  */
 public class BiOrthogonal68 extends BiOrthogonal {
@@ -36,7 +36,7 @@ public class BiOrthogonal68 extends BiOrthogonal {
    * Already orthonormal coefficients taken from Filip Wasilewski's webpage
    * http://wavelets.pybytes.com/wavelet/bior6.8/ Thanks!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.02.2014 11:42:09
    */
   public BiOrthogonal68( ) {

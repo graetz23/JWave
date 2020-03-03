@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import jwave.exceptions.JWaveFailure;
 /**
  * Uses HashMap generic for sparse data representations.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 16:41:53
  */
 public class BlockHash extends Block {
@@ -41,7 +41,7 @@ public class BlockHash extends Block {
   /**
    * Storing LineHash objects in a HashMap for sparse representation.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:43:03
    */
   HashMap< Integer, Line > _hashMapLines = null;
@@ -49,7 +49,7 @@ public class BlockHash extends Block {
   /**
    * Create an object of a sub type; e.g. as pattern.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 13:58:16
    */
   public BlockHash( ) {
@@ -60,7 +60,7 @@ public class BlockHash extends Block {
    * Copy constructor that takes over - if available - the values of another
    * type of block.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 13:59:49
    * @param block
    *          object of type block; e.g. BlockFull
@@ -83,7 +83,7 @@ public class BlockHash extends Block {
   } // BlockHash
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:41:53
    * @param noOfRows
    * @param noOfCols
@@ -96,7 +96,7 @@ public class BlockHash extends Block {
    * Passing information that takes the block as a part of a global structure;
    * e.g. a SuperBlock.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 14:03:36
    * @param offSetRow
    *          the global off set of rows of the block
@@ -112,7 +112,7 @@ public class BlockHash extends Block {
   } // BlockHash
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:13:30 (non-Javadoc)
    * @see jwave.datatypes.Super#copy()
    */
@@ -121,7 +121,7 @@ public class BlockHash extends Block {
   } // copy
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:02:40 (non-Javadoc)
    * @see jwave.datatypes.Super#isAllocated()
    */
@@ -133,7 +133,7 @@ public class BlockHash extends Block {
   } // isAllocated
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:02:40 (non-Javadoc)
    * @see jwave.datatypes.Super#alloc()
    */
@@ -143,7 +143,7 @@ public class BlockHash extends Block {
   } // alloc
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:02:40 (non-Javadoc)
    * @see jwave.datatypes.Super#erase()
    */
@@ -155,7 +155,7 @@ public class BlockHash extends Block {
 
   /*
    * Getter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:41:53 (non-Javadoc)
    * @see jwave.datatypes.blocks.Block#get(int, int)
    */
@@ -183,7 +183,7 @@ public class BlockHash extends Block {
 
   /*
    * Setter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:41:53 (non-Javadoc)
    * @see jwave.datatypes.blocks.Block#set(int, int, double)
    */

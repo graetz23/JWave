@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ import jwave.transforms.wavelets.Wavelet;
  * wavelet is the mirrored Haar Wavelet.
  * 
  * @date 08.06.2010 09:32:08
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  */
 public class Legendre1 extends Wavelet {
 
@@ -42,7 +42,7 @@ public class Legendre1 extends Wavelet {
    * Haar1 and Haar1Orthogonal.
    * 
    * @date 08.06.2010 09:32:08
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    */
   public Legendre1( ) {
     

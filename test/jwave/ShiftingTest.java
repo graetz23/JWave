@@ -1,7 +1,7 @@
 /**
  * TODO Comment me please!
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.02.2016 22:33:53 
  *
  * ShiftingTest.java
@@ -16,7 +16,7 @@ import org.junit.Test;
 /**
  * TODO Comment me please!
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.02.2016 22:33:53
  */
 public class ShiftingTest extends Base {

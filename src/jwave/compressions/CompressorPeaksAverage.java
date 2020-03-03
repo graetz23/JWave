@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import jwave.exceptions.JWaveException;
  * This compression takes the average of the min and absolute the max of a given
  * array, matrix, or space as thresholding value.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 14.05.2015 17:57:19
  */
 public class CompressorPeaksAverage extends Compressor {
@@ -41,7 +41,7 @@ public class CompressorPeaksAverage extends Compressor {
   /**
    * Compression by average of peak min & max.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.05.2015 17:57:19
    */
   public CompressorPeaksAverage( ) {
@@ -55,7 +55,7 @@ public class CompressorPeaksAverage extends Compressor {
   /**
    * Compression by average of peak min & max.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.05.2015 17:57:19
    * @param threshold
    * @throws JWaveException
@@ -74,7 +74,7 @@ public class CompressorPeaksAverage extends Compressor {
    * Calculating the average by maximal distance between minimal and maximal
    * absolute value.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see jwave.compressions.Compressor#compress(double[])
    */
@@ -102,7 +102,7 @@ public class CompressorPeaksAverage extends Compressor {
    * Calculating the average by maximal distance between minimal and maximal
    * absolute value.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see jwave.compressions.Compressor#compress(double[][])
    */
@@ -135,7 +135,7 @@ public class CompressorPeaksAverage extends Compressor {
    * Calculating the average by maximal distance between minimal and maximal
    * absolute value.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see jwave.compressions.Compressor#compress(double[][][])
    */

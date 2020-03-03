@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2018 Christian Scheiblich (cscheiblich@gmail.com)
+ * Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,13 +30,13 @@ import jwave.exceptions.JWaveException;
 /**
  * A space that uses a full array for storage of Block objects.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 16.05.2015 15:57:35
  */
 public class SpaceFull extends Space {
 
   /**
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 16:00:11
    */
   protected Block[ ] _arrBlocks = null;
@@ -44,7 +44,7 @@ public class SpaceFull extends Space {
   /**
    * A space object with no input; e.g. as a pattern.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:51:54
    */
   public SpaceFull( ) {
@@ -54,7 +54,7 @@ public class SpaceFull extends Space {
   /**
    * Copy constructor for generating the same space (cube) object again.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:53:30
    * @param space
    */
@@ -78,7 +78,7 @@ public class SpaceFull extends Space {
   /**
    * Constructor setting members for and allocating memory!
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:57:35
    * @param i
    *          from 0 to noOfRows-1
@@ -94,7 +94,7 @@ public class SpaceFull extends Space {
   /**
    * Configure a space (a cube) as a part of a super space.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 18:50:59
    * @param offSetRow
    *          the starting position for the row of the space
@@ -115,7 +115,7 @@ public class SpaceFull extends Space {
   } // SpaceFull
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:14:11 (non-Javadoc)
    * @see jwave.datatypes.Super#copy()
    */
@@ -124,7 +124,7 @@ public class SpaceFull extends Space {
   } // copy
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:04:11 (non-Javadoc)
    * @see jwave.datatypes.Super#isAllocated()
    */
@@ -136,7 +136,7 @@ public class SpaceFull extends Space {
   } // isAllocated
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:04:11 (non-Javadoc)
    * @see jwave.datatypes.Super#alloc()
    */
@@ -153,7 +153,7 @@ public class SpaceFull extends Space {
   } // alloc
 
   /*
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 24.05.2015 15:04:11 (non-Javadoc)
    * @see jwave.datatypes.Super#erase()
    */
@@ -172,7 +172,7 @@ public class SpaceFull extends Space {
 
   /*
    * Getter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:57:35 (non-Javadoc)
    * @see jwave.datatypes.spaces.Space#get(int, int, int)
    */
@@ -186,7 +186,7 @@ public class SpaceFull extends Space {
 
   /*
    * Setter!
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 16.05.2015 15:57:35 (non-Javadoc)
    * @see jwave.datatypes.spaces.Space#set(int, int, int, double)
    */

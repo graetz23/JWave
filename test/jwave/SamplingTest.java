@@ -1,7 +1,7 @@
 /**
  * Testing transform for a generated - sampled - sine signal.
  *
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 08:03:06 
  *
  * SamplingTest.java
@@ -15,7 +15,7 @@ import org.junit.Test;
 /**
  * Testing transform for a generated - sampled - sine signal.
  * 
- * @author Christian Scheiblich (cscheiblich@gmail.com)
+ * @author Christian (graetz23@gmail.com)
  * @date 09.01.2016 08:03:06
  */
 public class SamplingTest extends Base {
@@ -23,7 +23,7 @@ public class SamplingTest extends Base {
   /**
    * Testing transform for a generated - sampled - sine signal.
    * 
-   * @author Christian Scheiblich (cscheiblich@gmail.com)
+   * @author Christian (graetz23@gmail.com)
    * @date 09.01.2016 08:17:56
    */
   @Test public void testSampling( ) {
