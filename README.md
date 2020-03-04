@@ -23,15 +23,15 @@ However, the bare algorithms of JWave do only support data sampled by 2^p | p E 
 
 **Why do the results (hilbert spaces) look totally different to those from my matlab or some other implementation I found on net?!**
 
-In most cases, other libraries construct the orthogonal / orthonormal bases of the wavelet and scaling function in a different way. Especially for those bases of multiple dimension or wavelets of higher dimension, repectively. But those this hurt?
+In most cases, other libraries construct the orthogonal / orthonormal bases of the wavelet and scaling function in a different way. Especially for those bases of multiple dimension or wavelets of higher dimension, repectively. But does this hurt?
 
 **Totally not!**
 
 The *why* can be found in mathematics. Due to using some *orthogonal* transform (or better, an orthogonal base), it is up to oneself how to *construct* this base (as long it stays orthogonal over all dimensions). Next it is also up to oneself how to apply the sequence of the *transform steps*. Both does not influence any performance of the wavelet transforms! But again why?
 
-The base stays orthogonal, and one's data is *unit* rotated and mirrowed differently, which *makes a long story short*.
+**The base stays orthogonal** , and one's data is *unit* rotated and mirrowed differently, which *makes a long story short*.
 
-The application of the transform using the rotating and mirrowing base) is then like *dancing some techno*. As long as you do the *same amount* of steps *independently* of the performed sequence, even in 2-D and 3-D dimensions, the *expected magic* of wavelets will stay the same, e.g. the result in values and e.g, compression rates will stay exactely the same. Only _all_ intermediate performed results (or hilbert spaces) will be different if someone else *dances* differently.
+Additionally the application of the transform - independent of using some different rotating and mirrowing base - is like *dancing some 90's techno*: As long as you do the *same amount* of steps *independently* of the performed sequence, even in 2-D and 3-D dimensions, the *expected magic* wavelets can bring in, will be there, and stays the same! For example, the result in values, and e.g the compression rates will stay exactely the same. Only _all_ intermediate performed results (or intermediate hilbert spaces) will be different, if someone else *dances* differently to otherones.
 
 **Have fun - I definitely do! :-)**
 
