@@ -1,7 +1,7 @@
 # JWave
 ## Open source Java implementation of orthogonal and bi-orthogonal wavelets
 
-**The continuous integration **[![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) ** on travis-ci.com!**
+**The continuous integration** [![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) **on travis-ci.com!**
 
 ## README
 
@@ -21,7 +21,7 @@ However, the bare algorithms of JWave do only support data sampled by 2^p | p E 
 
 ### Why are the results totally different then expected?!
 
-Another frequently question is: **Why do the results (hilbert spaces) look different to those from my matlab or some other implementation?**
+**Why do the results (hilbert spaces) look totally different to those from my matlab or some other implementation I found on net?!**
 
 In most cases, other libraries construct the orthogonal / orthonormal bases of the wavelet and scaling function in a different way. Especially for those bases of multiple dimension or wavelets of higher dimension, repectively. But those this hurt?
 
