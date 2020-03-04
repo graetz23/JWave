@@ -1,13 +1,13 @@
 # JWave
 ## Open source Java implementation of orthogonal and bi-orthogonal wavelets
 
-[![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) **on travis-ci.com**
+**The continuous integration **[![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) ** on travis-ci.com!**
 
 ## README
 
-Java implementation of a Discrete Fourier Transform (DFT) algorithm, a Fast Wavelet Transform (FWT) algorithm, and a Wavelet Packet Transform (WPT) algorithm, available in 1-D, 2-D, and 3-D. The wavelet transform algorithms are using normalized orthogonal (orthonormal) wavelets like Haar, Coiflet, Daubechies, Symlets, Legendre, and even some Bi-Orthogonal.
+Java implementation of a Discrete Fourier Transform (DFT), a Fast Wavelet Transform (FWT), and a Wavelet Packet Transform (WPT) algorithm. All algorithms are available in 1-D, 2-D, and 3-D. The wavelet transform algorithms are using normalized orthogonal or if available orthonormal wavelets. The comon wavelets like Haar, Coiflet, Daubechies, Symlets, and Legendre are available. Additionally there are also some Bi-Orthogonal and unusal wavelets implemented.
 
-The implementation of JWave is based on several Design Patterns and - hopefully - appears user-friendly.
+The implementation of JWave is based on several software design patterns and - hopefully - appears therefore user-friendly.
 
 ## GETTING STARTED
 
@@ -15,7 +15,25 @@ The implementation of JWave is based on several Design Patterns and - hopefully 
 
 Have a look at the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo) page: How JWave is used, or why the result is looking like it does, and especially where the hack you can find an iterative (stepping) method!?
 
-However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on: Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! Thanks. :-)
+### Can I perform odd samplings like, e.g. 127 data points?
+
+However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on. Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! You can find it in the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo).
+
+### Why are the results totally different then expected?!
+
+Another frequently question is: **Why do the results (hilbert spaces) look different to those from my matlab or some other implementation?**
+
+In most cases, other libraries construct the orthogonal / orthonormal bases of the wavelet and scaling function in a different way. Especially for those bases of multiple dimension or wavelets of higher dimension, repectively. But those this hurt?
+
+**Totally not!**
+
+The *why* can be found in mathematics. Due to using some *orthogonal* transform (or better, an orthogonal base), it is up to oneself how to *construct* this base (as long it stays orthogonal over all dimensions). Next it is also up to oneself how to apply the sequence of the *transform steps*. Both does not influence any performance of the wavelet transforms! But again why?
+
+The base stays orthogonal, and one's data is *unit* rotated and mirrowed differently, which *makes a long story short*.
+
+The application of the transform using the rotating and mirrowing base) is then like *dancing some techno*. As long as you do the *same amount* of steps *independently* of the performed sequence, even in 2-D and 3-D dimensions, the *expected magic* of wavelets will stay the same, e.g. the result in values and e.g, compression rates will stay exactely the same. Only _all_ intermediate performed results (or hilbert spaces) will be different if someone else *dances* differently.
+
+**Have fun - I definitely do! :-)**
 
 ### HowTo
 
