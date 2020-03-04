@@ -11,9 +11,21 @@ The implementation of JWave is based on several Design Patterns and - hopefully 
 
 ## GETTING STARTED
 
+### Introduction
+
 Have a look at the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo) page: How JWave is used, or why the result is looking like it does, and especially where the hack you can find an iterative (stepping) method!?
 
 However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on: Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! Thanks. :-)
+
+### HowTo
+
+For a quick test, pull the repository and then: *ant && ant test*. This builds a JWave.jar and the corresponding unit tests. Afterwards *all* units test are executed.
+
+### Doing own stuff e.g. data compression
+
+For a lot of own stuff with JWave, have a look at the main junit test file / method: [a lot of examples](https://github.com/cscheiblich/JWave/tree/master/test/jwave)!
+
+For example, how to perform a (losless) data compression with over 98 % compression rate using _all available_ wavelets is shown by the following [junit test](https://github.com/cscheiblich/JWave/blob/master/test/jwave/CompressorTest.java)!
 
 ## CONTACT
 
