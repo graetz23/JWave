@@ -1,8 +1,8 @@
-<!-- 
+<!--
   JWave is distributed under the MIT License (MIT); this file is part of.
 
   Copyright (c) 2008-2020 Christian (graetz23@gmail.com)
-  
+
   see LICENSE.md
 -->
 <project name="JWave" default="dist" basedir=".">
@@ -12,8 +12,8 @@
     TODO: Set your OS dependent path to the JUnit4 JAR file below!
   	For Windows OS also set the path to org.hamcrest.core JAR file!
   </description>
- 
-  <!-- setting static directories and files --> 
+
+  <!-- setting static directories and files -->
   <property name="src" location="src"/>
   <property name="test" location="test"/>
   <property name="dist" location="dist"/>
@@ -33,7 +33,7 @@
     <os family="unix" />
   </condition>
 
-  <!-- Set the MAC OS specific parameters --> 
+  <!-- Set the MAC OS specific parameters -->
   <target name="doMac" if="isMac">
     <echo message="OS is a Mac target" />
     <!-- set the path to a MAC or Unix OS below -->
@@ -43,7 +43,7 @@
     <echo message="JUnit path: ${junit}" />
   </target>
 
-  <!-- Set the Windows OS specific parameters --> 
+  <!-- Set the Windows OS specific parameters -->
   <target name="doWin" if="isWin">
     <echo message="OS is a Windows target" />
     <!-- set the path to a Windows OS below -->
@@ -53,7 +53,7 @@
     <echo message="JUnit path: ${junit}" />
   </target>
 
-  <!-- Set the GNU/Linux or Unix OS specific parameters --> 
+  <!-- Set the GNU/Linux or Unix OS specific parameters -->
   <target name="doUnix" if="isUnix">
     <echo message="OS is a Unix target" />
     <!-- set the path to a GNU/Linux or Unix OS below -->
@@ -66,7 +66,7 @@
     <property name="hamcr" location="./lib/hamcrest-all.jar"/>
     <echo message="JUnit path: ${junit}" />
   </target>
-   
+
   <!-- set the OS dependent class paths and create directories -->
   <target name="init" depends="doMac, doWin, doUnix">
     <tstamp/>
@@ -134,10 +134,10 @@
       </batchtest>
     </junit>
   </target>
- 
-  <!-- tidy up all built stuff: Java and JUnit test case classes -->  
+
+  <!-- tidy up all built stuff: Java and JUnit test case classes -->
   <target name="clean" description="clean up - delete build directory">
     <delete dir="${build}"/>
   </target>
-  
+
 </project>

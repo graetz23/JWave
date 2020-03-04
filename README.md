@@ -1,20 +1,25 @@
-# JWave - Open source Java implementation of orthogonal and bi-orthogonal wavelets #
+# JWave
+## Open source Java implementation of orthogonal and bi-orthogonal wavelets
 
 [![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) on travis-ci.com
 
-## README ##
+## README
 
-Java implementation of a Discrete Fourier Transform (DFT) algorithm, a Fast Wavelet Transform (FWT) algorithm, and a Wavelet Packet Transform (WPT) algorithm, available in 1-D, 2-D, and 3-D. The wavelet transform algorithms are using normalized orthogonal (orthonormal) wavelets like Haar, Coiflet, Daubechies, Symlets, Legendre, and even some Bi-Orthogonal. The implementation of JWave is based on several Design Patterns and - hopefully - appears user-friendly.
+Java implementation of a Discrete Fourier Transform (DFT) algorithm, a Fast Wavelet Transform (FWT) algorithm, and a Wavelet Packet Transform (WPT) algorithm, available in 1-D, 2-D, and 3-D. The wavelet transform algorithms are using normalized orthogonal (orthonormal) wavelets like Haar, Coiflet, Daubechies, Symlets, Legendre, and even some Bi-Orthogonal.
 
-## GETTING STARTED ##
+The implementation of JWave is based on several Design Patterns and - hopefully - appears user-friendly.
 
-First of all have a look at the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo) page: How JWave is used, or why the result is looking like it does, and especially where the hack you can find an iterative (stepping) method!? However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on: Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! Thanks. :-)
+## GETTING STARTED
 
-## CONTACT ##
+Have a look at the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo) page: How JWave is used, or why the result is looking like it does, and especially where the hack you can find an iterative (stepping) method!?
+
+However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on: Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! Thanks. :-)
+
+## CONTACT
 
 If there are doubts, try mailing me, otherwise have fun with JWave.
 
-## LICENSE ##
+## LICENSE
 
 **JWave is distributed under the MIT License (MIT); this file is part of.**
 
@@ -38,11 +43,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-## VERSION ##
+## VERSION
 
-**JWave is in version 180222.**
+**JWave is in version 200303.**
 
-## CHANGE LOG ##
+## CHANGE LOG
+
+version **200303**:
+- updating copyright and contact information to graetz23
 
 version **180222**:
 - updating project description, especially using markdown for the README.md,
@@ -51,9 +59,9 @@ version **180222**:
 version **160218**:
 - added a new type of wavelet transform algorithm: Shifting Wavelet Transform.
  - the algorithm shifts a wavelet by smallest length of 2 over the input array,
- - NOT YET - then by the double of 4, 8, 16, .., p-1, p.
+ - then by the double of 4, 8, 16, .., p-1, p.
  - the reverse transform takes the largest wavelength of p and shifts,
- - NOT YET - then by half of p-1, .., 16, 8, 4, 2.
+ - then by half of p-1, .., 16, 8, 4, 2.
 
 version **160109**:
 - moved the JUnit tests to an own source directory
