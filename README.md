@@ -1,11 +1,11 @@
 # JWave
-## Open source Java implementation of orthogonal and bi-orthogonal wavelets
+## Java library keeping orthogonal / orthonormal and bi-orthogonal wavelets
 
 **The continuous integration** [![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) **on travis-ci.com!**
 
 ## README
 
-Java implementation of a Discrete Fourier Transform (DFT), a Fast Wavelet Transform (FWT), and a Wavelet Packet Transform (WPT) algorithm. All algorithms are available in 1-D, 2-D, and 3-D. The wavelet transform algorithms are using normalized orthogonal or if available orthonormal wavelets. The comon wavelets like Haar, Coiflet, Daubechies, Symlets, and Legendre are available. Additionally there are also some Bi-Orthogonal and unusal wavelets implemented.
+Java implementation of a **Discrete Fourier Transform (DFT)**, a **Fast Wavelet Transform (FWT)**, and a **Wavelet Packet Transform (WPT)** algorithm. All algorithms are available **in 1-D, 2-D, and 3-D**. The wavelet transform algorithms are **using** normalized orthogonal or if available **orthonormal** wavelets. The comon **wavelets like Haar, Coiflet, Daubechies, Symlets, and Legendre** are available. Additionally there are also some Bi-Orthogonal and unusal wavelets implemented.
 
 The implementation of JWave is based on several software design patterns and - hopefully - appears therefore user-friendly.
 
@@ -29,11 +29,11 @@ In most cases, other libraries construct the orthogonal / orthonormal bases of t
 
 The *why* can be found in mathematics. Due to using some *orthogonal* transform (or better, an orthogonal base), it is up to oneself how to *construct* this base (as long it stays orthogonal over all dimensions). Next it is also up to oneself how to apply the sequence of the *transform steps*. Both does not influence any performance of the wavelet transforms! But again why?
 
-**The base stays orthogonal** , and one's data is *unit* rotated and mirrowed differently, which *makes a long story short*.
+The base stays orthogonal, and **one's data is *unit* rotated and mirrowed differently**, which *makes a long story short*.
 
 Additionally the application of the transform - independent of using some different rotating and mirrowing base - is like *dancing some 90's techno*: As long as you do the *same amount* of steps *independently* of the performed sequence, even in 2-D and 3-D dimensions, the *expected magic* wavelets can bring in, will be there, and stays the same! For example, the result in values, and e.g the compression rates will stay exactely the same. Only _all_ intermediate performed results (or intermediate hilbert spaces) will be different, if someone else *dances* differently to otherones.
 
-**Have fun - I definitely do! :-)**
+**Have fun :-)**
 
 ### HowTo
 
