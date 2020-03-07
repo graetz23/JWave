@@ -33,8 +33,6 @@ The base stays orthogonal, and **one's data is *unit* rotated and mirrowed diffe
 
 Additionally the application of the transform - independent of using some different rotating and mirrowing base - is like *dancing some 90's techno*: As long as you do the *same amount* of steps *independently* of the performed sequence, even in 2-D and 3-D dimensions, the *expected magic* wavelets can bring in, will be there, and stays the same! For example, the result in values, and e.g the compression rates will stay exactely the same. Only _all_ intermediate performed results (or intermediate hilbert spaces) will be different, if someone else *dances* differently to otherones.
 
-**Have fun :-)**
-
 ### HowTo
 
 For a quick test, pull the repository and then: *ant && ant test*. This builds a JWave.jar and the corresponding unit tests. Afterwards *all* units test are executed.
@@ -45,9 +43,9 @@ For a lot of own stuff with JWave, have a look at the main junit test file / met
 
 For example, how to perform a (losless) data compression with over 98 % compression rate using _all available_ wavelets is shown by the following [junit test](https://github.com/cscheiblich/JWave/blob/master/test/jwave/CompressorTest.java)!
 
-### Some easy code examples
+### Some easy code ..
 
-**Example for 1-D DFT:**
+**example for 1-D DFT:**
 ```Java
 Transform t = new Transform( new DiscreteFourierTransform( ) );
 
@@ -59,7 +57,7 @@ double[ ] arrFreq = t.forward( arrTime ); // 1-D DFT forward
 double[ ] arrReco = t.reverse( arrFreq ); // 1-D DFT reverse
 ```
 
-**Example for 1-D, 2-D FWT:**
+**example for 1-D, 2-D FWT:**
 ```Java
 Transform t = new Transform( new FastWaveletTransform( new Haar02( ) ) );
 
@@ -80,7 +78,7 @@ double[ ][ ] matReco = t.reverse( matHilb ); // 2-D FWT Haar reverse
 // example in 3-D in common to 2-D using a N^3 double[ ][ ][ ] space.
 ```
 
-**Example for 1-D, 2-D WPT:**
+**example for 1-D, 2-D WPT:**
 ```Java
 Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
 
@@ -102,7 +100,7 @@ double[ ][ ] matReco = t.reverse( matHilb ); // 2-D WPT Haar reverse
 // example in 3-D in common to 2-D using a N^3 double[ ][ ][ ] space.
 ```
 
-**Example for 1-D FWT of arbitrary length:**
+**example for 1-D FWT of arbitrary length:**
 ```Java
 Transform t = new Transform(
                new AncientEgyptianDecomposition(
@@ -118,7 +116,7 @@ double[ ] arrHilb = t.forward( arrTime ); // 1-D AED FWT Haar forward
 double[ ] arrReco = t.reverse( arrHilb ); // 1-D AED FWT Haar reverse
 ```
 
-**Example for 1-D WPT (WPD) of arbitrary length:**
+**example for 1-D WPT (WPD) of arbitrary length:**
 ```Java
 Transform t = new Transform(
                new AncientEgyptianDecomposition(
@@ -131,6 +129,8 @@ double[ ] arrHilb = t.forward( arrTime ); // 1-D AED WPT Haar forward
 
 double[ ] arrReco = t.reverse( arrHilb ); // 1-D AED WPT Haar reverse
 ```
+
+**Have fun! :-)**
 
 ## CONTACT
 
