@@ -45,6 +45,93 @@ For a lot of own stuff with JWave, have a look at the main junit test file / met
 
 For example, how to perform a (losless) data compression with over 98 % compression rate using _all available_ wavelets is shown by the following [junit test](https://github.com/cscheiblich/JWave/blob/master/test/jwave/CompressorTest.java)!
 
+### Some easy code examples
+
+**Example for 1-D DFT:**
+```Java
+Transform t = new Transform( new DiscreteFourierTransform( ) );
+
+// arrTime = { r1, c1, r2, c2, ... }`
+double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
+
+double[ ] arrFreq = t.forward( arrTime ); // 1-D DFT forward
+
+double[ ] arrReco = t.reverse( arrFreq ); // 1-D DFT reverse
+```
+
+**Example for 1-D, 2-D FWT:**
+```Java
+Transform t = new Transform( new FastWaveletTransform( new Haar02( ) ) );
+
+double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
+
+double[ ] arrHilb = t.forward( arrTime ); // 1-D FWT Haar forward
+
+double[ ] arrReco = t.reverse( arrHilb ); // 1-D FWT Haar reverse
+
+double[ ][ ] matTime = { { 1., 1., 1., 1. },
+                         { 1., 1., 1., 1. },
+                         { 1., 1., 1., 1. },
+                         { 1., 1., 1., 1. } };
+
+double[ ][ ] matHilb = t.forward( matTime ); // 2-D FWT Haar forward
+
+double[ ][ ] matReco = t.reverse( matHilb ); // 2-D FWT Haar reverse
+// example in 3-D in common to 2-D using a N^3 double[ ][ ][ ] space.
+```
+
+**Example for 1-D, 2-D WPT:**
+```Java
+Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+
+double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
+
+double[ ] arrHilb = t.forward( arrTime ); // 1-D WPT Haar forward
+
+double[ ] arrReco = t.reverse( arrHilb ); // 1-D WPT Haar reverse
+
+double[ ][ ] matTime = { { 1., 1., 1., 1. },
+                         { 1., 1., 1., 1. },
+                         { 1., 1., 1., 1. },
+                         { 1., 1., 1., 1. } };
+
+double[ ][ ] matHilb = t.forward( matTime ); // 2-D WPT Haar forward
+
+double[ ][ ] matReco = t.reverse( matHilb ); // 2-D WPT Haar reverse
+
+// example in 3-D in common to 2-D using a N^3 double[ ][ ][ ] space.
+```
+
+**Example for 1-D FWT of arbitrary length:**
+```Java
+Transform t = new Transform(
+               new AncientEgyptianDecomposition(
+                new FastWaveletTransform(
+                 new Haar02( ) ) ) );
+
+double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1. }; // length = 7
+
+double[ ] arrHilb = t.forward( arrTime ); // 1-D AED FWT Haar forward
+
+//           |    2 steps    |   1 step   | 0  |
+// arrHilb = { 2., 0., 0., 0., 1.41421, 0., 1. };
+double[ ] arrReco = t.reverse( arrHilb ); // 1-D AED FWT Haar reverse
+```
+
+**Example for 1-D WPT (WPD) of arbitrary length:**
+```Java
+Transform t = new Transform(
+               new AncientEgyptianDecomposition(
+                new WaveletPacketTransform(
+                 new Haar02( ) ) ) );
+
+double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1. }; // length = 7
+
+double[ ] arrHilb = t.forward( arrTime ); // 1-D AED WPT Haar forward
+
+double[ ] arrReco = t.reverse( arrHilb ); // 1-D AED WPT Haar reverse
+```
+
 ## CONTACT
 
 If there are doubts, try mailing me, otherwise have fun with JWave.
