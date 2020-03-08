@@ -3,21 +3,21 @@
 
 **The continuous integration** [![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) **on travis-ci.com!**
 
-## README
+## Intoduction
 
-Java implementation of a **Discrete Fourier Transform (DFT)**, a **Fast Wavelet Transform (FWT)**, and a **Wavelet Packet Transform (WPT)** algorithm. All algorithms are available **in 1-D, 2-D, and 3-D**. The wavelet transform algorithms are **using** normalized orthogonal or if available **orthonormal** wavelets. The comon **wavelets like Haar, Coiflet, Daubechies, Symlets, and Legendre** are available. Additionally there are also some Bi-Orthogonal and unusal wavelets implemented.
+Java implementation of a **Discrete Fourier Transform (DFT)**, a **Fast Wavelet Transform (FWT)**, and a **Wavelet Packet Transform (WPT)** algorithm. All algorithms are available **in 1-D, 2-D, and 3-D**. The wavelet transform algorithms are **using** normalized orthogonal or if available **orthonormal** wavelets. The comon **wavelets like Haar, Coiflet, Daubechies, Symlets, and Legendre** are available. Additionally there are also some Bi-Orthogonal and unusal wavelets implemented - in total around 50 wavelets.
 
 The implementation of JWave is based on several software design patterns and - hopefully - appears therefore user-friendly.
 
 ## GETTING STARTED
 
-### Introduction
+### First steps
 
-Have a look at the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo) page: How JWave is used, or why the result is looking like it does, and especially where the hack you can find an iterative (stepping) method!?
+Have a look at the little **how to down the page** or try looking at  [the unit tests](https://github.com/cscheiblich/JWave/tree/master/test/jwave).
 
 ### Can I perform odd samplings like, e.g. 127 data points?
 
-However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on. Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! You can find it in the [HowTo](https://github.com/cscheiblich/JWave/wiki/HowTo).
+However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on. Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! You can find it *down the page*.
 
 ### Why are the results totally different then expected?!
 
