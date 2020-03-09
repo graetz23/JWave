@@ -1,7 +1,7 @@
 # JWave
 ## Java library keeping orthogonal / orthonormal and bi-orthogonal wavelets
 
-**The continuous integration** [![Build Status](https://travis-ci.org/cscheiblich/JWave.svg?branch=master)](https://travis-ci.org/cscheiblich/JWave) **on travis-ci.com!**
+**The continuous integration** [![Build Status](https://travis-ci.org/graetz23/JWave.svg?branch=master)](https://travis-ci.org/graetz23/JWave) **on travis-ci.com!**
 
 ## Intoduction
 
@@ -13,7 +13,7 @@ The implementation of JWave is based on several software design patterns and - h
 
 ### First steps
 
-Have a look at the little **how to down the page** or try looking at  [the unit tests](https://github.com/cscheiblich/JWave/tree/master/test/jwave).
+Have a look at the little **how to down the page** or try looking at  [the unit tests](https://github.com/graetz23/JWave/tree/master/test/jwave).
 
 ### Can I perform odd samplings like, e.g. 127 data points?
 
@@ -39,9 +39,9 @@ For a quick test, pull the repository and then: *ant && ant test*. This builds a
 
 ### Doing own stuff e.g. data compression
 
-For a lot of own stuff with JWave, have a look at the main junit test file / method: [a lot of examples](https://github.com/cscheiblich/JWave/tree/master/test/jwave)!
+For a lot of own stuff with JWave, have a look at the main junit test file / method: [a lot of examples](https://github.com/graetz23/JWave/tree/master/test/jwave)!
 
-For example, how to perform a (losless) data compression with over 98 % compression rate using _all available_ wavelets is shown by the following [junit test](https://github.com/cscheiblich/JWave/blob/master/test/jwave/CompressorTest.java)!
+For example, how to perform a (losless) data compression with over 98 % compression rate using _all available_ wavelets is shown by the following [junit test](https://github.com/graetz23/JWave/blob/master/test/jwave/CompressorTest.java)!
 
 ### Some easy code ..
 
@@ -209,7 +209,7 @@ version **160106**:
   - java -cp ./dist/JWave.jar jwave.JWave Fast Wavelet Transform Daubechies 20
   - java -cp /usr/share/java/junit4.jar:./dist/JWave.jar org.junit.runner.JUnitCore jwave.TransformTest
 - added automatic build using travis-ci.com
- - ! https://travis-ci.org/cscheiblich/JWave
+ - ! https://travis-ci.org/graetz23/JWave
  - have a look at ./.travis.yml
 - added README.md
 - added LICENSE.md
