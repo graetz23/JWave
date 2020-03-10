@@ -1,0 +1,8 @@
+title: JWave
+description: Java implementation of a Discrete Fourier Transform (DFT), a Fast Wavelet Transform (FWT), and a Wavelet Packet Transform (WPT) algorithm in 1-D, 2-D, and 3-D using normalized orthogonal (orthonormal) Haar, Coiflet, Daubechie, Legendre and normalized biorthognal wavelets.
+google_analytics: UA-10835979-4
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
