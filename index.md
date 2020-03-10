@@ -127,9 +127,9 @@ double[ ] arrHilb = t.forward( arrTime ); // 1-D AED WPT Haar forward
 double[ ] arrReco = t.reverse( arrHilb ); // 1-D AED WPT Haar reverse
 ```
 
-## Release \& Package
+## Release & Package Downloads
 
-**The continuous integration** [![Build Status](https://travis-ci.org/graetz23/JWave.svg?branch=master)](https://travis-ci.org/graetz23/JWave) **on travis-ci.com!**
+**The release and package downloads might be stable, if the continuous integration** [![Build Status](https://travis-ci.org/graetz23/JWave.svg?branch=master)](https://travis-ci.org/graetz23/JWave) **on travis-ci.com!**
 
 **Have fun! :-)**
 
