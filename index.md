@@ -1,7 +1,4 @@
-# JWave
 ## Java library keeping orthogonal / orthonormal and bi-orthogonal wavelets
-
-**The continuous integration** [![Build Status](https://travis-ci.org/graetz23/JWave.svg?branch=master)](https://travis-ci.org/graetz23/JWave) **on travis-ci.com!**
 
 ## Intoduction
 
@@ -17,7 +14,7 @@ Have a look at the little **how to down the page** or try looking at  [the unit 
 
 ### Can I perform odd samplings like, e.g. 127 data points?
 
-However, the bare algorithms of JWave do only support data sampled by 2^p | p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on. Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! You can find it *down the page*.
+However, the bare algorithms of JWave do only support data sampled by 2^p \| p E N; e.g. 2, 4, 8, 16, .. 128, 256, 512, 1024, .. and so on. Please use the AncientEgyptianDecomposition class for odd samplings (most frequently asked question)! You can find it *down the page*.
 
 ### Why are the results totally different then expected?!
 
@@ -129,6 +126,10 @@ double[ ] arrHilb = t.forward( arrTime ); // 1-D AED WPT Haar forward
 
 double[ ] arrReco = t.reverse( arrHilb ); // 1-D AED WPT Haar reverse
 ```
+
+## Release \& Package
+
+**The continuous integration** [![Build Status](https://travis-ci.org/graetz23/JWave.svg?branch=master)](https://travis-ci.org/graetz23/JWave) **on travis-ci.com!**
 
 **Have fun! :-)**
 
