@@ -59,7 +59,7 @@ double[ ] arrReco = t.reverse( arrFreq ); // 1-D DFT reverse
 
 **example for 1-D, 2-D FWT:**
 ```Java
-Transform t = new Transform( new FastWaveletTransform( new Haar02( ) ) );
+Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
 
 double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
 
@@ -80,7 +80,7 @@ double[ ][ ] matReco = t.reverse( matHilb ); // 2-D FWT Haar reverse
 
 **example for 1-D, 2-D WPT:**
 ```Java
-Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+Transform t = new Transform( new WaveletPacketTransform( new Haar1( ) ) );
 
 double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
 
@@ -105,7 +105,7 @@ double[ ][ ] matReco = t.reverse( matHilb ); // 2-D WPT Haar reverse
 Transform t = new Transform(
                new AncientEgyptianDecomposition(
                 new FastWaveletTransform(
-                 new Haar02( ) ) ) );
+                 new Haar1( ) ) ) );
 
 double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1. }; // length = 7
 
@@ -121,7 +121,7 @@ double[ ] arrReco = t.reverse( arrHilb ); // 1-D AED FWT Haar reverse
 Transform t = new Transform(
                new AncientEgyptianDecomposition(
                 new WaveletPacketTransform(
-                 new Haar02( ) ) ) );
+                 new Haar1( ) ) ) );
 
 double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1. }; // length = 7
 
