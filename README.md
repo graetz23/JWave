@@ -3,7 +3,7 @@
 
 **The continuous integration** [![Build Status](https://travis-ci.org/graetz23/JWave.svg?branch=master)](https://travis-ci.org/graetz23/JWave) **on travis-ci.com!**
 
-## Intoduction
+## Introduction
 
 Java implementation of a **Discrete Fourier Transform (DFT)**, a **Fast Wavelet Transform (FWT)**, and a **Wavelet Packet Transform (WPT)** algorithm. All algorithms are available **in 1-D, 2-D, and 3-D**. The wavelet transform algorithms are **using** normalized orthogonal or if available **orthonormal** wavelets. The comon **wavelets like Haar, Coiflet, Daubechies, Symlets, and Legendre** are available. Additionally there are also some Bi-Orthogonal and unusal wavelets implemented - in total around 50 wavelets.
 
