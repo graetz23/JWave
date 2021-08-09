@@ -3,6 +3,7 @@
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/graetz23/JWave?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/graetz23/JWave?style=social)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/graetz23/JWave)
 [![Build Status](https://travis-ci.org/graetz23/JWave.svg?branch=master)](https://travis-ci.org/graetz23/JWave)
 
 ## Introduction
