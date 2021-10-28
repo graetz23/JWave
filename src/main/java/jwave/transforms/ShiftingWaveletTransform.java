@@ -10,8 +10,6 @@
 package jwave.transforms;
 
 import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailureNotImplemented;
-import jwave.tools.MathToolKit;
 import jwave.transforms.wavelets.Wavelet;
 
 /**
