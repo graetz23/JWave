@@ -182,16 +182,7 @@ public class MathToolKit {
    */
   public static boolean isBinary( int number ) {
 
-    boolean isBinary = false;
-
-    int power = (int)( Math.log( number ) / Math.log( 2. ) );
-
-    double result = 1. * Math.pow( 2., power );
-
-    if( result == number )
-      isBinary = true;
-
-    return isBinary;
+    return number > 0 && ((number & (number - 1)) == 0);
 
   } // isBinary
 
