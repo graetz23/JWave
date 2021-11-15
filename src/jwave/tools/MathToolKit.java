@@ -181,17 +181,8 @@ public class MathToolKit {
    * @return true if is 2^p else false
    */
   public static boolean isBinary( int number ) {
-
-    boolean isBinary = false;
-
-    int power = (int)( Math.log( number ) / Math.log( 2. ) );
-
-    double result = 1. * Math.pow( 2., power );
-
-    if( result == number )
-      isBinary = true;
-
-    return isBinary;
+	// DLM#23 Power of 2 test
+    return number > 0 && ((number & (number - 1)) == 0);
 
   } // isBinary
 
