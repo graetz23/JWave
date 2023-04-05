@@ -172,14 +172,14 @@ public class Haar1Orthogonal extends Wavelet {
    * @author Christian (graetz23@gmail.com)
    * @date 15.02.2014 21:17:22
    */
-  @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
+  @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength, double[ ] arrTime ) {
 
-    double[ ] arrTime = new double[ arrHilbLength ];
+    // double[ ] arrTime = new double[ arrHilbLength ];
 
-    for( int i = 0; i < arrTime.length; i++ )
+    for( int i = 0; i < arrHilbLength; i++ )
       arrTime[ i ] = 0.;
 
-    int h = arrTime.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
+    int h = arrHilbLength >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
 
     for( int i = 0; i < h; i++ ) {
 
@@ -187,8 +187,8 @@ public class Haar1Orthogonal extends Wavelet {
 
         int k = ( i * 2 ) + j; // int k = ( i << 1 ) + j;
 
-        while( k >= arrTime.length )
-          k -= arrTime.length; // circulate over arrays if scaling and wavelet are larger
+        while( k >= arrHilbLength )
+          k -= arrHilbLength; // circulate over arrays if scaling and wavelet are larger
 
         // adding up energy from scaling coefficients, the low pass (approximation) filter, and
         // wavelet coefficients, the high pass filter (details). However, the raised energy has

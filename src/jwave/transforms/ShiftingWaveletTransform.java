@@ -10,8 +10,6 @@
 package jwave.transforms;
 
 import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailureNotImplemented;
-import jwave.tools.MathToolKit;
 import jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -60,12 +58,12 @@ public class ShiftingWaveletTransform extends WaveletTransform {
       for( int s = 0; s < splits; s++ ) {
 
         double[ ] arrDiv = new double[ div ];
-        double[ ] arrRes = null;
+        double[ ] arrRes = new double[ div ];
 
         for( int p = 0; p < div; p++ )
           arrDiv[ p ] = arrHilb[ s * div + p ];
 
-        arrRes = _wavelet.forward( arrDiv, div );
+        arrRes = _wavelet.forward( arrDiv, div, arrRes );
 
         for( int q = 0; q < div; q++ )
           arrHilb[ s * div + q ] = arrRes[ q ];
@@ -117,12 +115,12 @@ public class ShiftingWaveletTransform extends WaveletTransform {
       for( int s = 0; s < splits; s++ ) {
 
         double[ ] arrDiv = new double[ div ];
-        double[ ] arrRes = null;
+        double[ ] arrRes = new double[ div ];
 
         for( int p = 0; p < div; p++ )
           arrDiv[ p ] = arrTime[ s * div + p ];
 
-        arrRes = _wavelet.reverse( arrDiv, div );
+        arrRes = _wavelet.reverse( arrDiv, div, arrRes );
 
         for( int q = 0; q < div; q++ )
           arrTime[ s * div + q ] = arrRes[ q ];

@@ -71,11 +71,11 @@ public class BiOrthogonal extends Wavelet {
    * @date 28.03.2015 18:44:24 (non-Javadoc)
    * @see jwave.transforms.wavelets.Wavelet#forward(double[], int)
    */
-  @Override public double[ ] forward( double[ ] arrTime, int arrTimeLength ) {
+  @Override public double[ ] forward( double[ ] arrTime, int arrTimeLength, double[ ] arrHilb ) {
 
-    double[ ] arrHilb = new double[ arrTimeLength ];
+    // double[ ] arrHilb = new double[ arrTimeLength ];
 
-    int h = arrHilb.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
+    int h = arrTimeLength >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
     for( int i = 0; i < h; i++ ) {
 
       arrHilb[ i ] = arrHilb[ i + h ] = 0.; // set to zero before sum up
@@ -83,8 +83,8 @@ public class BiOrthogonal extends Wavelet {
       for( int j = 0; j < _motherWavelength; j++ ) {
 
         int k = ( i << 1 ) + j; // k = ( i * 2 ) + j;
-        while( k >= arrHilb.length )
-          k -= arrHilb.length; // circulate over arrays if scaling and wavelet are are larger
+        while( k >= arrTimeLength )
+          k -= arrTimeLength; // circulate over arrays if scaling and wavelet are are larger
 
         arrHilb[ i ] += arrTime[ k ] * _scalingDeCom[ j ]; // low pass filter for the energy (approximation)
         arrHilb[ i + h ] += arrTime[ k ] * _waveletDeCom[ j ]; // high pass filter for the details
@@ -104,20 +104,20 @@ public class BiOrthogonal extends Wavelet {
    * @date 28.03.2015 18:44:24 (non-Javadoc)
    * @see jwave.transforms.wavelets.Wavelet#reverse(double[], int)
    */
-  @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
+  @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength, double[ ] arrTime ) {
 
-    double[ ] arrTime = new double[ arrHilbLength ];
-    for( int i = 0; i < arrTime.length; i++ )
+    // double[ ] arrTime = new double[ arrHilbLength ];
+    for( int i = 0; i < arrHilbLength; i++ )
       arrTime[ i ] = 0.;
 
-    int h = arrTime.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
+    int h = arrHilbLength >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
     for( int i = 0; i < h; i++ ) {
 
       for( int j = 0; j < _motherWavelength; j++ ) {
 
         int k = ( i << 1 ) + j; // k = ( i * 2 ) + j;
-        while( k >= arrTime.length )
-          k -= arrTime.length; // circulate over arrays if scaling and wavelet are larger
+        while( k >= arrHilbLength )
+          k -= arrHilbLength; // circulate over arrays if scaling and wavelet are larger
 
         // adding up energy from low pass (approximation) and details from high pass filter
         arrTime[ k ] +=
