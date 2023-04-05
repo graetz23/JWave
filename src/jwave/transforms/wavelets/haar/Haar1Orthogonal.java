@@ -174,8 +174,6 @@ public class Haar1Orthogonal extends Wavelet {
    */
   @Override public double[ ] reverse( double[ ] arrHilb, int arrHilbLength, double[ ] arrTime ) {
 
-    // double[ ] arrTime = new double[ arrHilbLength ];
-
     for( int i = 0; i < arrHilbLength; i++ )
       arrTime[ i ] = 0.;
 

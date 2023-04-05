@@ -73,8 +73,6 @@ public class BiOrthogonal extends Wavelet {
    */
   @Override public double[ ] forward( double[ ] arrTime, int arrTimeLength, double[ ] arrHilb ) {
 
-    // double[ ] arrHilb = new double[ arrTimeLength ];
-
     int h = arrTimeLength >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
     for( int i = 0; i < h; i++ ) {
 
