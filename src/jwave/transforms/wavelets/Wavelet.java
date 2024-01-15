@@ -233,11 +233,8 @@ public abstract class Wavelet {
    *          full length of arrTime!
    * @return coefficients represented by frequency domain
    */
-  public double[ ] forward( double[ ] arrTime, int arrTimeLength ) {
-
-    double[ ] arrHilb = new double[ arrTimeLength ];
-
-    int h = arrHilb.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
+  public double[ ] forward( double[ ] arrTime, int arrTimeLength, double[ ] arrHilb ) {
+    int h = arrTimeLength >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
     for( int i = 0; i < h; i++ ) {
 
       arrHilb[ i ] = arrHilb[ i + h ] = 0.; // set to zero before sum up
@@ -245,8 +242,8 @@ public abstract class Wavelet {
       for( int j = 0; j < _motherWavelength; j++ ) {
 
         int k = ( i << 1 ) + j; // k = ( i * 2 ) + j;
-        while( k >= arrHilb.length )
-          k -= arrHilb.length; // circulate over arrays if scaling and wavelet are are larger
+        while( k >= arrTimeLength )
+          k -= arrTimeLength; // circulate over arrays if scaling and wavelet are are larger
 
         arrHilb[ i ] += arrTime[ k ] * _scalingDeCom[ j ]; // low pass filter for the energy (approximation)
         arrHilb[ i + h ] += arrTime[ k ] * _waveletDeCom[ j ]; // high pass filter for the details
@@ -274,20 +271,18 @@ public abstract class Wavelet {
    *          full length of arrHilb!
    * @return coefficients represented by time domain
    */
-  public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
-
-    double[ ] arrTime = new double[ arrHilbLength ];
-    for( int i = 0; i < arrTime.length; i++ )
+  public double[ ] reverse( double[ ] arrHilb, int arrHilbLength, double[ ] arrTime ) {
+    for( int i = 0; i < arrHilbLength; i++ )
       arrTime[ i ] = 0.; // set to zero before sum up
 
-    int h = arrTime.length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
+    int h = arrHilbLength >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
     for( int i = 0; i < h; i++ ) {
 
       for( int j = 0; j < _motherWavelength; j++ ) {
 
         int k = ( i << 1 ) + j; // k = ( i * 2 ) + j;
-        while( k >= arrTime.length )
-          k -= arrTime.length; // circulate over arrays if scaling and wavelet are larger
+        while( k >= arrHilbLength )
+          k -= arrHilbLength; // circulate over arrays if scaling and wavelet are larger
 
         // adding up energy from low pass (approximation) and details from high pass filter
         arrTime[ k ] +=
