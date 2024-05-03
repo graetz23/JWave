@@ -1,7 +1,6 @@
 # JWave
 ## Java library keeping orthogonal / orthonormal and bi-orthogonal wavelets
 
-[![Build Status](https://travis-ci.org/graetz23/JWave.svg?branch=master)](https://travis-ci.org/graetz23/JWave)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/graetz23/JWave)
 ![GitHub Repo stars](https://img.shields.io/github/stars/graetz23/JWave?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/graetz23/JWave?style=social)
@@ -143,7 +142,7 @@ If there are doubts, try mailing me, otherwise have fun with JWave.
 
 **JWave is distributed under the MIT License (MIT); this file is part of.**
 
-**Copyright (c) 2008-2021 Christian (graetz23@gmail.com)**
+**Copyright (c) 2008-2024 Christian (graetz23@gmail.com)**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
