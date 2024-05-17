@@ -83,13 +83,14 @@ public class FastWaveletTransform extends WaveletTransform {
           + "given level is out of range for given array" );
 
     double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
-
+    double[ ] arrTempPart = new double[arrTime.length];
+    
     int l = 0;
     int h = arrHilb.length;
     int transformWavelength = _wavelet.getTransformWavelength( ); // normally 2
     while( h >= transformWavelength && l < level ) {
 
-      double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
+      _wavelet.forward( arrHilb, h, arrTempPart );
       System.arraycopy( arrTempPart, 0, arrHilb, 0, h );
       h = h >> 1;
       l++;
@@ -132,7 +133,8 @@ public class FastWaveletTransform extends WaveletTransform {
 
     int length = arrHilb.length; // length of first Hilbert space
     double[ ] arrTime = Arrays.copyOf( arrHilb, length );
-
+    double[ ] arrTempPart = new double[length];
+    
     int transformWavelength = _wavelet.getTransformWavelength( ); // normally 2
     int h = transformWavelength;
 
@@ -142,7 +144,7 @@ public class FastWaveletTransform extends WaveletTransform {
 
     while( h <= arrTime.length && h >= transformWavelength ) {
 
-      double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
+      _wavelet.reverse( arrTime, h, arrTempPart );
       System.arraycopy( arrTempPart, 0, arrTime, 0, h );
       h = h << 1;
 

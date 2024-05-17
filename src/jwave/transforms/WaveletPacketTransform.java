@@ -83,10 +83,10 @@ public class WaveletPacketTransform extends WaveletTransform {
       throw new JWaveFailure(
           "WaveletPacketTransform#forward - given level is out of range for given array" );
 
-    double[ ] arrHilb = new double[ arrTime.length ];
-    for( int i = 0; i < arrTime.length; i++ )
-      arrHilb[ i ] = arrTime[ i ];
-
+    double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
+    double[ ] iBuf = new double[ arrTime.length ];
+    double[ ] oBuf = new double[arrTime.length];
+    
     int k = arrTime.length;
 
     int h = arrTime.length;
@@ -101,12 +101,10 @@ public class WaveletPacketTransform extends WaveletTransform {
 
       for( int p = 0; p < g; p++ ) {
 
-        double[ ] iBuf = new double[ h ];
-
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrHilb[ i + ( p * h ) ];
 
-        double[ ] oBuf = _wavelet.forward( iBuf, h );
+        _wavelet.forward( iBuf, h, oBuf );
 
         for( int i = 0; i < h; i++ )
           arrHilb[ i + ( p * h ) ] = oBuf[ i ];
@@ -153,6 +151,8 @@ public class WaveletPacketTransform extends WaveletTransform {
 
     int length = arrHilb.length; // length of first Hilbert space
     double[ ] arrTime = Arrays.copyOf( arrHilb, length );
+    double[ ] iBuf = new double[ length ];
+    double[ ] oBuf = new double[length];
 
     int transformWavelength = _wavelet.getTransformWavelength( ); // 2, 4, 8, 16, 32, ...
 
@@ -170,12 +170,10 @@ public class WaveletPacketTransform extends WaveletTransform {
 
       for( int p = 0; p < g; p++ ) {
 
-        double[ ] iBuf = new double[ h ];
-
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrTime[ i + ( p * h ) ];
 
-        double[ ] oBuf = _wavelet.reverse( iBuf, h );
+        _wavelet.reverse( iBuf, h, oBuf );
 
         for( int i = 0; i < h; i++ )
           arrTime[ i + ( p * h ) ] = oBuf[ i ];
