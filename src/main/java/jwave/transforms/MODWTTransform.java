@@ -9,14 +9,14 @@ import java.util.Arrays;
  * designed to integrate with the JWave library structure.
  * This version uses the standard, conventional scaling for its filters.
  */
-public class MODWT extends WaveletTransform {
+public class MODWTTransform extends WaveletTransform {
 
     /**
      * Constructor for the MODWT.
      *
      * @param wavelet The mother wavelet to use for the transform.
      */
-    public MODWT(Wavelet wavelet) {
+    public MODWTTransform(Wavelet wavelet) {
         super(wavelet);
     }
 

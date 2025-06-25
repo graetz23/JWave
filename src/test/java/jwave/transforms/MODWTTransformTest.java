@@ -9,15 +9,15 @@ import java.util.Arrays;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class MODWTTest {
+public class MODWTTransformTest {
 
-    private MODWT modwtHaar;
+    private MODWTTransform modwtHaar;
     private double[] simpleSignal;
 
     @Before
     public void setUp() {
         // Use the simplest wavelet (Haar) for predictable results.
-        modwtHaar = new MODWT(new Haar1());
+        modwtHaar = new MODWTTransform(new Haar1());
         // A simple signal for which we can manually calculate results.
         simpleSignal = new double[]{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0};
     }
