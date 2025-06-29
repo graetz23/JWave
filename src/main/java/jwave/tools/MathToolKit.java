@@ -112,8 +112,10 @@ public class MathToolKit {
           "Given blockSize is greater than the given number "
               + "to be split by it" );
 
-    int noOfBlocks = number % blockSize; // 127 % 32 = 3
+    // determine how many full blocks fit into the given number
+    int noOfBlocks = number / blockSize; // e.g. 127 / 32 = 3
 
+    // remaining part after taking the blocks
     int rest = number - noOfBlocks * blockSize; // 127 - 3 * 32 = 31
 
     int[ ] ancientEgyptianMultipliers = decompose( rest );
