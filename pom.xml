@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.c5473c4c</groupId>
+    <groupId>com.github.prophetizo</groupId>
     <artifactId>jwave</artifactId>
     <version>1.0.6</version>
     <packaging>jar</packaging>
@@ -48,7 +48,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/c5473c4c/JWave</url>
+            <url>https://maven.pkg.github.com/prophetizo/JWave</url>
         </repository>
     </distributionManagement>
 </project>
