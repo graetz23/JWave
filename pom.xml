@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -5,11 +6,35 @@
 
     <groupId>com.github.prophetizo</groupId>
     <artifactId>jwave</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>JWave</name>
     <description>A library for the Discrete and Fast Wavelet Transform in Java.</description>
+    <url>https://github.com/prophetizo/JWave</url>
+
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/prophetizo/JWave</url>
+        <connection>scm:git:git://github.com/prophetizo/JWave.git</connection>
+        <developerConnection>scm:git:ssh://github.com:prophetizo/JWave.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>prophetizo</id>
+            <name>Stephen Romano</name>
+            <url>https://github.com/prophetizo</url>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,12 +56,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
-                <!-- The <configuration> block is not needed when using maven.compiler.release -->
             </plugin>
-            <!--
-              ACTION: Added the Surefire plugin.
-              This is crucial for Maven to find and run JUnit 5 tests.
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -44,6 +64,7 @@
             </plugin>
         </plugins>
     </build>
+
     <distributionManagement>
         <repository>
             <id>github</id>
