@@ -15,7 +15,7 @@ The implementation of JWave is based on several software design patterns and - h
 
 ### First steps
 
-Have a look at the little **how to down the page** or try looking at  [the unit tests](https://github.com/graetz23/JWave/tree/master/test/jwave).
+Have a look at the little **how to down the page** or try looking at  [the unit tests](https://github.com/graetz23/JWave/tree/master/src/test/java/jwave).
 
 ### Can I perform odd samplings like, e.g. 127 data points?
 
@@ -224,3 +224,4 @@ version **160106**:
 - added LICENSE.md
 - updated Copyright to the years 2008-2018
 - fixed bug in JWave.java for calling console example with Haar wavelet
+
