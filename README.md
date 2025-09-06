@@ -167,7 +167,7 @@ THE SOFTWARE.
 
 ## VERSION
 
-**JWave is in version 200303.**
+**JWave is _now_ in version 250906 available.**
 
 ## CHANGE LOG
 
