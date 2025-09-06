@@ -30,7 +30,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * normed, due to ||*||2 - euclidean norm.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 16.02.2014 00:18:15
  */
 public class Daubechies5 extends Wavelet {
 
@@ -39,7 +38,6 @@ public class Daubechies5 extends Wavelet {
      * http://wavelets.pybytes.com/wavelet/db5/ Thanks!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 16.02.2014 00:18:15
      */
     public Daubechies5() {
 

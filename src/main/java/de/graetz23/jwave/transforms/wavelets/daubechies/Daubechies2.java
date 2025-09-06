@@ -29,7 +29,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Ingrid Daubechies' orthonormal wavelet of four coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
  *
- * @date 10.02.2010 15:42:45
  * @author Christian (graetz23@gmail.com)
  */
 public class Daubechies2 extends Wavelet {
@@ -38,7 +37,6 @@ public class Daubechies2 extends Wavelet {
      * Constructor setting up the orthonormal Daubechie4 wavelet coeffs and the
      * scales; normed, due to ||*||2 - euclidean norm.
      *
-     * @date 10.02.2010 15:42:45
      * @author Christian (graetz23@gmail.com)
      */
     public Daubechies2() {

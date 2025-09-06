@@ -29,7 +29,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Ingrid Daubechies' orthonormal Daubechies wavelet of 22 coefficients.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 19.08.2014 18:10:52
  */
 public class Daubechies11 extends Wavelet {
 
@@ -38,7 +37,6 @@ public class Daubechies11 extends Wavelet {
      * http://wavelets.pybytes.com/wavelet/db11/ Thanks!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 19.08.2014 18:10:52
      */
     public Daubechies11() {
 

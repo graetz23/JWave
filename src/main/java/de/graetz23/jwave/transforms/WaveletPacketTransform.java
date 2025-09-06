@@ -35,7 +35,6 @@ import de.graetz23.jwave.exceptions.JWaveFailure;
  * Fast Wavelet Packet Transform (WPT) or Wavelet Packet Decomposition (WPD) in
  * 1-D using a specific Wavelet.
  *
- * @date 23.02.2010 13:44:05
  * @author Christian (graetz23@gmail.com)
  */
 public class WaveletPacketTransform extends WaveletTransform {
@@ -43,7 +42,6 @@ public class WaveletPacketTransform extends WaveletTransform {
     /**
      * Constructor receiving a Wavelet object and setting identifier of transform.
      *
-     * @date 23.02.2010 13:44:05
      * @author Christian (graetz23@gmail.com)
      * @param wavelet
      *          object of type Wavelet
@@ -65,7 +63,6 @@ public class WaveletPacketTransform extends WaveletTransform {
      * itself and p is the maximal number of possible levels.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 12:35:15
      * @throws JWaveException
      *           if givven array is not of length 2^p | pEN or the given level is
      *           out of range for the supported Hilbert space (array).
@@ -135,7 +132,6 @@ public class WaveletPacketTransform extends WaveletTransform {
      * the input array have to match to the supported level.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 12:38:23
      * @throws JWaveException
      *           (non-Javadoc)
      * @see jwave.transforms.BasicTransform#reverse(double[], int)

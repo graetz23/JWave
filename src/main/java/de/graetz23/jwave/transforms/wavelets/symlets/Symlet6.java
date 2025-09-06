@@ -29,7 +29,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Symlet6 filter: near symmetric, orthogonal (orthonormal), biorthogonal.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 17.08.2014 14:21:44
  */
 public class Symlet6 extends Wavelet {
 
@@ -38,7 +37,6 @@ public class Symlet6 extends Wavelet {
      * http://wavelets.pybytes.com/wavelet/sym6/ Thanks!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 17.08.2014 14:21:44
      */
     public Symlet6() {
 

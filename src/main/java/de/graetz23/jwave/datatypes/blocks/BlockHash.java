@@ -45,7 +45,7 @@ public class BlockHash extends Block {
   HashMap< Integer, Line > _hashMapLines = null;
 
   /**
-   * Create an object of a sub type; e.g. as pattern.
+   * Create an object of a sub-type; e.g. as pattern.
    * 
    * @author Christian (graetz23@gmail.com)
    */

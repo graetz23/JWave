@@ -15,7 +15,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Base class for BiOrthogonal wavelets.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 28.03.2015 18:42:08
  */
 public class BiOrthogonal extends Wavelet {
 
@@ -23,7 +22,6 @@ public class BiOrthogonal extends Wavelet {
      * no jobs done here ..
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 28.03.2015 18:42:08
      */
     public BiOrthogonal() {
     } // BiOrthogonal

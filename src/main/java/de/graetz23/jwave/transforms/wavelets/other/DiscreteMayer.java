@@ -30,8 +30,8 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * (orthonormal), biorthogonal.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 16.02.2014 13:58:12
  */
+@Deprecated
 public class DiscreteMayer extends Wavelet {
 
     /**
@@ -39,7 +39,6 @@ public class DiscreteMayer extends Wavelet {
      * http://wavelets.pybytes.com/wavelet/dmey/ Thanks!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 16.02.2014 13:58:12
      */
     public DiscreteMayer() {
 

@@ -29,16 +29,15 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Legendre's orthonormal wavelet of four coefficients and the scales; normed,
  * due to ||*||2 - euclidean norm.
  *
- * @date 03.06.2010 21:19:04
  * @author Christian (graetz23@gmail.com)
  */
+@Deprecated
 public class Legendre2 extends Wavelet {
 
     /**
      * Constructor setting up the orthonormal Legendre4 wavelet coeffs and the
      * scales; normed, due to ||*||2 - euclidean norm.
      *
-     * @date 03.06.2010 21:19:04
      * @author Christian (graetz23@gmail.com)
      */
     public Legendre2() {

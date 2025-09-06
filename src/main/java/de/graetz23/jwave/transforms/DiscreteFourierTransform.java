@@ -35,7 +35,6 @@ import de.graetz23.jwave.exceptions.JWaveFailure;
  * time taken being proportional to the square of the number on points in the
  * series.
  *
- * @date 25.03.2010 19:56:29
  * @author Christian (graetz23@gmail.com)
  */
 
@@ -43,14 +42,12 @@ import de.graetz23.jwave.exceptions.JWaveFailure;
  * Discrete Fast Fourier Transform (dFFT)
  *
  * @author Christian (graetz23@gmail.com)
- * @date 14.03.2015 18:30:35
  */
 public class DiscreteFourierTransform extends BasicTransform {
 
     /**
      * Constructor; does nothing
      *
-     * @date 25.03.2010 19:56:29
      * @author Christian (graetz23@gmail.com)
      */
     public DiscreteFourierTransform() {
@@ -66,9 +63,8 @@ public class DiscreteFourierTransform extends BasicTransform {
      * arrTime[ 1 ] = imag1, arrTime[ 2 ] = real2, arrTime[ 3 ] = imag2, ... The
      * output arrFreq is organized by the same scheme.
      *
-     * @date 25.03.2010 19:56:29
-     * @author Christian (graetz23@gmail.com)
      * @throws JWaveException
+     * @author Christian (graetz23@gmail.com)
      * @see jwave.transforms.BasicTransform#forward(double[])
      */
     @Override
@@ -125,9 +121,8 @@ public class DiscreteFourierTransform extends BasicTransform {
      * arrTime[ 1 ] = imag1, arrTime[ 2 ] = real2, arrTime[ 3 ] = imag2, ... The
      * output arrTime is organized by the same scheme.
      *
-     * @date 25.03.2010 19:56:29
-     * @author Christian (graetz23@gmail.com)
      * @throws JWaveException
+     * @author Christian (graetz23@gmail.com)
      * @see jwave.transforms.BasicTransform#reverse(double[])
      */
     @Override
@@ -174,11 +169,10 @@ public class DiscreteFourierTransform extends BasicTransform {
 
     } // reverse
 
-    /*
+    /**
      * ATTENTION - yet no level implemented; it is ognored!
+     *
      * @author Christian (graetz23@gmail.com)
-     * @date 16.05.2015 21:18:34 (non-Javadoc)
-     * @see jwave.transforms.BasicTransform#forward(double[], int)
      */
     @Override
     public double[] forward(double[] arrTime, int level)
@@ -188,11 +182,10 @@ public class DiscreteFourierTransform extends BasicTransform {
 
     } // forward
 
-    /*
+    /**
      * ATTENTION - yet no level implemented; it is ognored!
+     *
      * @author Christian (graetz23@gmail.com)
-     * @date 16.05.2015 21:18:34 (non-Javadoc)
-     * @see jwave.transforms.BasicTransform#reverse(double[], int)
      */
     @Override
     public double[] reverse(double[] arrFreq, int level)
@@ -208,12 +201,10 @@ public class DiscreteFourierTransform extends BasicTransform {
      * imaginary part of a complex number. The output arrFreq is organized by the
      * same scheme.
      *
-     * @date 23.11.2010 18:57:34
-     * @author Christian (graetz23@gmail.com)
-     * @param arrTime
-     *          array of type Complex keeping coefficients of complex numbers
+     * @param arrTime array of type Complex keeping coefficients of complex numbers
      * @return array of type Complex keeping the discrete fourier transform
-     *         coefficients
+     * coefficients
+     * @author Christian (graetz23@gmail.com)
      */
     public Complex[] forward(Complex[] arrTime) {
 
@@ -254,12 +245,10 @@ public class DiscreteFourierTransform extends BasicTransform {
      * imaginary part of a complex number. The output arrTime is organized by the
      * same scheme.
      *
-     * @date 23.11.2010 19:02:12
-     * @author Christian (graetz23@gmail.com)
-     * @param arrFreq
-     *          array of type Complex keeping the discrete fourier transform
-     *          coefficients
+     * @param arrFreq array of type Complex keeping the discrete fourier transform
+     *                coefficients
      * @return array of type Complex keeping coefficients of tiem domain
+     * @author Christian (graetz23@gmail.com)
      */
     public Complex[] reverse(Complex[] arrFreq) {
 

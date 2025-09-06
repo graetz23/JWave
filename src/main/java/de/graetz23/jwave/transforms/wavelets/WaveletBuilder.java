@@ -97,7 +97,6 @@ import de.graetz23.jwave.transforms.wavelets.symlets.Symlet9;
  * Class for creating and identifying Wavelet object.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 14.03.2015 13:50:30
  */
 public class WaveletBuilder {
 
@@ -109,7 +108,6 @@ public class WaveletBuilder {
      * @param waveletName identifier as stored in Wavelet object
      * @return a matching object of type Wavelet
      * @author Christian (graetz23@gmail.com)
-     * @date 14.03.2015 14:19:09
      */
     static public Wavelet create(String waveletName) {
 
@@ -423,7 +421,6 @@ public class WaveletBuilder {
      * @param wavelet an object of type Wavelet
      * @return identifier string of a given Wavelet object
      * @author Christian (graetz23@gmail.com)
-     * @date 14.03.2015 14:22:22
      */
     static public String identify(Wavelet wavelet) {
 
@@ -436,7 +433,6 @@ public class WaveletBuilder {
      *
      * @return an array keeping all Wavelet objects
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 15:39:15
      */
     static public Wavelet[] create2arr() {
 

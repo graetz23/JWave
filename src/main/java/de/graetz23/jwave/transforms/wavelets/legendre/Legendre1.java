@@ -30,9 +30,9 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Legendre polynomial. But, actually for the smallest Legendre wavelet, the
  * wavelet is the mirrored Haar Wavelet.
  *
- * @date 08.06.2010 09:32:08
  * @author Christian (graetz23@gmail.com)
  */
+@Deprecated
 public class Legendre1 extends Wavelet {
 
     /**
@@ -41,7 +41,6 @@ public class Legendre1 extends Wavelet {
      * coefficients are the mirrored ones of Alfred Haar's wavelet -- see class
      * Haar1 and Haar1Orthogonal.
      *
-     * @date 08.06.2010 09:32:08
      * @author Christian (graetz23@gmail.com)
      */
     public Legendre1() {

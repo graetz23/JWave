@@ -30,7 +30,6 @@ import java.util.Arrays;
  * scaling function, the base wavelength, the forward transform method, and the
  * reverse transform method.
  *
- * @date 10.02.2010 08:54:48
  * @author Christian (graetz23@gmail.com)
  */
 public abstract class Wavelet {
@@ -77,7 +76,6 @@ public abstract class Wavelet {
     /**
      * Constructor; predefine members to default values or null!
      *
-     * @date 15.02.2014 22:16:27
      * @author Christian (graetz23@gmail.com)
      */
     public Wavelet() {
@@ -99,7 +97,6 @@ public abstract class Wavelet {
      * orthonormal coefficients of the scaling (low pass) for decomposition!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 16.02.2014 13:19:27
      */
     protected void _buildOrthonormalSpace() {
         // building wavelet as orthogonal (orthonormal) space from
@@ -123,9 +120,9 @@ public abstract class Wavelet {
 
     /**
      * Returns a String keeping the name of the current Wavelet.
-     * @author Christian (graetz23@gmail.com)
-     * @date 17.08.2014 11:02:31
+     *
      * @return String keeping the name of the wavelet
+     * @author Christian (graetz23@gmail.com)
      */
     public String getName() {
         return _name;
@@ -134,9 +131,9 @@ public abstract class Wavelet {
     /**
      * Returns a String keeping the name of the current Wavelet.
      * Used to override Object's toString method
-     * @author Dakota Williams
-     * @date 11.06.2015 10:12:15
+     *
      * @return String with the name of the wavelet
+     * @author Dakota Williams
      */
     public String toString() {
         return getName();
@@ -145,9 +142,8 @@ public abstract class Wavelet {
     /**
      * Returns the wavelength of the so called mother wavelet or scaling function.
      *
-     * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2014 22:06:12
      * @return the minimal wavelength for the mother wavelet
+     * @author Christian (graetz23@gmail.com)
      */
     public int getMotherWavelength() {
         return _motherWavelength;
@@ -157,10 +153,9 @@ public abstract class Wavelet {
      * Returns the minimal necessary wavelength for a signal that can be
      * transformed by this wavelet.
      *
-     * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2014 22:08:43
      * @return integer representing minimal wavelength of the input signal that
-     *         should be transformed by this wavelet.
+     * should be transformed by this wavelet.
+     * @author Christian (graetz23@gmail.com)
      */
     public int getTransformWavelength() {
         return _transformWavelength;
@@ -170,10 +165,9 @@ public abstract class Wavelet {
      * Returns a copy of the scaling (low pass filter) coefficients of
      * decomposition.
      *
-     * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2010 22:11:42
      * @return array of length of the mother wavelet wavelength keeping the
-     *         decomposition low pass filter coefficients
+     * decomposition low pass filter coefficients
+     * @author Christian (graetz23@gmail.com)
      */
     public final double[] getScalingDeComposition() {
         return Arrays.copyOf(_scalingDeCom, _scalingDeCom.length);
@@ -183,10 +177,9 @@ public abstract class Wavelet {
      * Returns a copy of the wavelet (high pass filter) coefficients of
      * decomposition.
      *
-     * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2014 22:11:25
      * @return array of length of the mother wavelet wavelength keeping the
-     *         decomposition high pass filter coefficients
+     * decomposition high pass filter coefficients
+     * @author Christian (graetz23@gmail.com)
      */
     public final double[] getWaveletDeComposition() {
         return Arrays.copyOf(_waveletDeCom, _waveletDeCom.length);
@@ -196,10 +189,9 @@ public abstract class Wavelet {
      * Returns a copy of the scaling (low pass filter) coefficients of
      * reconstruction.
      *
-     * @author Christian (graetz23@gmail.com)
-     * @date 16.02.2014 10:35:11
      * @return array of length of the mother wavelet wavelength keeping the
-     *         reconstruction low pass filter coefficients
+     * reconstruction low pass filter coefficients
+     * @author Christian (graetz23@gmail.com)
      */
     public final double[] getScalingReConstruction() {
         return Arrays.copyOf(_scalingReCon, _scalingReCon.length);
@@ -209,10 +201,9 @@ public abstract class Wavelet {
      * Returns a copy of the wavelet (high pass filter) coefficients of
      * reconstruction.
      *
-     * @author Christian (graetz23@gmail.com)
-     * @date 16.02.2014 10:35:09
      * @return array of length of the mother wavelet wavelength keeping the
-     *         reconstruction high pass filter coefficients
+     * reconstruction high pass filter coefficients
+     * @author Christian (graetz23@gmail.com)
      */
     public final double[] getWaveletReConstruction() {
         return Arrays.copyOf(_waveletReCon, _waveletReCon.length);
@@ -224,14 +215,11 @@ public abstract class Wavelet {
      * coefficients of Hilbert domain and should be of length 2 to the power of p
      * -- length = 2^p where p is a positive integer.
      *
-     * @date 10.02.2010 08:18:02
-     * @author Christian (graetz23@gmail.com)
-     * @param arrTime
-     *          array keeping time domain coefficients
-     * @param arrTimeLength
-     *          is necessary, due to working only on a part of arrTime not on the
-     *          full length of arrTime!
+     * @param arrTime       array keeping time domain coefficients
+     * @param arrTimeLength is necessary, due to working only on a part of arrTime not on the
+     *                      full length of arrTime!
      * @return coefficients represented by frequency domain
+     * @author Christian (graetz23@gmail.com)
      */
     public double[] forward(double[] arrTime, int arrTimeLength) {
 
@@ -265,14 +253,11 @@ public abstract class Wavelet {
      * of time domain and should be of length 2 to the power of p -- length = 2^p
      * where p is a positive integer.
      *
-     * @date 10.02.2010 08:19:24
-     * @author Christian (graetz23@gmail.com)
-     * @param arrHilb
-     *          array keeping frequency domain coefficients
-     * @param arrHilbLength
-     *          is necessary, due to working only on a part of arrHilb not on the
-     *          full length of arrHilb!
+     * @param arrHilb       array keeping frequency domain coefficients
+     * @param arrHilbLength is necessary, due to working only on a part of arrHilb not on the
+     *                      full length of arrHilb!
      * @return coefficients represented by time domain
+     * @author Christian (graetz23@gmail.com)
      */
     public double[] reverse(double[] arrHilb, int arrHilbLength) {
 

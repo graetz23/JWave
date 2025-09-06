@@ -42,7 +42,6 @@ public class ShiftingWaveletTransform extends WaveletTransform {
      * Constructor taking Wavelet object for performing the transform.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2016 23:12:55
      */
     public ShiftingWaveletTransform(Wavelet wavelet) {
         super(wavelet);
@@ -52,8 +51,6 @@ public class ShiftingWaveletTransform extends WaveletTransform {
      * Forward method that uses strictly the abilities of an orthogonal transform.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2016 23:12:55 (non-Javadoc)
-     * @see jwave.transforms.BasicTransform#forward(double[])
      */
     @Override
     public double[] forward(double[] arrTime) throws JWaveException {
@@ -103,8 +100,6 @@ public class ShiftingWaveletTransform extends WaveletTransform {
      * Reverse method that uses strictly the abilities of an orthogonal transform.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2016 23:12:55 (non-Javadoc)
-     * @see jwave.transforms.BasicTransform#reverse(double[])
      */
     @Override
     public double[] reverse(double[] arrHilb) throws JWaveException {

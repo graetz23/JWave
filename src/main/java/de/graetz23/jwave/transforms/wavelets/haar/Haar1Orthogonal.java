@@ -28,7 +28,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
 /**
  * Alfred Haar's orthogonal wavelet transform.
  *
- * @date 03.06.2010 09:47:24
  * @author Christian (graetz23@gmail.com)
  */
 public class Haar1Orthogonal extends Wavelet {
@@ -41,10 +40,9 @@ public class Haar1Orthogonal extends Wavelet {
     /**
      * Constructor setting up the orthogonal Haar scaling coefficients and
      * matching wavelet coefficients. However, the reverse method has to be
-     * obverloaded, due to having an change in the energy that has to be corrected
-     * while perfoming the reconstruction.!
+     * overloaded, due to having an change in the energy that has to be corrected
+     * while performing the reconstruction.!
      *
-     * @date 03.06.2010 09:47:24
      * @author Christian (graetz23@gmail.com)
      */
     public Haar1Orthogonal() {

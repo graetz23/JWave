@@ -29,7 +29,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Cohen Daubechies Feauveau (CDF) 9/7 Wavelet
  *
  * @author Christian (graetz23@gmail.com)
- * @date 17.08.2014 13:52:41
  */
 public class CDF97 extends Wavelet {
 
@@ -38,7 +37,6 @@ public class CDF97 extends Wavelet {
      * DUE TO ODD NUMBER COEFFICIENTS!!!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 17.08.2014 13:52:41
      */
     public CDF97() {
 

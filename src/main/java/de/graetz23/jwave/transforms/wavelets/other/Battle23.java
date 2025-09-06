@@ -31,14 +31,12 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * 674-693, Table 1
  *
  * @author Christian (graetz23@gmail.com)
- * @date 15.02.2014 23:19:07
  */
 @Deprecated
 public class Battle23 extends Wavelet {
 
     /**
      * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2014 23:23:23
      */
     public Battle23() {
 

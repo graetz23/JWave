@@ -36,7 +36,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Wavelet Transform (DWT). Naming of this class due to en.wikipedia.org; to
  * write Fourier series in terms of the 'basic waves' of function: e^(2*pi*i*w).
  *
- * @date 08.02.2010 11:11:59
  * @author Christian (graetz23@gmail.com)
  */
 public abstract class BasicTransform {
@@ -45,25 +44,22 @@ public abstract class BasicTransform {
      * String identifier of the current Transform object.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 14.03.2015 14:25:56
      */
     protected String _name;
 
     /**
      * @author Christian (graetz23@gmail.com)
-     * @date 19.02.2014 18:38:21
      */
     public BasicTransform() {
 
         _name = null;
 
-    } // BasicTransform
+    } // constructor
 
     /**
      * Returns String identifier of current type of BasicTransform Object.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 14.03.2015 18:13:34
      * @return identifier as String
      */
     public String getName() {
@@ -74,7 +70,6 @@ public abstract class BasicTransform {
      * Returns the stored Wavelet object or null pointer.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 14.03.2015 18:26:44
      * @return object of type Wavelet of null pointer
      * @throws JWaveFailure
      *           if Wavelet object is not available
@@ -82,14 +77,13 @@ public abstract class BasicTransform {
     public Wavelet getWavelet() throws JWaveFailure {
         throw new JWaveFailure(
                 "BasicTransform#getWavelet - not available");
-    } // getWavelet
+    } // method
 
     /**
      * Performs the forward transform from time domain to frequency or Hilbert
      * domain for a given array depending on the used transform algorithm by
      * inheritance.
      *
-     * @date 10.02.2010 08:23:24
      * @author Christian (graetz23@gmail.com)
      * @param arrTime
      *          coefficients of 1-D time domain
@@ -103,7 +97,6 @@ public abstract class BasicTransform {
      * domain for a given array depending on the used transform algorithm by
      * inheritance.
      *
-     * @date 10.02.2010 08:23:24
      * @author Christian (graetz23@gmail.com)
      * @param arrFreq
      *          coefficients of 1-D frequency or Hilbert domain
@@ -117,7 +110,6 @@ public abstract class BasicTransform {
      * given level depending on the used transform algorithm by inheritance.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 11:33:11
      * @param arrTime
      * @param level
      *          the level of Hilbert space; energy & detail coefficients
@@ -132,14 +124,13 @@ public abstract class BasicTransform {
         throw new JWaveError("BasicTransform#forward - "
                 + "method is not implemented for this transform type!");
 
-    } // forward
+    } // method
 
     /**
      * Performs the reverse transform from Hilbert domain of a given level to time
      * domain depending on the used transform algorithm by inheritance.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 11:34:27
      * @param arrFreq
      * @param level
      *          the level of Hilbert space; energy & detail coefficients
@@ -154,14 +145,13 @@ public abstract class BasicTransform {
         throw new JWaveError("BasicTransform#reverse - "
                 + "method is not implemented for this transform type!");
 
-    } // reverse
+    } // method
 
     /**
      * Generates from a 2-D decomposition a 1-D time series.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 17.08.2014 10:07:19
-     * @param matDeComp
+     * @param arrTime
      *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
      *          of N=2^p
      * @return a 1-D time domain signal
@@ -172,7 +162,7 @@ public abstract class BasicTransform {
         throw new JWaveError("BasicTransform#decompose - "
                 + "method is not implemented for this transform type!");
 
-    } // decompose
+    } // method
 
     /**
      * Generates from a 1-D signal a 2-D output, where the second dimension are
@@ -185,7 +175,6 @@ public abstract class BasicTransform {
      * THIS METHOD, THE _HIGHEST_ LEVEL IS _ALWAYS_ TAKEN FOR RECONSTRUCTION!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 17.08.2014 10:07:19
      * @param matDeComp
      *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
      *          of M=2^p | pEN
@@ -206,7 +195,7 @@ public abstract class BasicTransform {
 
         return arrTime;
 
-    } // recompose
+    } // method
 
     /**
      * Generates from a 1-D signal a 2-D output, where the second dimension are
@@ -218,7 +207,6 @@ public abstract class BasicTransform {
      * level filter it and then do reconstruction only from this single line!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 15:12:19
      * @param matDeComp
      *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
      *          of M=2^p | pEN
@@ -240,14 +228,13 @@ public abstract class BasicTransform {
 
         return arrTime;
 
-    } // recompose
+    } // method
 
     /**
      * Performs the forward transform from time domain to frequency or Hilbert
      * domain for a given array depending on the used transform algorithm by
      * inheritance.
      *
-     * @date 16.02.2014 14:42:57
      * @author Christian (graetz23@gmail.com)
      * @param arrTime
      *          coefficients of 1-D time domain
@@ -280,16 +267,15 @@ public abstract class BasicTransform {
 
         return arrHilb;
 
-    } // forward
+    } // method
 
     /**
      * Performs the reverse transform from frequency or Hilbert domain to time
      * domain for a given array depending on the used transform algorithm by
      * inheritance.
      *
-     * @date 16.02.2014 14:42:57
      * @author Christian (graetz23@gmail.com)
-     * @param arrFreq
+     * @param arrHilb
      *          coefficients of 1-D frequency or Hilbert domain
      * @return coefficients of 1-D time domain
      * @throws JWaveException
@@ -319,7 +305,7 @@ public abstract class BasicTransform {
 
         return arrTime;
 
-    } // reverse
+    } // method
 
     /**
      * Performs the 2-D forward transform from time domain to frequency or Hilbert
@@ -327,7 +313,6 @@ public abstract class BasicTransform {
      * inheritance.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 12:47:01
      * @param matTime
      * @return
      * @throws JWaveException
@@ -339,7 +324,7 @@ public abstract class BasicTransform {
         int maxN = MathToolKit.getExponent(matTime[0].length);
         return forward(matTime, maxM, maxN);
 
-    } // forward
+    } // method
 
     /**
      * Performs the 2-D forward transform from time domain to frequency or Hilbert
@@ -347,7 +332,6 @@ public abstract class BasicTransform {
      * transform algorithm by inheritance. The supported level has to match the
      * possible dimensions of the given matrix.
      *
-     * @date 10.02.2010 11:00:29
      * @author Christian (graetz23@gmail.com)
      * @param matTime
      *          coefficients of 2-D time domain
@@ -396,7 +380,7 @@ public abstract class BasicTransform {
 
         return matHilb;
 
-    } // forward
+    } // method
 
     /**
      * Performs the 2-D reverse transform from frequency or Hilbert or time domain
@@ -404,7 +388,6 @@ public abstract class BasicTransform {
      * by inheritance.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 10.02.2010 11:01:38
      * @param matFreq
      * @return
      * @throws JWaveException
@@ -415,14 +398,13 @@ public abstract class BasicTransform {
         int maxN = MathToolKit.getExponent(matFreq[0].length);
         return reverse(matFreq, maxM, maxN);
 
-    } // reverse
+    } // method
 
     /**
      * Performs the 2-D reverse transform from frequency or Hilbert or time domain
      * to time domain of a certain level for a given matrix depending on the used
      * transform algorithm by inheritance.
      *
-     * @date 22.03.2015 12:49:16
      * @author Christian (graetz23@gmail.com)
      * @param matFreq
      *          coefficients of 2-D frequency or Hilbert domain
@@ -471,7 +453,7 @@ public abstract class BasicTransform {
 
         return matTime;
 
-    } // reverse
+    } // method
 
     /**
      * Performs the 3-D forward transform from time domain to frequency or Hilbert
@@ -479,7 +461,6 @@ public abstract class BasicTransform {
      * inheritance.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 10.07.2010 18:08:17
      * @param spcTime
      * @return
      * @throws JWaveException
@@ -492,7 +473,7 @@ public abstract class BasicTransform {
         int maxR = MathToolKit.getExponent(spcTime[0][0].length);
         return forward(spcTime, maxP, maxQ, maxR);
 
-    } // forward
+    } // method
 
     /**
      * Performs the 3-D forward transform from time domain to frequency or Hilbert
@@ -500,7 +481,6 @@ public abstract class BasicTransform {
      * transform algorithm by inheritance.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 12:58:34
      * @param spcTime
      *          coefficients of 3-D time domain domain
      * @return coefficients of 3-D frequency or Hilbert domain
@@ -563,7 +543,7 @@ public abstract class BasicTransform {
 
         return spcHilb;
 
-    } // forward
+    } // method
 
     /**
      * Performs the 3-D reverse transform from frequency or Hilbert domain to time
@@ -571,7 +551,6 @@ public abstract class BasicTransform {
      * inheritance.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 10.07.2010 18:09:54
      * @param spcHilb
      * @return
      * @throws JWaveException
@@ -584,7 +563,7 @@ public abstract class BasicTransform {
         int maxR = MathToolKit.getExponent(spcHilb[0][0].length);
         return reverse(spcHilb, maxP, maxQ, maxR);
 
-    } // reverse
+    } // method
 
     /**
      * Performs the 3-D reverse transform from frequency or Hilbert domain of a
@@ -593,7 +572,6 @@ public abstract class BasicTransform {
      * match the level of Hilbert space.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 13:01:47
      * @param spcHilb
      *          coefficients of 3-D frequency or Hilbert domain
      * @return coefficients of 3-D time domain
@@ -656,14 +634,13 @@ public abstract class BasicTransform {
 
         return spcTime;
 
-    } // reverse
+    } // method
 
     /**
      * Returns true if given integer is of type binary (2, 4, 8, 16, ..) else the
      * method returns false.
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 13:31:39
      * @param number
      *          an integer of type 2, 4, 8, 16, 32, 64, ...
      * @return true if number is a binary number else false
@@ -672,13 +649,12 @@ public abstract class BasicTransform {
 
         return MathToolKit.isBinary(number); // use MathToolKit or implement
 
-    } // isBinary
+    } // method
 
     /**
      * Return the exponent of a binary a number
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 13:35:50
      * @param number
      *          any integer that fulfills 2^p | pEN
      * @return p as number = 2^p | pEN
@@ -694,6 +670,6 @@ public abstract class BasicTransform {
 
         return (int) (MathToolKit.getExponent((int) (number))); // use MathToolKit or implement
 
-    } // calcExponent
+    } // method
 
 } // BasicTransform

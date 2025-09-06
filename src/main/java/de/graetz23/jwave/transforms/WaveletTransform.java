@@ -30,7 +30,6 @@ import de.graetz23.jwave.exceptions.JWaveFailure;
 
 /**
  * @author Christian (graetz23@gmail.com)
- * @date 15.02.2014 21:05:33
  */
 public abstract class WaveletTransform extends BasicTransform {
 
@@ -38,27 +37,23 @@ public abstract class WaveletTransform extends BasicTransform {
      * The used wavelet for transforming
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2014 21:05:33
      */
     protected Wavelet _wavelet;
 
     /**
      * Constructor checks whether the given object is all right.
      *
+     * @param wavelet object of type Wavelet
      * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2014 21:05:33
-     * @param wavelet
-     *          object of type Wavelet
      */
     protected WaveletTransform(Wavelet wavelet) {
         _wavelet = wavelet;
     } // check for objects od type Wavelet
 
-    /*
+    /**
      * Returns the stored Wavelet object.
+     *
      * @author Christian (graetz23@gmail.com)
-     * @date 14.03.2015 18:27:05 (non-Javadoc)
-     * @see jwave.transforms.BasicTransform#getWavelet()
      */
     public Wavelet getWavelet() {
         return _wavelet;
@@ -69,11 +64,8 @@ public abstract class WaveletTransform extends BasicTransform {
      * one kind of wavelet transform algorithm for a given array of dimension
      * (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
      *
-     * @date 10.02.2010 08:23:24
+     * @throws JWaveException if given array is not of length 2^p | pEN
      * @author Christian (graetz23@gmail.com)
-     * @throws JWaveException
-     *           if given array is not of length 2^p | pEN
-     * @see jwave.transforms.BasicTransform#forward(double[])
      */
     @Override
     public double[] forward(double[] arrTime) throws JWaveException {
@@ -94,11 +86,8 @@ public abstract class WaveletTransform extends BasicTransform {
      * one kind of wavelet transform algorithm for a given array of dimension
      * (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
      *
-     * @date 10.02.2010 08:23:24
+     * @throws JWaveException if given array is not of length 2^p | pEN
      * @author Christian (graetz23@gmail.com)
-     * @throws JWaveException
-     *           if given array is not of length 2^p | pEN
-     * @see jwave.transforms.BasicTransform#reverse(double[])
      */
     @Override
     public double[] reverse(double[] arrHilb) throws JWaveException {
@@ -126,15 +115,11 @@ public abstract class WaveletTransform extends BasicTransform {
      * are keeping the next higher Hilbert spaces, so the next step in wavelet
      * filtering.
      *
-     * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 14:28:49
-     * @param arrTime
-     *          coefficients of time domain
+     * @param arrTime coefficients of time domain
      * @return matDeComp coefficients of frequency or Hilbert domain in 2-D
-     *         spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent of M=2^p | pEN
-     * @throws JWaveException
-     *           if something does not match upon the criteria of input
-     * @see jwave.transforms.BasicTransform#decompose(double[])
+     * spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent of M=2^p | pEN
+     * @throws JWaveException if something does not match upon the criteria of input
+     * @author Christian (graetz23@gmail.com)
      */
     @Override
     public double[][] decompose(double[] arrTime)
@@ -163,16 +148,11 @@ public abstract class WaveletTransform extends BasicTransform {
      * same way and compare results after reverse transform, this is the best
      * input for it.
      *
-     * @author Christian (graetz23@gmail.com)
-     * @date 22.03.2015 14:29:01
-     * @see jwave.transforms.BasicTransform#recompose(double[][], int)
-     * @param matDeComp
-     *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
-     *          of M=2^p | pEN
-     * @throws JWaveException
-     *           if something does not match upon the criteria of input
+     * @param matDeComp 2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
+     *                  of M=2^p | pEN
      * @return a 1-D time domain signal
-     * @see jwave.transforms.BasicTransform#recompose(double[])
+     * @throws JWaveException if something does not match upon the criteria of input
+     * @author Christian (graetz23@gmail.com)
      */
     public double[] recompose(double[][] matDeComp, int level)
             throws JWaveException {

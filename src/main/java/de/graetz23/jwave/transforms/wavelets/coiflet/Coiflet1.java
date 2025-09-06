@@ -29,7 +29,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Ingrid Daubechies' orthonormal Coiflet wavelet of six coefficients.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 15.02.2014 22:27:55
  */
 public class Coiflet1 extends Wavelet {
 
@@ -39,7 +38,6 @@ public class Coiflet1 extends Wavelet {
      * norm), and spreads the scaling coefficients afterwards; .
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2014 22:27:55
      */
     public Coiflet1() {
 

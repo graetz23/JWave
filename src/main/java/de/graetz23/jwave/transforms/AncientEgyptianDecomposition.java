@@ -41,7 +41,6 @@ import de.graetz23.jwave.tools.MathToolKit;
  * coefficient of wavelet space of level 0. For an "orthonormal" wavelet this
  * holds. See: http://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication
  *
- * @date 14.08.2010 10:43:28
  * @author Christian (graetz23@gmail.com)
  */
 public class AncientEgyptianDecomposition extends BasicTransform {
@@ -62,9 +61,6 @@ public class AncientEgyptianDecomposition extends BasicTransform {
     private int _initialWaveletSpaceSize;
 
     /**
-     * Constructor taking the
-     *
-     * @date 14.08.2010 10:43:28
      * @author Christian (graetz23@gmail.com)
      */
     public AncientEgyptianDecomposition(BasicTransform basicTransform) {
@@ -75,6 +71,9 @@ public class AncientEgyptianDecomposition extends BasicTransform {
 
     } // FastBasicTransformArbitrary
 
+    /**
+     * @author Christian (graetz23@gmail.com)
+     */
     public AncientEgyptianDecomposition(BasicTransform waveTransform,
                                         int initialWaveletSpaceSize) {
 
@@ -90,10 +89,8 @@ public class AncientEgyptianDecomposition extends BasicTransform {
      * transformed by the selected basic transform and the resulting wavelet
      * coefficients are copied back to their original discrete positions.
      *
-     * @date 14.08.2010 10:43:28
      * @author Christian (graetz23@gmail.com)
      * @throws JWaveException
-     * @see jwave.transforms.BasicTransform#forward(double[])
      */
     @Override
     public double[] forward(double[] arrTime) throws JWaveException {
@@ -138,10 +135,8 @@ public class AncientEgyptianDecomposition extends BasicTransform {
      * coefficients of time domain are copied back to their original discrete
      * positions.
      *
-     * @date 14.08.2010 10:43:28
      * @author Christian (graetz23@gmail.com)
      * @throws JWaveException
-     * @see jwave.transforms.BasicTransform#reverse(double[])
      */
     @Override
     public double[] reverse(double[] arrHilb) throws JWaveException {

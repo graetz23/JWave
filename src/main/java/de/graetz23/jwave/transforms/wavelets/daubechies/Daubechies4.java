@@ -29,7 +29,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Ingrid Daubechies' orthonormal wavelet of eight coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
  *
- * @date 26.03.2010 07:35:31
  * @author Christian (graetz23@gmail.com)
  */
 public class Daubechies4 extends Wavelet {
@@ -38,7 +37,6 @@ public class Daubechies4 extends Wavelet {
      * Already orthonormal coefficients taken from Filip Wasilewski's webpage
      * http://wavelets.pybytes.com/wavelet/db4/ Thanks!
      *
-     * @date 26.03.2010 07:35:31
      * @author Christian (graetz23@gmail.com)
      */
     public Daubechies4() {

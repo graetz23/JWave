@@ -29,7 +29,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
  * Ingrid Daubechies' orthonormal Coiflet wavelet of 12 coefficients.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 15.02.2014 22:33:55
  */
 public class Coiflet2 extends Wavelet {
 
@@ -38,7 +37,6 @@ public class Coiflet2 extends Wavelet {
      * http://wavelets.pybytes.com/wavelet/coif2/ Thanks!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 15.02.2014 22:33:55
      */
     public Coiflet2() {
 

@@ -28,8 +28,8 @@ package de.graetz23.jwave.transforms.wavelets.biorthogonal;
  * and five vanishing moments in scaling function.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 16.02.2014 17:40:01
  */
+@Deprecated
 public class BiOrthogonal55 extends BiOrthogonal {
 
     /**
@@ -37,7 +37,6 @@ public class BiOrthogonal55 extends BiOrthogonal {
      * http://wavelets.pybytes.com/wavelet/bior5.5/ Thanks!
      *
      * @author Christian (graetz23@gmail.com)
-     * @date 16.02.2014 17:40:01
      */
     public BiOrthogonal55() {
 

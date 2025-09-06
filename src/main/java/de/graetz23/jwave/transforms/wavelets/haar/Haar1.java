@@ -28,7 +28,6 @@ import de.graetz23.jwave.transforms.wavelets.Wavelet;
 /**
  * Alfred Haar's orthonormal wavelet transform.
  *
- * @date 08.02.2010 12:46:34
  * @author Christian (graetz23@gmail.com)
  */
 public class Haar1 extends Wavelet {
@@ -38,7 +37,6 @@ public class Haar1 extends Wavelet {
      * scaling coefficients; normed, due to ||*||_2 -- euclidean norm. See the
      * orthogonal version in class Haar1Orthogonal for more details.
      *
-     * @date 08.02.2010 12:46:34
      * @author Christian (graetz23@gmail.com)
      */
     public Haar1() {
