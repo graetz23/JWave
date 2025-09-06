@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2024 Christian (graetz23@gmail.com)
+ * Copyright (c) 2008-2025 JWave Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,11 @@ import de.graetz23.jwave.exceptions.JWaveFailureNotAllocated;
  * for grouping data containers like Line, Block, or Space objects together!
  * 
  * @author Christian (graetz23@gmail.com)
- * @date 16.05.2015 19:27:00
  */
 public abstract class Super {
 
   /**
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 19:27:01
    */
   public Super( ) {
   } // Super
@@ -47,7 +45,6 @@ public abstract class Super {
    * "not allocated" failure is thrown.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 18.05.2015 20:36:45
    * @throws JWaveException
    *           if no memory is allocated
    */
@@ -63,7 +60,6 @@ public abstract class Super {
    * Returns a copy of the object - if allocated, with all data!
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 18.05.2015 20:56:50
    * @return copy of itself, if allocated with all data stored
    */
   public abstract Super copy( );
@@ -72,7 +68,6 @@ public abstract class Super {
    * If memory is allocated then return true else return false.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 18.05.2015 18:03:55
    * @return true if memory is allocated
    */
   public abstract boolean isAllocated( );
@@ -83,7 +78,6 @@ public abstract class Super {
    * for each object.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 18.05.2015 17:59:24
    * @throws JWaveException
    *           if memory is already occupied or if memory cannot be allocated
    */

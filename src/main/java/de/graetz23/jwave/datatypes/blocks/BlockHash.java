@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2024 Christian (graetz23@gmail.com)
+ * Copyright (c) 2008-2025 JWave Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,6 @@ import de.graetz23.jwave.exceptions.JWaveFailure;
  * Uses HashMap generic for sparse data representations.
  * 
  * @author Christian (graetz23@gmail.com)
- * @date 16.05.2015 16:41:53
  */
 public class BlockHash extends Block {
 
@@ -42,7 +41,6 @@ public class BlockHash extends Block {
    * Storing LineHash objects in a HashMap for sparse representation.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 16:43:03
    */
   HashMap< Integer, Line > _hashMapLines = null;
 
@@ -50,7 +48,6 @@ public class BlockHash extends Block {
    * Create an object of a sub type; e.g. as pattern.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 13:58:16
    */
   public BlockHash( ) {
     super( );
@@ -61,7 +58,6 @@ public class BlockHash extends Block {
    * type of block.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 13:59:49
    * @param block
    *          object of type block; e.g. BlockFull
    */
@@ -84,7 +80,6 @@ public class BlockHash extends Block {
 
   /**
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 16:41:53
    * @param noOfRows
    * @param noOfCols
    */
@@ -97,7 +92,6 @@ public class BlockHash extends Block {
    * e.g. a SuperBlock.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 14:03:36
    * @param offSetRow
    *          the global off set of rows of the block
    * @param offSetCol
@@ -113,7 +107,6 @@ public class BlockHash extends Block {
 
   /*
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 15:13:30 (non-Javadoc)
    * @see jwave.datatypes.Super#copy()
    */
   @Override public Block copy( ) {
@@ -122,7 +115,6 @@ public class BlockHash extends Block {
 
   /*
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 15:02:40 (non-Javadoc)
    * @see jwave.datatypes.Super#isAllocated()
    */
   @Override public boolean isAllocated( ) {
@@ -134,7 +126,6 @@ public class BlockHash extends Block {
 
   /*
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 15:02:40 (non-Javadoc)
    * @see jwave.datatypes.Super#alloc()
    */
   @Override public void alloc( ) throws JWaveException {
@@ -144,7 +135,6 @@ public class BlockHash extends Block {
 
   /*
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 15:02:40 (non-Javadoc)
    * @see jwave.datatypes.Super#erase()
    */
   @Override public void erase( ) throws JWaveException {
@@ -156,7 +146,6 @@ public class BlockHash extends Block {
   /*
    * Getter!
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 16:41:53 (non-Javadoc)
    * @see jwave.datatypes.blocks.Block#get(int, int)
    */
   @Override public double get( int i, int j ) throws JWaveException {
@@ -184,7 +173,6 @@ public class BlockHash extends Block {
   /*
    * Setter!
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 16:41:53 (non-Javadoc)
    * @see jwave.datatypes.blocks.Block#set(int, int, double)
    */
   @Override public void set( int i, int j, double value ) throws JWaveException {

@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  * <p>
- * Copyright (c) 2008-2024 Christian (graetz23@gmail.com)
+ * Copyright (c) 2008-2025 JWave Christian (graetz23@gmail.com)
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,6 @@ import de.graetz23.jwave.transforms.wavelets.WaveletBuilder;
  * dirty test available by skipping the JUnit framework. JWave is supported as a
  * library and foreseen to be used like this.
  *
- * @date 23.02.2010 14:26:47
  * @author Christian (graetz23@gmail.com)
  */
 public class JWave {
@@ -54,7 +53,6 @@ public class JWave {
      * reveals the application power of wavelets. that can be used for any kind of
      * data!
      *
-     * @date 23.02.2010 14:26:47
      * @author Christian (graetz23@gmail.com)
      * @param args
      *          [transformType] [waveletType]

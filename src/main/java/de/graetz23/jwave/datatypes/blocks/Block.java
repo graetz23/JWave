@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2024 Christian (graetz23@gmail.com)
+ * Copyright (c) 2008-2025 JWave Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,6 @@ import de.graetz23.jwave.exceptions.JWaveFailure;
  * implement different strategies on values storage.
  * 
  * @author Christian (graetz23@gmail.com)
- * @date 16.05.2015 14:39:22
  */
 public abstract class Block extends Super {
 
@@ -41,7 +40,6 @@ public abstract class Block extends Super {
    * The number of rows of this Block.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 14:41:23
    */
   protected int _noOfRows;
 
@@ -49,7 +47,6 @@ public abstract class Block extends Super {
    * The number of columns of this Block.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 14:41:42
    */
   protected int _noOfCols;
 
@@ -58,7 +55,6 @@ public abstract class Block extends Super {
    * SuperBlock; check _offSetRow in class Line for more details.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 23.05.2015 19:50:40
    */
   protected int _offSetRow;
 
@@ -67,7 +63,6 @@ public abstract class Block extends Super {
    * of SuperBlock; check _offSetRow in class Line for more details.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 23.05.2015 19:52:19
    */
   protected int _offSetCol;
 
@@ -75,7 +70,6 @@ public abstract class Block extends Super {
    * Create an object of a sub type; e.g. as pattern.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 23.05.2015 19:53:18
    */
   public Block( ) {
     _offSetRow = 0;
@@ -89,7 +83,6 @@ public abstract class Block extends Super {
    * to the new object.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 23.05.2015 19:54:16
    * @param block
    */
   public Block( Block block ) {
@@ -104,7 +97,6 @@ public abstract class Block extends Super {
    * to zero.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 15:21:17
    * @param noOfRows
    *          stores the noOfRows exclusively, even if each Line object stores
    *          that value again.
@@ -123,7 +115,6 @@ public abstract class Block extends Super {
    * e.g. a SuperBlock.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 14:03:45
    * @param offSetRow
    *          the global off set of rows of the block
    * @param offSetCol
@@ -142,7 +133,6 @@ public abstract class Block extends Super {
 
   /**
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 14:43:41
    * @return the _noOfRows
    */
   public int getNoOfRows( ) {
@@ -151,7 +141,6 @@ public abstract class Block extends Super {
 
   /**
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 14:43:41
    * @return the _noOfCols
    */
   public int getNoOfCols( ) {
@@ -160,7 +149,6 @@ public abstract class Block extends Super {
 
   /**
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 18:31:31
    * @return the off set of the row
    */
   public int getOffSetRow( ) {
@@ -169,7 +157,6 @@ public abstract class Block extends Super {
 
   /**
    * @author Christian (graetz23@gmail.com)
-   * @date 24.05.2015 18:31:54
    * @return the off set of the column
    */
   public int getOffSetCol( ) {
@@ -181,7 +168,6 @@ public abstract class Block extends Super {
    * throw a failure (exception) if j is not valid.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 15:37:57
    * @param j
    *          from 0 to noOfCols-1
    * @throws JWaveException
@@ -205,7 +191,6 @@ public abstract class Block extends Super {
    * is not valid.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 15:33:14
    * @param i
    *          from 0 to noOfRows-1
    * @param j
@@ -233,7 +218,6 @@ public abstract class Block extends Super {
    * Getter for a stored value of type double.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 15:23:22
    * @param i
    *          position in rows of the block
    * @param j
@@ -248,7 +232,6 @@ public abstract class Block extends Super {
    * Setter for a stored value of type double!
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 16.05.2015 15:42:53
    * @param i
    *          position in rows of the block
    * @param j

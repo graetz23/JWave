@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2024 Christian (graetz23@gmail.com)
+ * Copyright (c) 2008-2025 JWave Christian (graetz23@gmail.com)
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,6 @@ import de.graetz23.jwave.exceptions.JWaveException;
  * array, matrix, or space as thresholding value.
  * 
  * @author Christian (graetz23@gmail.com)
- * @date 14.05.2015 17:57:19
  */
 public class CompressorPeaksAverage extends Compressor {
 
@@ -42,7 +41,6 @@ public class CompressorPeaksAverage extends Compressor {
    * Compression by average of peak min & max.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 17:57:19
    */
   public CompressorPeaksAverage( ) {
 
@@ -56,7 +54,6 @@ public class CompressorPeaksAverage extends Compressor {
    * Compression by average of peak min & max.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 17:57:19
    * @param threshold
    * @throws JWaveException
    */
@@ -75,7 +72,6 @@ public class CompressorPeaksAverage extends Compressor {
    * absolute value.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see jwave.compressions.Compressor#compress(double[])
    */
   @Override public double[ ] compress( double[ ] arrHilb ) {
@@ -103,7 +99,6 @@ public class CompressorPeaksAverage extends Compressor {
    * absolute value.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see jwave.compressions.Compressor#compress(double[][])
    */
   @Override public double[ ][ ] compress( double[ ][ ] matHilb ) {
@@ -136,7 +131,6 @@ public class CompressorPeaksAverage extends Compressor {
    * absolute value.
    * 
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 17:57:19 (non-Javadoc)
    * @see jwave.compressions.Compressor#compress(double[][][])
    */
   @Override public double[ ][ ][ ] compress( double[ ][ ][ ] spcHilb ) {

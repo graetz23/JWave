@@ -1,7 +1,7 @@
 /**
  * JWave is distributed under the MIT License (MIT); this file is part of.
  *
- * Copyright (c) 2008-2024 Christian (graetz23@gmail.com)
+ * Copyright (c) 2008-2025 JWave Christian (graetz23@gmail.com)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,6 @@ import de.graetz23.jwave.exceptions.JWaveFailure;
  * compressing data that is transformed to Hilbert space by different methods.
  *
  * @author Christian (graetz23@gmail.com)
- * @date 20.02.2014 23:41:35
  */
 public abstract class Compressor {
 
@@ -39,7 +38,6 @@ public abstract class Compressor {
    * A threshold that is used in several compression methods.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 20.02.2014 23:44:26
    */
   protected double _threshold = 1.;
 
@@ -47,13 +45,11 @@ public abstract class Compressor {
    * The calculated magnitude by algorithm of derived class.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 18:36:17
    */
   protected double _magnitude = 0.;
 
   /**
    * @author Christian (graetz23@gmail.com)
-   * @date 20.02.2014 23:41:35
    */
   public Compressor( ) {
 
@@ -89,7 +85,6 @@ public abstract class Compressor {
    * the threshold, and the sets all lower values to zero.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 18:06:52
    * @param arr
    * @param magnitude
    * @return
@@ -115,7 +110,6 @@ public abstract class Compressor {
    * the threshold, and the sets all lower values to zero.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 18:17:31
    * @param mat
    * @param magnitude
    * @return
@@ -143,7 +137,6 @@ public abstract class Compressor {
    * the threshold, and the sets all lower values to zero.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 18:18:44
    * @param spc
    * @param magnitude
    * @return
@@ -174,7 +167,6 @@ public abstract class Compressor {
    * the number of zeros kept by the array.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 06.01.2016 23:47:06
    * @param arr
    *          the input of array keeping values and zeros
    * @return the compression rate as a percentage: [0 .. 100] %
@@ -200,7 +192,6 @@ public abstract class Compressor {
    * Getter for _threshold member.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 18:38:33
    * @return value of threshold member
    */
   public double getThreshold( ) {
@@ -213,7 +204,6 @@ public abstract class Compressor {
    * Getter for calculated _magnitude member.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 14.05.2015 18:39:32
    * @return value of magnitude member
    */
   public double getMagnitude( ) {
@@ -226,7 +216,6 @@ public abstract class Compressor {
    * Interface for arrays for driving the different compression methods.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 20.02.2014 23:48:06
    * @param arrHilb
    * @return
    */
@@ -236,7 +225,6 @@ public abstract class Compressor {
    * Interface for matrices for driving the different compression methods.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 20.02.2014 23:54:11
    * @param matHilb
    * @return
    */
@@ -246,7 +234,6 @@ public abstract class Compressor {
    * Interface for spaces for driving the different compression methods.
    *
    * @author Christian (graetz23@gmail.com)
-   * @date 20.02.2014 23:54:52
    * @param spcHilb
    * @return
    */
