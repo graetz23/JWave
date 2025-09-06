@@ -33,17 +33,20 @@ The *why* can be found in mathematics. Due to using some *orthogonal* transform 
 
 The base stays orthogonal, and **one's data is *unit* rotated and mirrowed differently**, which *makes a long story short*.
 
-Additionally the application of the transform - independent of using some different rotating and mirrowing base - is like *dancing some 90's techno*: As long as you do the *same amount* of steps *independently* of the performed sequence, even in 2-D and 3-D dimensions, the *expected magic* wavelets can bring in, will be there, and stays the same! For example, the result in values, and e.g the compression rates will stay exactely the same. Only _all_ intermediate performed results (or intermediate hilbert spaces) will be different, if someone else *dances* differently to otherones.
+Additionally the application of the transform - independent of using some different rotating and mirrowing base - is like *dancing some 90's techno*: As long as you do the *same amount* of steps *independently* of the performed sequence, even in 2-D and 3-D dimensions, the *expected magic* wavelets can bring in, will be there, and stays the same! For example, the result in values, and e.g the compression rates will stay exactely the same. Only _all_ intermediate performed results (or intermediate hilbert spaces) will be different, if someone else *dances* differently than orthonormal or orthogonal, respectively. 
 
 ### HowTo
 
-For a quick test, pull the repository and then: *ant && ant test*. This builds a JWave.jar and the corresponding unit tests. Afterwards *all* units test are executed.
+For a quick test, pull the repository and then: 
+```bash
+./gradlew build
+```
 
 ### Doing own stuff e.g. data compression
 
-For a lot of own stuff with JWave, have a look at the main junit test file / method: [a lot of examples](https://github.com/graetz23/JWave/tree/master/test/jwave)!
+For a lot of own stuff with JWave, have a look at the main junit test file / method: [a lot of examples](https://github.com/graetz23/JWave/tree/master/src/test/jwave)!
 
-For example, how to perform a (losless) data compression with over 98 % compression rate using _all available_ wavelets is shown by the following [junit test](https://github.com/graetz23/JWave/blob/master/test/jwave/CompressorTest.java)!
+For example, how to perform a (losless) data compression with over 98 % compression rate using _all available_ wavelets is shown by the following [junit test](https://github.com/graetz23/JWave/blob/master/src/test/jwave/CompressorTest.java)!
 
 ### Some easy code ..
 
@@ -142,7 +145,7 @@ If there are doubts, try mailing me, otherwise have fun with JWave.
 
 **JWave is distributed under the MIT License (MIT); this file is part of.**
 
-**Copyright (c) 2008-2024 Christian (graetz23@gmail.com)**
+**Copyright (c) 2008-2025 Christian (graetz23@gmail.com)**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -167,6 +170,10 @@ THE SOFTWARE.
 **JWave is in version 200303.**
 
 ## CHANGE LOG
+
+version **250906**
+- updating copyright to 2025
+- switching to gradle
 
 version **200303**:
 - updating copyright and contact information to graetz23
