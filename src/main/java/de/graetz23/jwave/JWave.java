@@ -21,11 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave;
+package de.graetz23.jwave;
 
-import jwave.transforms.DiscreteFourierTransform;
-import jwave.transforms.wavelets.Wavelet;
-import jwave.transforms.wavelets.WaveletBuilder;
+import de.graetz23.jwave.transforms.DiscreteFourierTransform;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.transforms.wavelets.WaveletBuilder;
 
 /**
  * Main class can be used to do a little console test by entering a transform

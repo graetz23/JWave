@@ -6,16 +6,16 @@
  *
  * GeneralTest.java
  */
-package jwave;
+package de.graetz23.jwave;
 
 import java.util.Random;
 
-import jwave.exceptions.JWaveFailure;
-import jwave.tools.MathToolKit;
-import jwave.transforms.DiscreteFourierTransform;
-import jwave.transforms.FastWaveletTransform;
-import jwave.transforms.wavelets.Wavelet;
-import jwave.transforms.wavelets.WaveletBuilder;
+import de.graetz23.jwave.exceptions.JWaveFailure;
+import de.graetz23.jwave.tools.MathToolKit;
+import de.graetz23.jwave.transforms.DiscreteFourierTransform;
+import de.graetz23.jwave.transforms.FastWaveletTransform;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.transforms.wavelets.WaveletBuilder;
 import org.junit.jupiter.api.Test;
 
 

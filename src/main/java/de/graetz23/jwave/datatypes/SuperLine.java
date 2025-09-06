@@ -21,15 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes;
+package de.graetz23.jwave.datatypes;
 
 import java.util.ArrayList;
 
-import jwave.datatypes.lines.Line;
-import jwave.datatypes.lines.LineFull;
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailureNotValid;
-import jwave.tools.MathToolKit;
+import de.graetz23.jwave.datatypes.lines.Line;
+import de.graetz23.jwave.datatypes.lines.LineFull;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailureNotValid;
+import de.graetz23.jwave.tools.MathToolKit;
 
 /**
  * SuperLine consists of several Line objects of different sizes.

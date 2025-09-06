@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.transforms.wavelets.coiflet;
+package de.graetz23.jwave.transforms.wavelets.coiflet;
 
-import jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Ingrid Daubechies' orthonormal Coiflet wavelet of 12 coefficients.

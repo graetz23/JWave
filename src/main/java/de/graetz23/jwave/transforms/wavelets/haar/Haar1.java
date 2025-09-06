@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.transforms.wavelets.haar;
+package de.graetz23.jwave.transforms.wavelets.haar;
 
-import jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Alfred Haar's orthonormal wavelet transform.

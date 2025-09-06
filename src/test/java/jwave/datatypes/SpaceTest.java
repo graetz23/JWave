@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes;
+package de.graetz23.jwave.datatypes;
 
-import jwave.datatypes.spaces.Space;
-import jwave.datatypes.spaces.SpaceFull;
-import jwave.datatypes.spaces.SpaceHash;
-import jwave.exceptions.JWaveException;
+import de.graetz23.jwave.datatypes.spaces.Space;
+import de.graetz23.jwave.datatypes.spaces.SpaceFull;
+import de.graetz23.jwave.datatypes.spaces.SpaceHash;
+import de.graetz23.jwave.exceptions.JWaveException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

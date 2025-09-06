@@ -21,13 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.transforms;
+package de.graetz23.jwave.transforms;
 
 import java.util.Arrays;
 
-import jwave.transforms.wavelets.Wavelet;
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailure;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailure;
 
 /**
  * Base class for - stepping - forward and reverse methods, due to one kind of a

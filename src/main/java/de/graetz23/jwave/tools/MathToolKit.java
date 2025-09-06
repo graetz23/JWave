@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.tools;
+package de.graetz23.jwave.tools;
 
-import jwave.exceptions.*;
+import de.graetz23.jwave.exceptions.*;
 
 /**
  * @author Christian (graetz23@gmail.com) date Feb 11, 2013

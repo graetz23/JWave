@@ -9,9 +9,9 @@
  * Base.java
  */
 
-package jwave;
+package de.graetz23.jwave;
 
-import jwave.datatypes.natives.Complex;
+import de.graetz23.jwave.datatypes.natives.Complex;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

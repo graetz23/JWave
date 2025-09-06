@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes.natives;
+package de.graetz23.jwave.datatypes.natives;
 
 /**
  * A class to represent a complex number. A Complex object is immutable once

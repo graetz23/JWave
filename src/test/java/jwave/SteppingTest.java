@@ -9,12 +9,12 @@
  *
  * SteppingTest.java
  */
-package jwave;
+package de.graetz23.jwave;
 
-import jwave.transforms.FastWaveletTransform;
-import jwave.transforms.WaveletPacketTransform;
-import jwave.transforms.wavelets.Wavelet;
-import jwave.transforms.wavelets.WaveletBuilder;
+import de.graetz23.jwave.transforms.FastWaveletTransform;
+import de.graetz23.jwave.transforms.WaveletPacketTransform;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.transforms.wavelets.WaveletBuilder;
 import org.junit.jupiter.api.Test;
 
 /**

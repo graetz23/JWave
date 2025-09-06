@@ -21,11 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes.spaces;
+package de.graetz23.jwave.datatypes.spaces;
 
-import jwave.datatypes.blocks.Block;
-import jwave.datatypes.blocks.BlockFull;
-import jwave.exceptions.JWaveException;
+import de.graetz23.jwave.datatypes.blocks.Block;
+import de.graetz23.jwave.datatypes.blocks.BlockFull;
+import de.graetz23.jwave.exceptions.JWaveException;
 
 /**
  * A space that uses a full array for storage of Block objects.

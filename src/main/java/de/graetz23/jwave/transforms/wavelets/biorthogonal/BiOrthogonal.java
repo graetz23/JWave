@@ -7,9 +7,9 @@
  *
  * BiOrthogonal.java
  */
-package jwave.transforms.wavelets.biorthogonal;
+package de.graetz23.jwave.transforms.wavelets.biorthogonal;
 
-import jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Base class for BiOrthogonal wavelets.

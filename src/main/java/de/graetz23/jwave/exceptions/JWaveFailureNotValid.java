@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.exceptions;
+package de.graetz23.jwave.exceptions;
 
 /**
  * This exception should be thrown if some input or something else is not valid.

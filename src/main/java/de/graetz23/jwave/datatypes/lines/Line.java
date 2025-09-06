@@ -21,11 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes.lines;
+package de.graetz23.jwave.datatypes.lines;
 
-import jwave.datatypes.Super;
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailureNotValid;
+import de.graetz23.jwave.datatypes.Super;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailureNotValid;
 
 /**
  * A line of Data; 1-D organized by (0) .. (noOfRows).

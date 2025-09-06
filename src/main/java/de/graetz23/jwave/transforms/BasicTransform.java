@@ -21,14 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.transforms;
+package de.graetz23.jwave.transforms;
 
-import jwave.datatypes.natives.Complex;
-import jwave.exceptions.JWaveError;
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailure;
-import jwave.tools.MathToolKit;
-import jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.datatypes.natives.Complex;
+import de.graetz23.jwave.exceptions.JWaveError;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailure;
+import de.graetz23.jwave.tools.MathToolKit;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Basic Wave for transformations like Fast Fourier Transform (FFT), Fast

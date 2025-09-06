@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.transforms;
+package de.graetz23.jwave.transforms;
 
-import jwave.exceptions.JWaveException;
-import jwave.tools.MathToolKit;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.tools.MathToolKit;
 
 /**
  * A wavelet transform method for arrays and signals of arbitrary lengths, even

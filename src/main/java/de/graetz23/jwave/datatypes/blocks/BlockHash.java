@@ -21,14 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes.blocks;
+package de.graetz23.jwave.datatypes.blocks;
 
 import java.util.HashMap;
 
-import jwave.datatypes.lines.Line;
-import jwave.datatypes.lines.LineHash;
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailure;
+import de.graetz23.jwave.datatypes.lines.Line;
+import de.graetz23.jwave.datatypes.lines.LineHash;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailure;
 
 /**
  * Uses HashMap generic for sparse data representations.

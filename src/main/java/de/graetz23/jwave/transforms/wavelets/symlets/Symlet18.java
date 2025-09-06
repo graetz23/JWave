@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.transforms.wavelets.symlets;
+package de.graetz23.jwave.transforms.wavelets.symlets;
 
-import jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Symlet10 filter: near symmetric, orthogonal (orthonormal), biorthogonal.

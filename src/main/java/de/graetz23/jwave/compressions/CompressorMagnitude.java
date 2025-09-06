@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.compressions;
+package de.graetz23.jwave.compressions;
 
-import jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveException;
 
 /**
  * Compression algorithm is adding up all magnitudes of an array, a matrix, or a

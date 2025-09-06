@@ -21,11 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes.spaces;
+package de.graetz23.jwave.datatypes.spaces;
 
-import jwave.datatypes.Super;
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailure;
+import de.graetz23.jwave.datatypes.Super;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailure;
 
 /**
  * A space of Data; 3-D organized by (0,0,0) .. (noOfRows,noOfCols,noOfBlocks).

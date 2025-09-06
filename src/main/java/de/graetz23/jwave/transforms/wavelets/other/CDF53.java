@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.transforms.wavelets.other;
+package de.graetz23.jwave.transforms.wavelets.other;
 
-import jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Cohen Daubechies Feauveau (CDF) 9/7 wavelet. THIS WAVELET IS NOT WORKING -

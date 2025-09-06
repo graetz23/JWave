@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes;
+package de.graetz23.jwave.datatypes;
 
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailureNotAllocated;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailureNotAllocated;
 
 /**
  * Instead using Java's Object class as super type, a named Super typed is used

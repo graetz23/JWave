@@ -6,9 +6,9 @@
  *
  * SamplingTest.java
  */
-package jwave;
+package de.graetz23.jwave;
 
-import jwave.tools.MathToolKit;
+import de.graetz23.jwave.tools.MathToolKit;
 import org.junit.jupiter.api.Test;
 
 

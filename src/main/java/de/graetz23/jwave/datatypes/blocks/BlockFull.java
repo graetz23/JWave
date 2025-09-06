@@ -21,11 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes.blocks;
+package de.graetz23.jwave.datatypes.blocks;
 
-import jwave.datatypes.lines.Line;
-import jwave.datatypes.lines.LineFull;
-import jwave.exceptions.JWaveException;
+import de.graetz23.jwave.datatypes.lines.Line;
+import de.graetz23.jwave.datatypes.lines.LineFull;
+import de.graetz23.jwave.exceptions.JWaveException;
 
 /**
  * A block that uses a full array for storage of Line objects.

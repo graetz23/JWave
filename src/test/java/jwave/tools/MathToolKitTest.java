@@ -1,4 +1,4 @@
-package jwave.tools;
+package de.graetz23.jwave.tools;
 
 
 import org.junit.jupiter.api.Test;

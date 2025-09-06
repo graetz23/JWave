@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.datatypes.lines;
+package de.graetz23.jwave.datatypes.lines;
 
 import java.util.HashMap;
 
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailureNotFound;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailureNotFound;
 
 /**
  * Uses HashMap generic for sparse data representations.

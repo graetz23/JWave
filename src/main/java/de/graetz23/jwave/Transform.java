@@ -25,13 +25,13 @@
  * @date 23.05.2008 17:42:23
  *
  */
-package jwave;
+package de.graetz23.jwave;
 
-import jwave.datatypes.natives.Complex;
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailure;
-import jwave.transforms.BasicTransform;
-import jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.datatypes.natives.Complex;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailure;
+import de.graetz23.jwave.transforms.BasicTransform;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Base class for transforms like DiscreteFourierTransform, FastBasicTransform,

@@ -6,10 +6,10 @@
  *
  * ShiftingTest.java
  */
-package jwave;
+package de.graetz23.jwave;
 
-import jwave.transforms.ShiftingWaveletTransform;
-import jwave.transforms.wavelets.haar.Haar1;
+import de.graetz23.jwave.transforms.ShiftingWaveletTransform;
+import de.graetz23.jwave.transforms.wavelets.haar.Haar1;
 import org.junit.jupiter.api.Test;
 
 

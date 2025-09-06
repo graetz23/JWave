@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package jwave.transforms.wavelets.biorthogonal;
+package de.graetz23.jwave.transforms.wavelets.biorthogonal;
 
 /**
  * BiOrthogonal Wavelet of type 3.3 - Three vanishing moments in wavelet

@@ -7,12 +7,12 @@
  *
  * ShiftingWaveletTransform.java
  */
-package jwave.transforms;
+package de.graetz23.jwave.transforms;
 
-import jwave.exceptions.JWaveException;
-import jwave.exceptions.JWaveFailureNotImplemented;
-import jwave.tools.MathToolKit;
-import jwave.transforms.wavelets.Wavelet;
+import de.graetz23.jwave.exceptions.JWaveException;
+import de.graetz23.jwave.exceptions.JWaveFailureNotImplemented;
+import de.graetz23.jwave.tools.MathToolKit;
+import de.graetz23.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Shifting Wavelet Transform shifts a wavelet of smallest wavelength over the
