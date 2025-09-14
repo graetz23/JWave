@@ -35,59 +35,6 @@ The base stays orthogonal, and **one's data is *unit* rotated and mirrowed diffe
 
 Additionally the application of the transform - independent of using some different rotating and mirrowing base - is like *dancing some 90's techno*: As long as you do the *same amount* of steps *independently* of the performed sequence, even in 2-D and 3-D dimensions, the *expected magic* wavelets can bring in, will be there, and stays the same! For example, the result in values, and e.g the compression rates will stay exactely the same. Only _all_ intermediate performed results (or intermediate hilbert spaces) will be different, if someone else *dances* differently than orthonormal or orthogonal, respectively. 
 
-### Build and run Tests
-
-Clone the repository and run the gradle wrapper: 
-```bash
-./gradlew build
-```
-
-#### Compile, Clean, Jar, and Tests
-
-Run all unit tests.
-```bash
-./gradlew test
-```
-
-Build the _jar_ file.
-```bash
-./gradlew jar
-```
-
-Compile java code only.
-```bash
-./gradlew compileJava
-```
-
-Clean the build
-```bash
-./gradlew clean
-```
-
-#### Need for another gradle wrapper 
-If you do not have the [latest gradle version, download and install it](https://gradle.org/install/#manually) or switch to the gradle version of choice.
-
-```bash
-mkdir /opt/gradle
-unzip -d /opt/gradle gradle-9.0.0-bin.zip
-```
-
-What could be recommended is to create additional symlinks:
-```bash
-cd /opt/gradle
-ln -s ./gradle-9.0.0/bin/gradle gradle
-
-cd /usr/bin
-ln -s /opt/gradle/gradle gradle
-```
-
-Now you can change the gradle version by changing the first symlink. The second is to have gradle already on the _PATH_ variable.
-
-Then generate your own wrapper
-```bash
-gradle wrapper
-```
-
 ### Doing own stuff e.g. data compression
 
 For a lot of own stuff with JWave, have a look at the main junit test file / method: [a lot of examples](https://github.com/graetz23/JWave/tree/master/src/test/jwave)!
@@ -181,7 +128,58 @@ double[ ] arrHilb = t.forward( arrTime ); // 1-D AED WPT Haar forward
 double[ ] arrReco = t.reverse( arrHilb ); // 1-D AED WPT Haar reverse
 ```
 
-**Have fun! :-)**
+## Build and run Tests
+
+Clone the repository and run the gradle wrapper: 
+```bash
+./gradlew build
+```
+
+### Compile, Clean, Jar, and Tests
+
+Run all unit tests.
+```bash
+./gradlew test
+```
+
+Build the _jar_ file.
+```bash
+./gradlew jar
+```
+
+Compile java code only.
+```bash
+./gradlew compileJava
+```
+
+Clean the build
+```bash
+./gradlew clean
+```
+
+### Need for another gradle wrapper 
+If you do not have the [latest gradle version, download and install it](https://gradle.org/install/#manually) or switch to the gradle version of choice.
+
+```bash
+mkdir /opt/gradle
+unzip -d /opt/gradle gradle-9.0.0-bin.zip
+```
+
+What could be recommended is to create additional symlinks:
+```bash
+cd /opt/gradle
+ln -s ./gradle-9.0.0/bin/gradle gradle
+
+cd /usr/bin
+ln -s /opt/gradle/gradle gradle
+```
+
+Now you can change the gradle version by changing the first symlink. The second is to have gradle already on the _PATH_ variable.
+
+Then generate your own wrapper
+```bash
+gradle wrapper
+```
 
 ## CONTACT
 
