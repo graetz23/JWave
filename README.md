@@ -65,7 +65,7 @@ Clean the build
 ```
 
 #### Need for another gradle wrapper 
-If you do not have the [latest gradle version, download and install it](https://gradle.org/install/#manually) or switch to the gralde version of choice.
+If you do not have the [latest gradle version, download and install it](https://gradle.org/install/#manually) or switch to the gradle version of choice.
 
 ```bash
 mkdir /opt/gradle
@@ -81,7 +81,7 @@ cd /usr/bin
 ln -s /opt/gradle/gradle gradle
 ```
 
-Now yo can change the gradle version by changing the first symlink. The second is to have gradle already on the _PATH_ variable.
+Now you can change the gradle version by changing the first symlink. The second is to have gradle already on the _PATH_ variable.
 
 Then generate your own wrapper
 ```bash
