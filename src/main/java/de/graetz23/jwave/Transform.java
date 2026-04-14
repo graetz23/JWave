@@ -58,8 +58,6 @@ public final class Transform {
         try {
             if (_basicTransform == null)
                 throw new JWaveFailure("given object is null!");
-            if (!(_basicTransform instanceof BasicTransform))
-                throw new JWaveFailure("given object is not of type BasicTransform");
         } catch (JWaveException e) {
             e.showMessage();
             e.printStackTrace();
